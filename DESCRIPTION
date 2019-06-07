@@ -1,5 +1,5 @@
 Package: bbsAssistant
-Title: Hlper Functions for Obtaining Data and Information from the North American Breeding Bird Survey (BBS)
+Title: Helper Functions for Obtaining Data and Information from the North American Breeding Bird Survey (BBS)
 Version: 0.0.0.9000
 Authors@R: person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"))
 Description: Provides various helper functions for getting BBS data and metadata. 
@@ -9,3 +9,6 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
+Imports: 
+    stringr, 
+    rvest
