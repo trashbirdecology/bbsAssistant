@@ -6,5 +6,5 @@ This package will host helper functions aimed to automate the downloading and mu
 ## Contributions
 I currently have a variety of functions spread across some of my existing packages, and plan to incorporate those in this package (see [Issues](https://github.com/TrashBirdEcology/bbsAssistant/issues)) and invite issues or contributions for additional features.
 
-If you would like to contribute, please email me (jessicaleighburnett at gmail). 
+If you would like to contribute, please submit a pr or email me (jessicaleighburnett at gmail). 
 
