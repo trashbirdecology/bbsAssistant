@@ -1,5 +1,5 @@
 ## About
-__In development. __
+**In development.**
 
 This package will host helper functions aimed to automate the downloading and munging of data and metadata from the North American Breeding Bird Survey. 
 
