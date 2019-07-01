@@ -1,0 +1,57 @@
+# getRouteInfo ##########################################################
+#' @title Download route information from USGS server
+#' @description This function was adapted from **oharar/rBBS** package.
+#' @param routeDir Location of the routes.zip folder Should be in DatFiles folder (default).
+#' @param routeFile Name of the route information file. Usually "routes.zip".
+#' @param RouteTypeID One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).
+#' @param Stratum A vector of BBS physiographic stratum codes by which to filter the routes.
+#' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.
+#' @return If download successful, a dataframe with the results.
+#'
+#' @examples
+#' # download BBS route data.
+#'
+#' \dontrun{
+#' RouteInfo <- getRouteInfo()
+#' }
+#'
+#' @export getRouteInfo
+
+getRouteInfo <- function(routesFile = "routes.zip",
+                         routesDir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
+                         RouteTypeID = 1,
+                         # one or more of c(1,2,3)
+                         Stratum = NULL,
+                         BCR = NULL) {
+    # Unzip from FTP server and store as an R object
+    routeDat <-
+        GetUnzip(
+            ZipName = paste0(routesDir, routesFile),
+            FileName = gsub("^Fifty", "fifty", gsub("zip", "csv", routesFile))
+        )
+    
+    # Force column names to lowercase
+    names(routeDat) <- tolower(names(routeDat))
+    
+    # Filter the routes
+    {
+        if (!is.null(Stratum)) {
+            routeDat <- routeDat %>%
+                filter(stratum %in% Stratum)
+        }
+        
+        if (!is.null(BCR)) {
+            routeDat <- routeDat %>%
+                filter(BCR %in% BCR)
+        }
+        
+        
+        if (!is.null(RouteTypeID)) {
+            routeDat <- routeDat %>%
+                filter(RouteTypeID %in% RouteTypeID)
+        }
+    }
+    
+    
+    return(routeDat)
+}
