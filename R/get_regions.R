@@ -2,8 +2,8 @@
 #' @description  Read in list of regions (State/Prov/TerrName), from RegionCodes.txt, and then extract list of where the 10-stop data is kept
 #' @param source The website or location of the BBS data files.  
 #' @param bbsDir The location of the local folder containing the bbs raw data. If this folder DNE, a new folder will be created in the working directory.
-#' @export get_bbsRegions
-get_bbsRegions <-
+#' @export get_regions
+get_regions <-
     function(
         source = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
              ZipFiles = TRUE, 
