@@ -1,4 +1,3 @@
-# birdsToFeathers #########################################################
 #' @title Save BBS dataframe as a feather file
 #' @param dataIn The BBS data to save.
 #' @param newDir Where to save the BBS feathers.
