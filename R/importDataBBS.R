@@ -1,6 +1,5 @@
-# importDataBBS ##########################################################
 #' @title A wrapper function for downloading raw data, filtering by species names/AOU codes, and merging with route information.
-#' @description Some parts of this function were borrowed from **oharar/rBBS**.  
+#' @description This function will import BBS data which has already been downloaded to file. Some parts of this function were borrowed from **oharar/rBBS**.  
 #' @param dir http:// pr ftp:/ link to bbs data location (here: state files)
 #' @param zipFileNames One or more file names ("state.zip"), char vector. Preferably download a single state at a time, otherwise run time will take >1 minutes.
 #' @param countrynum Vector of country ID #'s. Default = NULL (all countryNums).
