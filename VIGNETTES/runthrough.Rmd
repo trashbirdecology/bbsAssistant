@@ -1,0 +1,127 @@
+---
+title: "An example of how to use `bbsAssistant` to download and munge the BBS data from the FTP server or local file."
+author: "Jessica Burnett"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r  setup, include=FALSE, echo=FALSE}
+knitr::opts_chunk$set(include=FALSE, warning = FALSE, message=FALSE)
+```
+
+## Define and/or create local directories
+This function will create, if it does not already exist, folder **./bbsData/** within which to locally store BBS data and results. 
+**NOTE**: If the directory exists, it will not overwrite files. If the bbs data already exists inside bbsDir, then we will create a logical to NOT download the data (see below). If you wish to download more, or overwrite existing data, please specify downloadBBSData=TRUE or remove .zip files from **/bbsData/**.
+```{r  createDirs, warning=TRUE}
+# a. Create a directory to store and/or load the BBS data as feathers
+bbsDir <- here::here("bbs_raw_data")
+
+# Throw a warning if files exist
+    if(length(list.files(bbsDir, pattern = "*.feather")) > 0 ){
+        downloadBBSData = FALSE
+    }else(
+        {dir.create(bbsDir)
+        downloadBBSData = TRUE}
+        )
+```
+
+# Download the BBS data and save to file locally
+If necessary, download all the state data. This takes 10-15 minutes, so only run if you have not recently downloaded the BBS data. 
+
+```{r getBBSdata, message=F, warning=F}
+# a. Load the regional .txt file from Patuxent's FTP server (you must be connected to the internet to perform this step)
+regions <- GetRegions()
+# b. Create a series or one filenames for states, regions
+regionFileName <- regions$zipFileName %>% na.omit()
+# c.  Download and unzip the BBS data.
+if(downloadBBSData==TRUE){
+for(i in 1:length(regionFileName)){
+        bbsData <-  importDataBBS(
+            # arguments for getDataBBS()
+            file = regionFileName[i],
+            dir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
+            year = NULL,
+            aou = NULL,
+            countrynum = NULL,
+            states = NULL,
+            #  arguments for getRouteInfo():
+            routesFile = "routes.zip",
+            routesDir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
+            RouteTypeID = 1,
+            # one or more of c(1,2,3)
+            Stratum = NULL,
+            BCR = NULL
+        )
+# d. Save the unzipped files to disk.
+birdsToFeathers(dataIn  = bbsData,
+                newDir  = bbsDir,
+                filename = regionFileName[i])
+# e. Clear object from memory
+rm(bbsData)
+} # end section I. loop
+}else(message(paste0("NOT DOWNLOADING BBS DATA. If you wish to download the BBS data, please remove files from directory: ",bbsDir))) # end if-else to download the data
+```
+
+# Create the sampling grid 
+Next we build the sampling grid to force route information onto a regular grid.
+
+```{r samplingGrid, eval = T, message=F, warning = F, echo=F}
+# III: Build sampling grid --------------------------------------------------------
+# Define the grid's cell size (lat, long; unit:degrees)
+        ## 1 deg latitude ~= 69 miles
+        ## 1 deg longitude ~= 55 miles
+cs <-
+    c(0.5, 0.5)  # default is cell size 0.5 deg lat x 0.5 deg long
+# Create the grid
+routes_gridList <- createSamplingGrid(cs = cs)
+# Define the components of the sampling grid as individual objects
+routes_grid <- routes_gridList$routes_grid
+sp_grd <- routes_gridList$sp_grd
+rm(cs)
+```
+
+Now we load in the BBS data from the feathers we created and align with the sampling grid. This requires a bit of memory, proceed with caution.
+
+```{r, eval = T, message=F, warning = F, echo=F}
+feathers <- NULL
+featherNames <- list.files(bbsDir, pattern = ".feather")
+featherNames <- str_c("/", featherNames) #add separator
+for (i in 1:length(featherNames)) {
+  feather <- NULL
+  feather <- loadBirdFeathers(newDir  = bbsDir,
+                              filename = featherNames[i]) 
+  feather <- feather %>%
+    dplyr::rename(lat = latitude,
+                  long = longitude) %>%
+    left_join(routes_grid, by = c("countrynum", "statenum", "route", "lat", "long"))
+  
+  feathers <- rbind(feathers, feather)
+  rm(feather)
+ 
+}
+```
+
+# Next, we can subset the BBS data by species and/or functional traits (OPTIONAL but recommended)
+Although subsetting the speices is optional, I recommend removing waterfowl, wading birds, and shorebirds from analyses, especially as the spatial extent of the analysis increases. 
+
+## Subset species according to AOU species codes (i.e. by family, genera, etc..)  
+For this example we will remove shorebirds, wading birds, and waterfowl (i.e., AOU species' codes 0000:2880). *See `R/subsetByAOU.R` source code or documentation for options (see: `subset.by`)
+```{r subsetAOU, eval = T, message = T, warning = F }
+# Subset the species
+feathers <- subsetByAOU(myData = feathers, subset.by= 'remove.shoreWaderFowl')
+```
+## Subset species according to functional traits (or body mass). 
+### **Note: eval = F**
+```{r subsetFxn, eval =F, message = T, warning = F}
+# Load the functional trait and mass data, and munge/merge
+funMass <-
+    funcMass(dataWD = paste0(getwd(), "/data"),
+             fxn = T, # get functional trait data?
+             mass = F) # get body mass data?
+# Combine the functional trqits and/or body mass
+bbsData <-
+    mergeFunMassBBS(bbsData = feather, funMass = funMass)
+rm(funMass)
