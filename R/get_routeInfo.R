@@ -1,5 +1,5 @@
 #' @title Download route information from USGS server
-#' @description This function was adapted from **oharar/rBBS** package.
+#' @description This function downloads information about route location from the BBS FTP server. This function was adapted from **oharar/rBBS** package.
 #' @param routeDir Location of the routes.zip folder Should be in DatFiles folder (default).
 #' @param routeFile Name of the route information file. Usually "routes.zip".
 #' @param RouteTypeID One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).
@@ -11,20 +11,21 @@
 #' # download BBS route data.
 #'
 #' \dontrun{
-#' RouteInfo <- getRouteInfo()
+#' RouteInfo <- get_routeInfo()
 #' }
 #'
-#' @export getRouteInfo
+#' @export get_routeInfo
 
-getRouteInfo <- function(routesFile = "routes.zip",
-                         routesDir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
+get_routeInfo <- function(
+    routesFile = "routes.zip",
+                     routesDir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
                          RouteTypeID = 1,
                          # one or more of c(1,2,3)
                          Stratum = NULL,
                          BCR = NULL) {
     # Unzip from FTP server and store as an R object
     routeDat <-
-        GetUnzip(
+        get_unzip(
             ZipName = paste0(routesDir, routesFile),
             FileName = gsub("^Fifty", "fifty", gsub("zip", "csv", routesFile))
         )
@@ -32,8 +33,8 @@ getRouteInfo <- function(routesFile = "routes.zip",
     # Force column names to lowercase
     names(routeDat) <- tolower(names(routeDat))
     
-    # Filter the routes
-    {
+    # Filter the routes if specified
+    
         if (!is.null(Stratum)) {
             routeDat <- routeDat %>%
                 filter(stratum %in% Stratum)
@@ -49,7 +50,7 @@ getRouteInfo <- function(routesFile = "routes.zip",
             routeDat <- routeDat %>%
                 filter(RouteTypeID %in% RouteTypeID)
         }
-    }
+
     
     
     return(routeDat)
