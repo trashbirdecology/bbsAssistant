@@ -4,7 +4,7 @@
 #' @param url The webpage of the regional trend estimates from the BBS wepage. Get URL by visiting `url(https://www.mbr-pwrc.usgs.gov/bbs/reglist15.shtml)`. Default is the webpage for the survey-wide trend estimates. 
 #' @keywords bbs
 #' @export 
-#' @examples
+#' @examples 
 #' @imports 
 #' get_regional_trends()
 
