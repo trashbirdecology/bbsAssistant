@@ -1,4 +1,3 @@
-# getRouteInfo ##########################################################
 #' @title Download route information from USGS server
 #' @description This function was adapted from **oharar/rBBS** package.
 #' @param routeDir Location of the routes.zip folder Should be in DatFiles folder (default).

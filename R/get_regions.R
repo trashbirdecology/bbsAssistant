@@ -31,7 +31,9 @@ CountryCodes <- readr::read_table(File, skip = 4,  col_names = F)[1:3, ]
 colnames(CountryCodes) <- c("countryNum", "countryName")
         
 # Read in the table of regions from file
-RegionCodes <- readr::read_table(File, skip = 11,  col_names = F)
+RegionCodes <- readr::read_table(File, 
+                                 skip = 11,
+                                 col_names = FALSE)
 
 # Fix column names. ## WOULD LIKE A BETTER SOLUTION
 colnames(RegionCodes) <-
