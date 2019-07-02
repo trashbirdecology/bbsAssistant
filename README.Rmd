@@ -18,14 +18,14 @@ For function descriptions and examples please see the [manual](/man/bbsAssistant
 ## Contributions
 If you would like to contribute, please submit a pr or email me (jessicaleighburnett at gmail). I am especially interested in having another set of eyes and hands to transfer and clean up the functions listed in [Issue 1](https://github.com/TrashBirdEcology/bbsAssistant/issues/1).
 
-# Simple Runthrough of `bbsAssistant`
+## Simple Runthrough of `bbsAssistant`
 
 ```{r  setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
-knitr::opts_chunk$set(include=FALSE, warning = FALSE, message=FALSE)
+knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
 ```
 
-## Install package
-```{r loadDeps}
+## Installing package and loading dependencies
+```{r loadDeps, echo=TRUE}
 # devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE)
 library(bbsAssistant)
 library(rvest)
@@ -37,16 +37,17 @@ library(magrittr)
 library(glue)
 library(dplyr)
 ```
-## Define and/or create local directories
+## Downloading the BBS data from USGS FTP 
+### Define and/or create local directories
 This function will create, if it does not already exist, folder **./bbsData/** within which to locally store BBS data and results. 
 **NOTE**: If the directory exists, it will not overwrite files. If the bbs data already exists inside bbsDir, then we will create a logical to NOT download the data (see below). If you wish to download more, or overwrite existing data, please specify downloadBBSData=TRUE or remove .zip files from **/bbsData/**.
-```{r  createDirs}
+```{r  createDirs, echo=TRUE}
 # Create a directory to store and/or load the BBS data as feathers
 bbsDir <- here::here("bbsData/")
 dir.create(bbsDir)
 ```
 
-# Download the BBS data, import, and save R objects to file.
+### Download the BBS data, import, and save R objects to file.
 If necessary, download all the state data. This takes 10-15 minutes, so only run if you have not recently downloaded the BBS data. 
 ```{r getFloridaData, echo=TRUE}
 # a. Load the regional .txt file from Patuxent's FTP server (you must be connected to the internet to perform this step)
@@ -133,7 +134,7 @@ rm(bbsData)
 }else(message(paste0("NOT DOWNLOADING BBS DATA. If you wish to download the BBS data, please remove files from directory: ",bbsDir))) # end if-else to download the data
 ```
 Or import a lot of data files.
-```{r loadAllData, eval = FALSE}
+```{r loadAllData, eval = FALSE, echo=TRUE}
 feathers <- NULL
 featherNames <- list.files(bbsDir, pattern = ".feather")
 featherNames <- str_c("/", featherNames) #add separator
@@ -148,8 +149,8 @@ for (i in 1:length(featherNames)) {
 ```
 
 
-# Optional: Subset BBS data by taxonomic groupings, functional traits.
-## Subset individual species
+## Optional: Subset BBS data by taxonomic groupings, functional traits.
+### Subset individual species
 First, let's retrieve the species list from the BBS FTP server.
 ```{r getSpList, echo=TRUE}
 spp <- get_speciesList()
@@ -174,10 +175,8 @@ subset_speciesList(flBBS, fam.ind = "Passeridae")
 subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) 
 ```
 
-## Species trend estimates and credibility
-Another huge component of this package is the ability to retrieve data credibility and species trend estimates from the BBS results using the function `get_credibility_trends`.
-
-As an example, we will retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**. 
+## Using web scraping to retrieve species trend estimates and regional credibility scores
+Another great function of this package is the ability to retrieve data credibility and species trend estimates from the BBS results using the function `get_credibility_trends`. As an example, we  retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**. 
 ```{r getCredTrends, echo=TRUE}
 # cred <- bbsAssistant::get_credibility_trends() # default here is Florida House Sparrows.
 # glimpse(cred)
@@ -195,11 +194,12 @@ As an example, we will retrieve the credibility scores and species trend estimat
 First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>. 
 
 Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)**:
-![](/images/regcred_select_trendests_byregion.png)
+![](/images/regcred_select_trendests_byregion.png){width=250px}
 
 Next, choose the desired region:
-![](/images/regcred_select_fl.png)
+
+![](/images/regcred_select_fl.png){width=250px}
 
 Then, copy the URL address when you see a page like this:
 Next, choose the desired region:
-![](/images/regcred_fl_ex.png)
+![](/images/regcred_fl_ex.png){width=250px}
