@@ -8,7 +8,7 @@ get_regions <-
         source = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
              ZipFiles = TRUE, 
              bbsDir = NULL
-        ) {
+        ){
 
         if(is.null(bbsDir)) {
             bbsDir <- here::here("bbsData")
