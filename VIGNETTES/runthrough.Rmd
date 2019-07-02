@@ -7,11 +7,18 @@ vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: paper/paper.bib
 ---
+# Simple Runthrough of `bbsAssistant`
+
 ```{r  setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(include=FALSE, warning = FALSE, message=FALSE)
 ```
 
+## Install package
+```{r}
+devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE)
+```
 ## Define and/or create local directories
 This function will create, if it does not already exist, folder **./bbsData/** within which to locally store BBS data and results. 
 **NOTE**: If the directory exists, it will not overwrite files. If the bbs data already exists inside bbsDir, then we will create a logical to NOT download the data (see below). If you wish to download more, or overwrite existing data, please specify downloadBBSData=TRUE or remove .zip files from **/bbsData/**.
@@ -149,34 +156,37 @@ subset_speciesList(flBBS, fam.ind = "Passeridae")
 subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) 
 ```
 
+## Species trend estimates and credibility
+Another huge component of this package is the ability to retrieve data credibility and species trend estimates from the BBS results using the function `get_credibility_trends`.
+
+As an example, we will retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**. 
+```{r getCredTrends, echo=TRUE}
+cred <- get_credibility_trends() # default here is Florida House Sparrows.
+glimpse(cred)
+
+# credibility colors correspond with the color scheme used on the BBS results page
+cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
+
+# Trend estimates are also listed here for Florida House Sparrow population
+cred %>% 
+    filter(Species == "House Sparrow")
+```
+
+### Steps for obtaining argument 'url' in `get_credibility_trends`:
+
+First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>. 
+
+Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)**:
+![](/images/regcred_select_trendests_byregion.png)
+
+Next, choose the desired region:
+![](/images/regcred_select_fl.png)
+
+Then, copy the URL address when you see a page like this:
+Next, choose the desired region:
+![](/images/regcred_fl_ex.png)
 
 
 ```{r , echo=TRUE}
 
 ```
-
-
-
-```{r , echo=TRUE}
-
-```
-
-
-##################### END RUN #####################
-
-## Next, we can subset the BBS data by species and/or functional traits (OPTIONAL but recommended)
-Although subsetting the species is optional, I recommend removing waterfowl, wading birds, and shorebirds from analyses, especially as the spatial extent of the analysis increases. 
-
-## Subset species according to AOU species codes (i.e. by family, genera, etc..)  
-## Subset species according to functional traits (or body mass). 
-### **Note: eval = F**
-```{r subsetFxn, eval =F, message = T, warning = F}
-# Load the functional trait and mass data, and munge/merge
-funMass <-
-    funcMass(dataWD = paste0(getwd(), "/data"),
-             fxn = T, # get functional trait data?
-             mass = F) # get body mass data?
-# Combine the functional trqits and/or body mass
-bbsData <-
-    mergeFunMassBBS(bbsData = feather, funMass = funMass)
-rm(funMass)
