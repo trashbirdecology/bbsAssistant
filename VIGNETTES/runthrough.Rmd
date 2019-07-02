@@ -16,8 +16,17 @@ knitr::opts_chunk$set(include=FALSE, warning = FALSE, message=FALSE)
 ```
 
 ## Install package
-```{r}
-devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE)
+```{r loadDeps}
+# devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE)
+library(bbsAssistant)
+library(rvest)
+library(gdata)
+library(feather)
+library(stringr)
+library(readr)
+library(magrittr)
+library(glue)
+library(dplyr)
 ```
 ## Define and/or create local directories
 This function will create, if it does not already exist, folder **./bbsData/** within which to locally store BBS data and results. 
@@ -161,7 +170,7 @@ Another huge component of this package is the ability to retrieve data credibili
 
 As an example, we will retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**. 
 ```{r getCredTrends, echo=TRUE}
-cred <- get_credibility_trends() # default here is Florida House Sparrows.
+cred <- bbsAssistant::get_credibility_trends() # default here is Florida House Sparrows.
 glimpse(cred)
 
 # credibility colors correspond with the color scheme used on the BBS results page

@@ -14,10 +14,13 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Imports: 
     gdata,
-    rvest, 
-    tidyverse,
-    dplyr, 
-    feather, 
-    here
+    rvest,
+    dplyr,
+    feather,
+    here,
+    readr,
+    stringr,
+    magrittr
 Suggests:
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    ggplot2
