@@ -339,12 +339,11 @@ BBS results](https://www.mbr-pwrc.usgs.gov/) Online
 <a href="https://www.mbr-pwrc.usgs.gov/" class="uri">https://www.mbr-pwrc.usgs.gov/</a>.
 
 Next, enable the drop-down **Survey Results**, and choose **Trend
-Estimates (by region)**:
-<img src="/images/regcred_select_trendests_byregion.png" width="250" />
+Estimates (by region)** (left) and choose the desired region
+(e.g. Florida):
+<img src="/images/regcred_select_trendests_byregion.png" width="250" /><img src="/images/regcred_select_fl.png" width="250" />
 
-Next, choose the desired region:
+Finally, copy the URL address for the page including the results and
+credibility measures (e.g. Florida):
 
-<img src="/images/regcred_select_fl.png" width="250" />
-
-Then, copy the URL address when you see a page like this: Next, choose
-the desired region: <img src="/images/regcred_fl_ex.png" width="250" />
+<img src="/images/regcred_fl_ex.png" width="400" />

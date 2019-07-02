@@ -189,17 +189,12 @@ Another great function of this package is the ability to retrieve data credibili
 #     filter(Species == "House Sparrow")
 ```
 
-### Steps for obtaining argument 'url' in `get_credibility_trends`:
-
+### Steps for obtaining argument 'url' in `get_credibility_trends`: 
 First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>. 
 
-Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)**:
-![](/images/regcred_select_trendests_byregion.png){width=250px}
+Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida):
+![](/images/regcred_select_trendests_byregion.png){width=250px}![](/images/regcred_select_fl.png){width=250px}
 
-Next, choose the desired region:
+Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida):
 
-![](/images/regcred_select_fl.png){width=250px}
-
-Then, copy the URL address when you see a page like this:
-Next, choose the desired region:
-![](/images/regcred_fl_ex.png){width=250px}
+![](/images/regcred_fl_ex.png){width=400px}
