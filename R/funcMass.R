@@ -1,7 +1,7 @@
 #' Load functional trait and mass data
 #'
 #' @param dataWD Where the functional trait and mass dataframes are stored.
-#' @param fxn Logical. Retrieves functional trait data (referece).
+#' @param fxn Logical. Retrieves functional trait data (reference).
 #' @param mass Logical. Retrieves body mass information (Dunning reference).
 #' @export funcMass
 

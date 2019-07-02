@@ -105,7 +105,7 @@ for (i in 1:length(featherNames)) {
 ```
 
 # Next, we can subset the BBS data by species and/or functional traits (OPTIONAL but recommended)
-Although subsetting the speices is optional, I recommend removing waterfowl, wading birds, and shorebirds from analyses, especially as the spatial extent of the analysis increases. 
+Although subsetting the species is optional, I recommend removing waterfowl, wading birds, and shorebirds from analyses, especially as the spatial extent of the analysis increases. 
 
 ## Subset species according to AOU species codes (i.e. by family, genera, etc..)  
 For this example we will remove shorebirds, wading birds, and waterfowl (i.e., AOU species' codes 0000:2880). *See `R/subsetByAOU.R` source code or documentation for options (see: `subset.by`)
