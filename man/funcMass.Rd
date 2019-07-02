@@ -9,7 +9,7 @@ funcMass(dataWD = paste0(getwd(), "/data"), fxn = TRUE, mass = TRUE)
 \arguments{
 \item{dataWD}{Where the functional trait and mass dataframes are stored.}
 
-\item{fxn}{Logical. Retrieves functional trait data (referece).}
+\item{fxn}{Logical. Retrieves functional trait data (reference).}
 
 \item{mass}{Logical. Retrieves body mass information (Dunning reference).}
 }

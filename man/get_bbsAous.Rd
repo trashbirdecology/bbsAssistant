@@ -14,5 +14,5 @@
 \item{skipEmpty}{Numeric, default = 7. The number of lines to skip. This may need to be updated if the file on webpage changes.}
 }
 \description{
-This function imports the species list (incuding AOU numbers) from their website. This list can be used to subet the species by name, AOU number, etc.
+This function imports the species list (including AOU numbers) from their website. This list can be used to subet the species by name, AOU number, etc.
 }
