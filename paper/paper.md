@@ -4,12 +4,12 @@ authors:
 - affiliation: '1,2'
   name: Jessica L Burnett
   orcid: 0000-0002-0896-5099
-- affiliation: 2,3
+- affiliation: '2,3' #multiple affilitations in quotes
   name: Lyndsie Wszola
-  orcid: 0000-0003-0872-7098
+  orcid: 0000-
 - affiliation: 2
-  name: Gabriela Munoz-
-  orcid: 0000-0003-0872-7098
+  name: Gabriela Munoz-Palomo
+  orcid: 0000-
 date: "XX July 2019"
 output: pdf_document
 bibliography: paper.bib
