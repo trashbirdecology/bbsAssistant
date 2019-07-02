@@ -16,7 +16,7 @@
 #' @param file The name of the zipfile to be downloaded from dir
 #' @export importDataBBS
 
-importDataBBS <- function(
+import_bbsData <- function(
     file,
     dir ,
     year = NULL,
