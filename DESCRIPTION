@@ -4,12 +4,13 @@ Version: 0.0.0.9000
 Authors@R: person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"))
 Description: Provides various helper functions for getting BBS data and metadata. 
 Depends: R (>= 3.5.3)
-License: MIT + file LICENSE
+License: MIT
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Imports: 
+    gdata,
     rvest, 
     tidyverse,
     dplyr, 
