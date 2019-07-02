@@ -1,7 +1,10 @@
 Package: bbsAssistant
 Title: Helper Functions for Obtaining Data and Information from the North American Breeding Bird Survey (BBS)
 Version: 0.0.0.9000
-Authors@R: person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"))
+Authors@R: c(
+  person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
+  person("Lyndsie", "Wszola", email = "", role = c("aut"), comment = c(ORCID = "")),
+  person("Gabriela", "Munoz-Palomo", email = "", role = c("aut"), comment = c(ORCID = "")))
 Description: Provides various helper functions for getting BBS data and metadata. 
 Depends: R (>= 3.5.3)
 License: MIT
