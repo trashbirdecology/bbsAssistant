@@ -1,14 +1,23 @@
 ---
-title: "An example of how to use `bbsAssistant` to download and munge the BBS data from the FTP server or local file."
+title: "A brief overview of the functionality of `bbsAssistant`."
 author: "Jessica Burnett"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Vignette Title}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output:
+  md_document:
+    variant: markdown_github
+# output: rmarkdown::html_vignette
+#vignette: >
+#  %\VignetteIndexEntry{Vignette Title}
+#  %\VignetteEngine{knitr::rmarkdown}
+#  %\VignetteEncoding{UTF-8}
 bibliography: paper/paper.bib
 ---
+## Function Manual
+For function descriptions and examples please see the [manual](/man/bbsAssistant_0.0.0.9000.pdf). 
+
+## Contributions
+If you would like to contribute, please submit a pr or email me (jessicaleighburnett at gmail). I am especially interested in having another set of eyes and hands to transfer and clean up the functions listed in [Issue 1](https://github.com/TrashBirdEcology/bbsAssistant/issues/1).
+
 # Simple Runthrough of `bbsAssistant`
 
 ```{r  setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
@@ -170,15 +179,15 @@ Another huge component of this package is the ability to retrieve data credibili
 
 As an example, we will retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**. 
 ```{r getCredTrends, echo=TRUE}
-cred <- bbsAssistant::get_credibility_trends() # default here is Florida House Sparrows.
-glimpse(cred)
-
-# credibility colors correspond with the color scheme used on the BBS results page
-cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
-
-# Trend estimates are also listed here for Florida House Sparrow population
-cred %>% 
-    filter(Species == "House Sparrow")
+# cred <- bbsAssistant::get_credibility_trends() # default here is Florida House Sparrows.
+# glimpse(cred)
+# 
+# # credibility colors correspond with the color scheme used on the BBS results page
+# cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
+# 
+# # Trend estimates are also listed here for Florida House Sparrow population
+# cred %>% 
+#     filter(Species == "House Sparrow")
 ```
 
 ### Steps for obtaining argument 'url' in `get_credibility_trends`:
@@ -194,8 +203,3 @@ Next, choose the desired region:
 Then, copy the URL address when you see a page like this:
 Next, choose the desired region:
 ![](/images/regcred_fl_ex.png)
-
-
-```{r , echo=TRUE}
-
-```
