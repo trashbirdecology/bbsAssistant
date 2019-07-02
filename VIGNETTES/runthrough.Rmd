@@ -33,7 +33,7 @@ If necessary, download all the state data. This takes 10-15 minutes, so only run
 
 ```{r getBBSdata, message=F, warning=F}
 # a. Load the regional .txt file from Patuxent's FTP server (you must be connected to the internet to perform this step)
-regions <- GetRegions()
+regions <- get_regions()
 # b. Create a series or one filenames for states, regions
 regionFileName <- regions$zipFileName %>% na.omit()
 # c.  Download and unzip the BBS data.

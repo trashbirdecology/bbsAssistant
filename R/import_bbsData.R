@@ -14,11 +14,9 @@
 #' @param Stratum A vector of BBS physiographic stratum codes by which to filter the routes.
 #' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.
 #' @param file The name of the zipfile to be downloaded from dir
-#' @return A dataframe
-#' @export importDataBBS
+#' @export import_bbsData
 
-importDataBBS <- function(
-    # getDataBBS
+import_bbsData <- function(
     file,
     dir ,
     year = NULL,
@@ -35,7 +33,7 @@ importDataBBS <- function(
     
     # Download and munge the Species List from BBS
     ## this aou code is downloaded from the BBS server..
-    aous <- GetSpNames()
+    aous <- get_speciesNames()
     
     # Fix scientific name
     aous$scientificName <-
@@ -52,7 +50,7 @@ importDataBBS <- function(
     
     # Load the .zip files into mem
     bbsData <-
-        getDataBBS(file = file,
+        get_bbsData(file = file,
                    dir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
                    year = NULL,
                    aou = NULL,
@@ -62,7 +60,7 @@ importDataBBS <- function(
     
     
     # Get the route information
-    routeDat <- getRouteInfo(routesFile = "routes.zip",
+    routeDat <- get_routeInfo(routesFile = "routes.zip",
                              routesDir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
                              RouteTypeID = 1, # one or more of c(1,2,3)
                              Stratum = NULL,
