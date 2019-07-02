@@ -16,6 +16,7 @@ get_regions <-
         } # end bbsDir creation             
         
 File <- paste0(source, "RegionCodes.txt")
+
 # Directory for codes
 codesDir <- paste0(bbsDir, "/codes")
 dir.create(codesDir)

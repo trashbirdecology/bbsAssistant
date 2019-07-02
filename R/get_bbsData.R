@@ -1,5 +1,5 @@
 #' @title Download USGS Breeding Bird Survey data to file and import into the environment.
-#' @description This function downloads a select or all the BBS data from the FTP server using the .txt file downloaded from get_regions(). This function was adapted from **oharar/rBBS** package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter `file`.
+#' @description This function downloads a select subset or all the BBS data from the FTP server using the .txt file downloaded from get_regions() or using specified regions (e.g. Florida, Florida.zip). The data are saved to a temporary folder. This function was adapted from **oharar/rBBS** package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter `file`.
 #' @param file One file name including the .zip extension ("stateX.zip"). Preferably download a single state at a time, otherwise run time will take >1 minutes.
 #' @param dir URL to the StatesFiles.
 #' @param year Vector of years. Default = NULL (all years).
@@ -27,7 +27,8 @@ get_bbsData <- function(file,
         get_unzip(ZipName = paste0(dir, file),
                   FileName = gsub("^Fifty", "fifty", gsub("zip", "csv", file)))
     
-names(dat) <- tolower(names(dat))
+    # Force col names to lowercase
+    names(dat) <- tolower(names(dat))
     
 # Subset the data if specified
 ## by country
@@ -54,10 +55,10 @@ if (!is.null(aou)) dat <- dat %>%
         dat$routeID <-
             paste(dat$statenum, dat[, grep("^[Rr]oute$", names(dat))])
         
-
+print("Data were imported from the FTP server")
 return(dat)
     } else
-        warning("No data were imported. Check subsetting parameters.")
+        warning("No data were imported from the FTP server. Check subsetting parameters.")
 return(NULL)
 }
 

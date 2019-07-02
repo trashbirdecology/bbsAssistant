@@ -30,6 +30,7 @@ get_routeInfo <- function(
             FileName = gsub("^Fifty", "fifty", gsub("zip", "csv", routesFile))
         )
     
+    
     # Force column names to lowercase
     names(routeDat) <- tolower(names(routeDat))
     
