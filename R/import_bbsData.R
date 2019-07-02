@@ -14,7 +14,7 @@
 #' @param Stratum A vector of BBS physiographic stratum codes by which to filter the routes.
 #' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.
 #' @param file The name of the zipfile to be downloaded from dir
-#' @export importDataBBS
+#' @export import_bbsData
 
 import_bbsData <- function(
     file,
