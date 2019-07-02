@@ -1,5 +1,5 @@
 #' @title Save BBS dataframe as a feather file on disk. 
-#' @description 
+#' @description Save the BBS data frame as a feather file to disk for easier import.
 #' @param dataIn The BBS data to save.
 #' @param newDir Where to save the BBS data as feathers.
 #' @param filename Name of the new filename (e.g., 'arizona.zip'). This function will replace .zip with .feather
