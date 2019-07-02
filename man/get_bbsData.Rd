@@ -25,7 +25,7 @@ get_bbsData(file,
 If download successful, a dataframe with the results.
 }
 \description{
-This function downloads a select or all the BBS data from the FTP server using the .txt file downloaded from get_regions(). This function was adapted from \strong{oharar/rBBS} package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter \code{file}.
+This function downloads a select subset or all the BBS data from the FTP server using the .txt file downloaded from get_regions() or using specified regions (e.g. Florida, Florida.zip). The data are saved to a temporary folder. This function was adapted from \strong{oharar/rBBS} package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter \code{file}.
 }
 \examples{
 # download all species and years from Nebraska.
