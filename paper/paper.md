@@ -6,7 +6,7 @@ authors:
   orcid: 0000-0002-0896-5099
 - affiliation: '2,3' #multiple affilitations in quotes
   name: Lyndsie Wszola
-  orcid: 0000-
+  orcid: 0000-0002-2660-2048
 - affiliation: 2
   name: Gabriela Munoz-Palomo
   orcid: 0000-
@@ -23,6 +23,8 @@ affiliations:
   name: Nebraska Cooperative Fish and Wildlife Research Unit, University of Nebraska, USA
 - index: 2
   name: School of Natural Resources, University of Nebraska, USA
+- index: 3
+  name: School of Biological Sciences, University of Nebraska, USA
 ---
 
 # Summary
