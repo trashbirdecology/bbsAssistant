@@ -3,9 +3,10 @@ Title: Helper Functions for Obtaining Data and Information from the North Americ
 Version: 0.0.0.9000
 Authors@R: c(
   person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
-  person("Lyndsie", "Wszola", email = "", role = c("aut"), comment = c(ORCID = "")),
-  person("Gabriela", "Palomo-Munoz", email = "gabriella.palomo@gmail.com", role = c("aut"), comment = c(ORCID = "")))
-Description: Provides various helper functions for getting BBS data and metadata. 
+  person("Lyndsie", "Wszola", email = "", role = "aut", comment = c(ORCID = "")),
+  person("Gabriela", "Palomo-Munoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")))
+Description: Provides various helper functions for getting Breeding Bird Survey (BBS) data and metadata from the North American Breeding Bird Survey website. 
+    This package will allow users to facilitate the ease with which BBS data are accessed and imported into R.
 Depends: R (>= 3.5.3)
 License: MIT
 Encoding: UTF-8
