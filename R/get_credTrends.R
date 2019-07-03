@@ -4,7 +4,7 @@
 
 get_credTrends <- function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?KAN&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C'){
 
-#Reading the HTML code from the specified website (exampe used == Kansas)
+#Reading the HTML code from the specified website (example used == Kansas)
 webpage <- textreadr::read_html(url)
 
 # Get colored dot credibility ratings
