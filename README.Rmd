@@ -12,6 +12,8 @@ output:
 #  %\VignetteEncoding{UTF-8}
 bibliography: paper/paper.bib
 ---
+
+<!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
 ## Function Manual
 For function descriptions and examples please see the [manual](/man/bbsAssistant_0.0.0.9000.pdf). 
 

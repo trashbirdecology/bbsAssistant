@@ -1,3 +1,5 @@
+<!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
+
 Function Manual
 ---------------
 
