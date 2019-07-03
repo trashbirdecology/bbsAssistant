@@ -8,7 +8,7 @@ authors:
   name: Lyndsie Wszola
   orcid: 0000-0002-2660-2048
 - affiliation: 2
-  name: Gabriela Munoz-Palomo
+  name: Gabriela Palomo-Munoz
   orcid: 0000-0000-0000-0000
 date: "XX July 2019"
 output: pdf_document
