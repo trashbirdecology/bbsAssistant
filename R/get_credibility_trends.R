@@ -2,18 +2,22 @@
 #' @description The BBS provides regional and state-wide species population trend estimates. They also include a 'data credibility' rating (low, medium, or high deficiencies) for each species-region combination. This function uses web scraping to capture population trends and their credibility ratings.
 #' @param url Web address of the region or state for which species' population trends and credibility ratings are to be scraped. Default example is 'Kansas,USA'.
 
-get_credTrends <- function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?KAN&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C'){
-
+get_credibility_trends <- function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?KAN&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C'){
+    require(gdata)
+    require(rvest)
+    require(tidyverse)
+    
+    
 #Reading the HTML code from the specified website (example used == Kansas)
-webpage <- textreadr::read_html(url)
+webpage <- read_html(url)
 
 # Get colored dot credibility ratings
 # grab images from xml nodes
     ## the credibility ratings (red, yellow, blue) are provided only as "images". 
     ## we need to capture the image names to associate a credibility rating to the species-region combination
 dotList <- webpage %>% 
-  rvest::html_nodes("img") %>% 
-    rvest::html_attrs() %>%
+ html_nodes("img") %>% 
+html_attrs() %>%
   as.list()
 
 # this is ugly, but works. Drop heading and summary images, make dataframe with indexes
