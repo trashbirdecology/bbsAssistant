@@ -1,26 +1,20 @@
 ---
 title: "A brief overview of the functionality of `bbsAssistant`."
-author: "Jessica Burnett"
 date: "`r Sys.Date()`"
 output:
   md_document:
     variant: markdown_github
-# output: rmarkdown::html_vignette
-#vignette: >
-#  %\VignetteIndexEntry{Vignette Title}
-#  %\VignetteEngine{knitr::rmarkdown}
-#  %\VignetteEncoding{UTF-8}
 bibliography: paper/paper.bib
 ---
 
 <!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
-## Function Manual
+# Function Manual
 For function descriptions and examples please see the [manual](/man/bbsAssistant_0.0.0.9000.pdf). 
 
-## Contributions
-If you would like to contribute, please submit a pr or email me (jessicaleighburnett at gmail). I am especially interested in having another set of eyes and hands to transfer and clean up the functions listed in [Issue 1](https://github.com/TrashBirdEcology/bbsAssistant/issues/1).
+# Contributions
+If you would like to contribute, please submit a pr or email  (jessicaleighburnett at gmail). I am especially interested in having another set of eyes and hands to transfer and clean up the functions listed in [Issue 1](https://github.com/TrashBirdEcology/bbsAssistant/issues/1).
 
-## Simple Runthrough of `bbsAssistant`
+# Brief Overview of bbsAssistant Features
 
 ```{r  setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
@@ -186,7 +180,7 @@ results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA") %>% glimps
 
 
 Let's look at Florida House Sparrow annual trend estimates for Florida 1966-2016 analysis:
-```{r get_analysis_results, echo=TRUE}
+```{r get_analysis_results2, echo=TRUE}
 results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates
 results %>% filter(AOU.Number=='s06882',
                    Region.Code=="S05") -> temp
