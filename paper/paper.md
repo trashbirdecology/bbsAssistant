@@ -4,12 +4,12 @@ authors:
 - affiliation: '1,2'
   name: Jessica L Burnett
   orcid: 0000-0002-0896-5099
-- affiliation: '2,3' #multiple affilitations in quotes
+- affiliation: '2,3'
   name: Lyndsie Wszola
   orcid: 0000-0002-2660-2048
 - affiliation: 2
-  name: Gabriela Palomo-Munoz
-date: "XX July 2019"
+  name: Gabriela Palomo-Mu\~{n}oz
+date: "05 July 2019"
 output: pdf_document
 bibliography: paper.bib
 tags:
@@ -28,9 +28,7 @@ affiliations:
 
 # Summary
 
-This package contains functions for downloading and munging data from the North American Breeding Bird Survey (BBS) FTP server [@pardieck2018north; @sauer2017first]. Although the FTP server provides a user-friendly interface for retrieving data, this package consolidates the efforts of the data user by automating downloading and decompression of .zip data files, downloading route-level information, and saving them as .feather files for speedy import from disk. Notably, the package contains a web-scraping function for retrieving population trend estimates and data credibility of the results of the BBS hierarchical analyses [@sauer2017north]. 
-
-This package is intended for those who wish to download and manipulate the BBS data using Program R.
+This package contains functions for downloading and munging data from the North American Breeding Bird Survey (BBS) FTP server [@pardieck2018north; @sauer2017first]. Although the FTP server provides a user-friendly interface for retrieving data, this package consolidates the efforts of the data user by automating downloading and decompression of .zip data files, downloading route-level information, and saving them as .feather files for speedy import from disk. Notably, the package contains a web-scraping function for retrieving population trend estimates and data credibility of the results of the BBS hierarchical analyses [@sauer2017north].  Although the primary audience is for those wishing to use BBS data in Program R for visualization or analysis, this package can be used to quickly download the BBS data to file for use elsewhere. 
 
 The BBS is an annual, roadside, volunteer-based survey of North American birds which began in 1966. It includes data from the continental United States, southern Canada, and more recently Alaska and northern Mexico.  More than 5,000 survey routes are tracked each June at the peak of the nesting season by experienced birders. Each route is aproximately 24.5 miles long, has 50 stops each located at 0.5 mile intervals. At each stop, the observer conducts a three-minute point count of all the birds heard or seen within 0.25 miles [@sauer1997north]. 
 
