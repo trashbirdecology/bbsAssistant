@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
 
 ## Installing package and loading dependencies
 ```{r loadDeps, echo=TRUE}
-# devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE)
+# devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
 library(rvest)
 library(gdata)
@@ -173,8 +173,30 @@ subset_speciesList(flBBS, fam.ind = "Passeridae")
 # subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) # or remove multiple fams
 ```
 
-## Using web scraping to retrieve species trend estimates and regional credibility scores
-Another great function of this package is the ability to retrieve data credibility and species trend estimates from the BBS results using the function `get_credibility_trends`. As an example, we  retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**. 
+## Getting species trend estiamte and credibility measures
+There are two options for obtaining the species trends estimates and credibility measures: 1) download the entire region-species csvs for various anlaysis or 2) provide a URl to species- or region-specific estimates for the 1966-2015 trend esimates.
+### Option 1: Download CSV for all species-region combinations
+The function `get_analysis_results` allows you to specify an analysis type, and upload all species-regions combination estimates or annual indices to object.
+
+Let's look at Florida House Sparrow trend estimates for Florida:
+```{r get_analysis_results, echo=TRUE}
+results <- get_analysis_results(analysis = "trend.ests") # default here is to obtain the 1966-2015 species trend estimates
+results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA") %>% glimpse()
+```
+
+
+Let's look at Florida House Sparrow annual trend estimates for Florida 1966-2016 analysis:
+```{r get_analysis_results, echo=TRUE}
+results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates
+results %>% filter(AOU.Number=='s06882',
+                   Region.Code=="S05") -> temp
+
+ggplot(temp,aes(Year, Annual.Index))+
+    geom_point()
+```
+
+### Options 2: Using web scraping to retrieve region-specific estiamtes
+Another useful feature of this package is the ability to retrieve data credibility and species trend estimates from the BBS results using the function `get_credibility_trends`. This function allows the user to input a url to the region- or species-specific results page (see instructions below), as opposed to using function `get_analysis_results`. As an example, we  retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**.
 ```{r getCredTrends, echo=TRUE}
 cred <- get_credibility_trends() # default here is Florida House Sparrows.
 glimpse(cred)
@@ -187,7 +209,7 @@ cred %>%
     filter(Species == "House Sparrow")
 ```
 
-### Steps for obtaining argument 'url' in `get_credibility_trends`: 
+#### Steps for obtaining argument 'url' in `get_credibility_trends`: 
 First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>. 
 
 Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida):
