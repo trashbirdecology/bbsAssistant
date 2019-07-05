@@ -6,10 +6,10 @@
 \usage{
 get_routeInfo(routesFile = "routes.zip",
   routesDir = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
-  routeTypeID = 1, Stratum = NULL, BCR = NULL)
+  RouteTypeID = 1, Stratum = NULL, BCR = NULL)
 }
 \arguments{
-\item{routeTypeID}{One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).}
+\item{RouteTypeID}{One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).}
 
 \item{Stratum}{A vector of BBS physiographic stratum codes by which to filter the routes.}
 

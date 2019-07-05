@@ -2,7 +2,7 @@
 #' @description This function downloads information about route location from the BBS FTP server. This function was adapted from **oharar/rBBS** package.
 #' @param routeDir Location of the routes.zip folder Should be in DatFiles folder (default).
 #' @param routeFile Name of the route information file. Usually "routes.zip".
-#' @param routeTypeID One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).
+#' @param RouteTypeID One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).
 #' @param Stratum A vector of BBS physiographic stratum codes by which to filter the routes.
 #' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.
 #' @return If download successful, a dataframe with the results.
@@ -19,7 +19,7 @@
 get_routeInfo <- function(
     routesFile = "routes.zip",
                      routesDir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
-                         routeTypeID = 1,
+                         RouteTypeID = 1,
                          # one or more of c(1,2,3)
                          Stratum = NULL,
                          BCR = NULL) {
@@ -47,9 +47,9 @@ get_routeInfo <- function(
         }
         
         
-        if (!is.null(routeTypeID)) {
+        if (!is.null(RouteTypeID)) {
             routeDat <- routeDat %>%
-                dplyr::filter(RouteTypeID %in% routeTypeID)
+                dplyr::filter(RouteTypeID %in% RouteTypeID)
         }
 
     
