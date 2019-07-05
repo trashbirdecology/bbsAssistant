@@ -1,11 +1,11 @@
-#' @title Get data credibility and trends from the BBS analysis
+#' @title Get data credibility and trends from the BBS analysis results
 #' @description The BBS provides regional and state-wide species population trend estimates. They also include a 'data credibility' rating (low, medium, or high deficiencies) for each species-region combination. This function uses web scraping to capture population trends and their credibility ratings.
 #' @param url Web address of the region or state for which species' population trends and credibility ratings are to be scraped. Default example is 'Kansas,USA'.
 
-get_credibility_trends <- function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?KAN&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C'){
-    require(gdata)
-    require(rvest)
-    require(tidyverse)
+get_credibility_trends <- function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?FLA&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C'){
+    # require(gdata)
+    # require(rvest)
+    # require(tidyverse)
     
     
 #Reading the HTML code from the specified website (example used == Kansas)
@@ -31,13 +31,12 @@ dotDF =    data.frame(credibilityNumber = unlist(dotList[4:length(dotList)])) %>
            left_join(dotKey, by = "credibilityNumber")
     
 # Scrape trend data
-
-webpage %>%
+spp_credibility_trends <- webpage %>%
   html_nodes("#maincontent") %>%
   html_text() %>%
   strsplit(split = "\n") %>%
   unlist() %>%
-  as.list() -> spp_credibility_trends
+  as.list()
 
 # clean up trend data
 

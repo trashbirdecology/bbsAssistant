@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_credibility_trends.R
 \name{get_credibility_trends}
 \alias{get_credibility_trends}
-\title{Get data credibility and trends from the BBS analysis}
+\title{Get data credibility and trends from the BBS analysis results}
 \usage{
 
   get_credibility_trends(url = "https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?KAN&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C")
