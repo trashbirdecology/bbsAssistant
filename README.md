@@ -1,37 +1,39 @@
 <!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Travis build
+status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)
+[![Coverage
+status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master)
+
 Function Manual
----------------
+===============
 
 For function descriptions and examples please see the
 [manual](/man/bbsAssistant_0.0.0.9000.pdf).
 
 Contributions
--------------
+=============
 
-If you would like to contribute, please submit a pr or email me
+If you would like to contribute, please submit a pr or email
 (jessicaleighburnett at gmail). I am especially interested in having
 another set of eyes and hands to transfer and clean up the functions
 listed in [Issue
 1](https://github.com/TrashBirdEcology/bbsAssistant/issues/1).
 
-Simple Runthrough of `bbsAssistant`
------------------------------------
+Brief Overview of bbsAssistant Features
+=======================================
 
 Installing package and loading dependencies
 -------------------------------------------
 
 ``` r
-# devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE)
+# devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
 library(rvest)
 library(gdata)
 library(feather)
-library(stringr)
-library(readr)
-library(magrittr)
-library(glue)
-library(dplyr)
+library(tidyverse)
 ```
 
 Downloading the BBS data from USGS FTP
@@ -230,7 +232,7 @@ glimpse(spp)
 # This data frame contains common and scientific names, AOU numbers, taxonomic designations, and a taxonomic order (seq) for convenient sorting.
 ```
 
-We can sort by AOU \# (e.g. House Sparrow aou = 06882)
+We can subset by species AOU \# (e.g. House Sparrow aou = 06882)
 
 ``` r
 subset_speciesList(myData = flBBS, aou.ind = 06882) %>% glimpse()
@@ -268,73 +270,137 @@ Sparrow).
 
 ``` r
 flBBS <- left_join(flBBS, spp)
-flBBS %>% filter(commonName=="House Sparrow") %>% glimpse()
+flBBS %>% filter(commonName=="House Sparrow") %>% head(2)
 ```
 
-    ## Observations: 1,342
-    ## Variables: 31
-    ## $ routedataid       <int> 6234830, 6168506, 6170632, 6169702, 6174820, 6…
-    ## $ countrynum        <int> 840, 840, 840, 840, 840, 840, 840, 840, 840, 8…
-    ## $ statenum          <int> 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25…
-    ## $ route             <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-    ## $ rpid              <int> 101, 101, 101, 101, 101, 101, 101, 101, 101, 1…
-    ## $ year              <int> 1967, 1969, 1970, 1971, 1972, 1973, 1974, 1975…
-    ## $ aou               <dbl> 6882, 6882, 6882, 6882, 6882, 6882, 6882, 6882…
-    ## $ count10           <dbl> 1, 0, 0, 1, 0, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0…
-    ## $ count20           <dbl> 3, 3, 5, 1, 3, 1, 0, 5, 0, 0, 5, 0, 1, 2, 0, 2…
-    ## $ count30           <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-    ## $ count40           <dbl> 2, 0, 1, 8, 1, 2, 0, 3, 0, 0, 2, 4, 1, 1, 0, 1…
-    ## $ count50           <dbl> 5, 4, 8, 8, 19, 4, 9, 5, 5, 1, 4, 0, 0, 6, 13,…
-    ## $ stoptotal         <dbl> 8, 5, 7, 6, 8, 5, 5, 5, 3, 1, 4, 1, 2, 4, 2, 3…
-    ## $ speciestotal      <dbl> 11, 7, 14, 18, 23, 7, 10, 13, 7, 1, 11, 4, 2, …
-    ## $ routeID           <chr> "25 1", "25 1", "25 1", "25 1", "25 1", "25 1"…
-    ## $ routename         <fct> OAK GROVE, OAK GROVE, OAK GROVE, OAK GROVE, OA…
-    ## $ active            <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-    ## $ latitude          <dbl> 30.92918, 30.92918, 30.92918, 30.92918, 30.929…
-    ## $ longitude         <dbl> -87.40794, -87.40794, -87.40794, -87.40794, -8…
-    ## $ stratum           <int> 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4…
-    ## $ bcr               <int> 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27…
-    ## $ routetypeid       <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-    ## $ routetypedetailid <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-    ## $ seq               <dbl> 1199, 1199, 1199, 1199, 1199, 1199, 1199, 1199…
-    ## $ commonName        <chr> "House Sparrow", "House Sparrow", "House Sparr…
-    ## $ frenchCommonName  <chr> "Moineau domestique", "Moineau domestique", "M…
-    ## $ scientificName    <chr> "Passer domesticus", "Passer domesticus", "Pas…
-    ## $ order             <chr> "Passeriformes", "Passeriformes", "Passeriform…
-    ## $ family            <chr> "Passeridae", "Passeridae", "Passeridae", "Pas…
-    ## $ genus             <chr> "Passer", "Passer", "Passer", "Passer", "Passe…
-    ## $ species           <chr> "domesticus", "domesticus", "domesticus", "dom…
+    ##   routedataid countrynum statenum route rpid year  aou count10 count20
+    ## 1     6234830        840       25     1  101 1967 6882       1       3
+    ## 2     6168506        840       25     1  101 1969 6882       0       3
+    ##   count30 count40 count50 stoptotal speciestotal routeID routename active
+    ## 1       0       2       5         8           11    25 1 OAK GROVE      0
+    ## 2       0       0       4         5            7    25 1 OAK GROVE      0
+    ##   latitude longitude stratum bcr routetypeid routetypedetailid  seq
+    ## 1 30.92918 -87.40794       4  27           1                 1 1199
+    ## 2 30.92918 -87.40794       4  27           1                 1 1199
+    ##      commonName   frenchCommonName    scientificName         order
+    ## 1 House Sparrow Moineau domestique Passer domesticus Passeriformes
+    ## 2 House Sparrow Moineau domestique Passer domesticus Passeriformes
+    ##       family  genus    species
+    ## 1 Passeridae Passer domesticus
+    ## 2 Passeridae Passer domesticus
 
 We can also use the `subset_SpeciesList` as a convenient way to
 **remove** taxonomic groups from the BBS data.
 
 ``` r
 subset_speciesList(flBBS, fam.ind = "Passeridae") 
-subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) 
+# subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) # or remove multiple fams
 ```
 
-Using web scraping to retrieve species trend estimates and regional credibility scores
---------------------------------------------------------------------------------------
+Getting species trend estiamte and credibility measures
+-------------------------------------------------------
 
-Another great function of this package is the ability to retrieve data
-credibility and species trend estimates from the BBS results using the
-function `get_credibility_trends`. As an example, we retrieve the
-credibility scores and species trend estimates for **House Sparrows in
-Florida**.
+There are two options for obtaining the species trends estimates and
+credibility measures: 1) download the entire region-species csvs for
+various anlaysis or 2) provide a URl to species- or region-specific
+estimates for the 1966-2015 trend esimates. \#\#\# Option 1: Download
+CSV for all species-region combinations The function
+`get_analysis_results` allows you to specify an analysis type, and
+upload all species-regions combination estimates or annual indices to
+object.
+
+Let’s look at Florida House Sparrow trend estimates for Florida:
 
 ``` r
-# cred <- bbsAssistant::get_credibility_trends() # default here is Florida House Sparrows.
-# glimpse(cred)
-# 
-# # credibility colors correspond with the color scheme used on the BBS results page
-# cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
-# 
-# # Trend estimates are also listed here for Florida House Sparrow population
-# cred %>% 
-#     filter(Species == "House Sparrow")
+results <- get_analysis_results(analysis = "trend.ests") # default here is to obtain the 1966-2015 species trend estimates
+results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA") %>% glimpse()
 ```
 
-### Steps for obtaining argument ‘url’ in `get_credibility_trends`:
+    ## Observations: 1
+    ## Variables: 14
+    ## $ Regional.Credibility.Measure                    <fct> G
+    ## $ Sample.Size.Indicator                           <fct> G
+    ## $ Precision.Indicator                             <fct> G
+    ## $ Relative.Abundance.Indicator                    <fct> G
+    ## $ AOU.Number                                      <int> 6882
+    ## $ Region.Code                                     <fct> FLA
+    ## $ Species.Name                                    <fct> House Sparrow
+    ## $ Region                                          <fct> Florida
+    ## $ Sample.Size                                     <int> 83
+    ## $ X1966.2015.Trend.Estimates                      <dbl> -7.08
+    ## $ X1966.2015.Credible.Interval.for.Trend.Estimate <fct> "(  -7.99,  -6.1…
+    ## $ X.2005.2015.Trend.Estimates.                    <fct> -8.25
+    ## $ X2005.2015.Credible.Interval.for.Trend.Estimate <fct> "( -11.30,  -5.2…
+    ## $ X.Relative.Abundance.                           <dbl> 6.44
+
+Let’s look at Florida House Sparrow annual trend estimates for Florida
+1966-2016 analysis:
+
+``` r
+results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates
+results %>% filter(AOU.Number=='s06882',
+                   Region.Code=="S05") -> temp
+
+ggplot(temp,aes(Year, Annual.Index))+
+    geom_point()
+```
+
+![](README_files/figure-markdown_github/get_analysis_results2-1.png)
+
+### Options 2: Using web scraping to retrieve region-specific estiamtes
+
+Another useful feature of this package is the ability to retrieve data
+credibility and species trend estimates from the BBS results using the
+function `get_credibility_trends`. This function allows the user to
+input a url to the region- or species-specific results page (see
+instructions below), as opposed to using function
+`get_analysis_results`. As an example, we retrieve the credibility
+scores and species trend estimates for **House Sparrows in Florida**.
+
+``` r
+cred <- get_credibility_trends() # default here is Florida House Sparrows.
+glimpse(cred)
+```
+
+    ## Observations: 135
+    ## Variables: 12
+    ## $ Species           <chr> "Pied-billed Grebe", "Herring Gull", "Ring-bil…
+    ## $ N                 <int> 35, 8, 18, 48, 6, 17, 20, 12, 43, 17, 75, 71, …
+    ## $ Trend_1966_2015   <dbl> -6.13, -2.74, 2.17, -1.96, 6.52, 4.28, -4.27, …
+    ## $ CI_2.5_1966_2015  <chr> "-9.78", "-9.59", "-3.65", "-4.20", "-4.98", "…
+    ## $ CI_97.5_1966_2015 <chr> "-2.32", "4.02", "8.87", "0.35", "19.72", "10.…
+    ## $ Trend_2005_2015   <dbl> -12.97, 6.43, 5.03, -1.73, 7.66, 7.55, -3.11, …
+    ## $ CI_2.5_2005_2015  <chr> "-26.53", "-11.42", "-11.36", "-5.81", "-13.28…
+    ## $ CI_97.5_2005_2015 <chr> "-0.14", "24.99", "25.80", "2.18", "38.90", "3…
+    ## $ RA                <dbl> 0.06, 0.05, 0.18, 217.08, 0.03, 0.04, 0.88, 0.…
+    ## $ credibilityNumber <chr> "2", "2", "2", "0", "2", "2", "1", "2", "0", "…
+    ## $ credibilityColor  <fct> Red, Red, Red, Blue, Red, Red, Yellow, Red, Bl…
+    ## $ credibilityClass  <fct> important_deficiency, important_deficiency, im…
+
+``` r
+# credibility colors correspond with the color scheme used on the BBS results page
+cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
+```
+
+    ##   credibilityNumber credibilityColor     credibilityClass
+    ## 1                 2              Red important_deficiency
+    ## 2                 0             Blue        no_deficiency
+    ## 3                 1           Yellow           deficiency
+
+``` r
+# Trend estimates are also listed here for Florida House Sparrow population
+cred %>%
+    filter(Species == "House Sparrow")
+```
+
+    ##         Species  N Trend_1966_2015 CI_2.5_1966_2015 CI_97.5_1966_2015
+    ## 1 House Sparrow 83           -7.08            -7.99             -6.10
+    ##   Trend_2005_2015 CI_2.5_2005_2015 CI_97.5_2005_2015   RA
+    ## 1           -8.25           -11.30             -5.28 6.44
+    ##   credibilityNumber credibilityColor credibilityClass
+    ## 1                 0             Blue    no_deficiency
+
+#### Steps for obtaining argument ‘url’ in `get_credibility_trends`:
 
 First, visit the USGS Patuxent Wildlife Research Center’s [website for
 BBS results](https://www.mbr-pwrc.usgs.gov/) Online
