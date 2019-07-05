@@ -4,8 +4,8 @@
 \alias{subset_speciesList}
 \title{Subset the BBS data by species, functional traits, and/or body mass. Default is null.}
 \usage{
-subset_speciesList(myData, subset.by = NULL, aou.ind = NULL,
-  order.ind = NULL, fam.ind = NULL)
+subset_speciesList(myData, aou.ind = NULL, order.ind = NULL,
+  fam.ind = NULL)
 }
 \arguments{
 \item{myData}{A data frame containing the BBS data. Must contain the column "aou".}

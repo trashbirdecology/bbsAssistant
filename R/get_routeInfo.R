@@ -1,7 +1,7 @@
 #' @title Download route information from USGS server
 #' @description This function downloads information about route location from the BBS FTP server. This function was adapted from **oharar/rBBS** package.
-#' @param routeDir Location of the routes.zip folder Should be in DatFiles folder (default).
-#' @param routeFile Name of the route information file. Usually "routes.zip".
+#' @param routesDir Location of the routes.zip folder Should be in DatFiles folder (default).
+#' @param routesFile Name of the route information file. Usually "routes.zip".
 #' @param RouteTypeID One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).
 #' @param Stratum A vector of BBS physiographic stratum codes by which to filter the routes.
 #' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.

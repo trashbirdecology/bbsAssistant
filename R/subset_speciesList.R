@@ -8,7 +8,7 @@
 #' @example
 #' # Download the species list text file used by BBS
 subset_speciesList <- function(myData,
-                        subset.by = NULL,
+                        #subset.by = NULL,
                         aou.ind = NULL,
                         order.ind = NULL,
                         fam.ind = NULL) {

@@ -6,7 +6,7 @@
 \usage{
 
   get_regions(source = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
-  ZipFiles = TRUE, bbsDir = NULL)
+  bbsDir = NULL)
 }
 \arguments{
 \item{source}{The website or location of the BBS data files.}

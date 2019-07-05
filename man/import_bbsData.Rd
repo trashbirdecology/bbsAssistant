@@ -22,21 +22,15 @@ import_bbsData(file, dir, year = NULL, aou = NULL, countrynum = NULL,
 
 \item{states}{Vector of state names Default = NULL (all states).}
 
+\item{routesFile}{Name of the route information file. Usually "routes.zip".}
+
+\item{routesDir}{Location of the routes.zip folder Should be in DatFiles folder (default).}
+
 \item{RouteTypeID}{One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).}
 
 \item{Stratum}{A vector of BBS physiographic stratum codes by which to filter the routes.}
 
 \item{BCR}{A vector of Bird Conservation Region codes where by which to filter the routes.}
-
-\item{zipFileNames}{One or more file names ("state.zip"), char vector. Preferably download a single state at a time, otherwise run time will take >1 minutes.}
-
-\item{countryName}{Vector of country names. Default = NULL (all countryNames).}
-
-\item{regions}{Vector of regionCodes. Default = NULL (all regions).}
-
-\item{routeDir}{Location of the routes.zip folder Should be in DatFiles folder (default).}
-
-\item{routeFile}{Name of the route information file. Usually "routes.zip".}
 }
 \description{
 This function will import BBS data which has already been downloaded to file. Some parts of this function were borrowed from \strong{oharar/rBBS}.
