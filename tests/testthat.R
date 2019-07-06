@@ -1,5 +1,5 @@
-library(bbsAssistant)
 library(testthat)
+library(bbsAssistant)
 library(tidyverse)
 library(rvest)
 library(gdata)

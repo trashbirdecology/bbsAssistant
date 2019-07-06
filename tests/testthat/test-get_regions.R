@@ -1,4 +1,4 @@
-# context("get_regions")
+context("get_regions")
 
 test_that("Region data contains US and CA countries & the countryNum column name is assigned correctly.", {
     

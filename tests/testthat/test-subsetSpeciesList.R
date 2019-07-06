@@ -1,3 +1,5 @@
+context("test-subsetSpeciesList")
+
 test_that("Ensure species list subsetting works (by order + fam)",{
     
     spp <- get_speciesList()
