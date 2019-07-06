@@ -23,7 +23,8 @@ Imports:
     here,
     readr,
     stringr,
-    magrittr
+    magrittr,
+    tibble
 Suggests:
     testthat (>= 2.1.0),
     ggplot2

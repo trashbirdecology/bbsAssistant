@@ -26,13 +26,18 @@ knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
 ```
 
 ## Installing package and loading dependencies
-```{r loadDeps, echo=TRUE}
+```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
 # devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
 library(rvest)
 library(gdata)
 library(feather)
-library(tidyverse)
+library(magrittr)
+library(stringr)
+library(here)
+library(readr)
+library(tibble)
+library(dplyr)
 ```
 ## Downloading the BBS data from USGS FTP 
 ### Define and/or create local directories
@@ -44,39 +49,49 @@ bbsDir <- here::here("bbsData/")
 dir.create(bbsDir)
 ```
 
-### Download the BBS data, import, and save R objects to file.
-If necessary, download all the state data. This takes 10-15 minutes, so only run if you have not recently downloaded the BBS data. 
-```{r getFloridaData, echo=TRUE}
+### Retrieve and import BBS data
+If necessary, download all or some of the BBS state-level data. Note: Downloading all the data to file takes 10-15 minutes, so only run if you have not recently downloaded the BBS data. 
+
+Let's focus on a single speices and state for brevity:
+
+First, let's retrieve the regions of data that are avilable. The function `get_regions` retrieves the .zip filenames of all U.S. states and Canadian provinces, including their reference numbers and region codes.
+```{r, echo=TRUE, waring=FALSE, message=FALSE}
 # a. Load the regional .txt file from Patuxent's FTP server (you must be connected to the internet to perform this step)
 regions <- get_regions()
+```
 
-# b. Create a series or one filenames for states, regions
+Let's restrict our data download to **Florida** data:
+```{r, echo=TRUE}
 regionFileName <- regions$zipFileName %>% na.omit()
+(regionFileName.use <- regionFileName[which(str_detect(regionFileName, "Flori")==TRUE)])
+```
 
-# c. Let's limit the data downloaded, since downloading all regions is expensive. The state or province names are truncated, so in many cases we don't want to specify eg. 'Florida.zip'
-regionFileName.use <- regionFileName[which(str_detect(regionFileName, "Flori")==TRUE)]
-
-# d.  Download and unzip the BBS raw count data to a temporary location and import as R object
+Once we have one or more region filenames, we can use function `get_bbsData` to download the .zip file to a temporary folder (unless otherwise specified), and *import* the temp file to R object. The R object, flBBS, contains the raw BBS count data.
+```{r, echo=TRUE}
 flBBS <- get_bbsData(file=regionFileName.use)
+```
 
-# e. Get the route information
-routes <- get_routeInfo()
-
-# e. Append route information to the count data
-flBBS <- left_join(flBBS, routes)
+Next, we can download the BBS route-level geographic information and metadata, and append this to the original data.
+```{r, echo=TRUE}
+routes <- get_routeInfo() # retrieve route-level data
+flBBS <- left_join(flBBS, routes) # merge route-level data to bird count data
 glimpse(flBBS)
+```
 
-# f. Save the unzipped files to disk.
+If we wish to save these data to file, we can do so by saving as **.feather*s, a compressed file formatted for use in R.
+```{r, echo=TRUE}
 export_bbsFeathers(dataIn = flBBS,
                 newDir  = bbsDir,
                 filename = regionFileName.use)
-
 ```
 
-If the BBS data was downloaded previously and saved as .feather, we can import it using `import_bbsFeathers`. The code below is particularly useful if you are importing multiple files...
+
+## Import BBS data from file into R  
+
+If the BBS data was downloaded previously and saved as .feather, we can import it using `import_bbsFeathers`. The code below is particularly useful if you are importing multiple files (e.g., multiple states)
 ```{r import_bbsFeathers, echo=TRUE}
 feathers <- NULL
-featherNames <- list.files(bbsDir, pattern = ".feather")
+(featherNames <- list.files(bbsDir, pattern = ".feather"))
 featherNames <- str_c("/", featherNames) #add separator
 for (i in 1:length(featherNames)) {
   feather <- NULL
@@ -88,11 +103,9 @@ for (i in 1:length(featherNames)) {
 
 # you will notice the imported data slightly differs from the original bbs data in that # cols is far fewer
 ncol(feathers); ncol(flBBS)
-
-# for now, let's just stick with the flBBS data frame. 
-rm(feathers) # remove feathers from file
 ```
 
+### Option for downloading ALL BBS data
 If you wish to download and/or import ALL the data, you might choose to do so in a loop. Note: this is expensive! The following are not run in this example.
 ```{r downloadAllBBS, eval = FALSE, echo=TRUE}
 # Throw a warning if files exist
@@ -130,7 +143,8 @@ rm(bbsData)
 } # end section I. loop
 }else(message(paste0("NOT DOWNLOADING BBS DATA. If you wish to download the BBS data, please remove files from directory: ",bbsDir))) # end if-else to download the data
 ```
-Or import a lot of data files.
+
+Use the same code as above to import all the BBS data:
 ```{r loadAllData, eval = FALSE, echo=TRUE}
 feathers <- NULL
 featherNames <- list.files(bbsDir, pattern = ".feather")
@@ -145,65 +159,69 @@ for (i in 1:length(featherNames)) {
 }
 ```
 
-
-## Optional: Subset BBS data by taxonomic groupings, functional traits.
-### Subset individual species
-First, let's retrieve the species list from the BBS FTP server.
+## Subsetting the BBS count data
+### Subset BBS data by taxonomic groups
+First, retrieve the species list from the BBS FTP server.
 ```{r getSpList, echo=TRUE}
 spp <- get_speciesList()
-glimpse(spp)
-# This data frame contains common and scientific names, AOU numbers, taxonomic designations, and a taxonomic order (seq) for convenient sorting.
+glimpse(spp) 
 ```
 
-We can subset by species AOU # (e.g. House Sparrow aou = 06882)
+Subset by species AOU # (e.g. House Sparrow aou = 06882)
 ```{r subset_bySpeciesList, echo=TRUE}
-subset_speciesList(myData = flBBS, aou.ind = 06882) %>% glimpse()
+subset_speciesList(myData = flBBS, aou.ind = 06882)
 ```
 
 We could merge the bbs count data with the species list to avoid having to refer to AOU, then just subset using species name (e.g. 'House Sparrow).
 ```{r getHospData, echo=TRUE}
 flBBS <- left_join(flBBS, spp)
-flBBS %>% filter(commonName=="House Sparrow") %>% head(2)
+hospBBS <- flBBS %>% filter(commonName=="House Sparrow") 
 ```
 
 We can also  use the `subset_SpeciesList` as a convenient way to **remove**  taxonomic groups from the BBS data.
 ```{r , echo=TRUE, eval=FALSE}
-subset_speciesList(flBBS, fam.ind = "Passeridae") 
-# subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) # or remove multiple fams
+flBBS.subset <- subset_speciesList(flBBS, fam.ind = "Passeridae") 
+flBBS.subset <- subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) # or remove multiple fams
 ```
 
-## Getting species trend estiamte and credibility measures
-There are two options for obtaining the species trends estimates and credibility measures: 1) download the entire region-species csvs for various anlaysis or 2) provide a URl to species- or region-specific estimates for the 1966-2015 trend esimates.
-### Option 1: Download CSV for all species-region combinations
-The function `get_analysis_results` allows you to specify an analysis type, and upload all species-regions combination estimates or annual indices to object.
+## Retrieve BBS analysis results and data credibility measures
+There are a few options for obtaining species trends estimates and credibility measures: 1) download the entire region-species csvs for various anlayses or 2) provide a URl to species- or region-specific estimates for the 1966-2015 trend esimates.
 
+### Option 1: Download CSV for all species-region combinations
+The function `get_analysis_results` allows you to specify an analysis type, and upload all species-regions combination estimates or annual indices to object. 
 Let's look at Florida House Sparrow trend estimates for Florida:
 ```{r get_analysis_results, echo=TRUE}
-results <- get_analysis_results(analysis = "trend.ests") # default here is to obtain the 1966-2015 species trend estimates
-results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA") %>% glimpse()
+cred <- get_analysis_results(analysis = "trend.ests") # default here is to obtain the 1966-2015 species trend estimates
+results.flHOSP <- results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA")
 ```
 
 
-Let's look at Florida House Sparrow annual trend estimates for Florida 1966-2016 analysis:
+Get annual trend estimates for Florida 1966-2016 analysis:
 ```{r get_analysis_results2, echo=TRUE}
 results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates
-results %>% filter(AOU.Number=='s06882',
-                   Region.Code=="S05") -> temp
-
-ggplot(temp,aes(Year, Annual.Index))+
-    geom_point()
 ```
 
-### Options 2: Using web scraping to retrieve region-specific estiamtes
+```{r , echo=FALSE, out.width="33%"}
+library(ggplot2)
+ggplot(data = results %>% filter(AOU.Number=='s06882',
+                   Region.Code=="S05"),
+       aes(Year, Annual.Index))+
+    geom_point() + 
+    labs(y="HOSP annual population \ntrend index in region S05")+
+    theme_bw()
+```
+
+### Options 2: Retrieve region-specific estiamtes using-webscraping 
 Another useful feature of this package is the ability to retrieve data credibility and species trend estimates from the BBS results using the function `get_credibility_trends`. This function allows the user to input a url to the region- or species-specific results page (see instructions below), as opposed to using function `get_analysis_results`. As an example, we  retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**.
 ```{r getCredTrends, echo=TRUE}
 cred <- get_credibility_trends() # default here is Florida House Sparrows.
-glimpse(cred)
 
 # credibility colors correspond with the color scheme used on the BBS results page
 cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
+```
 
-# Trend estimates are also listed here for Florida House Sparrow population
+Trend estimates are also listed in `cred` for Florida House Sparrow dataa:
+```{r , echo=FALSE}
 cred %>%
     filter(Species == "House Sparrow")
 ```
