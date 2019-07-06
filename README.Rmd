@@ -32,12 +32,9 @@ library(bbsAssistant)
 library(rvest)
 library(gdata)
 library(feather)
-library(magrittr)
-library(stringr)
 library(here)
-library(readr)
-library(tibble)
 library(dplyr)
+library(tidyverse)
 ```
 ## Downloading the BBS data from USGS FTP 
 ### Define and/or create local directories

@@ -6,8 +6,7 @@
 #' @export export_bbsFeathers
 
 export_bbsFeathers <- function(dataIn, newDir=NULL, filename) {
-    library(feather)
-    
+
     # Add bbs count data to the same file where codes were stored unless otherwise specified.
     if(is.null(newDir)) newDir <- here::here("bbsData/")
     dir.create(newDir)

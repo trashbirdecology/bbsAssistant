@@ -4,11 +4,7 @@
 #' @export get_credibility_trends
 
 get_credibility_trends <- function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?FLA&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C'){
-    require(gdata)
-    require(rvest)
-    require(tidyverse)
-    
-    
+  
 #Reading the HTML code from the specified website (example used == Kansas)
 webpage <- read_html(url)
 

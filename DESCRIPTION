@@ -21,10 +21,7 @@ Imports:
     dplyr,
     feather,
     here,
-    readr,
-    stringr,
-    magrittr,
-    tibble
+    tidyverse
 Suggests:
     testthat (>= 2.1.0),
     ggplot2
