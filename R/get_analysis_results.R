@@ -3,7 +3,7 @@
 #' @param analysis Default = "trend.ests". Must be one of :c("annual.inds.2016", "trend.ests","core.trend.revised.2017", "core.2017","expanded.2017","core.twedt.revised.2017")
 #' @param url Web link to the .csv file for annual abundance indices. Default = NULL.
 #' @export get_analysis_results
-#' @importFrom magrittr "%>%"
+
 get_analysis_results <-
     function(url = NULL, 
              analysis = "trend.ests"

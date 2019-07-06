@@ -19,10 +19,8 @@ get_bbsData(file,
 
 \item{countrynum}{Vector of country ID #'s. Default = NULL (all countryNums).}
 
-\item{states}{Vector of state names Default = NULL (all states).}
-}
-\value{
-If download successful, a dataframe with the results.
+\item{states}{Vector of state names Default = NULL (all states).
+#' @return If download successful, a dataframe with the results.}
 }
 \description{
 This function downloads a select subset or all the BBS data from the FTP server using the .txt file downloaded from get_regions() or using specified regions (e.g. Florida, Florida.zip). The data are saved to a temporary folder. This function was adapted from \strong{oharar/rBBS} package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter \code{file}.

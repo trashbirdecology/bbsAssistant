@@ -21,7 +21,9 @@ Imports:
     dplyr,
     feather,
     here,
-    tidyverse
+    tidyverse,
+    magrittr
 Suggests:
     testthat (>= 2.1.0),
     ggplot2
+    
