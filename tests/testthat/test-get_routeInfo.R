@@ -1,4 +1,4 @@
-context("get-routeInfo")
+# context("get-routeInfo")
 
 test_that("object 'routeDat' contains only two countries", {
     if(!exists('routeDat')) routeDat <- get_routeInfo()

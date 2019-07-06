@@ -1,7 +1,4 @@
-library(rvest)
-library(stringr)
-library(tidyverse)
-library(gdata)
+
 
 
 test_that("Check credibility import is correct ", {
