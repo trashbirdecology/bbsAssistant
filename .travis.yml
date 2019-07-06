@@ -3,7 +3,6 @@
 language: r
 sudo: false
 cache: packages
-install: travis_wait 20 mvn install
 
 r_packages:
   - covr
