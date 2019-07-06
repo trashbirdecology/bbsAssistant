@@ -22,8 +22,8 @@ Imports:
     feather,
     here,
     tidyverse,
-    magrittr
+    magrittr,
+    xml2
 Suggests:
     testthat (>= 2.1.0),
-    ggplot2
-    
+    ggplot2  

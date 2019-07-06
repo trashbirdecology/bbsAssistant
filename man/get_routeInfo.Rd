@@ -27,7 +27,6 @@ This function downloads information about route location from the BBS FTP server
 }
 \examples{
 # download BBS route data.
-
 \dontrun{
 RouteInfo <- get_routeInfo()
 }

@@ -5,6 +5,7 @@
 #'   Filename and return as a dataframe. Otherwise, unzip Zipname and return as a data.frame.
 #' @return A dataframe
 #' @export get_unzip
+
 get_unzip <- function(ZipName, FileName) {
     if (grepl('^[hf]t+p', ZipName)) {
         temp <- tempfile()

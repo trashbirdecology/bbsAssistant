@@ -2,6 +2,7 @@
 #' @description The BBS provides regional and state-wide species population trend estimates. They also include a 'data credibility' rating (low, medium, or high deficiencies) for each species-region combination. This function uses web scraping to capture population trends and their credibility ratings.
 #' @param url Web address of the region or state for which species' population trends and credibility ratings are to be scraped. Default example is 'Kansas,USA'.
 #' @export get_credibility_trends
+#' @importFrom magrittr %>%
 
 get_credibility_trends <- function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?FLA&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C'){
   

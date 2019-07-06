@@ -6,11 +6,10 @@
 #' @param Stratum A vector of BBS physiographic stratum codes by which to filter the routes.
 #' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.
 #' @return If download successful, a dataframe with the results.
-
+#' @importFrom magrittr %>%
 #' @export get_routeInfo
 #' @examples
 #' # download BBS route data.
-#'
 #' \dontrun{
 #' RouteInfo <- get_routeInfo()
 #' }

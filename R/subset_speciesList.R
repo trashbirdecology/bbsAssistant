@@ -4,6 +4,7 @@
 #' @param aou.ind Numeric or vector of numeric values of the AOU codes. These are the species you want to REMOVE from analysis.
 #' @param order.ind Character or vector of characters of taxonomic orders to remove
 #' @param fam.ind Character or vector of characters of taxonomic family to remove
+#' @importFrom magrittr %>%
 #' @export subset_speciesList
 subset_speciesList <- function(myData,
                         #subset.by = NULL,
