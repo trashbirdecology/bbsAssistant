@@ -6,7 +6,8 @@
 #' @param aou Vector of AOU numeric codes. Default = NULL (all species). (For species list visit the BBS [FTP site]("ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/SpeciesList.txt").
 #' @param countrynum Vector of country ID #'s. Default = NULL (all countryNums).
 #' @param states Vector of state names Default = NULL (all states).
-#' @return If download successful, a dataframe with the results.
+#' @importFrom magrittr "%>%"
+#' #' @return If download successful, a dataframe with the results.
 #' @examples
 #' # download all species and years from Nebraska.
 #'

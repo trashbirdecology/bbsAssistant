@@ -3,6 +3,7 @@
 #' @param source The website or location of the BBS data files.
 #' @param bbsDir The location of the local folder containing the bbs raw data. If this folder DNE, a new folder will be created in the working directory.
 #' @export get_regions
+#' @importFrom magrittr "%>%"
 get_regions <-
     function(source = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
              bbsDir = NULL) {

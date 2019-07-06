@@ -4,7 +4,7 @@
 #' @param newDir Where to save the BBS data as feathers. If not specified will default to /bbsData/.
 #' @param filename Name of the new filename (e.g., 'arizona.zip'). This should be the same filename used to import the .zip from FTP (i.e, it should end with ".zip") This function will replace .zip with .feather
 #' @export export_bbsFeathers
-
+#' @importFrom magrittr "%>%"
 export_bbsFeathers <- function(dataIn, newDir=NULL, filename) {
 
     # Add bbs count data to the same file where codes were stored unless otherwise specified.

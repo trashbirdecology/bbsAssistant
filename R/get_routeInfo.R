@@ -6,7 +6,7 @@
 #' @param Stratum A vector of BBS physiographic stratum codes by which to filter the routes.
 #' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.
 #' @return If download successful, a dataframe with the results.
-#'
+#' @importFrom magrittr "%>%"
 #' @examples
 #' # download BBS route data.
 #'
@@ -25,7 +25,7 @@ get_routeInfo <- function(
                          BCR = NULL) {
     # Unzip from FTP server and store as an R object
     routeDat <-
-        get_unzip(
+        bbsAssistant::get_unzip(
             ZipName = paste0(routesDir, routesFile),
             FileName = gsub("^Fifty", "fifty", gsub("zip", "csv", routesFile))
         )

@@ -12,7 +12,7 @@
 #' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.
 #' @param file The name of the zipfile to be downloaded from dir
 #' @export import_bbsData
-
+#' @importFrom magrittr "%>%"
 import_bbsData <- function(
     file,
     dir ,
@@ -30,11 +30,11 @@ import_bbsData <- function(
     
     # Download and munge the Species List from BBS
     ## this aou code is downloaded from the BBS server..
-    aous <- get_speciesNames()
+    aous <- bbsAssistant::get_speciesNames()
     
     # Fix scientific name
     aous$scientificName <-
-        str_extract(aous$scientificName, "[A-Z][a-z]+\\ [a-z]+")
+        stringr::str_extract(aous$scientificName, "[A-Z][a-z]+\\ [a-z]+")
     
     # Remove unidentified and hybrid species
     aousEdit  <-
@@ -47,7 +47,7 @@ import_bbsData <- function(
     
     # Load the .zip files into mem
     bbsData <-
-        get_bbsData(file = file,
+        bbsAssistant::get_bbsData(file = file,
                    dir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
                    year = NULL,
                    aou = NULL,
@@ -57,7 +57,7 @@ import_bbsData <- function(
     
     
     # Get the route information
-    routeDat <- get_routeInfo(routesFile = "routes.zip",
+    routeDat <- bbsAssistant::get_routeInfo(routesFile = "routes.zip",
                              routesDir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
                              RouteTypeID = 1, # one or more of c(1,2,3)
                              Stratum = NULL,

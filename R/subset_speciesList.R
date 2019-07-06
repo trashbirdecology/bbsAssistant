@@ -5,6 +5,7 @@
 #' @param order.ind Character or vector of characters of taxonomic orders to remove
 #' @param fam.ind Character or vector of characters of taxonomic family to remove
 #' @export subset_speciesList
+#' @importFrom magrittr "%>%"
 #' @example
 #' # Download the species list text file used by BBS
 subset_speciesList <- function(myData,

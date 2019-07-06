@@ -10,7 +10,7 @@ import_bbsFeathers <- function(newDir, filename) {
     filename = gsub(".zip" , ".feather", filename)
     
     
-    feather <-read_feather(path = paste0(newDir, filename))
+    feather <- feather::read_feather(path = paste0(newDir, filename))
     
     return(feather)
 }
