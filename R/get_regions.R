@@ -1,5 +1,5 @@
 #' @title Get the list of available data regions from the BBS website
-#' @description  Read in list of regions (State/Prov/TerrName), from RegionCodes.txt, and then extract list of where the 10-stop data is kept
+#' @description  Read in list of regions (State/Prov/TerrName), from RegionCodes.txt, and then extract list of where the 10-stop data is kept. This function was adapted from the function [rBBS::GetRegions()](https://github.com/oharar/rBBS/blob/master/R/getregions.R).
 #' @param source The website or location of the BBS data files.
 #' @param bbsDir The location of the local folder containing the bbs raw data. If this folder DNE, a new folder will be created in the working directory.
 #' @importFrom magrittr %>%
