@@ -10,7 +10,7 @@ bibliography: paper/paper.bib
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)
-[![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master)
+<!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
 
 
 # Function Manual
@@ -19,7 +19,7 @@ For function descriptions and examples please see the [manual](/man/bbsAssistant
 # Contributions
 If you would like to contribute, please submit a pr or email  (jessicaleighburnett at gmail). I am especially interested in having another set of eyes and hands to transfer and clean up the functions listed in [Issue 1](https://github.com/TrashBirdEcology/bbsAssistant/issues/1).
 
-# Brief Overview of bbsAssistant Features
+# Overview of bbsAssistant Features
 
 ```{r  setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
@@ -72,7 +72,7 @@ Next, we can download the BBS route-level geographic information and metadata, a
 ```{r, echo=TRUE}
 routes <- get_routeInfo() # retrieve route-level data
 flBBS <- left_join(flBBS, routes) # merge route-level data to bird count data
-glimpse(flBBS)
+glimpse(flBBS %>% dplyr::select(aou, year, route, statenum, countrynum, stoptotal, latitude, longitude))
 ```
 
 If we wish to save these data to file, we can do so by saving as **.feather*s, a compressed file formatted for use in R.
@@ -87,19 +87,13 @@ export_bbsFeathers(dataIn = flBBS,
 
 If the BBS data was downloaded previously and saved as .feather, we can import it using `import_bbsFeathers`. The code below is particularly useful if you are importing multiple files (e.g., multiple states)
 ```{r import_bbsFeathers, echo=TRUE}
-feathers <- NULL
+
 (featherNames <- list.files(bbsDir, pattern = ".feather"))
 featherNames <- str_c("/", featherNames) #add separator
-for (i in 1:length(featherNames)) {
-  feather <- NULL
-  feather <- import_bbsFeathers(newDir  = bbsDir,
-                              filename = featherNames[i])
-  feathers <- rbind(feathers, feather)
-  rm(feather)
-}
 
-# you will notice the imported data slightly differs from the original bbs data in that # cols is far fewer
-ncol(feathers); ncol(flBBS)
+feather <- import_bbsFeathers(newDir  = bbsDir,
+                              filename = featherNames)
+glimpse(feather) # Notice that the data imported from disk (feathers) differs from the original BBS data in that the # of columns is fewer (9 and 12 columns, respectively).
 ```
 
 ### Option for downloading ALL BBS data
@@ -119,17 +113,17 @@ for(i in 1:length(regionFileName)){
             # arguments for get_bbsData()
             file = regionFileName[i],
             dir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
-            year = NULL,
-            aou = NULL,
-            countrynum = NULL,
-            states = NULL,
+            year = NULL, # subset by year
+            aou = NULL, # subset by AOU #s
+            countrynum = NULL, # subset by country number
+            states = NULL, # subset by state/povince number
             #  arguments for get_routeInfo():
             routesFile = "routes.zip",
             routesDir =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
             RouteTypeID = 1,
             # one or more of c(1,2,3)
-            Stratum = NULL,
-            BCR = NULL
+            Stratum = NULL,  # subset by BBS stratum
+            BCR = NULL # subset by BCR (bird conservation region)
         )
 # d. Save the unzipped files to disk.
 export_bbsFeathers(dataIn  = bbsData,
@@ -141,7 +135,7 @@ rm(bbsData)
 }else(message(paste0("NOT DOWNLOADING BBS DATA. If you wish to download the BBS data, please remove files from directory: ",bbsDir))) # end if-else to download the data
 ```
 
-Use the same code as above to import all the BBS data:
+Use the same code as above to import *multiple* feathers from file:
 ```{r loadAllData, eval = FALSE, echo=TRUE}
 feathers <- NULL
 featherNames <- list.files(bbsDir, pattern = ".feather")
@@ -166,7 +160,7 @@ glimpse(spp)
 
 Subset by species AOU # (e.g. House Sparrow aou = 06882)
 ```{r subset_bySpeciesList, echo=TRUE}
-subset_speciesList(myData = flBBS, aou.ind = 06882)
+subset_speciesList(myData = flBBS, aou.ind = 06882) %>% glimpse()
 ```
 
 We could merge the bbs count data with the species list to avoid having to refer to AOU, then just subset using species name (e.g. 'House Sparrow).
@@ -191,7 +185,6 @@ Let's look at Florida House Sparrow trend estimates for Florida:
 results <- get_analysis_results(analysis = "trend.ests") # default here is to obtain the 1966-2015 species trend estimates
 results.flHOSP <- results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA")
 ```
-
 
 Get annual trend estimates for Florida 1966-2016 analysis:
 ```{r get_analysis_results2, echo=TRUE}
@@ -220,7 +213,8 @@ cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
 Trend estimates are also listed in `cred` for Florida House Sparrow dataa:
 ```{r , echo=FALSE}
 cred %>%
-    filter(Species == "House Sparrow")
+    filter(Species == "House Sparrow") %>% 
+    glimpse()
 ```
 
 #### Steps for obtaining argument 'url' in `get_credibility_trends`: 
@@ -233,3 +227,6 @@ Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by 
 Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida):
 
 ![](/images/regcred_fl_ex.png){width=600px}
+
+# Acknowledgements
+We thank the volunteer citizen scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code as appicable.
