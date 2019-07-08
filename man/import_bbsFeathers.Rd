@@ -12,5 +12,5 @@ import_bbsFeathers(newDir, filename)
 \item{filename}{Name of the feather filename (e.g., 'arizona.zip' or 'arizona'). This function will replace .zip with .feather when necessary.}
 }
 \description{
-Load the BBS data feathers into R.
+This function loads .feather files into disk given a directory.
 }

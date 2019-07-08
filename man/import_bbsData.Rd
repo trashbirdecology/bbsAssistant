@@ -12,7 +12,7 @@ import_bbsData(file, dir, year = NULL, aou = NULL, countrynum = NULL,
 \arguments{
 \item{file}{The name of the zipfile to be downloaded from dir}
 
-\item{dir}{http:// pr ftp:/ link to bbs data location (here: state files)}
+\item{dir}{http:// or ftp:/ link to bbs data location (here: state files)}
 
 \item{year}{Vector of years. Default = NULL (all years).}
 
@@ -33,5 +33,5 @@ import_bbsData(file, dir, year = NULL, aou = NULL, countrynum = NULL,
 \item{BCR}{A vector of Bird Conservation Region codes where by which to filter the routes.}
 }
 \description{
-This function will import BBS data which has already been downloaded to file. Some parts of this function were borrowed from \strong{oharar/rBBS}.
+This function will import BBS data which has already been downloaded to file. Some parts of this function were borrowed from R package \href{www.github.com/oharar/rbbs}{oharar/rBBS}..
 }

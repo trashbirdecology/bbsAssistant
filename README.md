@@ -62,9 +62,9 @@ If necessary, download all or some of the BBS state-level data. Note:
 Downloading all the data to file takes 10-15 minutes, so only run if you
 have not recently downloaded the BBS data.
 
-Let’s focus on a single speices and state for brevity:
+Let’s focus on a single species and state for brevity:
 
-First, let’s retrieve the regions of data that are avilable. The
+First, let’s retrieve the regions of data that are available. The
 function `get_regions` retrieves the .zip filenames of all U.S. states
 and Canadian provinces, including their reference numbers and region
 codes.
@@ -293,8 +293,8 @@ Retrieve BBS analysis results and data credibility measures
 
 There are a few options for obtaining species trends estimates and
 credibility measures: 1) download the entire region-species csvs for
-various anlayses or 2) provide a URl to species- or region-specific
-estimates for the 1966-2015 trend esimates.
+various analyses or 2) provide a URl to species- or region-specific
+estimates for the 1966-2015 trend estimates.
 
 ### Option 1: Download CSV for all species-region combinations
 
@@ -316,7 +316,7 @@ results <- get_analysis_results(analysis = "annual.inds.2016") # default here is
 
 <img src="README_files/figure-markdown_github/unnamed-chunk-7-1.png" width="33%" />
 
-### Options 2: Retrieve region-specific estiamtes using-webscraping
+### Options 2: Retrieve region-specific estimates using web-scraping
 
 Another useful feature of this package is the ability to retrieve data
 credibility and species trend estimates from the BBS results using the
@@ -339,7 +339,7 @@ cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
     ## 3                 1           Yellow           deficiency
 
 Trend estimates are also listed in `cred` for Florida House Sparrow
-dataa:
+data:
 
     ## Observations: 1
     ## Variables: 12
@@ -356,7 +356,7 @@ dataa:
     ## $ credibilityColor  <fct> Blue
     ## $ credibilityClass  <fct> no_deficiency
 
-#### Steps for obtaining argument ‘url’ in `get_credibility_trends`:
+#### Steps for obtaining argument “url” in function `get_credibility_trends`:
 
 First, visit the USGS Patuxent Wildlife Research Center’s [website for
 BBS results](https://www.mbr-pwrc.usgs.gov/) Online
@@ -366,19 +366,19 @@ Next, enable the drop-down **Survey Results**, and choose **Trend
 Estimates (by region)** (left) and choose the desired region
 (e.g. Florida):
 
-<img src="/images/regcred_select_trendests_byregion.png" width="300" /><img src="/images/regcred_select_fl.png" width="300" />
+<img src="https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png" width="300" /><img src="https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png" width="300" />
 
 Finally, copy the URL address for the page including the results and
 credibility measures (e.g. Florida):
 
-<img src="/images/regcred_fl_ex.png" width="600" />
+<img src="https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png" width="600" />
 
-Acknowledgements
-================
+Acknowledgments
+===============
 
 We thank the volunteer citizen scientists who collect data annually for
 the North American Breeding Bird Survey, and the Patuxent Wildlife
 Research Center for making these data publicly and easily accessible.
 Some functions in this package were adapted from the
 [rBBS](github.com/oharar/rbbs) package and are mentioned in function
-source code as appicable.
+source code as applicable.

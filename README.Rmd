@@ -49,9 +49,9 @@ dir.create(bbsDir)
 ### Retrieve and import BBS data
 If necessary, download all or some of the BBS state-level data. Note: Downloading all the data to file takes 10-15 minutes, so only run if you have not recently downloaded the BBS data. 
 
-Let's focus on a single speices and state for brevity:
+Let's focus on a single species and state for brevity:
 
-First, let's retrieve the regions of data that are avilable. The function `get_regions` retrieves the .zip filenames of all U.S. states and Canadian provinces, including their reference numbers and region codes.
+First, let's retrieve the regions of data that are available. The function `get_regions` retrieves the .zip filenames of all U.S. states and Canadian provinces, including their reference numbers and region codes.
 ```{r, echo=TRUE, waring=FALSE, message=FALSE}
 # a. Load the regional .txt file from Patuxent's FTP server (you must be connected to the internet to perform this step)
 regions <- get_regions()
@@ -176,7 +176,7 @@ flBBS.subset <- subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")
 ```
 
 ## Retrieve BBS analysis results and data credibility measures
-There are a few options for obtaining species trends estimates and credibility measures: 1) download the entire region-species csvs for various anlayses or 2) provide a URl to species- or region-specific estimates for the 1966-2015 trend esimates.
+There are a few options for obtaining species trends estimates and credibility measures: 1) download the entire region-species csvs for various analyses or 2) provide a URl to species- or region-specific estimates for the 1966-2015 trend estimates.
 
 ### Option 1: Download CSV for all species-region combinations
 The function `get_analysis_results` allows you to specify an analysis type, and upload all species-regions combination estimates or annual indices to object. 
@@ -201,7 +201,7 @@ ggplot(data = results %>% filter(AOU.Number=='s06882',
     theme_bw()
 ```
 
-### Options 2: Retrieve region-specific estiamtes using-webscraping 
+### Options 2: Retrieve region-specific estimates using web-scraping 
 Another useful feature of this package is the ability to retrieve data credibility and species trend estimates from the BBS results using the function `get_credibility_trends`. This function allows the user to input a url to the region- or species-specific results page (see instructions below), as opposed to using function `get_analysis_results`. As an example, we  retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**.
 ```{r getCredTrends, echo=TRUE}
 cred <- get_credibility_trends() # default here is Florida House Sparrows.
@@ -210,23 +210,23 @@ cred <- get_credibility_trends() # default here is Florida House Sparrows.
 cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
 ```
 
-Trend estimates are also listed in `cred` for Florida House Sparrow dataa:
+Trend estimates are also listed in `cred` for Florida House Sparrow data:
 ```{r , echo=FALSE}
 cred %>%
     filter(Species == "House Sparrow") %>% 
     glimpse()
 ```
 
-#### Steps for obtaining argument 'url' in `get_credibility_trends`: 
+#### Steps for obtaining argument "url" in function `get_credibility_trends`: 
 First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>. 
 
 Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida):
 
-![](/images/regcred_select_trendests_byregion.png){width=300px}![](/images/regcred_select_fl.png){width=300px}
+![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px}
 
 Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida):
 
-![](/images/regcred_fl_ex.png){width=600px}
+![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px}
 
-# Acknowledgements
-We thank the volunteer citizen scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code as appicable.
+# Acknowledgments
+We thank the volunteer citizen scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code as applicable.

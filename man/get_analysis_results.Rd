@@ -9,8 +9,8 @@ get_analysis_results(url = NULL, analysis = "trend.ests")
 \arguments{
 \item{url}{Web link to the .csv file for annual abundance indices. Default = NULL.}
 
-\item{analysis}{Default = "trend.ests". Must be one of :c("annual.inds.2016", "trend.ests","core.trend.revised.2017", "core.2017","expanded.2017","core.twedt.revised.2017")}
+\item{analysis}{Default = "trend.ests". Must be one of c("annual.inds.2016", "trend.ests","core.trend.revised.2017", "core.2017","expanded.2017","core.twedt.revised.2017")}
 }
 \description{
-Downloads all species-regions annual abundances indices from various .csv files on the BBS analysis results page. See \url{https://www.mbr-pwrc.usgs.gov/bbs/BBSAnalysis_Results_Metadata_1966_2017_v3.xml} for metadata for analysis results and trend estiamtes.
+Downloads all species-regions annual abundances indices from various .csv files on the BBS analysis results page. See \href{https://www.mbr-pwrc.usgs.gov/bbs/BBSAnalysis_Results_Metadata_1966_2017_v3.xml}{results metadata} for analysis results and trend estimates.
 }

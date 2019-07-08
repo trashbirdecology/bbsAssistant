@@ -1,6 +1,6 @@
 #' @title A wrapper function for downloading raw data, filtering by species names/AOU codes, and merging with route information.
-#' @description This function will import BBS data which has already been downloaded to file. Some parts of this function were borrowed from **oharar/rBBS**.  
-#' @param dir http:// pr ftp:/ link to bbs data location (here: state files)
+#' @description This function will import BBS data which has already been downloaded to file. Some parts of this function were borrowed from R package [oharar/rBBS](www.github.com/oharar/rbbs)..  
+#' @param dir http:// or ftp:/ link to bbs data location (here: state files)
 #' @param countrynum Vector of country ID #'s. Default = NULL (all countryNums).
 #' @param aou Vector of AOU #s Default = NULL (all species).
 #' @param year Vector of years. Default = NULL (all years).

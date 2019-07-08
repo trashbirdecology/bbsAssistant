@@ -3,7 +3,7 @@
 #' @param file One file name including the .zip extension ("stateX.zip"). Preferably download a single state at a time, otherwise run time will take >1 minutes.
 #' @param dir URL to the StatesFiles.
 #' @param year Vector of years. Default = NULL (all years).
-#' @param aou Vector of AOU numeric codes. Default = NULL (all species). (For species list visit the BBS [FTP site]("ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/SpeciesList.txt").
+#' @param aou Vector of AOU numeric codes. Default = NULL (all species). (For species list visit the BBS FTP site (ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/).
 #' @param countrynum Vector of country ID #'s. Default = NULL (all countryNums).
 #' @param states Vector of state names Default = NULL (all states).
 #' @importFrom magrittr %>%
