@@ -1,4 +1,5 @@
 #' @title Downloads and unzips a zip archive to file. 
+#' @description This function downloads the BBS data from the USGS FTP server to a temporary file, decompresses the .zip files, and imports the uncompressed .csv file into R. This function was adapted from the function [rBBS::GetUnzip()](https://github.com/oharar/rBBS/blob/master/R/GetUnzip.R).
 #' @param ZipName file to download
 #' @param FileName file to unzip to
 #' @details Used internally. If ZipName begins with 'http' or 'ftp', then download and unzip to
