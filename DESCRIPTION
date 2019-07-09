@@ -5,7 +5,7 @@ Maintainer: Jessica Burnett <jessicaleighburnett@gmail.com>
 Author: Jessica Burnett [aut, cre],
   Gabby Palomo-Muñoz [aut],
   Lyndsie Wszola [aut]
-Authors@R:c(
+Authors@R: c(
   person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
   person("Gabriela", "Palomo-Muñoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")),
   person("Lyndsie", "Wszola", email = "", role = "aut", comment = c(ORCID = "0000-0002-2660-2048")))
@@ -26,4 +26,5 @@ Imports:
     xml2
 Suggests:
     testthat (>= 2.1.0),
-    ggplot2  
+    ggplot2,
+    covr
