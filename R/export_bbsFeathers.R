@@ -6,14 +6,15 @@
 #' @importFrom magrittr %>%
 #' @export export_bbsFeathers
 
-export_bbsFeathers <- function(dataIn, newDir=NULL, filename) {
+export_bbsFeathers <- function(dataIn, newDir= here::here("bbsData/"), filename) {
 
-    # Add bbs count data to the same file where codes were stored unless otherwise specified.
-    if(is.null(newDir)) newDir <- here::here("bbsData/")
+    # Create newDir if DNE 
     dir.create(newDir)
-
     
+    # make sure the bbsDar ends in "/" (windows vs. mac os issue..)
+   if(substr(newDir, nchar(newDir), nchar(newDir)) != "/") newDir <- paste0(newDir, "/")
 
+     
     # Create the new filename as .feather
     filename = gsub(".zip" , ".feather", filename)
     
