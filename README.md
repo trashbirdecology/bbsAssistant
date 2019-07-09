@@ -3,15 +3,15 @@
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build
 status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)
-![JOSS submission](http://joss.theoj.org/papers/4a61d044aefabdb7c57520a0715e41ed/status.svg)
-
 <!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
+\# bbsAssistant
+<img src="man/figures/logo.png" align="right" height=140/>
 
 Function Manual
 ===============
 
 For function descriptions and examples please see the
-[manual](/man/bbsAssistant_0.0.0.9000.pdf).
+[manual](https://github.com/trashbirdecology/bbsassistant/bbsAssistant_0.0.1.pdf).
 
 Contributions
 =============
@@ -91,6 +91,7 @@ otherwise specified), and *import* the temp file to R object. The R
 object, flBBS, contains the raw BBS count data.
 
 ``` r
+# check to see whether the data we need is already on file. if not, download it.
 flBBS <- get_bbsData(file=regionFileName.use)
 ```
 
@@ -378,9 +379,9 @@ credibility measures (e.g. Florida):
 Acknowledgments
 ===============
 
-We thank the participatory scientists who collect data annually for
-the North American Breeding Bird Survey, and the Patuxent Wildlife
-Research Center for making these data publicly and easily accessible.
-Some functions in this package were adapted from the
+We thank the participatory scientists who collect data annually for the
+North American Breeding Bird Survey, and the Patuxent Wildlife Research
+Center for making these data publicly and easily accessible. Some
+functions in this package were adapted from the
 [rBBS](github.com/oharar/rbbs) package and are mentioned in function
 source code as applicable.
