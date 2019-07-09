@@ -187,7 +187,7 @@ results.flHOSP <- results %>% filter(Species.Name=="House Sparrow", Region.Code=
 
 Get annual trend estimates for Florida 1966-2016 analysis:
 ```{r get_analysis_results2, echo=TRUE}
-results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates
+results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates. 
 ```
 
 ```{r , echo=FALSE, out.width="33%"}
