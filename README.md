@@ -378,7 +378,7 @@ credibility measures (e.g. Florida):
 Acknowledgments
 ===============
 
-We thank the participatory citizen scientists who collect data annually for
+We thank the participatory scientists who collect data annually for
 the North American Breeding Bird Survey, and the Patuxent Wildlife
 Research Center for making these data publicly and easily accessible.
 Some functions in this package were adapted from the
