@@ -4,7 +4,6 @@
 [![Travis build
 status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)
 <!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
-\# bbsAssistant
 <img src="man/figures/logo.png" align="right" height=140/>
 
 Function Manual
