@@ -1,14 +1,14 @@
 ---
-title: "A brief overview of the functionality of `bbsAssistant`."
+title: "**bbsAssistant**: An R package for downloading and handling data and information from the North American Breeding Bird Survey."
 date: "`r Sys.Date()`"
-output:
+output: # pdf_document # when rendering PDF silence badges .svg + md_document
   md_document:
     variant: markdown_github
 bibliography: paper/paper.bib
 ---
 <!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
+<!-- [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/> -->
 <!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
 
 
@@ -169,7 +169,7 @@ hospBBS <- flBBS %>% filter(commonName=="House Sparrow")
 ```
 
 We can also  use the `subset_SpeciesList` as a convenient way to **remove**  taxonomic groups from the BBS data.
-```{r , echo=TRUE, eval=FALSE}
+```{r subsetspp, echo=TRUE, eval=FALSE}
 flBBS.subset <- subset_speciesList(flBBS, fam.ind = "Passeridae") 
 flBBS.subset <- subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) # or remove multiple fams
 ```
@@ -178,19 +178,20 @@ flBBS.subset <- subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")
 There are a few options for obtaining species trends estimates and credibility measures: 1) download the entire region-species csvs for various analyses or 2) provide a URl to species- or region-specific estimates for the 1966-2015 trend estimates.
 
 ### Option 1: Download CSV for all species-region combinations
-The function `get_analysis_results` allows you to specify an analysis type, and upload all species-regions combination estimates or annual indices to object. 
-Let's look at Florida House Sparrow trend estimates for Florida:
+The function `get_analysis_results` allows you to specify an analysis type, and upload all species-regions combination estimates or annual indices to object.  Let's look at Florida House Sparrow trend estimates for Florida:  
+
 ```{r get_analysis_results, echo=TRUE}
 results <- get_analysis_results(analysis = "trend.ests") # default here is to obtain the 1966-2015 species trend estimates
 results.flHOSP <- results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA")
 ```
 
 Get annual trend estimates for Florida 1966-2016 analysis:
+
 ```{r get_analysis_results2, echo=TRUE}
 results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates. 
 ```
 
-```{r , echo=FALSE, out.width="33%"}
+```{r plottrend, echo=FALSE, out.width="33%"}
 library(ggplot2)
 ggplot(data = results %>% filter(AOU.Number=='s06882',
                    Region.Code=="S05"),
@@ -219,13 +220,12 @@ cred %>%
 #### Steps for obtaining argument "url" in function `get_credibility_trends`: 
 First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>. 
 
-Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida):
+Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida). Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida):
 
-![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px}
+<!-- ![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px} -->
 
-Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida):
 
-![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px}
+<!-- ![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px} -->
 
 # Acknowledgments
 We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code as applicable.
