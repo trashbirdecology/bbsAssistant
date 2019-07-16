@@ -6,8 +6,14 @@
 
 get_credibility_trends <-
     function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?FLA&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C') {
+        
+        
+        
         #Reading the HTML code from the specified website (example used == Kansas)
         webpage <- xml2::read_html(url)
+        
+        
+        
         
         # Get colored dot credibility ratings
         # grab images from xml nodes
@@ -56,7 +62,7 @@ get_credibility_trends <-
                     "RA"
                 ),
                 "(.............................)(....)(.........)(....................)(.........)(....................)(.........)",
-                convert = TRUE
+                convert = TRUE ## What is this? This is not an argument in extract. Please run unit test on this function when fixed. 
             ) %>%
             dplyr::mutate(
                 CI_95_1966_2015 = gsub("\\(", "", CI_95_1966_2015),
@@ -79,7 +85,7 @@ get_credibility_trends <-
                 sep = ","
             ) %>%
             dplyr::mutate(Species = gsub("\\(*", "", Species)) %>%
-            cbind(dotDF) %>% trim() -> spp_credibility_trends
+            cbind(dotDF) %>% glue::trim() -> spp_credibility_trends
         
         
         return(spp_credibility_trends)
