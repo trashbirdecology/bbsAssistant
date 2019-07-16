@@ -1,11 +1,11 @@
 <!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
+<!-- Silence lines 12 - 13 when rendering .pdf.  -->
 
-Silence lines 12 - 13 when rendering .pdf.
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
 build
 status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
-<!--[![Coverage
-status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
+[![Coverage
+status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master)
 
 Function Manual
 ===============
