@@ -6,8 +6,7 @@ cache: packages
 warnings_are_errors: false
 
 after_success:
-    - Rscript -e 'covr::codecov()'
-
+    - Rscript -e 'library(covr); codecov()'
 email:
     recipients:
       - jessicaleighburnett@gmail.com
@@ -22,9 +21,6 @@ env:
     - R_CHECK_ARGS="--no-build-vignettes --no-manual --timings"  ## do not build vignettes or manual
     - _R_CHECK_TIMINGS_="0"  ## get the timing information for the examples for all of your functions
 
-r:
- - release
-
 # do not build vignettes...takes too long and times out on travis
 r_build_args: --no-build-vignettes --no-manual
 r_check_args: --no-build-vignettes --no-manual --timings
@@ -32,7 +28,6 @@ r_check_args: --no-build-vignettes --no-manual --timings
 # for codecov
 r_packages:
   - covr
-  
-# only report coverage for the release version
+
 after_success:
-  - test $TRAVIS_R_VERSION_STRING = 'release' && Rscript -e 'covr::codecov()'
+  - Rscript -e 'library(covr); codecov()'
