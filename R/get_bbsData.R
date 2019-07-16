@@ -7,9 +7,14 @@
 #' @param countrynum Vector of country ID #'s. Default = NULL (all countryNums).
 #' @param states Vector of state names Default = NULL (all states).
 #' @importFrom magrittr %>%
+#' @importFrom utils download.file
+#' @importFrom utils read.csv
+#' @importFrom utils read.table
+#' @importFrom stats family
 #' @return If download successful, a dataframe with the results.
 #' @examples
 #' # download all species and years from Nebraska.
+#'
 #'
 #' \dontrun{
 #' NE <- getDataBBS(file = "Nebrask.zip")
@@ -34,21 +39,21 @@ get_bbsData <- function(file,
 # Subset the data if specified
 ## by country
 if (!is.null(countrynum)) dat <- dat %>%
-    filter(countrynum %in% countrynum)
+    dplyr::filter(countrynum %in% countrynum)
 
 ## by state/region
 if (!is.null(states))
     dat <- dat %>%
-    filter(statenum %in% states)
+    dplyr::filter(statenum %in% states)
 
 ## by year
 if (!is.null(year))
         dat <- dat %>%
-        filter(year %in% year)
+        dplyr::filter(year %in% year)
     
 ## by species (aou codes)
 if (!is.null(aou)) dat <- dat %>%
-    filter(AOU %in% aou)
+    dplyr::filter(AOU %in% aou)
     
     
 # Fix the statenum    

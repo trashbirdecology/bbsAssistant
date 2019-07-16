@@ -22,7 +22,9 @@ Imports:
     xml2, 
     feather,
     here,
-    glue, 
+    glue,
+    rvest,
+    tidyr,
     magrittr
 Suggests:
     testthat (>= 2.1.0),

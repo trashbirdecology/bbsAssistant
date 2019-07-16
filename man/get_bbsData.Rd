@@ -30,6 +30,7 @@ This function downloads a select subset or all the BBS data from the FTP server 
 \examples{
 # download all species and years from Nebraska.
 
+
 \dontrun{
 NE <- getDataBBS(file = "Nebrask.zip")
 }

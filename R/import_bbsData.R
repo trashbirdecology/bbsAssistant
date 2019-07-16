@@ -30,7 +30,7 @@ import_bbsData <- function(
     
     # Download and munge the Species List from BBS
     ## this aou code is downloaded from the BBS server..
-    aous <- bbsAssistant::get_speciesNames()
+    aous <- get_speciesList()
     
     # Fix scientific name
     aous$scientificName <-
