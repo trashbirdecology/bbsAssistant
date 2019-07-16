@@ -61,6 +61,9 @@ regionFileName <- regions$zipFileName %>% na.omit()
 # c. Let's limit the data downloaded, since downloading all regions may take up too much space. The state or province names are truncated, so in many cases we don't want to specify the entire state name (e.g., 'Florida.zip')
 regionFileName.use <- regionFileName[which(str_detect(regionFileName, "Flori")==TRUE)]
 
+# Input multiple regions
+multRegionsFileName.use <- regionFileName[which(str_detect(regionFileName, paste(c("Flori", "Neb", "Jersey"), collapse = '|')))]
+
 # d.  Download and unzip the BBS raw count data to a temporary location and import as R object
 flBBS <- get_bbsData(file=regionFileName.use)
 
