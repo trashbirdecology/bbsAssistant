@@ -53,10 +53,10 @@ If necessary, download all the state data. This takes 10-15 minutes, so only run
 # a. Load the regional .txt file from Patuxent's FTP server (you must be connected to the internet to perform this step)
 regions <- get_regions()
 
-# b. Create a series or one filenames for states, regions
+# b. Create a series of filenames for states, regions
 regionFileName <- regions$zipFileName %>% na.omit()
 
-# c. Let's limit the data downloaded, since downloading all regions is expensive. The state or province names are truncated, so in many cases we don't want to specify eg. 'Florida.zip'
+# c. Let's limit the data downloaded, since downloading all regions may take up too much space. The state or province names are truncated, so in many cases we don't want to specify the entire state name (e.g., 'Florida.zip')
 regionFileName.use <- regionFileName[which(str_detect(regionFileName, "Flori")==TRUE)]
 
 # d.  Download and unzip the BBS raw count data to a temporary location and import as R object
@@ -71,8 +71,8 @@ glimpse(flBBS)
 
 # f. Save the unzipped files to disk.
 export_bbsFeathers(dataIn = flBBS,
-                newDir  = bbsDir,
-                filename = regionFileName.use)
+                   newDir  = bbsDir,
+                   filename = regionFileName.use)
 
 ```
 
@@ -133,8 +133,9 @@ rm(bbsData)
 } # end section I. loop
 }else(message(paste0("NOT DOWNLOADING BBS DATA. If you wish to download the BBS data, please remove files from directory: ",bbsDir))) # end if-else to download the data
 ```
-Or import a lot of data files.
+Or import data files you specified with the function regionFileName.use 
 ```{r loadAllData, eval = FALSE, echo=TRUE}
+## In this example we only used Florida
 feathers <- NULL
 featherNames <- list.files(bbsDir, pattern = ".feather")
 featherNames <- str_c("/", featherNames) #add separator
@@ -158,12 +159,12 @@ glimpse(spp)
 # This data frame contains common and scientific names, AOU numbers, taxonomic designations, and a taxonomic order (seq) for convenient sorting.
 ```
 
-We can sort by AOU # (e.g. House Sparrow aou = 06882)
+We can sort by AOU # (e.g. House Sparrow aou = 06882) within a dataset, in this case we are using the Florida BBS data. 
 ```{r subset_bySpeciesList, echo=TRUE}
 subset_speciesList(myData = flBBS, aou.ind = 06882) %>% glimpse()
 ```
 
-We could merge the bbs count data with the species list to avoid having to refer to AOU, then just subset using species name (e.g. 'House Sparrow).
+We could merge the bbs count data with the species list to avoid having to refer to AOU, then just subset using species name (e.g. 'House Sparrow').
 ```{r getHospData, echo=TRUE}
 flBBS <- left_join(flBBS, spp)
 flBBS %>% filter(commonName=="House Sparrow") %>% glimpse()
@@ -171,8 +172,11 @@ flBBS %>% filter(commonName=="House Sparrow") %>% glimpse()
 
 We can also  use the `subset_SpeciesList` as a convenient way to **remove**  taxonomic groups from the BBS data.
 ```{r , echo=TRUE, eval=FALSE}
-subset_speciesList(flBBS, fam.ind = "Passeridae") 
-subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) 
+unique(flBBS$family) # notice 55 families in total
+flBBS_sub1 <- subset_speciesList(flBBS, fam.ind = "Passeridae") 
+unique(flBBS_sub1$family) # notice Passeridae is not in the list, only 54 families
+flBBS_sub2 <- subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) 
+unique(flBBS_sub2$family) # notice Passeridae and Parulidae are not in the list, only 53 families
 ```
 
 ## Using web scraping to retrieve species trend estimates and regional credibility scores
