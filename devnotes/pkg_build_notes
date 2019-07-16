@@ -1,5 +1,8 @@
 # Steps for contributing and building
 
+## Please run tests
+Testthis::test("bbsAssistant")
+
 ## To build the package please use
 devtools::check()
 
