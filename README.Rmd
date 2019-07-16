@@ -8,15 +8,16 @@ bibliography: paper/paper.bib
 ---
 <!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
 
-<!-- [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/> -->
-<!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
+Silence lines 12 - 13 when rendering .pdf. 
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
+[![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master)
 
 
 # Function Manual
 For function descriptions and examples please see the [manual](https://github.com/trashbirdecology/bbsassistant/bbsAssistant_0.0.1.pdf). 
 
 # Contributions
-If you would like to contribute, please submit a pr or email  (jessicaleighburnett at gmail). I am especially interested in having another set of eyes and hands to transfer and clean up the functions listed in [Issue 1](https://github.com/TrashBirdEcology/bbsAssistant/issues/1).
+If you would like to contribute, please submit a pr, create an issue, or email us (jessicaleighburnett at gmail). Contributors must adhere to the [Code of Conduct](CODE_OF_CONDUCT.MD). 
 
 # Overview of bbsAssistant Features
 
