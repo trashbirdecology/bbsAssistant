@@ -3,6 +3,7 @@ library("bbsAssistant")
 
 
 # Run tests
-testthat::test_package("bbsAssistant")
+testthat::test_dir(here::here('tests/testthat/'))
+
 
 
