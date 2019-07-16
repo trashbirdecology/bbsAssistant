@@ -30,12 +30,6 @@ knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
 ```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
 # devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
-library(rvest)
-library(gdata)
-library(feather)
-library(here)
-library(dplyr)
-library(tidyverse)
 ```
 ## Downloading the BBS data from USGS FTP 
 ### Define and/or create local directories
