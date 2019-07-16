@@ -1,11 +1,5 @@
 context("test-get_credibility-and-trends")
 
-library(rvest)
-library(gdata)
-library(xml2)
-library(dplyr)
-library(tidyr)
-
 df <- get_credibility_trends()
 
 test_that("Check the credibility scores object (df) is as expected. ", {

@@ -24,7 +24,7 @@ get_routeInfo <- function(
                          BCR = NULL) {
     # Unzip from FTP server and store as an R object
     routeDat <-
-        bbsAssistant::get_unzip(
+        get_unzip(
             ZipName = paste0(routesDir, routesFile),
             FileName = gsub("^Fifty", "fifty", gsub("zip", "csv", routesFile))
         )

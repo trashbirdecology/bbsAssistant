@@ -16,14 +16,13 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Imports: 
-    gdata,
-    rvest,
+    readr, 
+    stringr,
     dplyr,
+    xml2, 
     feather,
     here,
-    tidyverse,
-    magrittr,
-    xml2
+    magrittr
 Suggests:
     testthat (>= 2.1.0),
     ggplot2,

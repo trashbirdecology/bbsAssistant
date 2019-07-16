@@ -1,6 +1,5 @@
 context("get_regions")
 
-library(stringr)
 
 RegionCodes <- get_regions()
 

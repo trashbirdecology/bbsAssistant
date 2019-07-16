@@ -24,7 +24,7 @@ export_bbsFeathers <- function(dataIn, newDir= here::here("bbsData/"), filename)
                       aou, stoptotal)
     
     # Write to disk
-    write_feather(x = temp, path = paste0(newDir, filename))
+    feather::write_feather(x = temp, path = paste0(newDir, filename))
     
     
 }
