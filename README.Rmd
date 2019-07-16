@@ -11,7 +11,9 @@ bibliography: paper/paper.bib
 
 <!-- Silence lines 12 - 13 when rendering .pdf.  -->
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
-[![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master)
+<!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+License: MIT
 
 
 # Function Manual
@@ -30,6 +32,9 @@ knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
 ```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
 # devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
+library(magrittr)
+library(dplyr)
+library(stringr)
 ```
 ## Downloading the BBS data from USGS FTP 
 ### Define and/or create local directories
@@ -55,7 +60,7 @@ regions <- get_regions()
 Let's restrict our data download to **Florida** data:
 ```{r, echo=TRUE}
 regionFileName <- regions$zipFileName %>% na.omit()
-(regionFileName.use <- regionFileName[which(str_detect(regionFileName, "Flori")==TRUE)])
+(regionFileName.use <- regionFileName[which(stringr::str_detect(regionFileName, "Flori")==TRUE)])
 ```
 
 Once we have one or more region filenames, we can use function `get_bbsData` to download the .zip file to a temporary folder (unless otherwise specified), and *import* the temp file to R object. The R object, flBBS, contains the raw BBS count data.
@@ -67,7 +72,7 @@ flBBS <- get_bbsData(file=regionFileName.use)
 Next, we can download the BBS route-level geographic information and metadata, and append this to the original data.
 ```{r, echo=TRUE}
 routes <- get_routeInfo() # retrieve route-level data
-flBBS <- left_join(flBBS, routes) # merge route-level data to bird count data
+flBBS <- dplyr::left_join(flBBS, routes) # merge route-level data to bird count data
 glimpse(flBBS %>% dplyr::select(aou, year, route, statenum, countrynum, stoptotal, latitude, longitude))
 ```
 
@@ -84,7 +89,7 @@ export_bbsFeathers(dataIn = flBBS,
 If the BBS data was downloaded previously and saved as .feather, we can import it using `import_bbsFeathers`. The code below is particularly useful if you are importing multiple files (e.g., multiple states)
 ```{r import_bbsFeathers, echo=TRUE}
 (featherNames <- list.files(bbsDir, pattern = ".feather"))
-featherNames <- str_c("/", featherNames) #add separator
+featherNames <- stringr::str_c("/", featherNames) #add separator
 
 feather <- import_bbsFeathers(newDir  = bbsDir,
                               filename = featherNames)
@@ -134,7 +139,7 @@ Use the same code as above to import *multiple* feathers from file:
 ```{r loadAllData, eval = FALSE, echo=TRUE}
 feathers <- NULL
 featherNames <- list.files(bbsDir, pattern = ".feather")
-featherNames <- str_c("/", featherNames) #add separator
+featherNames <- stringr::str_c("/", featherNames) #add separator
 for (i in 1:length(featherNames)) {
   feather <- NULL
   feather <- import_bbsFeathers(newDir  = bbsDir,

@@ -10,15 +10,12 @@ devtools::build()
 ## Please run tests
 devtools::test("bbsAssistant")
 
-
-
 ## Please run spell check
 install.packages("spelling")
 devtools::spell_check()
 
 ## Please update documentation and manual
 devtools::document()
-devtools::build_manual()
 
 ## To re-build the manual please run after installing it
-devtools::build_manual(path=here::here("man/"))
+devtools::build_manual()#path=here::here(""))

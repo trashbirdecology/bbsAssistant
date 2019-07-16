@@ -6,14 +6,8 @@
 
 get_credibility_trends <-
     function(url = 'https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?FLA&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C') {
-        
-        
-        
         #Reading the HTML code from the specified website (example used == Kansas)
         webpage <- xml2::read_html(url)
-        
-        
-        
         
         # Get colored dot credibility ratings
         # grab images from xml nodes
@@ -25,19 +19,18 @@ get_credibility_trends <-
             as.list()
         
         # this is ugly, but works. Drop heading and summary images, make dataframe with indexes
-        
-        dotKey = data.frame(
+        dotKey <- data.frame(
             credibilityColor = c("Red", "Yellow", "Blue"),
             credibilityClass = c("important_deficiency", "deficiency", "no_deficiency"),
             credibilityNumber = c("2", "1", "0")
         )
         
-        dotDF =    data.frame(credibilityNumber = unlist(dotList[4:length(dotList)])) %>%
+        dotDF <- data.frame(credibilityNumber = unlist(dotList[4:length(dotList)])) %>%
             dplyr::mutate(credibilityNumber = substr(credibilityNumber, 6, 6)) %>%
             dplyr::left_join(dotKey, by = "credibilityNumber")
         
         # Scrape trend data
-        spp_credibility_trends <- webpage %>%
+        spp_credibility_trends.temp <- webpage %>%
             rvest::html_nodes("#maincontent") %>%
             rvest::html_text() %>%
             strsplit(split = "\n") %>%
@@ -45,12 +38,11 @@ get_credibility_trends <-
             as.list()
         
         # clean up trend data
-        
-        spp_credibility_trends[5:(length(spp_credibility_trends) - 1)] %>%
+        spp_credibility_trends <- spp_credibility_trends.temp[5:(length(spp_credibility_trends.temp) - 1)] %>%
             unlist() %>%
             dplyr::as_tibble() %>%
-            #dplyr::mutate(value = gsub(" ", ".", value)) %>%
-            extract(
+            # dplyr::mutate(value = gsub(" ", ".", value)) %>%
+            tidyr::extract(
                 value,
                 c(
                     "Species",
@@ -62,7 +54,7 @@ get_credibility_trends <-
                     "RA"
                 ),
                 "(.............................)(....)(.........)(....................)(.........)(....................)(.........)",
-                convert = TRUE ## What is this? This is not an argument in extract. Please run unit test on this function when fixed. 
+                convert = TRUE ## What is this? This is not an argument in extract. Please run unit test on this function when fixed.
             ) %>%
             dplyr::mutate(
                 CI_95_1966_2015 = gsub("\\(", "", CI_95_1966_2015),
@@ -85,8 +77,15 @@ get_credibility_trends <-
                 sep = ","
             ) %>%
             dplyr::mutate(Species = gsub("\\(*", "", Species)) %>%
-            cbind(dotDF) %>% glue::trim() -> spp_credibility_trends
-        
-        
+            cbind(dotDF) 
+
+        # This was here before, not sure why
+         # %>% 
+         #   glue::trim()
+
+        # I dont liek this alternative, but...we need to force char columns to numeric..
+        cols.num <- c( "N", "Trend_1966_2015", "CI_2.5_1966_2015", "CI_97.5_1966_2015", "Trend_2005_2015", "CI_2.5_2005_2015", "CI_97.5_2005_2015", "RA")
+        spp_credibility_trends[cols.num] <- sapply(spp_credibility_trends[cols.num],as.numeric)
+       
         return(spp_credibility_trends)
     }
