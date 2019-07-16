@@ -6,7 +6,7 @@
 \usage{
 
   get_regions(source = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/",
-  ZipFiles = TRUE, bbsDir = NULL)
+  bbsDir = NULL)
 }
 \arguments{
 \item{source}{The website or location of the BBS data files.}
@@ -14,5 +14,5 @@
 \item{bbsDir}{The location of the local folder containing the bbs raw data. If this folder DNE, a new folder will be created in the working directory.}
 }
 \description{
-Read in list of regions (State/Prov/TerrName), from RegionCodes.txt, and then extract list of where the 10-stop data is kept
+Read in list of regions (State/Prov/TerrName), from RegionCodes.txt, and then extract list of where the 10-stop data is kept. This function was adapted from the function \href{https://github.com/oharar/rBBS/blob/master/R/getregions.R}{rBBS::GetRegions()}.
 }

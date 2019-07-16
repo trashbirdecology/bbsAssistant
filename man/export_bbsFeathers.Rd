@@ -4,7 +4,7 @@
 \alias{export_bbsFeathers}
 \title{Save BBS dataframe as a feather file on disk.}
 \usage{
-export_bbsFeathers(dataIn, newDir = NULL, filename)
+export_bbsFeathers(dataIn, newDir = here::here("bbsData/"), filename)
 }
 \arguments{
 \item{dataIn}{Data to be saved to local disk (e.g., /bbsData/). This data frame is a product of merging route information and raw count data. Data frame should have at least the columns dplyr::select(year, countrynum, statenum, route, bcr, latitude, longitude,aou, stoptotal).}

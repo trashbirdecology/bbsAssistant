@@ -1,5 +1,10 @@
+context("test-get_speciesList")
+
+spp <- get_speciesList()
+
 test_that("Ensure import of specieslist.txt is correct by checking col names", {
-expect_true(all(
+
+    expect_true(all(
         sort(names(spp))==c(
         "aou","commonName","family",
         "frenchCommonName", "genus","order",  

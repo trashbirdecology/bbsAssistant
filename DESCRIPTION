@@ -1,27 +1,32 @@
 Package: bbsAssistant
 Title: Helper Functions for Obtaining Data and Information from the North American Breeding Bird Survey (BBS)
-Version: 0.0.0.9000
+Version: 0.0.1
+Maintainer: Jessica Burnett <jessicaleighburnett@gmail.com>
+Author: Jessica Burnett [aut, cre],
+  Gabby Palomo-Muñoz [aut],
+  Lyndsie Wszola [aut]
 Authors@R: c(
   person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
-  person("Lyndsie", "Wszola", email = "", role = "aut", comment = c(ORCID = "")),
-  person("Gabriela", "Palomo-Munoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")))
-Description: Provides various helper functions for getting Breeding Bird Survey (BBS) data and metadata from the North American Breeding Bird Survey website. 
-    This package will allow users to facilitate the ease with which BBS data are accessed and imported into R.
-Depends: R (>= 3.5.3)
-License: MIT
+  person("Gabriela", "Palomo-Muñoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")),
+  person("Lyndsie", "Wszola", email = "", role = "aut", comment = c(ORCID = "0000-0002-2660-2048")))
+Description: This package provides helper functions for downloading and manipulating North American Breeding Bird Survey (BBS) data and metadata from the U.S. Geological Survey. The functionality streamlines this the process by which these data are accessed, downloaded locally, and imported into R.Depends: R (>= 3.5.1)
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Imports: 
-    gdata,
-    rvest,
+    readr, 
+    stringr,
     dplyr,
+    xml2, 
     feather,
     here,
-    readr,
-    stringr,
+    glue,
+    rvest,
+    tidyr,
     magrittr
 Suggests:
     testthat (>= 2.1.0),
-    ggplot2
+    ggplot2,
+    covr

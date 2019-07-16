@@ -14,5 +14,5 @@
 A dataframe
 }
 \description{
-Read in list of species names, from SpeciesList.txt, and then extract list of where the data is kept
+Read in list of species names, from SpeciesList.txt, and then extract list of where the data is kept. This function was borrowed from the function \href{https://github.com/oharar/rBBS/blob/master/R/getspnames.r}{rBBS::getSpNames()}.
 }

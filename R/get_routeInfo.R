@@ -1,20 +1,19 @@
 #' @title Download route information from USGS server
 #' @description This function downloads information about route location from the BBS FTP server. This function was adapted from **oharar/rBBS** package.
-#' @param routeDir Location of the routes.zip folder Should be in DatFiles folder (default).
-#' @param routeFile Name of the route information file. Usually "routes.zip".
+#' @param routesDir Location of the routes.zip folder Should be in DatFiles folder (default).
+#' @param routesFile Name of the route information file. Usually "routes.zip".
 #' @param RouteTypeID One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).
 #' @param Stratum A vector of BBS physiographic stratum codes by which to filter the routes.
 #' @param BCR A vector of Bird Conservation Region codes where by which to filter the routes.
 #' @return If download successful, a dataframe with the results.
-#'
+#' @importFrom magrittr %>%
+#' @export get_routeInfo
 #' @examples
 #' # download BBS route data.
-#'
 #' \dontrun{
 #' RouteInfo <- get_routeInfo()
 #' }
 #'
-#' @export get_routeInfo
 
 get_routeInfo <- function(
     routesFile = "routes.zip",
@@ -30,7 +29,7 @@ get_routeInfo <- function(
             FileName = gsub("^Fifty", "fifty", gsub("zip", "csv", routesFile))
         )
     
-    
+    # str(routeDat )
     # Force column names to lowercase
     names(routeDat) <- tolower(names(routeDat))
     
@@ -38,18 +37,18 @@ get_routeInfo <- function(
     
         if (!is.null(Stratum)) {
             routeDat <- routeDat %>%
-                filter(stratum %in% Stratum)
+                dplyr::filter(stratum %in% Stratum)
         }
         
         if (!is.null(BCR)) {
             routeDat <- routeDat %>%
-                filter(BCR %in% BCR)
+                dplyr::filter(BCR %in% BCR)
         }
         
         
         if (!is.null(RouteTypeID)) {
             routeDat <- routeDat %>%
-                filter(RouteTypeID %in% RouteTypeID)
+                dplyr::filter(RouteTypeID %in% RouteTypeID)
         }
 
     

@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_unzip.R
 \name{get_unzip}
 \alias{get_unzip}
-\title{Downloads and unzips a zip archive to file.}
+\title{Downloads and unzips a zip archive to file from the USGS BBS FTP server}
 \usage{
 get_unzip(ZipName, FileName)
 }
@@ -15,9 +15,9 @@ get_unzip(ZipName, FileName)
 A dataframe
 }
 \description{
-Downloads and unzips a zip archive to file.
+This function downloads the BBS data from the USGS FTP server to a temporary file, decompresses the .zip files, and imports the uncompressed .csv file into R. This function was adapted from the function \href{https://github.com/oharar/rBBS/blob/master/R/GetUnzip.R}{rBBS::GetUnzip()}.
 }
 \details{
 Used internally. If ZipName begins with 'http' or 'ftp', then download and unzip to
-Filename and return as a dataframe. Otherwise, unzip Zipname and return as a data.frame.
+Filename and return as a dataframe. Otherwise, unzip the file specified by ZipName and import into R as a data.frame.
 }

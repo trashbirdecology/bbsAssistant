@@ -4,11 +4,10 @@
 #' @param aou.ind Numeric or vector of numeric values of the AOU codes. These are the species you want to REMOVE from analysis.
 #' @param order.ind Character or vector of characters of taxonomic orders to remove
 #' @param fam.ind Character or vector of characters of taxonomic family to remove
+#' @importFrom magrittr %>%
 #' @export subset_speciesList
-#' @example
-#' # Download the species list text file used by BBS
 subset_speciesList <- function(myData,
-                        subset.by = NULL,
+                        #subset.by = NULL,
                         aou.ind = NULL,
                         order.ind = NULL,
                         fam.ind = NULL) {
@@ -18,17 +17,17 @@ subset_speciesList <- function(myData,
     ## Will update to remove by families and orders for the remove.fowl etc...
     # if("remove.fowl" %in% subset.by){
     #     myData <- myData %>%
-    #         filter(!aou %in% c(01290:01780))
+    #         dplyr::filter(!aou %in% c(01290:01780))
     # }
     #
     # if( "remove.shorebirds" %in% subset.by){
     #     myData <- myData %>%
-    #         filter(!aou %in% c(1290:1780))
+    #         dplyr::filter(!aou %in% c(1290:1780))
     # }
     #
     # if("remove.shoreWaderFowl" %in% subset.by){
     #     myData <- myData %>%
-    #         filter(!aou %in% c(00000:02880))
+    #         dplyr::filter(!aou %in% c(00000:02880))
     # }
     
     
@@ -36,20 +35,20 @@ subset_speciesList <- function(myData,
     ## Subset by taxonomic families
     if (!is.null(fam.ind)) {
         myData <- myData %>%
-            filter(!family %in% fam.ind)
+            dplyr::filter(!family %in% fam.ind)
     }
     
     
     ## Subset by taxonomic order
     if (!is.null(order.ind)) {
         myData <- myData %>%
-            filter(!order %in% order.ind)
+            dplyr::filter(!order %in% order.ind)
     }
     
     ## Subset by AOU specific numbers.
     if (!is.null(aou.ind)) {
         myData <- myData %>%
-            filter(!aou %in% aou.ind)
+            dplyr::filter(!aou %in% aou.ind)
     }
     
     return(myData)

@@ -2,16 +2,14 @@
 % Please edit documentation in R/get_credibility_trends.R
 \name{get_credibility_trends}
 \alias{get_credibility_trends}
-\title{Scrape BBS data credibility scores and population trend estimates from BBS website}
+\title{Get data credibility and trends from the BBS analysis results}
 \usage{
-get_credibility_trends(url = NULL)
+
+  get_credibility_trends(url = "https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?FLA&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C")
 }
 \arguments{
-\item{url}{The url location of the web page to be scraped. Currently, you will have to specify this url. Default url is House Sparrows in Florida.}
+\item{url}{Web address of the region or state for which species' population trends and credibility ratings are to be scraped. Default example is 'Kansas,USA'.}
 }
 \description{
-A function using web scraping tools to retrieve region-specific species trend estimates \link{@sauer2017north} and data credibility ratings. Current functionality does not include retrieving estimates per species, but rather per region.
-}
-\references{
-Regional Credibility Measures information can be found online at \url{https://www.mbr-pwrc.usgs.gov/bbs/credhm09.html}
+The BBS provides regional and state-wide species population trend estimates. They also include a 'data credibility' rating (low, medium, or high deficiencies) for each species-region combination. This function uses web scraping to capture population trends and their credibility ratings.
 }

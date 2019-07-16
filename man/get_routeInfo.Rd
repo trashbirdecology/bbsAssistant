@@ -9,15 +9,15 @@ get_routeInfo(routesFile = "routes.zip",
   RouteTypeID = 1, Stratum = NULL, BCR = NULL)
 }
 \arguments{
+\item{routesFile}{Name of the route information file. Usually "routes.zip".}
+
+\item{routesDir}{Location of the routes.zip folder Should be in DatFiles folder (default).}
+
 \item{RouteTypeID}{One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).}
 
 \item{Stratum}{A vector of BBS physiographic stratum codes by which to filter the routes.}
 
 \item{BCR}{A vector of Bird Conservation Region codes where by which to filter the routes.}
-
-\item{routeDir}{Location of the routes.zip folder Should be in DatFiles folder (default).}
-
-\item{routeFile}{Name of the route information file. Usually "routes.zip".}
 }
 \value{
 If download successful, a dataframe with the results.
@@ -27,7 +27,6 @@ This function downloads information about route location from the BBS FTP server
 }
 \examples{
 # download BBS route data.
-
 \dontrun{
 RouteInfo <- get_routeInfo()
 }
