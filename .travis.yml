@@ -21,14 +21,12 @@ env:
     - R_CHECK_ARGS="--no-build-vignettes --no-manual --timings"  ## do not build vignettes or manual
     - _R_CHECK_TIMINGS_="0"  ## get the timing information for the examples for all of your functions
 
-# do not build vignettes...takes too long and times out on travis
-r_build_args: --no-build-vignettes --no-manual
-r_check_args: --no-build-vignettes --no-manual --timings
-
-# for codecov
+# for codecov, testing
 r_packages:
   - covr
   - testthat
 
 after_success:
   - Rscript -e 'library(covr); codecov()'
+  - travis_wait 20 Rscript -e 'library(covr); codecov()'
+
