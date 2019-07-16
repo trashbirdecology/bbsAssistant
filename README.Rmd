@@ -26,7 +26,9 @@ knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
 
 ## Installing package and loading dependencies
 ```{r loadDeps, echo=TRUE}
-# devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE)
+## First install bbsAssistant using devtools 
+devtools::install_github("trashbirdecology/bbsAssistant", 
+                         dependencies = TRUE)
 library(bbsAssistant)
 library(rvest)
 library(gdata)
