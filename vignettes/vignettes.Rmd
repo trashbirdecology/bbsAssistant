@@ -1,33 +1,20 @@
 ---
-title: "**bbsAssistant**: An R package for downloading and handling data and information from the North American Breeding Bird Survey."
-date: "`r Sys.Date()`"
-output: # pdf_document # when rendering PDF silence badges .svg + md_document
-  md_document:
-    variant: markdown_github
-bibliography: paper/paper.bib
+title: "vignettes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vignettes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-<!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
-
-<!-- Silence lines 12 - 13 when rendering .pdf.  -->
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
-<!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-License: MIT
-
-
-# Function Descriptions and Vignettes
-For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette (`usethis::build_vignettes()`).
-
-# Contributions
-To make a contribution please submit a pr, create an [issue](/issues), or email us (jessicaleighburnett at gmail). Contributors must adhere to the [Code of Conduct](CODE_OF_CONDUCT.MD). 
-
-# Brief Overview of bbsAssistant Functionality 
-
-```{r  setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,echo=TRUE, warning = FALSE, message=FALSE,
+  comment = "#>"
+)
 ```
 
+# Brief Overview of bbsAssistant Functionality 
 ## Installing package and loading dependencies
 ```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
 # devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
@@ -36,6 +23,7 @@ library(magrittr)
 library(dplyr)
 library(stringr)
 ```
+
 ## Downloading the BBS data from USGS FTP 
 ### Define and/or create local directories
 This function will create, if it does not already exist, folder **./bbsData/** within which to locally store BBS data and results. 

@@ -26,4 +26,8 @@ Imports:
 Suggests:
     testthat (>= 2.1.0),
     ggplot2,
-    covr
+    covr,
+    knitr,
+    usethis,
+    rmarkdown
+VignetteBuilder: knitr
