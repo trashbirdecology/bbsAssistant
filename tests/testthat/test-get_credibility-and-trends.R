@@ -1,8 +1,9 @@
 context("test-get_credibility-and-trends")
 
 test_that("Check the credibility scores object (df) is as expected. ", {
-skip_on_travis()
-df <- get_credibility_trends()
+  skip_on_travis()
+  skip_if_offline()
+  df <- get_credibility_trends()
     expect_true(class(df)=="data.frame")
     expect_true(class(df$Species) %in% c("factor","character"))
     

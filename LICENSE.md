@@ -1,6 +1,6 @@
 # MIT License
 
-Copyright (c) 2019 Jessica Burnett
+Copyright (c) 2019 Jessica L. Burnett
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
