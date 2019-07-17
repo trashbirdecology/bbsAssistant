@@ -5,3 +5,5 @@
 ^\.travis\.yml$
 ^doc$
 ^Meta$
+^docs$
+^pkgdown$
