@@ -33,3 +33,5 @@ Suggests:
     spelling
 VignetteBuilder: knitr
 Language: en-US
+URL: https://github.com/TrashBirdEcology/bbsAssistant
+BugReports: https://github.com/TrashBirdEcology/bbsAssistant/issues

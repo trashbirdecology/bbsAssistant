@@ -1,0 +1,7 @@
+title: bbsAssistant
+url: http://trashbirdecology.github.io/bbsAssistant 
+template:
+  params:
+    bootswatch: simplex
+navbar:   
+  type: inverse
