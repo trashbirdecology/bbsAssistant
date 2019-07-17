@@ -53,8 +53,9 @@ get_credibility_trends <-
                     "CI_95_2005_2015",
                     "RA"
                 ),
-                "(.............................)(....)(.........)(....................)(.........)(....................)(.........)",
-                convert = TRUE ## What is this? This is not an argument in extract. Please run unit test on this function when fixed.
+                "(.............................)(....)(.........)(....................)(.........)(....................)(.........)"
+                # ,
+                # convert = TRUE ## What is this? This is not an argument in extract. Please run unit test on this function when fixed.
             ) %>%
             dplyr::mutate(
                 CI_95_1966_2015 = gsub("\\(", "", CI_95_1966_2015),

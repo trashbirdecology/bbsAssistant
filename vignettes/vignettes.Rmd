@@ -1,35 +1,22 @@
 ---
-title: "**bbsAssistant**: An R package for downloading and handling data and information from the North American Breeding Bird Survey."
-date: "`r Sys.Date()`"
-bibliography: paper/paper.bib
-output: github_document
+title: "vignettes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vignettes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, echo = FALSE}
+```{r, include = FALSE}
+TRAVIS <- !identical(tolower(Sys.getenv("TRAVIS")), "true")
 knitr::opts_chunk$set(
-  collapse = TRUE,
+  collapse = TRUE,echo=TRUE, warning = FALSE, message=FALSE,
   comment = "#>",
-  fig.path = "man/figures/"
+  purl = TRAVIS # do not run chunks on TRAVIS
 )
 ```
-<!-- Silence lines 12 - 13 when rendering .pdf.  -->
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/> ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
-<!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
-
-# Function Descriptions and Vignettes
-For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette (`usethis::build_vignettes()`; or run `/vignettes/vignettes.Rmd`).
-
-# Contributions
-To make a contribution visit the [contributions instructions](.github/CONTRIBUTIONS.MD). Contributors must adhere to the [Code of Conduct](.github/CODE_OF_CONDUCT.MD). 
 
 # Brief Overview of bbsAssistant Functionality 
-
-```{r  setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo=TRUE, warning = FALSE, message=FALSE)
-```
-
 ## Installing package and loading dependencies
 ```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
 # devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
@@ -38,6 +25,7 @@ library(magrittr)
 library(dplyr)
 library(stringr)
 ```
+
 ## Downloading the BBS data from USGS FTP 
 ### Define and/or create local directories
 This function will create, if it does not already exist, folder **./bbsData/** within which to locally store BBS data and results. 
@@ -223,16 +211,12 @@ cred %>%
 #### Steps for obtaining argument "url" in function `get_credibility_trends`: 
 First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>. 
 
-Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** and choose the desired region (e.g. Florida). 
-```{r , echo=FALSE, out.width="50%"}
-knitr::include_graphics("man/figures/regcred_select_trendests_byregion.png")
-```
+Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida). Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida):
 
-Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida):
+<!-- ![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px} -->
 
-```{r , echo=FALSE, out.width="50%"}
-knitr::include_graphics("man/figures/regcred_select_fl.png")
-```
+
+<!-- ![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px} -->
 
 # Acknowledgments
 We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code as applicable.
