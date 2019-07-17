@@ -2,7 +2,9 @@ context("test-subsetSpeciesList")
 
 
 test_that("Ensure species list subsetting works (by family, then order)", {
-skip_on_travis()
+    testthat::skip_on_travis()
+    testthat::skip_if_offline()
+    
 spp <- get_speciesList()
 t <- subset_speciesList(spp, fam.ind = "Parulidae")
     expect_false("Parulidae" %in% t$family)
