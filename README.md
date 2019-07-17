@@ -1,44 +1,44 @@
-<!-- PLEASE DO NOT EDIT README.md BY HAND. Please render README.rmd! -->
+**bbsAssistant**: An R package for downloading and handling data and
+information from the North American Breeding Bird Survey.
+================
+2019-07-17
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- Silence lines 12 - 13 when rendering .pdf.  -->
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
 build
 status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
-<!--[![Coverage
-status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+<!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
 
-Function Manual
-===============
+# Function Descriptions and Vignettes
 
-For function descriptions and examples please see the
-[manual](https://github.com/trashbirdecology/bbsassistant/bbsAssistant_0.0.1.pdf).
+For function descriptions please build the manual
+(`devtools::build_manual("bbsAssistant)`) and for an example build the
+vignette (`usethis::build_vignettes()`; or run
+`/vignettes/vignettes.Rmd`).
 
-Contributions
-=============
+# Contributions
 
-If you would like to contribute, please submit a pr, create an issue, or
-email us (jessicaleighburnett at gmail). Contributors must adhere to the
-[Code of Conduct](CODE_OF_CONDUCT.MD).
+To make a contribution visit the [contributions
+instructions](.github/CONTRIBUTIONS.MD). Contributors must adhere to the
+[Code of Conduct](.github/CODE_OF_CONDUCT.MD).
 
-Overview of bbsAssistant Features
-=================================
+# Brief Overview of bbsAssistant Functionality
 
-Installing package and loading dependencies
--------------------------------------------
+## Installing package and loading dependencies
 
 ``` r
 # devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
-library(rvest)
-library(gdata)
-library(feather)
-library(here)
+library(magrittr)
 library(dplyr)
-library(tidyverse)
+library(stringr)
 ```
 
-Downloading the BBS data from USGS FTP
---------------------------------------
+## Downloading the BBS data from USGS FTP
 
 ### Define and/or create local directories
 
@@ -78,10 +78,9 @@ Let’s restrict our data download to **Florida** data:
 
 ``` r
 regionFileName <- regions$zipFileName %>% na.omit()
-(regionFileName.use <- regionFileName[which(str_detect(regionFileName, "Flori")==TRUE)])
+(regionFileName.use <- regionFileName[which(stringr::str_detect(regionFileName, "Flori")==TRUE)])
+#> [1] "Florida.zip"
 ```
-
-    ## [1] "Florida.zip"
 
 Once we have one or more region filenames, we can use function
 `get_bbsData` to download the .zip file to a temporary folder (unless
@@ -91,29 +90,27 @@ object, flBBS, contains the raw BBS count data.
 ``` r
 # check to see whether the data we need is already on file. if not, download it.
 flBBS <- get_bbsData(file=regionFileName.use)
+#> [1] "Data were imported from the FTP server"
 ```
-
-    ## [1] "Data were imported from the FTP server"
 
 Next, we can download the BBS route-level geographic information and
 metadata, and append this to the original data.
 
 ``` r
 routes <- get_routeInfo() # retrieve route-level data
-flBBS <- left_join(flBBS, routes) # merge route-level data to bird count data
+flBBS <- dplyr::left_join(flBBS, routes) # merge route-level data to bird count data
 glimpse(flBBS %>% dplyr::select(aou, year, route, statenum, countrynum, stoptotal, latitude, longitude))
+#> Observations: 139,735
+#> Variables: 8
+#> $ aou        <int> 1840, 2000, 2010, 2890, 3100, 3131, 3160, 3390, 3430,…
+#> $ year       <int> 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967,…
+#> $ route      <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+#> $ statenum   <int> 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 2…
+#> $ countrynum <int> 840, 840, 840, 840, 840, 840, 840, 840, 840, 840, 840…
+#> $ stoptotal  <dbl> 3, 1, 1, 37, 1, 1, 7, 1, 1, 1, 1, 1, 2, 11, 5, 4, 2, …
+#> $ latitude   <dbl> 30.92918, 30.92918, 30.92918, 30.92918, 30.92918, 30.…
+#> $ longitude  <dbl> -87.40794, -87.40794, -87.40794, -87.40794, -87.40794…
 ```
-
-    ## Observations: 139,735
-    ## Variables: 8
-    ## $ aou        <int> 1840, 2000, 2010, 2890, 3100, 3131, 3160, 3390, 3430,…
-    ## $ year       <int> 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967,…
-    ## $ route      <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-    ## $ statenum   <int> 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 2…
-    ## $ countrynum <int> 840, 840, 840, 840, 840, 840, 840, 840, 840, 840, 840…
-    ## $ stoptotal  <dbl> 3, 1, 1, 37, 1, 1, 7, 1, 1, 1, 1, 1, 2, 11, 5, 4, 2, …
-    ## $ latitude   <dbl> 30.92918, 30.92918, 30.92918, 30.92918, 30.92918, 30.…
-    ## $ longitude  <dbl> -87.40794, -87.40794, -87.40794, -87.40794, -87.40794…
 
 If we wish to save these data to file, we can do so by saving as
 \*\*.feather\*s, a compressed file formatted for use in R.
@@ -124,8 +121,7 @@ export_bbsFeathers(dataIn = flBBS,
                 filename = regionFileName.use)
 ```
 
-Import BBS data from file into R
---------------------------------
+## Import BBS data from file into R
 
 If the BBS data was downloaded previously and saved as .feather, we can
 import it using `import_bbsFeathers`. The code below is particularly
@@ -133,34 +129,29 @@ useful if you are importing multiple files (e.g., multiple states)
 
 ``` r
 (featherNames <- list.files(bbsDir, pattern = ".feather"))
-```
-
-    ## [1] "Florida.feather"
-
-``` r
-featherNames <- str_c("/", featherNames) #add separator
+#> [1] "Florida.feather"
+featherNames <- stringr::str_c("/", featherNames) #add separator
 
 feather <- import_bbsFeathers(newDir  = bbsDir,
                               filename = featherNames)
 glimpse(feather) # Notice that the data imported from disk (feathers) differs from the original BBS data in that the # of columns is fewer (9 and 12 columns, respectively).
+#> Observations: 139,735
+#> Variables: 9
+#> $ year       <int> 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967,…
+#> $ countrynum <int> 840, 840, 840, 840, 840, 840, 840, 840, 840, 840, 840…
+#> $ statenum   <int> 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 2…
+#> $ route      <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+#> $ bcr        <int> 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 2…
+#> $ latitude   <dbl> 30.92918, 30.92918, 30.92918, 30.92918, 30.92918, 30.…
+#> $ longitude  <dbl> -87.40794, -87.40794, -87.40794, -87.40794, -87.40794…
+#> $ aou        <int> 1840, 2000, 2010, 2890, 3100, 3131, 3160, 3390, 3430,…
+#> $ stoptotal  <dbl> 3, 1, 1, 37, 1, 1, 7, 1, 1, 1, 1, 1, 2, 11, 5, 4, 2, …
 ```
-
-    ## Observations: 139,735
-    ## Variables: 9
-    ## $ year       <int> 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967,…
-    ## $ countrynum <int> 840, 840, 840, 840, 840, 840, 840, 840, 840, 840, 840…
-    ## $ statenum   <int> 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 2…
-    ## $ route      <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
-    ## $ bcr        <int> 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 2…
-    ## $ latitude   <dbl> 30.92918, 30.92918, 30.92918, 30.92918, 30.92918, 30.…
-    ## $ longitude  <dbl> -87.40794, -87.40794, -87.40794, -87.40794, -87.40794…
-    ## $ aou        <int> 1840, 2000, 2010, 2890, 3100, 3131, 3160, 3390, 3430,…
-    ## $ stoptotal  <dbl> 3, 1, 1, 37, 1, 1, 7, 1, 1, 1, 1, 1, 2, 11, 5, 4, 2, …
 
 ### Option for downloading ALL BBS data
 
 If you wish to download and/or import ALL the data, you might choose to
-do so in a loop. Note: this is expensive! The following are not run in
+do so in a loop. Note: this is expensive\! The following are not run in
 this example.
 
 ``` r
@@ -205,7 +196,7 @@ Use the same code as above to import *multiple* feathers from file:
 ``` r
 feathers <- NULL
 featherNames <- list.files(bbsDir, pattern = ".feather")
-featherNames <- str_c("/", featherNames) #add separator
+featherNames <- stringr::str_c("/", featherNames) #add separator
 for (i in 1:length(featherNames)) {
   feather <- NULL
   feather <- import_bbsFeathers(newDir  = bbsDir,
@@ -216,8 +207,7 @@ for (i in 1:length(featherNames)) {
 }
 ```
 
-Subsetting the BBS count data
------------------------------
+## Subsetting the BBS count data
 
 ### Subset BBS data by taxonomic groups
 
@@ -226,51 +216,49 @@ First, retrieve the species list from the BBS FTP server.
 ``` r
 spp <- get_speciesList()
 glimpse(spp) 
+#> Observations: 750
+#> Variables: 9
+#> $ seq              <dbl> 6, 7, 8, 9, 10, 11, 13, 18, 19, 21, 22, 23, 24,…
+#> $ aou              <dbl> 1770, 1780, 1760, 1690, 1691, 1700, 1710, 1730,…
+#> $ commonName       <chr> "Black-bellied Whistling-Duck", "Fulvous Whistl…
+#> $ frenchCommonName <chr> "Dendrocygne à ventre noir", "Dendrocygne fauve…
+#> $ scientificName   <chr> "Dendrocygna autumnalis", "Dendrocygna bicolor"…
+#> $ order            <chr> "Anseriformes", "Anseriformes", "Anseriformes",…
+#> $ family           <chr> "Anatidae", "Anatidae", "Anatidae", "Anatidae",…
+#> $ genus            <chr> "Dendrocygna", "Dendrocygna", "Anser", "Anser",…
+#> $ species          <chr> "autumnalis", "bicolor", "canagicus", "caerules…
 ```
-
-    ## Observations: 750
-    ## Variables: 9
-    ## $ seq              <dbl> 6, 7, 8, 9, 10, 11, 13, 18, 19, 21, 22, 23, 24,…
-    ## $ aou              <dbl> 1770, 1780, 1760, 1690, 1691, 1700, 1710, 1730,…
-    ## $ commonName       <chr> "Black-bellied Whistling-Duck", "Fulvous Whistl…
-    ## $ frenchCommonName <chr> "Dendrocygne à ventre noir", "Dendrocygne fauve…
-    ## $ scientificName   <chr> "Dendrocygna autumnalis", "Dendrocygna bicolor"…
-    ## $ order            <chr> "Anseriformes", "Anseriformes", "Anseriformes",…
-    ## $ family           <chr> "Anatidae", "Anatidae", "Anatidae", "Anatidae",…
-    ## $ genus            <chr> "Dendrocygna", "Dendrocygna", "Anser", "Anser",…
-    ## $ species          <chr> "autumnalis", "bicolor", "canagicus", "caerules…
 
 Subset by species AOU \# (e.g. House Sparrow aou = 06882)
 
 ``` r
 subset_speciesList(myData = flBBS, aou.ind = 06882) %>% glimpse()
+#> Observations: 138,393
+#> Variables: 23
+#> $ routedataid       <int> 6234830, 6234830, 6234830, 6234830, 6234830, 6…
+#> $ countrynum        <int> 840, 840, 840, 840, 840, 840, 840, 840, 840, 8…
+#> $ statenum          <int> 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25…
+#> $ route             <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+#> $ rpid              <int> 101, 101, 101, 101, 101, 101, 101, 101, 101, 1…
+#> $ year              <int> 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967…
+#> $ aou               <int> 1840, 2000, 2010, 2890, 3100, 3131, 3160, 3390…
+#> $ count10           <dbl> 0, 0, 0, 12, 1, 0, 3, 0, 0, 0, 0, 0, 0, 2, 2, …
+#> $ count20           <dbl> 0, 0, 0, 22, 0, 0, 2, 0, 0, 0, 0, 0, 1, 7, 0, …
+#> $ count30           <dbl> 1, 0, 0, 7, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0…
+#> $ count40           <dbl> 30, 3, 1, 7, 0, 1, 2, 1, 0, 0, 0, 1, 0, 6, 2, …
+#> $ count50           <dbl> 5, 0, 0, 12, 0, 0, 0, 0, 1, 0, 0, 0, 2, 5, 1, …
+#> $ stoptotal         <dbl> 3, 1, 1, 37, 1, 1, 7, 1, 1, 1, 1, 1, 2, 11, 5,…
+#> $ speciestotal      <dbl> 36, 3, 1, 60, 1, 1, 7, 1, 1, 1, 1, 1, 3, 20, 5…
+#> $ routeID           <chr> "25 1", "25 1", "25 1", "25 1", "25 1", "25 1"…
+#> $ routename         <fct> OAK GROVE, OAK GROVE, OAK GROVE, OAK GROVE, OA…
+#> $ active            <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+#> $ latitude          <dbl> 30.92918, 30.92918, 30.92918, 30.92918, 30.929…
+#> $ longitude         <dbl> -87.40794, -87.40794, -87.40794, -87.40794, -8…
+#> $ stratum           <int> 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4…
+#> $ bcr               <int> 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27…
+#> $ routetypeid       <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
+#> $ routetypedetailid <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
 ```
-
-    ## Observations: 138,393
-    ## Variables: 23
-    ## $ routedataid       <int> 6234830, 6234830, 6234830, 6234830, 6234830, 6…
-    ## $ countrynum        <int> 840, 840, 840, 840, 840, 840, 840, 840, 840, 8…
-    ## $ statenum          <int> 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25…
-    ## $ route             <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-    ## $ rpid              <int> 101, 101, 101, 101, 101, 101, 101, 101, 101, 1…
-    ## $ year              <int> 1967, 1967, 1967, 1967, 1967, 1967, 1967, 1967…
-    ## $ aou               <int> 1840, 2000, 2010, 2890, 3100, 3131, 3160, 3390…
-    ## $ count10           <dbl> 0, 0, 0, 12, 1, 0, 3, 0, 0, 0, 0, 0, 0, 2, 2, …
-    ## $ count20           <dbl> 0, 0, 0, 22, 0, 0, 2, 0, 0, 0, 0, 0, 1, 7, 0, …
-    ## $ count30           <dbl> 1, 0, 0, 7, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0…
-    ## $ count40           <dbl> 30, 3, 1, 7, 0, 1, 2, 1, 0, 0, 0, 1, 0, 6, 2, …
-    ## $ count50           <dbl> 5, 0, 0, 12, 0, 0, 0, 0, 1, 0, 0, 0, 2, 5, 1, …
-    ## $ stoptotal         <dbl> 3, 1, 1, 37, 1, 1, 7, 1, 1, 1, 1, 1, 2, 11, 5,…
-    ## $ speciestotal      <dbl> 36, 3, 1, 60, 1, 1, 7, 1, 1, 1, 1, 1, 3, 20, 5…
-    ## $ routeID           <chr> "25 1", "25 1", "25 1", "25 1", "25 1", "25 1"…
-    ## $ routename         <fct> OAK GROVE, OAK GROVE, OAK GROVE, OAK GROVE, OA…
-    ## $ active            <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-    ## $ latitude          <dbl> 30.92918, 30.92918, 30.92918, 30.92918, 30.929…
-    ## $ longitude         <dbl> -87.40794, -87.40794, -87.40794, -87.40794, -8…
-    ## $ stratum           <int> 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4…
-    ## $ bcr               <int> 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27, 27…
-    ## $ routetypeid       <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
-    ## $ routetypedetailid <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
 
 We could merge the bbs count data with the species list to avoid having
 to refer to AOU, then just subset using species name (e.g. ’House
@@ -289,8 +277,7 @@ flBBS.subset <- subset_speciesList(flBBS, fam.ind = "Passeridae")
 flBBS.subset <- subset_speciesList(flBBS, fam.ind = c("Passeridae", "Parulidae")) # or remove multiple fams
 ```
 
-Retrieve BBS analysis results and data credibility measures
------------------------------------------------------------
+## Retrieve BBS analysis results and data credibility measures
 
 There are a few options for obtaining species trends estimates and
 credibility measures: 1) download the entire region-species csvs for
@@ -315,7 +302,7 @@ Get annual trend estimates for Florida 1966-2016 analysis:
 results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates. 
 ```
 
-<img src="README_files/figure-markdown_github/plottrend-1.png" width="33%" />
+<img src="man/figures/plottrend-1.png" width="33%" />
 
 ### Options 2: Retrieve region-specific estimates using web-scraping
 
@@ -332,47 +319,46 @@ cred <- get_credibility_trends() # default here is Florida House Sparrows.
 
 # credibility colors correspond with the color scheme used on the BBS results page
 cred %>% distinct(credibilityNumber, credibilityColor, credibilityClass)
+#>   credibilityNumber credibilityColor     credibilityClass
+#> 1                 2              Red important_deficiency
+#> 2                 0             Blue        no_deficiency
+#> 3                 1           Yellow           deficiency
 ```
-
-    ##   credibilityNumber credibilityColor     credibilityClass
-    ## 1                 2              Red important_deficiency
-    ## 2                 0             Blue        no_deficiency
-    ## 3                 1           Yellow           deficiency
 
 Trend estimates are also listed in `cred` for Florida House Sparrow
 data:
 
-    ## Observations: 1
-    ## Variables: 12
-    ## $ Species           <chr> "House Sparrow"
-    ## $ N                 <int> 83
-    ## $ Trend_1966_2015   <dbl> -7.08
-    ## $ CI_2.5_1966_2015  <chr> "-7.99"
-    ## $ CI_97.5_1966_2015 <chr> "-6.10"
-    ## $ Trend_2005_2015   <dbl> -8.25
-    ## $ CI_2.5_2005_2015  <chr> "-11.30"
-    ## $ CI_97.5_2005_2015 <chr> "-5.28"
-    ## $ RA                <dbl> 6.44
-    ## $ credibilityNumber <chr> "0"
-    ## $ credibilityColor  <fct> Blue
-    ## $ credibilityClass  <fct> no_deficiency
+    #> Observations: 0
+    #> Variables: 12
+    #> $ Species           <chr> 
+    #> $ N                 <dbl> 
+    #> $ Trend_1966_2015   <dbl> 
+    #> $ CI_2.5_1966_2015  <dbl> 
+    #> $ CI_97.5_1966_2015 <dbl> 
+    #> $ Trend_2005_2015   <dbl> 
+    #> $ CI_2.5_2005_2015  <dbl> 
+    #> $ CI_97.5_2005_2015 <dbl> 
+    #> $ RA                <dbl> 
+    #> $ credibilityNumber <chr> 
+    #> $ credibilityColor  <fct> 
+    #> $ credibilityClass  <fct>
 
 #### Steps for obtaining argument “url” in function `get_credibility_trends`:
 
 First, visit the USGS Patuxent Wildlife Research Center’s [website for
 BBS results](https://www.mbr-pwrc.usgs.gov/) Online
-<a href="https://www.mbr-pwrc.usgs.gov/" class="uri">https://www.mbr-pwrc.usgs.gov/</a>.
+<https://www.mbr-pwrc.usgs.gov/>.
 
 Next, enable the drop-down **Survey Results**, and choose **Trend
-Estimates (by region)** (left) and choose the desired region
-(e.g. Florida). Finally, copy the URL address for the page including the
-results and credibility measures (e.g. Florida):
+Estimates (by region)** and choose the desired region (e.g. Florida).
+<img src="man/figures/regcred_select_trendests_byregion.png" width="50%" />
 
-<!-- ![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px} -->
-<!-- ![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px} -->
+Finally, copy the URL address for the page including the results and
+credibility measures (e.g. Florida):
 
-Acknowledgments
-===============
+<img src="man/figures/regcred_select_fl.png" width="50%" />
+
+# Acknowledgments
 
 We thank the participatory scientists who collect data annually for the
 North American Breeding Bird Survey, and the Patuxent Wildlife Research
