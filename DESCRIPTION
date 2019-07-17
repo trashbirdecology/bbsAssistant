@@ -29,5 +29,7 @@ Suggests:
     covr,
     knitr,
     usethis,
-    rmarkdown
+    rmarkdown,
+    spelling
 VignetteBuilder: knitr
+Language: en-US
