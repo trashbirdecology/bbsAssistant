@@ -4,7 +4,9 @@ context("get_regions")
 test_that(
   "Region data contains US and CA countries & the countryNum column name is assigned correctly.",
   {
-    skip_on_travis()
+    testthat::skip_on_travis()
+    testthat::skip_if_offline()
+    
     RegionCodes <- get_regions()
     if (!exists('RegionCodes'))
       RegionCodes <- get_regions()
