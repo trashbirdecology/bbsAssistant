@@ -1,6 +1,6 @@
 Package: bbsAssistant
 Title: Helper Functions for Obtaining Data and Information from the North American Breeding Bird Survey (BBS)
-Version: 0.0.1
+Version: 1.0.0
 Maintainer: Jessica Burnett <jessicaleighburnett@gmail.com>
 Authors@R: c(
   person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
