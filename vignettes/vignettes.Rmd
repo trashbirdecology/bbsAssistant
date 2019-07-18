@@ -1,6 +1,10 @@
 ---
 title: "vignettes"
-output: pdf_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{vignettes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -20,16 +24,6 @@ library(bbsAssistant)
 library(magrittr)
 library(dplyr)
 library(stringr)
-library(feather)
-library(xml2)
-library(readr)
-library(stringr)
-library(dplyr)
-library(here)
-library(glue)
-library(rvest)
-library(magrittr)
-library(tidyr)
 ```
 
 ## Downloading the BBS data from USGS FTP 
@@ -178,16 +172,14 @@ There are a few options for obtaining species trends estimates and credibility m
 The function `get_analysis_results` allows you to specify an analysis type, and upload all species-regions combination estimates or annual indices to object.  Let's look at Florida House Sparrow trend estimates for Florida:  
 
 ```{r get_analysis_results, echo=TRUE}
-results <- get_analysis_results(analysis = "trend.ests") 
-# default here is to obtain the 1966-2015 species trend estimates
+results <- get_analysis_results(analysis = "trend.ests") # default here is to obtain the 1966-2015 species trend estimates
 results.flHOSP <- results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA")
 ```
 
 Get annual trend estimates for Florida 1966-2016 analysis:
 
 ```{r get_analysis_results2, echo=TRUE}
-results <- get_analysis_results(analysis = "annual.inds.2016") 
-# default here is to obtain the 1966-2015 species trend estimates. 
+results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates. 
 ```
 
 ```{r plottrend, echo=FALSE, out.width="33%"}
