@@ -24,6 +24,16 @@ library(bbsAssistant)
 library(magrittr)
 library(dplyr)
 library(stringr)
+library(feather)
+library(xml2)
+library(readr)
+library(stringr)
+library(dplyr)
+library(here)
+library(glue)
+library(rvest)
+library(magrittr)
+library(tidyr)
 ```
 
 ## Downloading the BBS data from USGS FTP 
