@@ -46,6 +46,12 @@ bbsDir <- here::here("bbsData/")
 dir.create(bbsDir)
 ```
 
+### Data 
+bbsAssistant now has the latest analysis and results from the hierarchical model for population change that is available in the BBS website, which produces annual indices of abundance for a region, and subsequently estimate the trend as the ratio of the annual indices for the first and last year of interest. You can find more information on how these results were analyzed by going to the [Regional Trend Analysis website] (https://www.mbr-pwrc.usgs.gov/bbs/trend/tf15.shtml). The previous data can be found in the archives of the BBS website. To access the results and analysis in the bbsAssistant package:
+
+
+
+
 ### Retrieve and import BBS data
 If necessary, download all or some of the BBS state-level data. Note: Downloading all the data to file takes 10-15 minutes, so only run if you have not recently downloaded the BBS data. 
 
