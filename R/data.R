@@ -4,7 +4,7 @@
 #'
 #' More detail TBD
 #'
-#' @format Describe the foramt of df:
+#' @format Describe the format of df:
 #' \describe{
 #'   \item{Credibility Code}{Color code corresponding to the quality of the data for the species/region combination}
 #'   \item{Sample Size}{}
