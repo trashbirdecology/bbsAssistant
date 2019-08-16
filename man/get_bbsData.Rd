@@ -9,7 +9,7 @@ get_bbsData(file,
   year = NULL, aou = NULL, countrynum = NULL, states = NULL)
 }
 \arguments{
-\item{file}{One file name including the .zip extension ("stateX.zip"). Preferably download a single state at a time, otherwise run time will take >1 minutes.}
+\item{file}{One file name including the .zip extension ("stateX.zip"). Preferably download a single state at a time, otherwise run time will take >1 minutes. Filenames are available for selection/subsetting in  column 'zip_states' in data("region_codes").}
 
 \item{dir}{URL to the StatesFiles.}
 
@@ -19,17 +19,22 @@ get_bbsData(file,
 
 \item{countrynum}{Vector of country ID #'s. Default = NULL (all countryNums).}
 
-\item{states}{Vector of state names Default = NULL (all states).}
+\item{states}{Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").}
 }
 \value{
 If download successful, a dataframe with the results.
 }
 \description{
-This function downloads a select subset or all the BBS data from the FTP server using the .txt file downloaded from get_regions() or using specified regions (e.g. Florida, Florida.zip). The data are saved to a temporary folder. This function was adapted from \strong{oharar/rBBS} package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter \code{file}.
+This function downloads a select subset or all the BBS data from the FTP server using the filenames in the data frame 'region_codes', column 'zip_states'. The data are downloaded from the FTP server and saved to a temporary folder. This function was adapted from \strong{oharar/rBBS} package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter \code{file}.
 }
 \examples{
-# download all species and years from Nebraska.
+# Load the region codes into memory
+\dontrun{
+data("region_codes") 
+unique(region_codes$zip_states)
+}
 
+# download all species and years from Nebraska.
 
 \dontrun{
 NE <- getDataBBS(file = "Nebrask.zip")
