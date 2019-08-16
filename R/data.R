@@ -12,14 +12,14 @@
 #'   \item{Abundance}{}
 #'   \item{Significance}{}
 #'   \item{AOU}{Five-digit species identification number according to the bird species checklist of the American Ornithologist Union (AOU)}
-#'   \item{Region}{Two-letter abreviation or code for a US state or region}
-#'   \item{Species Name}{}
+#'   \item{Region}{Regions are states, Provinces, Bird Conservation Regions (BCR), BBS Regions, Canada (excluding NF and YK), US (lower 48 states), and Survey-wide (excluding data from Alaska and NF)}
+#'   \item{Species Name}{Common name accoridng to the bird species checklist of the American Ornithologist Union (AOU)}
 #'   \item{Region Name}{Full name of the region in North American according to its region code}
 #'   \item{N Routes}{Three-digit-code that identifies the route; unique within states}
-#'   \item{Trend}{}
-#'   \item{2.5% CI}{}
-#'   \item{97.5% CI}{}
-#'   \item{Relative Abundance}{}
+#'   \item{Trend}{Ratio of annual indices for the first and last year of the interval of interest}
+#'   \item{2.5% CI}{Lower 95% confidence interval (2.5%) of the posterior distribution of the trend esitmate}
+#'   \item{97.5% CI}{Upper 95% confidence interval (97.5%) of the posterior distribution of the trend estimate}
+#'   \item{Relative Abundance}{Estimated relative abundance of species/region}
 #' }
 #' @source \url{https://www.mbr-pwrc.usgs.gov/bbs/BBS_1966-2017_core_trend_revised_v2.csv}
 "trend_ests_core_1966to2017"
@@ -33,7 +33,7 @@
 #' @format Describe the format of df:
 #' \describe{
 #'   \item{AOU}{Five digit species identification number according to the bird species checklist of the American Ornithologist Union (AOU)}
-#'   \item{Region}{Two letter abreviation for a US state or region}
+#'   \item{Region}{Regions are states, Provinces, Bird Conservation Regions (BCR), BBS Regions, Canada (excluding NF and YK), US (lower 48 states), and Survey-wide (excluding data from Alaska and NF)}
 #'   \item{Year}{Four digit year of survey, from 1966-2017}
 #'   \item{Index}{Annual index of species/region abundance estimated using a hierarchical model}
 #'   \item{2.5% CI}{Lower 95% confidence interval (2.5%) of the annual index of abundance}
@@ -51,7 +51,7 @@
 #' @format Describe the format of df:
 #' \describe{
 #'   \item{AOU}{Five digit species identification number according to the bird species checklist of the American Ornithologist Union (AOU)}
-#'   \item{Region}{Two letter abreviation for a US state or region}
+#'   \item{Region}{Regions are states, Provinces, Bird Conservation Regions (BCR), BBS Regions, Canada (excluding NF and YK), US (lower 48 states), and Survey-wide (excluding data from Alaska and NF)}
 #'   \item{Year}{Four digit year of survey, from 1966-2017}
 #'   \item{Index}{Annual index of species/region abundance estimated using a hierarchical model}
 #'   \item{2.5% CI}{Lower 95% confidence interval (2.5%) of the annual index of abundance}
