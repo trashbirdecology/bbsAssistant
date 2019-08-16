@@ -11,11 +11,11 @@
 #'   \item{Precision}{}
 #'   \item{Abundance}{}
 #'   \item{Significance}{}
-#'   \item{AOU}{}
-#'   \item{Region}{}
+#'   \item{AOU}{Five-digit species identification number according to the bird species checklist of the American Ornithologist Union (AOU)}
+#'   \item{Region}{Two-letter abreviation or code for a US state or region}
 #'   \item{Species Name}{}
-#'   \item{Region Name}{}
-#'   \item{N Routes}{}
+#'   \item{Region Name}{Full name of the region in North American according to its region code}
+#'   \item{N Routes}{Three-digit-code that identifies the route; unique within states}
 #'   \item{Trend}{}
 #'   \item{2.5% CI}{}
 #'   \item{97.5% CI}{}
@@ -32,9 +32,9 @@
 #'
 #' @format Describe the format of df:
 #' \describe{
-#'   \item{AOU}{}
-#'   \item{Region}{}
-#'   \item{Year}{}
+#'   \item{AOU}{Five digit species identification number according to the bird species checklist of the American Ornithologist Union (AOU)}
+#'   \item{Region}{Two letter abreviation for a US state or region}
+#'   \item{Year}{Four digit year of survey, from 1966-2017}
 #'   \item{Index}{}
 #'   \item{2.5% CI}{}
 #'   \item{97.5% CI}{}
@@ -50,9 +50,9 @@
 #'
 #' @format Describe the format of df:
 #' \describe{
-#'   \item{AOU}{}
-#'   \item{Region}{}
-#'   \item{Year}{}
+#'   \item{AOU}{Five digit species identification number according to the bird species checklist of the American Ornithologist Union (AOU)}
+#'   \item{Region}{Two letter abreviation for a US state or region}
+#'   \item{Year}{Four digit year of survey, from 1966-2017}
 #'   \item{Index}{}
 #'   \item{2.5% CI}{}
 #'   \item{97.5% CI}{}
