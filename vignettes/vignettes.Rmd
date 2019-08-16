@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 # Brief Overview of bbsAssistant Functionality 
 ## Installing package and loading dependencies
 ```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
-# devtools::install_github("trashbirdecology/bbsAssistant", dependencies = TRUE, force=FALSE)
+devtools::install_github("trashbirdecology/bbsAssistant")
 library(bbsAssistant)
 library(magrittr)
 library(dplyr)
@@ -208,19 +208,19 @@ results.flHOSP <- results %>% filter(Species.Name=="House Sparrow", Region.Code=
 
 Get annual trend estimates for Florida 1966-2016 analysis:
 
-```{r get_analysis_results2, echo=TRUE}
+```{r get_analysis_results2, echo=TRUE, eval=FALSE}
 results <- get_analysis_results(analysis = "annual.inds.2016") # default here is to obtain the 1966-2015 species trend estimates. 
 ```
 
-```{r plottrend, echo=FALSE, out.width="33%"}
-library(ggplot2)
-ggplot(data = results %>% filter(AOU.Number=='s06882',
-                   Region.Code=="S05"),
-       aes(Year, Annual.Index))+
-    geom_point() + 
-    labs(y="HOSP annual population \ntrend index in region S05")+
-    theme_bw()
-```
+<!-- ```{r plottrend, echo=FALSE, out.width="33%"} -->
+<!-- library(ggplot2) -->
+<!-- ggplot(data = results %>% filter(AOU.Number=='s06882', -->
+<!--                    Region.Code=="S05"), -->
+<!--        aes(Year, Annual.Index))+ -->
+<!--     geom_point() +  -->
+<!--     labs(y="HOSP annual population \ntrend index in region S05")+ -->
+<!--     theme_bw() -->
+<!-- ``` -->
 
 ### Option 2: Load results as data objects
 
@@ -244,7 +244,7 @@ ggplot(data = annual_index_core_1966to2017 %>% filter(AOU=='06882',
 
 ## Biodiversity indices from the raw BBS data
 Biodiversity indices are easily calculated on the raw BBS data. For example, species richness in all routes of Florida over time:
-```{r }
+```{r getrich}
 ggplot(data = flBBS %>% 
     group_by(year) %>% 
     mutate(rich = n_distinct(aou)) %>% 
@@ -255,7 +255,7 @@ ggplot(data = flBBS %>%
 
 
 Average richness per route in Florida over time:
-```{r }
+```{r plotrich}
 temp <- flBBS %>% 
     group_by(year, route) %>% 
     mutate(rich = n_distinct(aou)) %>% 
@@ -291,9 +291,7 @@ ggplot(aes(y = rich, x = factor(year)), data = temp) +
 
 <!-- <!-- ![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px} --> -->
 
-
 <!-- <!-- ![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px} --> -->
-
 
 # Acknowledgments
 We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code as applicable.
