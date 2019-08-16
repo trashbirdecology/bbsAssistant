@@ -62,4 +62,21 @@
 
 
 
+# region_codes ----------------------------------------
+#' Annual population trend indices for species/regions in the core BBS region, 1966-2017
+#'
+#' Description TBD
+#'
+#' @format Describe the format of df:
+#' \describe{
+#'   \item{CountryNum}{BBS country codes associated with United States (484), Mexico (484), and Canada (840)}
+#'   \item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
+#'   \item{State}{The proper name of the (US/MEX) state or (CAN) province}
+#'   \item{zip_states}{The filename of the .zip compressed BBS count data located on the FTP server. These files do not exist for Mexican states, so == NA}
+#' }
+#' @source \url{https://www.mbr-pwrc.usgs.gov/bbs/inde_1966-2017_core_v2.csv}
+"annual_index_core_1966to2017"
+
+
+
 

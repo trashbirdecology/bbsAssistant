@@ -11,7 +11,7 @@
 #' @examples
 #' # download BBS route data.
 #' \dontrun{
-#' RouteInfo <- get_routeInfo()
+#' routeInfo <- get_routeInfo()
 #' }
 #'
 
@@ -51,7 +51,5 @@ get_routeInfo <- function(
                 dplyr::filter(RouteTypeID %in% RouteTypeID)
         }
 
-    
-    
     return(routeDat)
 }
