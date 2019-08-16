@@ -1,11 +1,11 @@
 #' @title Download USGS Breeding Bird Survey data to file and import into the environment.
-#' @description This function downloads a select subset or all the BBS data from the FTP server using the .txt file downloaded from get_regions() or using specified regions (e.g. Florida, Florida.zip). The data are saved to a temporary folder. This function was adapted from **oharar/rBBS** package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter `file`.
-#' @param file One file name including the .zip extension ("stateX.zip"). Preferably download a single state at a time, otherwise run time will take >1 minutes.
+#' @description This function downloads a select subset or all the BBS data from the FTP server using the filenames in the data frame 'region_codes', column 'zip_states'. The data are downloaded from the FTP server and saved to a temporary folder. This function was adapted from **oharar/rBBS** package. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter `file`.
+#' @param file One file name including the .zip extension ("stateX.zip"). Preferably download a single state at a time, otherwise run time will take >1 minutes. Filenames are available for selection/subsetting in  column 'zip_states' in data("region_codes").
 #' @param dir URL to the StatesFiles.
 #' @param year Vector of years. Default = NULL (all years).
 #' @param aou Vector of AOU numeric codes. Default = NULL (all species). (For species list visit the BBS FTP site (ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/).
 #' @param countrynum Vector of country ID #'s. Default = NULL (all countryNums).
-#' @param states Vector of state names Default = NULL (all states).
+#' @param states Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").
 #' @importFrom magrittr %>%
 #' @importFrom utils download.file
 #' @importFrom utils read.csv
@@ -13,8 +13,13 @@
 #' @importFrom stats family
 #' @return If download successful, a dataframe with the results.
 #' @examples
+#' # Load the region codes into memory
+#' \dontrun{
+#' data("region_codes") 
+#' unique(region_codes$zip_states)
+#' }
+#' 
 #' # download all species and years from Nebraska.
-#'
 #'
 #' \dontrun{
 #' NE <- getDataBBS(file = "Nebrask.zip")
@@ -28,7 +33,8 @@ get_bbsData <- function(file,
                         aou = NULL,
                         countrynum = NULL,
                         states = NULL) {
-    # Download and unzip the files as specified by file.
+    
+    # Download the select (or all) state data from the FTP server and unzip the files to a temporary folder, as specified by `file`.
     dat <-
         get_unzip(ZipName = paste0(dir, file),
                   FileName = gsub("^Fifty", "fifty", gsub("zip", "csv", file)))
