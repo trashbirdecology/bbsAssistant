@@ -6,11 +6,11 @@
 #'
 #' @format Describe the format of df:
 #' \describe{
-#'   \item{Credibility Code}{Color code corresponding to the quality of the data for the species/region combination}
-#'   \item{Sample Size}{}
-#'   \item{Precision}{}
-#'   \item{Abundance}{}
-#'   \item{Significance}{}
+#'   \item{Credibility Code}{Color code corresponding to the quality of the data for the species/region combination (R=Red, Y=Yellow, B=Blue). Descriptions of the categories can be found [here] (https://www.mbr-pwrc.usgs.gov/bbs/trendmap17/credinfo.html)}
+#'   \item{Sample Size}{Color code corresponding to the quality of the data for the species/region combination (R=Red, Y=Yellow, B=Blue). Descriptions of the categories can be found [here] (https://www.mbr-pwrc.usgs.gov/bbs/trendmap17/credinfo.html)}
+#'   \item{Precision}{Color code corresponding to the quality of the data for the species/region combination (R=Red, Y=Yellow, B=Blue). Descriptions of the categories can be found [here] (https://www.mbr-pwrc.usgs.gov/bbs/trendmap17/credinfo.html)}
+#'   \item{Abundance}{Color code corresponding to the quality of the data for the species/region combination (R=Red, Y=Yellow, B=Blue). Descriptions of the categories can be found [here] (https://www.mbr-pwrc.usgs.gov/bbs/trendmap17/credinfo.html)}
+#'   \item{Significance}{Color code corresponding to the quality of the data for the species/region combination (R=Red, Y=Yellow, B=Blue). Descriptions of the categories can be found [here] (https://www.mbr-pwrc.usgs.gov/bbs/trendmap17/credinfo.html)}
 #'   \item{AOU}{Five-digit species identification number according to the bird species checklist of the American Ornithologist Union (AOU)}
 #'   \item{Region}{Regions are states, Provinces, Bird Conservation Regions (BCR), BBS Regions, Canada (excluding NF and YK), US (lower 48 states), and Survey-wide (excluding data from Alaska and NF)}
 #'   \item{Species Name}{Common name accoridng to the bird species checklist of the American Ornithologist Union (AOU)}
