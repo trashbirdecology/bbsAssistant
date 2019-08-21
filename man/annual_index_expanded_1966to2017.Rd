@@ -3,7 +3,7 @@
 \docType{data}
 \name{annual_index_expanded_1966to2017}
 \alias{annual_index_expanded_1966to2017}
-\title{Annual population trend indices for species/regions in the exanded BBS region, 1966-2017}
+\title{Annual population trend indices for species/regions in the expanded BBS region, 1966-2017}
 \format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 491550 rows and 6 columns.}
 \source{
 \url{https://www.mbr-pwrc.usgs.gov/bbs/inde_1993-2017_expanded.csv}

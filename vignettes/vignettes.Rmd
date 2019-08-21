@@ -87,6 +87,7 @@ regionFileName <- region_codes$zip_states
 
 Once we have one or more region filenames, we can use function `get_bbsData` to download the .zip file to a temporary folder (unless otherwise specified), and *import* the temp file to R object. The R object, flBBS, contains the raw BBS count data.
 ```{r, echo=TRUE}
+require(bbsAssistant)
 flBBS <- get_bbsData(file=regionFileName.use)
 ```
 
