@@ -28,7 +28,7 @@ library(stringr)
 ```
 
 ## Function Descriptions and Vignettes
-For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette (`usethis::build_vignettes()`; or run `/vignettes/vignettes.Rmd`).
+For function descriptions please build the manual (`devtools::build_manual()`) and for an example build the vignette (`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`).
 
 ## Contributions
 To make a contribution visit the [contributions instructions](.github/CONTRIBUTIONS.MD). Contributors must adhere to the [Code of Conduct](.github/CODE_OF_CONDUCT.MD). 
