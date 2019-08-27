@@ -37,7 +37,7 @@ unique(region_codes$zip_states)
 # download all species and years from Nebraska.
 
 \dontrun{
-NE <- getDataBBS(file = "Nebrask.zip")
+NE <- get_bbsData(file = "Nebrask.zip")
 }
 
 }
