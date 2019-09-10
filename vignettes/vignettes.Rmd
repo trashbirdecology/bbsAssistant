@@ -89,7 +89,7 @@ Once we have one or more region filenames, we can use function `get_bbsData` to 
 flBBS <- get_bbsData(file=regionFileName.use)
 ```
 
-Next, we can download the BBS route-level geographic information and metadata, and append this to the original data.
+Next, download the BBS route-level geographic information and metadata, and append this to the original data.
 ```{r getroutes, echo=TRUE}
 routes <- get_routeInfo() # retrieve route-level data
 flBBS <- dplyr::left_join(flBBS, routes) # merge route-level data to bird count data
@@ -170,17 +170,20 @@ for (i in 1:length(featherNames)) {
 ```
 
 ## Subsetting the BBS count data
-First, retrieve the species list from the BBS FTP server. The BBS data uses aou numbering scheme to classify species, and includes columns for taxonomic family, order, genus and species epithet. These data were imported from file [SpeciesList.txt](ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/) on the USGS BBS FTP server.
-```{r getSpList, echo=TRUE}
-spp <- get_speciesList()
-# glimpse(spp)
-```
-__CAUTION__: These aou numbers are NOT the same as the numbering system used by the [AOU bird checklist](http://checklist.aou.org/). Please use the data ("spp") to subset species. 
 
+### by AOU number
 Subset the data by species AOU # (e.g., House Sparrow aou = 06882)
 ```{r subset_bySpeciesList, echo=TRUE}
 subset_speciesList(myData = flBBS, aou.ind = 06882)
 ```
+
+### by taxonomic designation
+First, retrieve the species list from the BBS FTP server. The BBS data uses aou numbering scheme to classify species, and includes columns for taxonomic family, order, genus and species epithet. These data were imported from file [SpeciesList.txt](ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/) on the USGS BBS FTP server.
+```{r species, echo=TRUE}
+spp <- get_speciesList()
+# glimpse(spp)
+```
+__CAUTION__: These aou numbers are NOT the same as the numbering system used by the [AOU bird checklist](http://checklist.aou.org/). Please use the data ("spp") to subset species. 
 
 You can also merge the BBS county data with the species list to avoid having to refer to AOU, then just subset using species name (e.g. 'House Sparrow'). Note, however, that this is is computationallity expensive when subsetting the entire BBS data set. 
 ```{r getHospData, echo=TRUE}
@@ -264,8 +267,6 @@ ggplot(aes(y = rich, x = factor(year)), data = temp) +
 
 # Acknowledgments
 We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code as applicable.
-
-
 
 <!-- ### Option 2: Retrieve region-specific estimates using web-scraping  -->
 <!-- Another useful feature of this package is the ability to retrieve data credibility and species trend estimates from the BBS results using the function `get_credibility_trends`. This function allows the user to input a url to the region- or species-specific results page (see instructions below), as opposed to using function `get_analysis_results`. As an example, we  retrieve the credibility scores and species trend estimates for **House Sparrows in Florida**. -->
