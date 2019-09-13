@@ -53,18 +53,17 @@ the package and dependencies:
 
 ``` r
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         dependencies = TRUE, force=FALSE)
+                         dependencies = TRUE, force=TRUE)
 library(bbsAssistant)
 library(magrittr)
 library(dplyr)
 library(stringr)
 ```
 
-## Function Descriptions and Vignettes
+## Function Descriptions and Vignette
+For a quick overview of the package functionality see the [Vignette](https://trashbirdecology.github.io/bbsAssistant/articles/vignettes.html). 
 
-For function descriptions please build the manual
-(`devtools::build_manual()`) and for an example build the vignette
-(`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`).
+For functionality please see the package [Manual](https://trashbirdecology.github.io/bbsAssistant/reference/index.html).
 
 ## Contributions
 

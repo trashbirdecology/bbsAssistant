@@ -18,10 +18,15 @@ export_bbsFeathers <- function(dataIn, newDir= here::here("bbsData/"), filename)
     # Create the new filename as .feather
     filename = gsub(".zip" , ".feather", filename)
     
+    
+    
     # Keep only necessary columns
     temp = dataIn %>%
-        dplyr::select(year, countrynum, statenum, route, bcr, latitude, longitude,
-                      aou, stoptotal)
+        dplyr::select(year, countrynum, statenum, route, 
+                      aou, stoptotal,
+                      # these are optional, the others are necessary for most purposes.
+                      contains("bcr"), contains("latitude"), contains("longitude")
+        )
     
     # Write to disk
     feather::write_feather(x = temp, path = paste0(newDir, filename))
