@@ -7,17 +7,11 @@
 \format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 882492 rows and 6 columns.}
 \source{
 \url{https://www.mbr-pwrc.usgs.gov/bbs/inde_1966-2017_core_v2.csv}
-
-\url{https://www.mbr-pwrc.usgs.gov/bbs/inde_1966-2017_core_v2.csv}
 }
 \usage{
 annual_index_core_1966to2017
-
-annual_index_core_1966to2017
 }
 \description{
-Description TBD
-
 Description TBD
 }
 \keyword{datasets}
