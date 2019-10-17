@@ -39,6 +39,6 @@ This package contains two options for obtaining the population trend estimates p
 
 
 # Acknowledgements
-We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code as applicable.
+We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](https://github.com/oharar/rbbs) package and are mentioned in function source code as applicable.
 
 # References
