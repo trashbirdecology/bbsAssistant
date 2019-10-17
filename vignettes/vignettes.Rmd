@@ -58,7 +58,7 @@ glimpse(region_codes)
 # unique(region_codes$State) # unique US and Mexican states, and Canadian provinces
 ```
 
-Data objcects `annual_index_core_1966to2017`, `annual_index_expanded_1966to2017`, and `trend_ests_core_1966to2017` contain the results for each Region x Year x Species (AOU) from the hierarhical population trend models. Model results include annual population trend indices for each region/species combination. Details of the modelsa and results can be found on the BBS's [Regional Trend Analysis webpage] (https://www.mbr-pwrc.usgs.gov/bbs/trend/tf15.shtml). 
+Data objects `annual_index_core_1966to2017`, `annual_index_expanded_1966to2017`, and `trend_ests_core_1966to2017` contain the results for each Region x Year x Species (AOU) from the hierarhical population trend models. Model results include annual population trend indices for each region/species combination. Details of the modelsa and results can be found on the BBS's [Regional Trend Analysis webpage] (https://www.mbr-pwrc.usgs.gov/bbs/trend/tf15.shtml). 
 
 ```{r annualindex}
 data("annual_index_core_1966to2017")
@@ -185,7 +185,7 @@ spp <- get_speciesList()
 ```
 __CAUTION__: These aou numbers are NOT the same as the numbering system used by the [AOU bird checklist](http://checklist.aou.org/). Please use the data ("spp") to subset species. 
 
-You can also merge the BBS county data with the species list to avoid having to refer to AOU, then just subset using species name (e.g. 'House Sparrow'). Note, however, that this is is computationallity expensive when subsetting the entire BBS data set. 
+You can also merge the BBS county data with the species list to avoid having to refer to AOU, then just subset using species name (e.g. 'House Sparrow'). Note, however, that this is is computationally expensive when subsetting the entire BBS data set. 
 ```{r getHospData, echo=TRUE}
 flBBS <- left_join(flBBS, spp)
 hospBBS <- flBBS %>% filter(commonName=="House Sparrow") 
