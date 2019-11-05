@@ -58,7 +58,7 @@ glimpse(region_codes)
 # unique(region_codes$State) # unique US and Mexican states, and Canadian provinces
 ```
 
-Data objects `annual_index_core_1966to2017`, `annual_index_expanded_1966to2017`, and `trend_ests_core_1966to2017` contain the results for each Region x Year x Species (AOU) from the hierarhical population trend models. Model results include annual population trend indices for each region/species combination. Details of the modelsa and results can be found on the BBS's [Regional Trend Analysis webpage] (https://www.mbr-pwrc.usgs.gov/bbs/trend/tf15.shtml). 
+Data objects `annual_index_core_1966to2017`, `annual_index_expanded_1966to2017`, and `trend_ests_core_1966to2017` contain the results for each Region x Year x Species (AOU) from the hierarhical population trend models. Model results include annual population trend indices for each region/species combination. Details of the models and results can be found on the BBS's [Regional Trend Analysis webpage] (https://www.mbr-pwrc.usgs.gov/bbs/trend/tf15.shtml). 
 
 ```{r annualindex}
 data("annual_index_core_1966to2017")
