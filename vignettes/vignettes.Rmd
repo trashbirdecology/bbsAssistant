@@ -171,8 +171,8 @@ for (i in 1:length(featherNames)) {
 
 ## Subsetting the BBS count data
 
-### by AOU number
-Subset the data by species AOU # (e.g., House Sparrow aou = 06882)
+### Remove species by AOU number
+Subset the data by removing species based on the AOU # (e.g., House Sparrow aou = 06882)
 ```{r subset_bySpeciesList, echo=TRUE}
 subset_speciesList(myData = flBBS, aou.ind = 06882)
 ```
