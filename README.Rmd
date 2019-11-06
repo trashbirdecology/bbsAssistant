@@ -31,7 +31,7 @@ library(stringr)
 For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette (`usethis::build_vignettes()`; or run `/vignettes/vignettes.Rmd`).
 
 ## Contributions
-To make a contribution visit the [contributions instructions](.github/CONTRIBUTING.md). Contributors must adhere to the [Code of Conduct](.github/CODE_OF_CONDUCT.md). 
+To make a contribution visit the [contributions instructions](https://trashbirdecology.github.io/bbsAssistant/CONTRIBUTING.html). Contributors must adhere to the [Code of Conduct](https://trashbirdecology.github.io/bbsAssistant/CODE_OF_CONDUCT.html). 
 
 ## Acknowledgments
 We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. Some functions in this package were adapted from the [rBBS](https://github.com/oharar/rbbs) package and are mentioned in function source code as applicable.
