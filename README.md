@@ -1,7 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2019-08-16
+Last updated: 2019-11-05
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -28,7 +28,7 @@ Although the primary audience is for those wishing to use BBS data in
 Program R for visualization or analysis, this package can be used to
 quickly download the BBS data to file for use elsewhere.
 
-The BBS team uses hierarhical modelling techniques to generate
+The BBS team uses hierarchical modelling techniques to generate
 population trend estimates (J. Sauer et al. 2017) at various spatial
 scales [see the BBS results webpage](https://www.mbr-pwrc.usgs.gov/).
 Given the variability in data availability, the BBS team also provides
@@ -53,23 +53,25 @@ the package and dependencies:
 
 ``` r
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         dependencies = TRUE, force=TRUE)
+                         dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
 library(magrittr)
 library(dplyr)
 library(stringr)
 ```
 
-## Function Descriptions and Vignette
-For a quick overview of the package functionality see the [Vignette](https://trashbirdecology.github.io/bbsAssistant/articles/vignettes.html). 
+## Function Descriptions and Vignettes
 
-For functionality please see the package [Manual](https://trashbirdecology.github.io/bbsAssistant/reference/index.html).
+For function descriptions please build the manual
+(`devtools::build_manual("bbsAssistant)`) and for an example build the
+vignette (`usethis::build_vignettes()`; or run
+`/vignettes/vignettes.Rmd`).
 
 ## Contributions
 
 To make a contribution visit the [contributions
-instructions](.github/CONTRIBUTIONS.MD). Contributors must adhere to the
-[Code of Conduct](.github/CODE_OF_CONDUCT.MD).
+instructions](.github/CONTRIBUTING.md). Contributors must adhere to the
+[Code of Conduct](.github/CODE_OF_CONDUCT.md).
 
 ## Acknowledgments
 
@@ -100,7 +102,8 @@ Sauer, John R, Keith L Pardieck, David J Ziolkowski Jr, Adam C Smith,
 Marie-Anne R Hudson, Vicente Rodriguez, Humberto Berlanga, Daniel K
 Niven, and William A Link. 2017. “The First 50 Years of the North
 American Breeding Bird Survey.” *The Condor: Ornithological
-Applications* 119 (3): 576–93. <https://doi.org/10.1650/CONDOR-17-83.1>.
+Applications* 119 (3). Oxford University Press: 576–93.
+<https://doi.org/10.1650/CONDOR-17-83.1>.
 
 </div>
 
