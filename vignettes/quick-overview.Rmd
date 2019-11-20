@@ -57,7 +57,7 @@ download_bbs(year = 2000:2016, country.nums = 840, data.dir = bbsDir)
 
 ### Import the BBS state-level data into R for manipulation
 Now, let's import the data into R by first decompressing the .zip files in `~/raw-data`, and loading into file as a single data frame. 
-
+I STOPPED HERE !!!!!!!!!!!!!!!!!!!!!!!!!
 ```{r}
 list.files(bbsDir)
 ```
