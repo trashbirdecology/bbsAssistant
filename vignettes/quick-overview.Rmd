@@ -38,32 +38,33 @@ This vignette gives a quick overview of the primary functions of the bbsAssistan
 1. Loading and exploring the data stored in the package (updated annually by maintainer or as-needed)
 1. Visualizing BBS data and official BBS model results 
 
-## A: Retrieving, Downloading, and Manipulating the route-level data
-This package was creating for expediting the BBS data retrieval process, which currently comprises multiple .zip files retrievable individually via FTP server, and caters to those wishing to access BBS route-level data across _multiple states_. 
+## A: Retrieving, Downloading, and Manipulating route-level BBS data
+This package was creating for expediting the BBS data retrieval process, which currently comprises multiple .zip files retrievable individually via FTP server, and is particularly useful for to those wishing to quickly download and manipulate route-level data from  _multiple regions/states_. 
 
 ### Download the BBS data from USGS
-First, please specify a direcotry within which to store the downloaded BBS data. Here, we specify the directory as `/raw-data/`, and create the directory if it does not already exist. 
-
-```{r get-bbs-data1}
+First, please specify a directory within which to store the downloaded BBS data. Here, we specify the directory as `/raw-data/`, and create the directory if it does not already exist. 
+```{r set_dir}
 bbsDir <- here::here("raw-data/")
 dir.create(bbsDir) 
 ```
 
 Next, we can use the function, `get_bbsData` to retrieve all or a selection of the data from the USGS webpage using FTP. These compressed (.zip) files are stored to local directory, as specified by argument `data.dir`. Let's download only the data from the U.S. (country code 840) for years 2000-2016:
 
-```{r get-bbs-data2, message=FALSE}
-download_bbs(year = 2000:2016, country.nums = 840, data.dir = bbsDir)
+```{r download_bbs, message=FALSE}
+download_bbs(country.names="USA", data.dir = bbsDir)
 ```
 
-### Import the BBS state-level data into R for manipulation
-Now, let's import the data into R by first decompressing the .zip files in `~/raw-data`, and loading into file as a single data frame. 
-I STOPPED HERE !!!!!!!!!!!!!!!!!!!!!!!!!
-```{r}
-list.files(bbsDir)
+### Import the BBS state-level data into R
+Now, let's import the data into R by first decompressing each .zip files of interest from subdirectory `~/raw-data`, and loading each into a list element. Finally, we will condense all into a single data frame. Let's import Florida and Nebraska only:
+```{r import_bbs}
+bbs.df <- import_bbs(data.dir = here::here("/raw-data/"),state.names=c("FlOrIda", "NEBRASKa")) # capitalization irrevlevant.
+(bbs.df$State)
 ```
+
 ```{r}
 
 ```
+
 ```{r}
 
 ```
@@ -145,7 +146,8 @@ feather <- import_bbsFeathers(newDir  = bbsDir,
 glimpse(feather) # Notice that the data imported from disk (feathers) differs from the original BBS data in that the # of columns is fewer (9 and 12 columns, respectively).
 ```
 
-### Downloading all raw count data for Canada and the United States
+### Downloading route-level point count data
+
 If you wish to download and/or import ALL the data, you might choose to do so in a loop. Note: this is expensive! The following are not run in this example.
 ```{r downloadAllBBS, eval = FALSE, echo=TRUE}
 # Throw a warning if files exist
