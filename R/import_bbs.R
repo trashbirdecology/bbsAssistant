@@ -24,7 +24,7 @@ import_bbs <- function(data.dir=paste0(getwd(),"/raw-data/"), state.names=NULL) 
             region_codes %>% dplyr::filter(State %in% state.names)
         file_names <- file_names$State # we want a vector and not a df...
         
-        }else( # identify all .zip files in directory which match those listed as regions
+        }else( # identify all .zip files in directory which match those listed as regions. We should do this because we might store other .zip files in the same directory.
         file_names <- region_codes$zip_states 
         )
         
@@ -54,11 +54,6 @@ import_bbs <- function(data.dir=paste0(getwd(),"/raw-data/"), state.names=NULL) 
         bbs.df <- bind_rows(bbs.df, read.csv(unzipped.file.paths[i]))   
     }
 
-    # Join region-level information to the data frame...
-    bbs.df <- left_join(bbs.df, region_codes %>% dplyr::select(-zip_states) %>% mutate(StateNum=as.integer(StateNum), 
-                                                                                       CountryNum=as.integer(CountryNum), 
-                                                                                       State = as.character(State)))
-        
    return(bbs.df)
     
 } # end function

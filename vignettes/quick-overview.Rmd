@@ -57,12 +57,12 @@ download_bbs(country.names="USA", data.dir = bbsDir)
 ### Import the BBS state-level data into R
 Now, let's import the data into R by first decompressing each .zip files of interest from subdirectory `~/raw-data`, and loading each into a list element. Finally, we will condense all into a single data frame. Let's import Florida and Nebraska only:
 ```{r import_bbs}
-bbs.df <- import_bbs(data.dir = here::here("/raw-data/"),state.names=c("FlOrIda", "NEBRASKa")) # capitalization irrevlevant.
-(bbs.df$State)
+bbs.df <- import_bbs(data.dir = bbsDir,state.names=c("FlOrIda", "NEBRASKa")) # capitalization irrevlevant.
+str(bbs.df)
 ```
 
-```{r}
-
+```{r routes}
+routes <- get_routes(data.dir=bbsDir)
 ```
 
 ```{r}
