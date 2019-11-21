@@ -1,71 +1,82 @@
 #' @title Download (and optionally subset) USGS Breeding Bird Survey data to file and import into the environment.
 #' @description This function downloads a select subset or all the compressed, state-level BBS data from the USGS server via FTP. Parts of this function were adapted from [**oharar/rBBS**](http://www.github.com/oharar/rbbs). Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter `file`.
 #' @param data.link URL to the location of 'States' compressed files on the USGS server. Defaults to the FTP location.
-#' @param year Vector of years. Default = NULL (all years available).
-#' @param aou Vector of AOU numeric codes. Default = NULL (all species). For species list visit the BBS FTP site (ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/), or use `get_SpeciesList`.
-#' @param country.nums Vector of country ID #'s. Default = NULL (all countryNums). Codes: 484==Mexico; 124==Canada; 840==Canada. State/region files DNE for Mexico as of November 2019
+#' @param country.namess Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico). Country identities correspond with country codes (BBS): 484==Mexico; 124==Canada; 840==United States. State/region files DNE for Mexico as of November 2019
 #' @param state.names Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").
-#' @param state.nums Vector of state numbers (used by BBS). Default = NULL (all states). See column 'StateNum' in data("region_codes").
-#' @param common.names Vector of common names (please see `get_speciesList()` column `commonName` for common name formatting). To avoid errors, we recommend indexing by AOU numbers
 #' @param data.dir Where to save the 'raw' BBS data. Defaults to subdir 'raw-data' in the current working directory. 
-#' @param ext File extension for saving the BBS state-level 'raw' data to file. Default = "csv". 
 #' @importFrom magrittr %>%
 #' @importFrom utils download.file
-#' @importFrom utils read.csv
-#' @importFrom utils read.table
-#' @importFrom stats family
 #' @return .zip files saved to local directory, as specified by data.dir
 #' @examples
 #' # Load the region codes into memory
 #' \dontrun{
 #' data("region_codes")
-#' unique(region_codes$zip_states)
+#' unique(region_codes$zip_states) # list of zip files available via USGS BBS FTP.
 #' }
 #'
-#' # download all species and years from Nebraska.
+#' # download all route-level data from Canada
 #' \dontrun{
-#' NE <- download_bbs(file = "Nebrask.zip")
+#' download_bbs(state.names="Canada)
+#' }
+#'
+#' # download all route-level data from Nebraska
+#' \dontrun{
+#' download_bbs(state.names="Nebraska")
 #' }
 #'
 #' @export download_bbs
 #'
 download_bbs <-
     function(data.link =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
-             year = NULL,
-             aou = NULL,
-             country.nums = NULL,
-             state.names = NULL,
-             state.nums = NULL, 
-             ext = "csv", 
-             data.dir = here::here("raw-data/")
+             data.dir = here::here("raw-data/"),
+             country.names= NULL, 
+             state.names = NULL
              ) {
         
         ##### ERRORS #####
-        # Do not proceed if state names and numbers are specified!
-        if (!is.null(state.names) &
-            !is.null(state.nums)){
-            stop(
-                'Both arguments,  "state.nums" and "state.names" are specified. \nPlease specify only one!'
-            )
-        }
-        
-        # Stop if country.nums are misspecified
-        if(!is.null(country.nums)){
-            if(!country.nums %in% c(124, 484, 840)){
-                stop("Argument country.nums must be NULL or one of c(124, 484, 480).")
-            }
+        # Stop if country.names are misspecified
+        if(!is.null(country.names)){
+          if(!toupper(country.names) %in% toupper(c("Mexico", "MX", "US", "USA", "U.S.A.", "United States","United States of America", "CA","Canada"))){
+                stop("Argument country.nums must be NULL or one more of c('Mexico', 'MX', 'US', 'USA', 'United States', 'CA','Canada').")}
+            
+          # create an index for specifying country names
+            country.ind <- NULL
+            # United States
+            if(toupper(country.names) %in% toupper(c("US", "USA", "U.S.A.", "United States", "United States of America"))){
+              country.ind <- c(country.ind, 840)}
+              # 84==Mexico; 124==Canada; 840==USA
+            
+            # Canada
+            if(toupper(country.names) %in% toupper(c('CA', "Canada"))){
+              country.ind <- c(country.ind, 124)}
+            # 84==Mexico; 124==Canada; 840==USA
+            
+            # Mexico
+            if(toupper(country.names) %in% toupper(c('MX', "Mexico"))){
+              country.ind <- c(country.ind, 84)}
+            # 84==Mexico; 124==Canada; 840==USA
+            
         }
         ##### END ERRORS #####   
      
      
     # Load region_codes into memory to access the .zip filenames for retrieving data...   
      data(region_codes) 
-     
+      
+      
+      # Force state/region names to upper
+      # Force state.names to upper
+      if(!is.null(state.names)){ state.names <- toupper(state.names)
+      # keep only the state names specified in state.names
+      region_codes$State <- toupper(region_codes$State)
+      region_codes <- region_codes %>% dplyr::filter(State %in% state.names)
+      
+      }
       ## If country.nums is specified, then subset the list of filenames for downloading to speed things up. 
-      if(!is.null(country.nums)){
-          region_codes <- region_codes %>% dplyr::filter(CountryNum %in% country.nums)}
+      if(!is.null(country.ind)){
+          region_codes <- region_codes %>% dplyr::filter(CountryNum %in% country.ind)}
 
-
+      
     # Download each .zip file and save to local machine
     urls <- paste0(data.link, region_codes$zip_states)
     
@@ -75,7 +86,7 @@ download_bbs <-
         choice <- menu(c(paste0("Yes, overwrite files to ", data.dir),
                "No, cancel download.")
              )
-        }     
+        }else(choice <- NULL)     
     # Retrieve and save the state-level files specified in 'files'   to local disk      
     # Download the select (or all) state data from the FTP server and unzip the files to a temporary folder, as specified by `files`.
     if(choice == 1) {
@@ -88,7 +99,9 @@ download_bbs <-
             fn.local <- paste0(data.dir, state, ".zip")
             suppressMessages(download.file(url = urls[i], destfile = fn.local))
             cat("Files saved locally in directory ", data.dir)
-        }
-    }
+            }
     }
     if(choice == 2) print("NO DATA DOWNLOADED.")
+    }
+
+    
