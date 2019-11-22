@@ -7,8 +7,9 @@
 #' @param nacc.spp.url URL for the NACC species checklist, which contains taxonomic sorting information no available in BBS SpeciesList.
 #' @param aou.alpha URL for the 4- and 6-letter alpha codes associated with latin names (source: IBP).
 #' @param data.dir Location of where to save the compressed and decompressed species lists and taxonomic files. Defaults to ~/raw-data
-#' @export get_species
-#' @return A list (`species.lists`) comprising the BBS species list (`bbs.spp`) and the [NACC species checklist](http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B) (`nacc.spp`), and the AOU alpha checklist (`aou.alpha`). 
+#' @return A list comprising the BBS species list (bbs.spp), the [NACC species checklist](http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B) (nacc.spp), and the AOU alpha checklist (aou.alpha). 
+#' @export get_species 
+#' 
 
 get_species <- function(bbs.spp.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/SpeciesList.txt",
                         nacc.spp.url = "http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B",

@@ -6,7 +6,7 @@
 #' @param bbs.stratum Vector of BBS physiographic stratum codes by which to filter the routes.
 #' @param bcr.num A vector of Bird Conservation Region codes where by which to filter the routes.
 #' #' @return A dataframe containing route-level information. 
-#' @active.only Logical. Default=TRUE. Keep only active routes (ie.. Active==1). 
+#' @param active.only Logical. Default=TRUE. Keep only active routes (ie.. Active==1). 
 #' @importFrom magrittr %>%
 #' @export get_routes
 #' @examples

@@ -13,7 +13,7 @@
 \arguments{
 \item{bbs.spp.url}{URL for SpeciesList.txt file, retrieved via FTP.}
 
-\item{nacc.spp.url}{URL for the NACC species checklist, which contains taxonomic sorting information no availabble in BBS SpeciesList.}
+\item{nacc.spp.url}{URL for the NACC species checklist, which contains taxonomic sorting information no available in BBS SpeciesList.}
 
 \item{data.dir}{Location of where to save the compressed and decompressed species lists and taxonomic files. Defaults to ~/raw-data}
 

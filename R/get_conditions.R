@@ -5,8 +5,8 @@
 #' @param active.only Logical. Default = FALSE. If true, keeps only the active routes.
 #' @return A dataframe containing route-level information. 
 #' @importFrom magrittr %>%
-#' @examples
 #' @export get_conditions
+#' @examples
 #' # download and import the BBS route information
 #' \dontrun{
 #' conditions.df <- get_conditions()

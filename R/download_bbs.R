@@ -6,6 +6,7 @@
 #' @param data.dir Where to save the 'raw' BBS data. Defaults to subdir 'raw-data' in the current working directory. 
 #' @importFrom magrittr %>%
 #' @importFrom utils download.file
+#' @export download_bbs
 #' @return .zip files saved to local directory, as specified by data.dir
 #' @examples
 #' # Load the region codes into memory
@@ -23,8 +24,6 @@
 #' \dontrun{
 #' download_bbs(state.names="Nebraska")
 #' }
-#'
-#' @export download_bbs
 #'
 download_bbs <-
     function(data.link =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",

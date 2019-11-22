@@ -14,6 +14,8 @@
 
 \item{data.dir}{Location for storing the routes.zip and unzipped file(s). We recommend storing this in the raw-data directory.}
 
+\item{active.only}{Logical. Default=TRUE. Keep only active routes (ie.. Active==1).}
+
 \item{route.type}{Default = 1 (roadside surveys only). One or more numbers indicating route substrate (1=roadside;2=water;3=off-road; Default = 1, roadside only).}
 
 \item{bbs.stratum}{Vector of BBS physiographic stratum codes by which to filter the routes.}

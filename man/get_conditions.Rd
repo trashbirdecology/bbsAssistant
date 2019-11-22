@@ -19,5 +19,12 @@
 A dataframe containing route-level information.
 }
 \description{
-This function downloads the 'weather.zip' file from the BBS FTP server. This data contains information on local weather conditions during each survey. Also includes auxiliary information about the survey methods, dates of surveys, and start and end times. This data will typically be incorporated into detection probabilty functions.
+This function downloads the 'weather.zip' file from the BBS FTP server. This data contains information on local weather conditions during each survey. Also includes auxiliary information about the survey methods, dates of surveys, and start and end times. This data will typically be incorporated into detection probability functions.
+}
+\examples{
+# download and import the BBS route information
+\dontrun{
+conditions.df <- get_conditions()
+}
+
 }
