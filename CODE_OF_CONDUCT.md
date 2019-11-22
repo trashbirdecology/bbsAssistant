@@ -1,4 +1,4 @@
-Contributor Covenant Code of Conduct
+Code of Conduct
 ====================================
 
 This code of conduct applies to participation in this GitHub repository.
