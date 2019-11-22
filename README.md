@@ -1,17 +1,16 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2019-11-21
+Last updated: 2019-11-22
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<!-- Silence lines 12 - 13 when rendering .pdf.  -->
-
+[![status](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69/status.svg)](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
 build
 status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 <!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## About
 
@@ -87,8 +86,8 @@ accessible.
 Pardieck, KL, DJ Ziolkowski Jr, M Lutmerding, and MAR Hudson. 2018.
 “North American Breeding Bird Survey Dataset 1966–2017, Version
 2017.0.” *US Geological Survey, Patuxent Wildlife Research Center,
-Laurel, Maryland, USA.\[online\] URL: Https://Www. Pwrc. Usgs.
-Gov/BBS/RawData*.
+Laurel, Maryland, USA.\[online\] URL:
+Https://Www.pwrc.usgs.gov/BBS/RawData*.
 
 </div>
 
