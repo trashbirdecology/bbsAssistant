@@ -19,18 +19,6 @@ knitr::opts_chunk$set(
 ```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
 devtools::install_github("trashbirdecology/bbsAssistant", force=FALSE)
 library(bbsAssistant)
-library(magrittr)
-library(dplyr)
-library(stringr)
-library(feather)
-library(xml2)
-library(readr)
-library(stringr)
-library(dplyr)
-library(here)
-library(glue)
-library(rvest)
-library(tidyr)
 ```
 
 # Brief Overview of bbsAssistant Functionality 
