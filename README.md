@@ -1,17 +1,16 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2019-11-05
+Last updated: 2019-11-22
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<!-- Silence lines 12 - 13 when rendering .pdf.  -->
-
+[![status](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69/status.svg)](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
 build
 status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
-![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 <!-- [![Coverage status](https://codecov.io/gh/trashbirdecology/bbsAssistant/master/graph/badge.svg)](https://codecov.io/github/trashbirdecology/bbsAssistant?branch=master) -->
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## About
 
@@ -55,32 +54,33 @@ the package and dependencies:
 devtools::install_github("trashbirdecology/bbsAssistant", 
                          dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
-library(magrittr)
-library(dplyr)
-library(stringr)
 ```
 
 ## Function Descriptions and Vignettes
 
 For function descriptions please build the manual
 (`devtools::build_manual("bbsAssistant)`) and for an example build the
-vignette (`usethis::build_vignettes()`; or run
+vignette (`devtools::build_vignettes()`; or run
 `/vignettes/vignettes.Rmd`).
 
 ## Contributions
 
 To make a contribution visit the [contributions
-instructions](.github/CONTRIBUTING.md). Contributors must adhere to the
-[Code of Conduct](.github/CODE_OF_CONDUCT.md).
+instructions](https://trashbirdecology.github.io/bbsAssistant/CONTRIBUTING.html).
+Contributors must adhere to the [Code of
+Conduct](https://trashbirdecology.github.io/bbsAssistant/CODE_OF_CONDUCT.html).
 
 ## Acknowledgments
 
-We thank the participatory scientists who collect data annually for the
-North American Breeding Bird Survey, and the Patuxent Wildlife Research
-Center for making these data publicly and easily accessible. Some
-functions in this package were adapted from the
-[rBBS](github.com/oharar/rbbs) package and are mentioned in function
-source code as applicable.
+We especially thank the participatory scientists who collect data
+annually for the North American Breeding Bird Survey, and the Patuxent
+Wildlife Research Center for making these data publicly and easily
+accessible. We also thank [Ethan White;
+@ethanwhite](https://github.com/ethanwhite) and [Joseph Stachelek;
+@jsta](https://github.com/ethanwhite) for their feedback on a previous
+iteartion of this software which greatly improved usability,
+functionality, and efficiency. We also thank past and future
+contributors to this package.
 
 ## References
 
@@ -91,8 +91,8 @@ source code as applicable.
 Pardieck, KL, DJ Ziolkowski Jr, M Lutmerding, and MAR Hudson. 2018.
 “North American Breeding Bird Survey Dataset 1966–2017, Version
 2017.0.” *US Geological Survey, Patuxent Wildlife Research Center,
-Laurel, Maryland, USA.\[online\] URL: Https://Www. Pwrc. Usgs.
-Gov/BBS/RawData*.
+Laurel, Maryland, USA.\[online\] URL:
+Https://Www.pwrc.usgs.gov/BBS/RawData*.
 
 </div>
 
