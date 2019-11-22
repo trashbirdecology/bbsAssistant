@@ -1,7 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2019-11-05
+Last updated: 2019-11-21
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -55,32 +55,28 @@ the package and dependencies:
 devtools::install_github("trashbirdecology/bbsAssistant", 
                          dependencies = TRUE, force=FALSE)
 library(bbsAssistant)
-library(magrittr)
-library(dplyr)
-library(stringr)
 ```
 
 ## Function Descriptions and Vignettes
 
 For function descriptions please build the manual
 (`devtools::build_manual("bbsAssistant)`) and for an example build the
-vignette (`usethis::build_vignettes()`; or run
+vignette (`devtools::build_vignettes()`; or run
 `/vignettes/vignettes.Rmd`).
 
 ## Contributions
 
 To make a contribution visit the [contributions
-instructions](.github/CONTRIBUTING.md). Contributors must adhere to the
-[Code of Conduct](.github/CODE_OF_CONDUCT.md).
+instructions](https://trashbirdecology.github.io/bbsAssistant/CONTRIBUTING.html).
+Contributors must adhere to the [Code of
+Conduct](https://trashbirdecology.github.io/bbsAssistant/CODE_OF_CONDUCT.html).
 
 ## Acknowledgments
 
-We thank the participatory scientists who collect data annually for the
-North American Breeding Bird Survey, and the Patuxent Wildlife Research
-Center for making these data publicly and easily accessible. Some
-functions in this package were adapted from the
-[rBBS](github.com/oharar/rbbs) package and are mentioned in function
-source code as applicable.
+We especially thank the participatory scientists who collect data
+annually for the North American Breeding Bird Survey, and the Patuxent
+Wildlife Research Center for making these data publicly and easily
+accessible.
 
 ## References
 
