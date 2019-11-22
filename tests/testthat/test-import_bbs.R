@@ -1,6 +1,6 @@
 context("import_bbs")
 
-test_that("Function `import_bbs` successfully unzipped and imported all BBS state files data into the environment"
+test_that("Function `import_bbs` successfully unzipped and imported all BBS state files data into the environment",
           {
               tempdir <- here::here("tests/temp-dir/")
               sn<-c("FLORIDA", "NebraskA")
