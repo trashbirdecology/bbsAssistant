@@ -6,7 +6,8 @@
 #' @export import_bbs
 
 import_bbs <- function(data.dir=paste0(getwd(),"/raw-data/"), state.names=NULL) {
-
+require(dplyr)
+  
         # Pull in the region code file to identify .zip filenames..
         data(region_codes)
         # Removing those with missing ZIp_states (i.e. Mexico...)
@@ -25,16 +26,16 @@ import_bbs <- function(data.dir=paste0(getwd(),"/raw-data/"), state.names=NULL) 
         file_names <- file_names$State # we want a vector and not a df...
         
         }else( # identify all .zip files in directory which match those listed as regions. We should do this because we might store other .zip files in the same directory.
-        file_names <- region_codes$zip_states 
+        file_names <- region_codes$State 
         )
         
         # Idenitfy all files in dir which match file.names
+        file.paths <- NULL
         for(i in seq_along(file_names)){
-            if(i ==1) {file.paths <- NULL}
-            file.paths <- c(file.paths, list.files(data.dir, pattern=file_names[i], full.names=TRUE))
-            }
+          file.paths[i] <- list.files(data.dir, pattern=file_names[i], full.names=TRUE)
+                      }
         
-            
+          
     if(is.null(file.paths) | length(file.paths)==0) stop("No files to import. If `state.names` is specified, please ensure files exist in `data.dir`.")
             
     # Decompress the files to the data.dir.  
@@ -55,8 +56,9 @@ import_bbs <- function(data.dir=paste0(getwd(),"/raw-data/"), state.names=NULL) 
     }
 
    # Add a column for State (state, region name) to the bbs data frame to make life a lot easier...   
-   if(!exists("routes")) routes <- get_routes() #import routes if DNE
-   states <- routes %>% distinct(StateNum, State)   
+   if(!exists("routes")) routes <- get_routes(data.dir = data.dir) #import routes if DNE
+   states <-  unique(routes[c("StateNum", "State")])
+     
    if(setdiff(bbs.df$StateNum, states$StateNum) %>% length() == 0){bbs.df <- left_join(bbs.df, states)}else(warning("Something is up with your StateNums. Some StateNums do not exist in `region_codes$StateNum`. You've got problems, friend."))
 
    return(bbs.df)

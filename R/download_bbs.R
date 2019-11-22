@@ -61,41 +61,48 @@ download_bbs <-
      
     # Load region_codes into memory to access the .zip filenames for retrieving data...   
      data(region_codes) 
-      
-      
-      # Force state/region names to upper
-      # Force state.names to upper
-      if(!is.null(state.names)){ state.names <- toupper(state.names)
-      # keep only the state names specified in state.names
       region_codes$State <- toupper(region_codes$State)
+
+      # Force state.names to upper
+      if(exists("state.names") & !is.null(state.names)){ 
+        # force stae.names index
+        state.names <- toupper(state.names)
+      # keep only the state names specified in state.names
       region_codes <- region_codes %>% dplyr::filter(State %in% state.names)
       
       }
-      ## If country.nums is specified, then subset the list of filenames for downloading to speed things up. 
-      if(!is.null(country.ind)){
-          region_codes <- region_codes %>% dplyr::filter(CountryNum %in% country.ind)}
+      
+      ## If conuntry.names is specified, then country.ind was created. Subset the list of filenames for downloading to speed things up. 
+      if(exists("country.ind")){
+        if(!is.null(country.ind)){
+          region_codes <- region_codes %>% dplyr::filter(CountryNum %in% country.ind)}}
 
       
     # Download each .zip file and save to local machine
     urls <- paste0(data.link, region_codes$zip_states)
     
-        
     # Make sure the user wants to overwrite existing data. 
     if(length(list.files(data.dir))>0){
         choice <- menu(c(paste0("Yes, overwrite files to ", data.dir),
                "No, cancel download.")
              )
-        }else(choice <- NULL)     
+        }else(choice <- 1)     
+    
     # Retrieve and save the state-level files specified in 'files'   to local disk      
     # Download the select (or all) state data from the FTP server and unzip the files to a temporary folder, as specified by `files`.
     if(choice == 1) {
         for (i in seq_along(urls)) {
-            state <- region_codes$State[i]
-            if (state %in% c("District of Columbia", 'PUERTO RICO'))
-                next(paste0("Skipping ", state))
+          ## deal with a pesky "NA" in an inefficient manner..
+              #### if the url == ...NA then skip
+            if(urls[i]=="ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/NA")next() 
+            
+          state.name <- region_codes$State[i]
+            
+            # if (state %in% c("District of Columbia", 'PUERTO RICO'))
+            #     next(paste0("Skipping ", state))
             
             cat("Saving state .zip file", i, " of ", length(urls), "\n")
-            fn.local <- paste0(data.dir, state, ".zip")
+            fn.local <- paste0(data.dir, state.name, ".zip")
             suppressMessages(download.file(url = urls[i], destfile = fn.local))
             cat("Files saved locally in directory ", data.dir)
             }
