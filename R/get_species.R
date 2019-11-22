@@ -4,7 +4,7 @@
 #' For more information on AOU/AOS/NACC species checklists please visit http://checklist.aou.org/
 #'    Portions of this function (lines for importing and munging the BBS species list, specieslist.txt) were borrowed from the function [`rBBS::getSpNames()`](https://github.com/oharar/rBBS/blob/master/R/GetSpNames.R). This package is not actively maintained, therefore we export it via `bbsAssistant`.
 #' @param bbs.spp.url URL for SpeciesList.txt file, retrieved via FTP.
-#' @param nacc.spp.url URL for the NACC species checklist, which contains taxonomic sorting information no availabble in BBS SpeciesList.
+#' @param nacc.spp.url URL for the NACC species checklist, which contains taxonomic sorting information no available in BBS SpeciesList.
 #' @param aou.alpha URL for the 4- and 6-letter alpha codes associated with latin names (source: IBP).
 #' @param data.dir Location of where to save the compressed and decompressed species lists and taxonomic files. Defaults to ~/raw-data
 #' @export get_species

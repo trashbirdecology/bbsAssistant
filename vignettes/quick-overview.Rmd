@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```
 # Quick Start: Install and Load Development Version and Dependencies
 ```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
-devtools::install_github("trashbirdecology/bbsAssistant")
+devtools::install_github("trashbirdecology/bbsAssistant", force=FALSE)
 library(bbsAssistant)
 library(magrittr)
 library(dplyr)
@@ -84,7 +84,7 @@ names(spp.lists)
 ```
 
 ### Taxonomic subsetting
-You can further perform taxonomic subsetting functions using existing filtering featuers (e.g. `dplyr::filter`) according to latin (column: `latinName`) and common names  (column: `commonName`), AOU codes (columns `aou.alpha` and `aou.num`), and taxonomic order  (column: `order`)  and family (column: `family`). Below is a simple example of using common name to subset the BBS data:
+You can further perform taxonomic subsetting functions using existing filtering features (e.g. `dplyr::filter`) according to latin (column: `latinName`) and common names  (column: `commonName`), AOU codes (columns `aou.alpha` and `aou.num`), and taxonomic order  (column: `order`)  and family (column: `family`). Below is a simple example of using common name to subset the BBS data:
 ```{r subset_example}
 # Identify the AOU code __that the BBS uses__ and is associated with _House Sparrow_
 hosp.bbs.id <- spp.lists$BBS %>%  dplyr::filter(common_eng=="House Sparrow")
@@ -157,7 +157,7 @@ ggplot(spp.rich)+geom_line(aes(x=Year, y=rich, color=as.factor(StateNum)))+ggtit
 ```
 
 ## III: Retrieve BBS hierarchical modelling results and species-by-region data credibility measures
-The BBS is renowned for their population trend estimates derived at multiple spatial scales using hierarhical modelling within a Bayesian framework [e.g., @sauer2017north]. These trend estimates are visualized via GUI at the BBS webpage, but those wishing to interact with the estimates may find it cumbersome to retrieve and integrate these estimates into their workflow. 
+The BBS is renowned for their population trend estimates derived at multiple spatial scales using hierarchical modelling within a Bayesian framework [e.g., @sauer2017north]. These trend estimates are visualized via GUI at the BBS webpage, but those wishing to interact with the estimates may find it cumbersome to retrieve and integrate these estimates into their workflow. 
 
 There are a few options for obtaining species trends estimates and credibility measures: 1) download the entire region-species .csv files for various analyses via FTP on the [BBS webpage](https://www.pwrc.usgs.gov/bbs/results/), 2) obtain the URL to the species- or region-specific estimates for the most recent, public-facing trend estimates, or 3) retrieve from one of the data packages in `bbsAssistant` (see Section IV, below, for more details). 
 
@@ -186,7 +186,7 @@ ggplot(data = results %>% filter(AOU.Number=='s06882',
 
 ### Option 2: Load results as data objects
 
-Results will be updated annually as they are released from the Patuxent Wildlife Research Centerm and can be called using the function `utils::data()`:
+Results will be updated annually as they are released from the Patuxent Wildlife Research Center, and can be called using the function `utils::data()`:
 ```{r loadResults, echo=TRUE}
 data("annual_index_core_1966to2017")
 head(annual_index_core_1966to2017, 2)

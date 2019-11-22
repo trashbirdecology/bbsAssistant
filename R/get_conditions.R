@@ -1,5 +1,5 @@
 #' @title Download and import the annual conditions per route  via FTP (USGS BBS)
-#' @description This function downloads the 'weather.zip' file from the BBS FTP server. This data contains information on local weather conditions during each survey. Also includes auxiliary information about the survey methods, dates of surveys, and start and end times. This data will typically be incorporated into detection probabilty functions.
+#' @description This function downloads the 'weather.zip' file from the BBS FTP server. This data contains information on local weather conditions during each survey. Also includes auxiliary information about the survey methods, dates of surveys, and start and end times. This data will typically be incorporated into detection probability functions.
 #' @param data.dir Location for storing the routes.zip and unzipped file(s). We recommend storing this in the raw-data directory. 
 #' @param conds.url URL for location of the routes.zip folder.
 #' @param active.only Logical. Default = FALSE. If true, keeps only the active routes.
