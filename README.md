@@ -75,12 +75,7 @@ Conduct](https://trashbirdecology.github.io/bbsAssistant/CODE_OF_CONDUCT.html).
 We especially thank the participatory scientists who collect data
 annually for the North American Breeding Bird Survey, and the Patuxent
 Wildlife Research Center for making these data publicly and easily
-accessible. We also thank [Ethan White;
-@ethanwhite](https://github.com/ethanwhite) and [Joseph Stachelek;
-@jsta](https://github.com/ethanwhite) for their feedback on a previous
-iteartion of this software which greatly improved usability,
-functionality, and efficiency. We also thank past and future
-contributors to this package.
+accessible.
 
 ## References
 
