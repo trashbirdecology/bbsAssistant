@@ -3,6 +3,7 @@
 export("%>%")
 export(download_bbs)
 export(get_analysis_results)
+export(get_conditions)
 export(get_credibility_trends)
 export(get_routes)
 export(get_species)
