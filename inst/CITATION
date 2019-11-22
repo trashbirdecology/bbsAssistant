@@ -1,0 +1,38 @@
+citHeader("To cite bbsAssistant in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "",
+  author   = "",
+  journal  = "",
+  year     = "",
+  volume   = "",
+  number   = "",
+  pages    = "",
+  url      = "",
+  textVersion = paste(
+    )
+)
+
+
+citHeader("To cite the most recent version Breeding Bird Survey dataset in publication, please use:")
+
+citEntry(
+  entry = "misc",
+  title = "North American Breeding Bird Survey Dataset 1966 - 2018",
+  version = "2017.0",
+  publisher = "U.S. Geological Survey, Patuxent Wildlife Research Center.",
+  author = "Pardieck, Keith L. and Ziolkowski Jr., Dave J. and Lutmerding, M. and Aponte, Veronica and Hudson, Marie-Anne R.",
+  textVersion = "Pardieck, K.L., D.J. Ziolkowski Jr., M. Lutmerding, V. Aponte and M-A.R. Hudson. 2019. North American Breeding Bird Survey Dataset 1966 - 2018, version 2018.0. U.S. Geological Survey, Patuxent Wildlife Research Center. https://doi.org/10.5066/P9HE8XYJ."
+)
+
+
+citHeader("To cite the most recent version of the Breeding Bird Survey analysis and results, please use what follows. For alternative versions, please visit http://www.mbr-pwrc.usgs.gov/bbs")
+
+citEntry(
+entry="misc",
+  title    = "The North American Breeding Bird Survey, Results and Analysis 1966-2015",
+  version   = "2.07.2017",
+  publisher  = "U.S. Geological Survey, Patuxent Wildlife Research Center",
+  textVersion     = "Sauer, J. R., D. K. Niven, J. E. Hines, D. J. Ziolkowski, Jr, K. L. Pardieck, J. E. Fallon, and W. A. Link. 2017. The North American Breeding Bird Survey, Results and Analysis 1966 - 2015. Version 2.07.2017 USGS Patuxent Wildlife Research Center, Laurel, MD"
+)

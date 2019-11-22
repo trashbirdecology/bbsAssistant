@@ -14,3 +14,7 @@ Meta
 docs/
 vignettes/vignettes.pdf
 data/readme.rtf
+
+/raw-data/
+
+/tests/temp-dir/
