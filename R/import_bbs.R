@@ -37,22 +37,27 @@ import_bbs <- function(data.dir=paste0(getwd(),"/raw-data/"), state.names=NULL) 
             
     if(is.null(file.paths) | length(file.paths)==0) stop("No files to import. If `state.names` is specified, please ensure files exist in `data.dir`.")
             
-    # Decompress the files to the data.dir        
+    # Decompress the files to the data.dir.  
     for(i in seq_along(file.paths)){
-        if(i==1){unzipped.file.paths = NULL}
+      print(paste0("Decompressing file ", i ," of ", length(file.paths)))
+      if(i==1){unzipped.file.paths = NULL}
         unzipped.file.paths[i] <- 
             unzip(file.paths[i], exdir = data.dir, overwrite = TRUE) # will overwrite existing files....
     }
-    
     # Now import all files which were just unzipped.     
     for(i in seq_along(unzipped.file.paths)){
-        print(paste0("Unzipping file ", i ," of ", length(unzipped.file.paths)))
+        print(paste0("Importing decompressed file ", i ," of ", length(unzipped.file.paths)))
        # Create empty df for storing all decompressed data.frames
         if(i==1){bbs.df <-NULL}
      
       # Combine region-level data
         bbs.df <- bind_rows(bbs.df, read.csv(unzipped.file.paths[i]))   
     }
+
+   # Add a column for State (state, region name) to the bbs data frame to make life a lot easier...   
+   if(!exists("routes")) routes <- get_routes() #import routes if DNE
+   states <- routes %>% distinct(StateNum, State)   
+   if(setdiff(bbs.df$StateNum, states$StateNum) %>% length() == 0){bbs.df <- left_join(bbs.df, states)}else(warning("Something is up with your StateNums. Some StateNums do not exist in `region_codes$StateNum`. You've got problems, friend."))
 
    return(bbs.df)
     

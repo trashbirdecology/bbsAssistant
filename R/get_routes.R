@@ -74,6 +74,8 @@ get_routes <- function(
             dplyr::filter(RouteTypeID %in% route.type)
     }
     
+    routes$State <- as.character(routes$State)
+    routes$RouteName <- as.character(routes$RouteName)
     
     return(routes)
 }
