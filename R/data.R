@@ -45,9 +45,6 @@
 
 # annual_index_core_1966to2017 ----------------------------------------
 #' Annual population trend indices for species/regions in the core BBS region, 1966-2017
-#'
-#' Description TBD
-#'
 #' @format Describe the format of df:
 #' \describe{
 #'   \item{AOU}{Five digit species identification number according to the bird species checklist of the American Ornithologist Union (AOU)}
@@ -64,9 +61,6 @@
 
 # region_codes ----------------------------------------
 #' Contains country and state numbers, and the associated zip filenames.#' 
-#'
-#' 
-#'
 #' @format Describe the format of df:
 #' \describe{
 #'   \item{CountryNum}{BBS country codes associated with United States (484), Mexico (484), and Canada (840)}

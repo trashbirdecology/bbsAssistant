@@ -30,7 +30,7 @@ get_credibility_trends <-
             dplyr::left_join(dotKey, by = "credibilityNumber")
         
         # Scrape trend data
-        spp_credibility_trends.temp <- webpage %>%
+        cred.temp <- webpage %>%
             rvest::html_nodes("#maincontent") %>%
             rvest::html_text() %>%
             strsplit(split = "\n") %>%
@@ -38,7 +38,7 @@ get_credibility_trends <-
             as.list()
         
         # clean up trend data
-        spp_credibility_trends <- spp_credibility_trends.temp[5:(length(spp_credibility_trends.temp) - 1)] %>%
+        bbs.cred.trends <- cred.temp[5:(length(cred.temp) - 1)] %>%
             unlist() %>%
             dplyr::as_tibble() %>%
             # dplyr::mutate(value = gsub(" ", ".", value)) %>%
@@ -80,13 +80,9 @@ get_credibility_trends <-
             dplyr::mutate(Species = gsub("\\(*", "", Species)) %>%
             cbind(dotDF) 
 
-        # This was here before, not sure why
-         # %>% 
-         #   glue::trim()
-
-        # I dont liek this alternative, but...we need to force char columns to numeric..
+        # I dont like this alternative, but...we need to force char columns to numeric..
         cols.num <- c( "N", "Trend_1966_2015", "CI_2.5_1966_2015", "CI_97.5_1966_2015", "Trend_2005_2015", "CI_2.5_2005_2015", "CI_97.5_2005_2015", "RA")
-        spp_credibility_trends[cols.num] <- sapply(spp_credibility_trends[cols.num],as.numeric)
+        bbs.cred.trends[cols.num] <- sapply(bbs.cred.trends[cols.num],as.numeric)
        
-        return(spp_credibility_trends)
+        return(bbs.cred.trends)
     }
