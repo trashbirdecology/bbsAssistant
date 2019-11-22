@@ -1,7 +1,7 @@
 ---
 title: 'bbsAsssistant: A package for downloading and munging data and information from the North American Breeding Bird Survey'
 authors:
-- affiliation: '1,2'
+- affiliation: '1'
   name: Jessica L Burnett
   orcid: 0000-0002-0896-5099
 - affiliation: '2,3'
@@ -42,6 +42,6 @@ We are aware of three R packages which retrieve and/or munge the NABBS data: rda
  
 # Acknowledgements
 We especially thank the thousands of participatory scientists who have and continuie to collect data for the North American Breeding Bird Survey program, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible.  We also thank [Ethan White; \@ethanwhite](https://github.com/ethanwhite) and [Joseph Stachelek; \@jsta](https://github.com/ethanwhite) for their feedback on a previous iteartion of this software which greatly improved usability, functionality, and efficiency. 
-
+This draft manuscript is distributed solely for purposes of scientific peer review. Its content is deliberative and predecisional, so it must not be disclosed or released by reviewers. Because the manuscript has not yet been approved for publication by the U.S. Geological Survey (USGS), it does not represent any official USGS finding or policy.
 
 # References
