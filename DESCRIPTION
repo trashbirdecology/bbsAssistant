@@ -1,13 +1,13 @@
 Package: bbsAssistant
 Title: A package for downloading and munging data and information from the North American Breeding Bird Survey
 Version: 1.0.0
-Maintainer: Jessica Burnett <jburnett@usgs.gov>
+Maintainer: Jessica Burnett <jessicaleighburnett@gmail.com>
 Authors@R: c(
-  person("Jessica", "Burnett", email = "jburnett@usgs.gov", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
+  person("Jessica", "Burnett", email = "jessicaleighburnett@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
   person("Gabriela", "Palomo-Muñoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")),
   person("Lyndsie", "Wszola", email = "", role = "aut", comment = c(ORCID = "0000-0002-2660-2048")))
 Description: This package provides helper functions for downloading and manipulating North American Breeding Bird Survey (BBS) data and metadata from the U.S. Geological Survey. The functionality streamlines this the process by which these data are accessed, downloaded locally, and imported into R.Depends: R (>= 3.5.1). 
-License: Creative Commons CC0 1.0 Universal (CC-0) 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
@@ -22,6 +22,7 @@ Imports:
     tidyr,
     magrittr
 Suggests:
+    testthat (>= 2.1.0),
     ggplot2,
     covr,
     knitr,
