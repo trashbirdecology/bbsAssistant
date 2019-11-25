@@ -9,14 +9,14 @@ authors:
   orcid: 0000-0002-2660-2048
 - affiliation: 2
   name: Gabriela Palomo-Muñoz
-date: "22 November 2019"
+date: "26 November 2019"
 output: pdf_document
 bibliography: paper.bib
 tags:
 - breeding bird survey
-- ornithology
-- data
-- web scraping
+- data retriever
+- ecology
+- point counts
 affiliations:
 - index: 1
   name: Science Analytics and Synthesis, Core Science Systems, U.S. Geological Survey, Denver, Colorado, USA
@@ -27,7 +27,7 @@ affiliations:
 ---
 
 # Summary
-
+The R package __bbsAssistant__ provides a 
 This package contains functions for downloading and munging data from the North American Breeding Bird Survey (BBS) FTP server [@pardieck2018north; @sauer2017first]. Although the FTP server provides a public interface for retrieving data and analysis results, this package consolidates the efforts of the data user by automating downloading and decompression of .zip data files, downloading route-level information, and saving them as .feather files for speedy import from disk. The data subsetting features of this package also allow the user to readily import and save to file only the data necessary for their purposes. Although the primary audience is for those wishing to use BBS data in Program R for visualization or analysis, this package can be used to quickly download the BBS data to file for use elsewhere. 
 
 # Retrieving and munging the North American Breeding Bird Survey Data and hierarhical modelling results 
