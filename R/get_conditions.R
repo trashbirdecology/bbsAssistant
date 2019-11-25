@@ -3,6 +3,7 @@
 #' @param data.dir Location for storing the routes.zip and unzipped file(s). We recommend storing this in the raw-data directory. 
 #' @param conds.url URL for location of the routes.zip folder.
 #' @param active.only Logical. Default = FALSE. If true, keeps only the active routes.
+#' @param overwrite Logical. Default = NULL. If true, will download and overwrite the existing file "Weather.zip" in data.dir.
 #' @return A dataframe containing route-level information. 
 #' @importFrom magrittr %>%
 #' @export get_conditions
@@ -15,17 +16,21 @@
 get_conditions <- function(
     conds.url =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/Weather.zip",
     data.dir = here::here("raw-data/"), 
-    active.only = FALSE
+    active.only = FALSE, 
+    overwrite=NULL
 ) {
     
     suppressWarnings(dir.create(data.dir))
     
     # Prompt to overwrite the routes data
-    if("weather.csv" %in% list.files(data.dir)){
+    if("weather.csv" %in% list.files(data.dir) & is.null(overwrite)){
         choice <- menu(c("Yes, download most recent version of weather.csv", "No, import existing routes.csv from local directory "))
-    }else(choice=1)
-    
-    if(choice==1){ # if user wants to overwrite OR data DNE then download and unzip to file in data.dir
+        if(choice==1) overwrite <- TRUE
+        if(choice==2) overwrite <- FALSE
+    }else(overwrite<-FALSE)
+
+    # if the files don't exist then we must download    
+    if(!("weather.csv" %in% list.files(data.dir)) | overwrite){ # if user wants to overwrite OR data DNE then download and unzip to file in data.dir
         # specify where routes.zip will be saved
         cond.local.path = paste0(data.dir, "Weather.zip")
         

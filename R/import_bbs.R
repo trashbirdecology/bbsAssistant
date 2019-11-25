@@ -2,10 +2,13 @@
 #' @description Import compressed (.zip) BBS data from file, combine all regions/states into a single data.frame object and load into environment.
 #' @param data.dir Location of the compressed (.zip) route-level files (one per region/states) to be imported into R. Files will also be unzipped to this directory as ".csv".
 #' @param state.names Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").
+#' @param overwrite.routes Logical. Default TRUE will download and overwrite any existing files named "routes.csv" in data.dir.
 #' @importFrom magrittr %>%
 #' @export import_bbs
 
-import_bbs <- function(data.dir=paste0(getwd(),"/raw-data/"), state.names=NULL) {
+import_bbs <- function(data.dir=paste0(getwd(),"/raw-data/"), 
+                       state.names=NULL, 
+                       overwrite.routes = TRUE) {
 require(dplyr)
   
         # Pull in the region code file to identify .zip filenames..
@@ -56,13 +59,37 @@ require(dplyr)
     }
 
    # Add a column for State (state, region name) to the bbs data frame to make life a lot easier...   
-   if(!exists("routes")) routes <- get_routes(data.dir = data.dir) #import routes if DNE
+   if(!exists("routes")) 
+   routes <- get_routes(data.dir = data.dir, overwrite=overwrite.routes) #import routes if DNE
    states <-  unique(routes[c("StateNum", "State")])
      
+   # Join the state information with the BBS data
    if(setdiff(bbs.df$StateNum, states$StateNum) %>% length() == 0){bbs.df <- left_join(bbs.df, states)}else(warning("Something is up with your StateNums. Some StateNums do not exist in `region_codes$StateNum`. You've got problems, friend."))
+   
+   # Join the route-level information (e.g. BCR, Latlon)
+   bbs <- left_join(bbs.df, routes)
+   
+   
+  # PRINT SELECT ERRORS and WARNINGS TO FILE 
+  messages.dir <- paste0(data.dir, "messages/"); suppressWarnings(dir.create(messages.dir))
+  
+    ## Get and print which appear in the bbs data frame but NOT in the routes data frame: 
+    missing.routes <- setdiff(bbs.df %>% distinct(CountryNum, StateNum, Route), 
+             routes %>% distinct(CountryNum, StateNum, Route)
+              ) %>% left_join(states) %>% 
+      mutate(message = NA)
+    ## write to file the missing routes message
+    if(nrow(missing.routes)>0){
+      missing.routes[1,ncol(missing.routes)] <- paste0("This file contains the Country x State x Route combinations which appeared in the BBS data inquiry which you retrieved and imported but did not appear in the file ", data.dir, "routes.csv")
+      fn <- paste0(messages.dir,Sys.Date(), "_missing-routes.txt")
+      write.table(x=missing.routes, file=fn, sep = ",")
+      warning(paste0("There were discrepancies among the routes present in the BBS data you imported and the routes listed in routes.csv. \n\nPlease see file  ", 
+                     fn, 
+                     " for more information. "))
+}
 
-   return(bbs.df)
+ return(bbs)
     
 } # end function
 
-# End Run -----------------------------------------------------------------
+

@@ -7,7 +7,7 @@
 
   download_bbs(data.link = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
   data.dir = here::here("raw-data/"), country.names = NULL,
-  state.names = NULL)
+  state.names = NULL, overwrite.bbs = NULL, overwrite.routes = NULL)
 }
 \arguments{
 \item{data.link}{URL to the location of 'States' compressed files on the USGS server. Defaults to the FTP location.}
@@ -15,6 +15,8 @@
 \item{data.dir}{Where to save the 'raw' BBS data. Defaults to subdir 'raw-data' in the current working directory.}
 
 \item{state.names}{Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").}
+
+\item{overwrite.bbs}{Logical. Defaults NULL. If TRUE will overwrite existing BBS data in data.dir. NULL will prompt user to force overwrite if .zip files exist in data.dir.}
 
 \item{country.namess}{Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico). Country identities correspond with country codes (BBS): 484==Mexico; 124==Canada; 840==United States. State/region files DNE for Mexico as of November 2019}
 }

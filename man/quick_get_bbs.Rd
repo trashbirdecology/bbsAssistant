@@ -7,7 +7,8 @@
 
   quick_get_bbs(data.link = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
   data.dir = here::here("raw-data/"), country.names = NULL,
-  state.names = NULL)
+  state.names = NULL, overwrite.bbs = NULL, overwrite.routes = NULL,
+  get.conditions = FALSE, overwrite.conditions = NULL)
 }
 \arguments{
 \item{data.link}{URL to the location of 'States' compressed files on the USGS server. Defaults to the FTP location.}
@@ -16,7 +17,18 @@
 
 \item{state.names}{Vector of state names to be downloaded and imported (using functions \code{bbsAssistant::downoad_bbs()} and \code{bbsAssistant::import_bbs()}. Default = NULL (all states). See column 'State' in data("region_codes").}
 
+\item{overwrite.bbs}{Logical. Defaults NULL. If TRUE will overwrite existing BBS data in data.dir. NULL will prompt user to force overwrite if .zip files exist in data.dir.}
+
+\item{overwrite.routes}{Logical. Defaults NULL. If TRUE will overwrite existing routes.csv data in data.dir. NULL will prompt user to force overwrite if routes.csv exists in data.dir.}
+
+\item{get.conditions}{Logical. Defaults FALSE. If true, will append the route-level conditions to the data frame.}
+
+\item{overwrite.conditions}{Logical. Defaults NULL. If TRUE will overwrite existing Weather.csv data in data.dir. NULL will prompt user to force overwrite if Weather.csv exists in data.dir.}
+
 \item{country.namess}{Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico). Country identities correspond with country codes (BBS): 484==Mexico; 124==Canada; 840==United States. State/region files DNE for Mexico as of November 2019}
+}
+\value{
+A data frame containing the BBS point count data and the route-level geographical information (e.g. Lat, Long, Bird Conservation Region number (BCR)).
 }
 \description{
 This function wraps the functions \code{bbsAssistant::download_bbs()} and \code{bbsAssistant::import_bbs()} for speedy retrieval and imortation of all or a selection of the BBS point count data into the local environment

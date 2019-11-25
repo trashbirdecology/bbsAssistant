@@ -23,6 +23,14 @@ devtools::install_github("trashbirdecology/bbsAssistant",
 library(bbsAssistant)
 ```
 
+## Quick Start
+Quickly retrieve all or a subset (of states/regions) of the BBS data using the wrapper function, ``bbsAssistant::quick_get_bbs()`:
+```{r quick-get-bbs}
+bbs <- quick_get_bbs(state.names = c("Florida", "Nebraska"),  # get only two states for convenience. Leave blank to retrieve all states/regions.
+                     overwrite.bbs = FALSE, overwrite.routes = FALSE,  # overwrite routes.csv and bbs data = FALSE
+                     get.conditions = TRUE, overwrite.conditions = FALSE) # get weather conditions, does not overwrite
+```
+
 ## Function Descriptions and Vignettes
 For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette (`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`).
 

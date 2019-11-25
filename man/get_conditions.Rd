@@ -6,7 +6,8 @@
 \usage{
 
   get_conditions(conds.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/Weather.zip",
-  data.dir = here::here("raw-data/"), active.only = FALSE)
+  data.dir = here::here("raw-data/"), active.only = FALSE,
+  overwrite = NULL)
 }
 \arguments{
 \item{conds.url}{URL for location of the routes.zip folder.}
@@ -14,6 +15,8 @@
 \item{data.dir}{Location for storing the routes.zip and unzipped file(s). We recommend storing this in the raw-data directory.}
 
 \item{active.only}{Logical. Default = FALSE. If true, keeps only the active routes.}
+
+\item{overwrite}{Logical. Default = NULL. If true, will download and overwrite the existing file "Weather.zip" in data.dir.}
 }
 \value{
 A dataframe containing route-level information.

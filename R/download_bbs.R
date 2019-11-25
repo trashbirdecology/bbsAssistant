@@ -3,7 +3,8 @@
 #' @param data.link URL to the location of 'States' compressed files on the USGS server. Defaults to the FTP location.
 #' @param country.namess Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico). Country identities correspond with country codes (BBS): 484==Mexico; 124==Canada; 840==United States. State/region files DNE for Mexico as of November 2019
 #' @param state.names Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").
-#' @param data.dir Where to save the 'raw' BBS data. Defaults to subdir 'raw-data' in the current working directory. 
+#' @param data.dir Where to save the 'raw' BBS data. Defaults to subdir 'raw-data' in the current working directory.
+#' @param overwrite.bbs Logical. Defaults NULL. If TRUE will overwrite existing BBS data in data.dir. NULL will prompt user to force overwrite if .zip files exist in data.dir.
 #' @importFrom magrittr %>%
 #' @importFrom utils download.file
 #' @export download_bbs
@@ -29,7 +30,9 @@ download_bbs <-
     function(data.link =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
              data.dir = here::here("raw-data/"),
              country.names= NULL, 
-             state.names = NULL
+             state.names = NULL,
+             overwrite.bbs = NULL, 
+             overwrite.routes = NULL
              ) {
         
         ##### ERRORS #####
@@ -82,15 +85,19 @@ download_bbs <-
     urls <- paste0(data.link, region_codes$zip_states)
     
     # Make sure the user wants to overwrite existing data. 
-    if(length(list.files(data.dir))>0){
+    if(is.null(overwrite.bbs) & length(list.files(data.dir))>0){
         choice <- menu(c(paste0("Yes, overwrite files to ", data.dir),
                "No, cancel download.")
              )
-        }else(choice <- 1)     
+        if(choice==1) overwrite.bbs <- TRUE
+        if(choice==2) overwrite.bbs <- FALSE
+        rm(choice)
+    }
     
-    # Retrieve and save the state-level files specified in 'files'   to local disk      
-    # Download the select (or all) state data from the FTP server and unzip the files to a temporary folder, as specified by `files`.
-    if(choice == 1) {
+    #  If files do not exist OR overwrite ==TRUE, 
+      ## Retrieve and save the state-level files specified in 'files'   to local disk      
+      ## Download the select (or all) state data from the FTP server and unzip the files to a temporary folder, as specified by `files`.
+    if(overwrite.bbs | length(list.files(data.dir))==0) {
         for (i in seq_along(urls)) {
           ## deal with a pesky "NA" in an inefficient manner..
               #### if the url == ...NA then skip
@@ -106,8 +113,7 @@ download_bbs <-
             suppressMessages(download.file(url = urls[i], destfile = fn.local))
             cat("Files saved locally in directory ", data.dir)
             }
-    }
-    if(choice == 2) print("NO DATA DOWNLOADED.")
+    }else( print("Data already exists. No data downloaded. To force installation, specify `overwrite.bbs=TRUE`, or delete local files."))
     }
 
     

@@ -7,7 +7,8 @@
 
   get_routes(routes.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/routes.zip",
   data.dir = here::here("raw-data/"), active.only = TRUE,
-  route.type = 1, bbs.stratum = NULL, bcr.num = NULL)
+  route.type = 1, bbs.stratum = NULL, bcr.num = NULL,
+  overwrite = NULL)
 }
 \arguments{
 \item{routes.url}{URL for location of the routes.zip folder.}
@@ -20,8 +21,12 @@
 
 \item{bbs.stratum}{Vector of BBS physiographic stratum codes by which to filter the routes.}
 
-\item{bcr.num}{A vector of Bird Conservation Region codes where by which to filter the routes.
-#' @return A dataframe containing route-level information.}
+\item{bcr.num}{A vector of Bird Conservation Region codes where by which to filter the routes.}
+
+\item{overwrite}{Logical. Default NULL. Will force overwrite existing file named "routes.csv" if it exists in data.dir. If NULL will prompt user to specify overwrite.}
+}
+\value{
+A dataframe containing route-level information.
 }
 \description{
 This function downloads information about route location from the BBS FTP server.
