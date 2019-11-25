@@ -21,7 +21,7 @@ devtools::install_github("trashbirdecology/bbsAssistant", force=FALSE)
 library(bbsAssistant)
 ```
 
-# Brief Overview of bbsAssistant Functionality 
+# Overview of bbsAssistant Functionality 
 This vignette gives a quick overview of the primary functions of the `bbsAssistant` package:
 1. Retrieving, downloading, and manipulating the annually-updated BBS data from the USGS servers via FTP.
 1. Loading and exploring the data stored in the package (updated annually by maintainer or as-needed)
@@ -40,26 +40,35 @@ dir.create(bbsDir)
 Next, we can use the function, `get_bbsData` to retrieve all or a selection of the data from the USGS webpage using FTP. These compressed (.zip) files are stored to local directory, as specified by argument `data.dir`. Let's download only the data from the U.S. (country code 840) for years 2000-2016:
 
 ```{r download_bbs, message=FALSE}
-download_bbs(country.names="USA", data.dir = bbsDir)
+suppressMessages(download_bbs(country.names="USA", data.dir = bbsDir, overwrite.bbs = FALSE, overwrite.routes = FALSE))
 ```
 
 ### Import the BBS state-level data into R
 Now, let's import the data into R by first decompressing each .zip files of interest from subdirectory `~/raw-data`, and loading each into a list element. Finally, we will condense all into a single data frame. Let's import Florida and Nebraska only:
 ```{r import_bbs}
-bbs.df <- import_bbs(data.dir = bbsDir,state.names=c("FlOrIda", "NEBRASKa")) # capitalization irrevlevant.
-# This data frame differs slightly from BBS raw data in that we have appended State Names (`State`) to the df
+bbs.df <- import_bbs(data.dir = bbsDir,state.names=c("FlOrIda", "NEBRASKa"), # capitalization irrevlevant.
+                    overwrite.routes = FALSE)
+                     
+# Note that the resulting data frame differs slightly from BBS raw data in that we have appended State Names (`State`) to the df.
 bbs.df$State %>% unique()
 ```
 
-### Download and route-level information
+### Download the route-level information
 Retrieve the route-level information only. This data contains basic information about route location (lat, lon, state, country), activity, BCR location, stratum (BBS), and route name. 
 ```{r routes}
-routes <- get_routes(data.dir=bbsDir)
+routes <- get_routes(data.dir=bbsDir, overwrite = FALSE)
 ```
 
 Retrieve the local conditions associated with each route-year iteration. 
 ```{r}
-conditions <- get_conditions(data.dir=bbsDir)
+conditions <- get_conditions(data.dir=bbsDir, overwrite = FALSE)
+```
+
+## Alternatively, use wrapper to download and import the BBS data:
+```{r, eval=FALSE, echo=FALSE, message=FALSE}
+bbs.df <- quick_get_bbs(data.dir = bbsDir, overwrite.bbs = FALSE, overwrite.conditions = FALSE, 
+                        overwrite.routes = FALSE, get.conditions = TRUE, 
+                        state.names = c("FlOrIda", "NEBRASKa"))
 ```
 
 ### Append taxonomic information and species indices
@@ -149,6 +158,12 @@ The BBS is renowned for their population trend estimates derived at multiple spa
 
 There are a few options for obtaining species trends estimates and credibility measures: 1) download the entire region-species .csv files for various analyses via FTP on the [BBS webpage](https://www.pwrc.usgs.gov/bbs/results/), 2) obtain the URL to the species- or region-specific estimates for the most recent, public-facing trend estimates, or 3) retrieve from one of the data packages in `bbsAssistant` (see Section IV, below, for more details). 
 
+### Steps for obtaining argument "url" in `get_credibility_trends()`:
+1. First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>.
+2. Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida). Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida; see images below)
+![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px}
+![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px}
+
 ### Option 1: Download CSV for all species-region combinations
 We provide a function which 
 
@@ -215,7 +230,6 @@ glimpse(annual_index_core_1966to2017)
 # data("trend_ests_core_1966to2017")
 ```
 
-
 # Acknowledgments
 We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data [@] publicly and easily accessible. Some lines of code for importing the BBS species list (`bbsAssistant::get_species`) was adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code [@rBBS].
 <!-- # Relevant Efforts -->
@@ -223,11 +237,3 @@ We thank the participatory scientists who collect data annually for the North Am
 
 # References
 
-#### Steps for obtaining argument "url" in function `get_credibility_trends`:
-First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>.
-
-Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida). Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida):
-
-![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px}
-
-![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px}
