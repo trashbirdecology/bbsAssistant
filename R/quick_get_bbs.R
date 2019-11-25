@@ -12,8 +12,6 @@
 #' @importFrom utils download.file
 #' @importFrom magrittr %>%
 #' @export quick_get_bbs
-
-
 quick_get_bbs <- function(
     data.link =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
     data.dir = here::here("raw-data/"),
