@@ -15,6 +15,9 @@ get_species <- function(bbs.spp.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BB
                         nacc.spp.url = "http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B",
                         aou.alpha.url = "https://www.birdpop.org/docs/misc/IBPAOU.zip",
                         data.dir = paste0(getwd(), "/raw-data/")) {
+    # make sure the data.dir exists
+    suppressWarnings(dir.create(data.dir))
+    
     # Retrieve and munge the BBS specieslist.txt
     temp <- list.files(data.dir, pattern = "SpeciesList.txt")
     if (length(temp) == 0) {
@@ -77,11 +80,13 @@ get_species <- function(bbs.spp.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BB
         
         download.file(url = aou.alpha.url, destfile = paste0(data.dir,"aou_alpha.zip"))
         
-            #grab the name of extracted file...
-            aou.unzip.path <- paste0(data.dir,unzip(paste0(data.dir,"aou_alpha.zip"), list=TRUE)[1])
+            #grab the name of the file that is to be extracted from the .zip...
+            aou.unzip.path <- paste0(data.dir, unzip(paste0(data.dir,"aou_alpha.zip"), 
+                                                    list=TRUE)[1])
             #now actually extract it to file.
-            unzip(paste0(data.dir,"aou_alpha.zip")) 
-            #rename this weird ass file
+            fn <- list.files(data.dir,"aou_alpha.zip", full.names=TRUE)
+            unzip(fn, exdir = data.dir) 
+            #rename this file to something more intuitive...
             file.rename(from = aou.unzip.path,to = paste0(data.dir, "aou_alpha.txt"))
         
 
