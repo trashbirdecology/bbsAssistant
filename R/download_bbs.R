@@ -80,7 +80,7 @@ download_bbs <-
         if(!is.null(country.ind)){
           region_codes <- region_codes %>% dplyr::filter(CountryNum %in% country.ind)}}
 
-      
+    #### NOW TO THE FUN PART -- RETRIEVING AND/OR IMPORTING THE DATA ####  
     # Download each .zip file and save to local machine
     urls <- paste0(data.link, region_codes$zip_states)
     
@@ -92,10 +92,8 @@ download_bbs <-
         if(choice==1) overwrite.bbs <- TRUE
         if(choice==2) overwrite.bbs <- FALSE
         rm(choice)
-    }else{
-      overwrite.bbs <- FALSE
     }
-    
+   
     #  If files do not exist OR overwrite ==TRUE, 
       ## Retrieve and save the state-level files specified in 'files'   to local disk      
       ## Download the select (or all) state data from the FTP server and unzip the files to a temporary folder, as specified by `files`.
