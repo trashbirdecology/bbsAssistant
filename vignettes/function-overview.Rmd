@@ -230,7 +230,7 @@ glimpse(annual_index_core_1966to2017)
 ```
 
 # Acknowledgments
-We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data [@] publicly and easily accessible. Some lines of code for importing the BBS species list (`bbsAssistant::get_species`) was adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code [@rBBS].
+We thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data [@] publicly and easily accessible. Some lines of code for importing the BBS species list (`bbsAssistant::get_species`) was adapted from the [rBBS](github.com/oharar/rbbs) package and are mentioned in function source code [@rbbs].
 <!-- # Relevant Efforts -->
 <!-- We wish to recognize open-sourced efforts of bbsBayes, ecodataretriever, and rBBS. -->
 
