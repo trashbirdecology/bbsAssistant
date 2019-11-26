@@ -58,7 +58,7 @@ bbs<- bbsAssistant::quick_get_bbs(state.names = c("Florida", "Nebraska"),  # get
 
 For function descriptions please build the manual
 (`devtools::build_manual("bbsAssistant)`) and for an example build the
-vignette (`devtools::build_vignettes()`; or run
+vignette(s) (`devtools::build_vignettes()`; or run
 `/vignettes/vignettes.Rmd`).
 
 ### Contributions to and interactions within the project
