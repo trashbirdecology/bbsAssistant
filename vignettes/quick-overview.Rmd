@@ -16,8 +16,8 @@ knitr::opts_chunk$set(
 )
 ```
 # Quick Start: Install and Load Development Version and Dependencies
-```{r loadDeps, echo=TRUE, warning=FALSE, message=FALSE}
-devtools::install_github("trashbirdecology/bbsAssistant", force=FALSE)
+```{r echo=TRUE, warning=FALSE, message=FALSE}
+# devtools::install_github("trashbirdecology/bbsAssistant", force=FALSE)
 library(bbsAssistant)
 ```
 
@@ -77,7 +77,7 @@ First, download and retrieve the species list:
 ```{r specieslist}
 spp.lists <- get_species(data.dir=bbsDir)
 names(spp.lists)
-# List comprises: BBS official species lists as provided via FTP [["BBS"]]; [["NACC"]] the North and Middle America Checklist (Amer. Ornith. Society); and the AOU (AOS) 4- and 6-letter alpha codes associated with scientific names [["AOU"]]. 
+# List (spp.lists) comprises: BBS official species lists as provided via FTP [["BBS"]]; [["NACC"]] the North and Middle America Checklist (Amer. Ornith. Society); and the AOU (AOS) 4- and 6-letter alpha codes associated with scientific names [["AOU"]]. 
 ```
 
 ### Taxonomic subsetting
