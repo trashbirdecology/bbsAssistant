@@ -1,15 +1,14 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2019-11-25
+Last updated: 2019-11-26
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.Rmd. Please edit that file and render to push updates.-->
 
-[![status](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69/status.svg)](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
+[![status](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69/status.svg)](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69)[![License:
+CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
 build
-status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>[![License:
-CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
 
 ## About
 
@@ -71,20 +70,57 @@ For questions, comments, or issues, feel free to email the maintainer
 [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues)
 (preferred).
 
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji
+key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore -->
+
+<table>
+
+<tr>
+
+<td align="center">
+
+<a href="http://ethanwhite.org"><img src="https://avatars0.githubusercontent.com/u/744427?v=4" width="100px;" alt="Ethan White"/><br /><sub><b>Ethan
+White</b></sub></a><br /><a href="#review-ethanwhite" title="Reviewed Pull Requests">👀</a>
+
+</td>
+
+</tr>
+
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the
+[all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome\!
+
 ## Acknowledgments
 
 We especially thank the participatory scientists who collect data
 annually for the North American Breeding Bird Survey, and the Patuxent
 Wildlife Research Center for making these data publicly and easily
-accessible. This software is preliminary or provisional and is subject
-to revision. It is being provided to meet the need for timely best
-science. The software has not received final approval by the U.S.
-Geological Survey (USGS). No warranty, expressed or implied, is made by
-the USGS or the U.S. Government as to the functionality of the software
-and related material nor shall the fact of release constitute any such
-warranty. The software is provided on the condition that neither the
-USGS nor the U.S. Government shall be held liable for any damages
-resulting from the authorized or unauthorized use of the software.
+accessible. We thank those who have made
+[contributions](https://github.com/TrashBirdEcology/bbsAssistant/graphs/contributors)
+of all sizes to this project. Finally, we thank
+(<span class="citeproc-not-found" data-reference-id="ethanwhite">**???**</span>)(www.github.com/ethanwhite)
+and
+(<span class="citeproc-not-found" data-reference-id="jsta">**???**</span>)(www.github.com/jsta),
+whose feedback greatly improved the quality of this software. This
+software is preliminary or provisional and is subject to revision. It is
+being provided to meet the need for timely best science. The software
+has not received final approval by the U.S. Geological Survey (USGS). No
+warranty, expressed or implied, is made by the USGS or the U.S.
+Government as to the functionality of the software and related material
+nor shall the fact of release constitute any such warranty. The software
+is provided on the condition that neither the USGS nor the U.S.
+Government shall be held liable for any damages resulting from the
+authorized or unauthorized use of the software.
 
 ## References
 
