@@ -1,4 +1,5 @@
 **bbsAssistant**: An R package for downloading and handling data and
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 information from the North American Breeding Bird Survey.
 ================
 Last updated: 2019-11-26
@@ -72,6 +73,15 @@ For questions, comments, or issues, feel free to email the maintainer
 
 ## Contributors ✨
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="http://trashbirdecology.github.io"><img src="https://avatars2.githubusercontent.com/u/9939381?v=4" width="100px;" alt="Jessica Burnett"/><br /><sub><b>Jessica Burnett</b></sub></a><br /><a href="#userTesting-TrashBirdEcology" title="User Testing">📓</a> <a href="#review-TrashBirdEcology" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/TrashBirdEcology/bbsAssistant/commits?author=TrashBirdEcology" title="Tests">⚠️</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 Thanks goes to these wonderful people ([emoji
 key](https://allcontributors.org/docs/en/emoji-key)):
 
