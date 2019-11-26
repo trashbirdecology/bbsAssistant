@@ -8,10 +8,10 @@
 #' @importFrom magrittr %>%
 #' @importFrom utils download.file
 #' @return .zip files saved to local directory, as specified by data.dir
+#' @export download_bbs
 #' @examples
 #' # Load the region codes into memory
 #' \dontrun{
-#' @export download_bbs
 #' data("region_codes")
 #' unique(region_codes$zip_states) # list of zip files available via USGS BBS FTP.
 #' }
