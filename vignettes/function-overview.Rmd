@@ -1,8 +1,7 @@
 ---
 title: "A quick overview of bbsAssistant functionality"
 output: rmarkdown::html_vignette
-bibliography: 
-  - paper/paper.bib
+# bibliography: "bib.bib"
 vignette: >
   %\VignetteIndexEntry{vignettes}
   %\VignetteEngine{knitr::rmarkdown}
@@ -11,7 +10,7 @@ vignette: >
 ```{r, include = FALSE}
 TRAVIS <- !identical(tolower(Sys.getenv("TRAVIS")), "true")
 knitr::opts_chunk$set(
-  collapse = TRUE,echo=TRUE, warning = FALSE, message=FALSE,
+  collapse = TRUE,echo=TRUE, warning = FALSE, message=FALSE,cache = FALSE,
   comment = "#>",
   purl = TRAVIS # do not run chunks on TRAVIS
 )
@@ -174,13 +173,12 @@ We provide a function which
 results <- get_analysis_results(analysis = "trend.ests") # default (analysis='trend.ests') obtains the 1966-2015 species trend estimates
 fl.hosp.trends <- results %>% filter(Species.Name=="House Sparrow", Region.Code=="FLA")
 ```
-
-Get annual trend estimates for Florida 1966-2016 analysis:
-```{r get_analysis_results2, echo=TRUE, eval=TRUE}
-results <- get_analysis_results(analysis = "annual.inds.2016") 
+Get annual trend estimates for Florida 1966-2016 analysis (not evaluated):
+```{r get_analysis_results2, echo=TRUE, eval=FALSE}
+results <- get_analysis_results(analysis = "annual.inds.2016")
 ```
 
-```{r plottrend, echo=TRUE, warning=FALSE, message=FALSE}
+```{r plottrend, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 ggplot(data = results %>% filter(AOU.Number=='s06882',
                    Region.Code=="S05"),
        aes(Year, Annual.Index))+
