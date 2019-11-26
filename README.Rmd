@@ -17,7 +17,8 @@ This R package contains functions for downloading and munging data from the [Nor
 Install the development version of this package using devtools and load the package and dependencies:
 ```{r install, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         dependencies = TRUE, force=FALSE)
+                         dependencies = TRUE, 
+                         force=TRUE) # force to get most recent dev version
 library(bbsAssistant)
 ```
 
