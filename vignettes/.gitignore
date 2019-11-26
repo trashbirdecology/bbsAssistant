@@ -1,2 +1,4 @@
 *.html
 *.R
+/function-overview_cache/
+/function-overview_files/
