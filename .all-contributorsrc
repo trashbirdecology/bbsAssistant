@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "ethanwhite",
+      "name": "Ethan White",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/744427?v=4",
+      "profile": "http://ethanwhite.org",
+      "contributions": [
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "bbsAssistant",
+  "projectOwner": "TrashBirdEcology",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
