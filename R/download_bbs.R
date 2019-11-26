@@ -7,11 +7,11 @@
 #' @param overwrite.bbs Logical. Defaults NULL. If TRUE will overwrite existing BBS data in data.dir. NULL will prompt user to force overwrite if .zip files exist in data.dir.
 #' @importFrom magrittr %>%
 #' @importFrom utils download.file
-#' @export download_bbs
 #' @return .zip files saved to local directory, as specified by data.dir
 #' @examples
 #' # Load the region codes into memory
 #' \dontrun{
+#' @export download_bbs
 #' data("region_codes")
 #' unique(region_codes$zip_states) # list of zip files available via USGS BBS FTP.
 #' }
