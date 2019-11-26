@@ -1,11 +1,12 @@
 ---
 title: "A quick overview of bbsAssistant functionality"
 output: rmarkdown::html_vignette
+bibliography: 
+  - paper/paper.bib
 vignette: >
   %\VignetteIndexEntry{vignettes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-bibliography: paper/paper.bib
 ---
 ```{r, include = FALSE}
 TRAVIS <- !identical(tolower(Sys.getenv("TRAVIS")), "true")
@@ -17,7 +18,7 @@ knitr::opts_chunk$set(
 ```
 # Quick Start: Install and Load Development Version and Dependencies
 ```{r echo=TRUE, warning=FALSE, message=FALSE}
-# devtools::install_github("trashbirdecology/bbsAssistant", force=FALSE)
+# devtools::install_github("trashbirdecology/bbsAssistant", force=TRUE)
 library(bbsAssistant)
 ```
 
@@ -33,14 +34,14 @@ This package was creating for expediting the BBS data retrieval process, which c
 ### Download the BBS data from USGS
 First, please specify a directory within which to store the downloaded BBS data. Here, we specify the directory as `/raw-data/`, and create the directory if it does not already exist. 
 ```{r set_dir}
-bbsDir <- here::here("raw-data/")
-dir.create(bbsDir) 
+bbsDir <- here::here("raw-data/") # define where we want to save and/or retrieve the BBS data
+dir.create(bbsDir) # create the directory
 ```
 
-Next, we can use the function, `get_bbsData` to retrieve all or a selection of the data from the USGS webpage using FTP. These compressed (.zip) files are stored to local directory, as specified by argument `data.dir`. Let's download only the data from the U.S. (country code 840) for years 2000-2016:
+Next, we can use the function, `get_bbsData()` to retrieve all or a selection of the data from the USGS webpage using FTP. These compressed (.zip) files are stored to local directory, as specified by argument `data.dir`. Let's download only the data from US states Florida and Nebraska:
 
 ```{r download_bbs, message=FALSE}
-suppressMessages(download_bbs(country.names="USA", state.names=c("FloriDA","NebrASKA"), data.dir = bbsDir, overwrite.bbs = FALSE, overwrite.routes = FALSE))
+suppressMessages(download_bbs(state.names=c("FloriDA","NebrASKA"), data.dir = bbsDir, overwrite.bbs = FALSE, overwrite.routes = FALSE))
 ```
 
 ### Import the BBS state-level data into R
