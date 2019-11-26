@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "TrashBirdEcology",
+      "name": "Jessica Burnett",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/9939381?v=4",
+      "profile": "http://trashbirdecology.github.io",
+      "contributions": [
+        "userTesting",
+        "review",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "bbsAssistant",
+  "projectOwner": "TrashBirdEcology",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
