@@ -40,7 +40,7 @@ dir.create(bbsDir)
 Next, we can use the function, `get_bbsData` to retrieve all or a selection of the data from the USGS webpage using FTP. These compressed (.zip) files are stored to local directory, as specified by argument `data.dir`. Let's download only the data from the U.S. (country code 840) for years 2000-2016:
 
 ```{r download_bbs, message=FALSE}
-suppressMessages(download_bbs(country.names="USA", data.dir = bbsDir, overwrite.bbs = FALSE, overwrite.routes = FALSE))
+suppressMessages(download_bbs(country.names="USA", state.names=c("FloriDA","NebrASKA"), data.dir = bbsDir, overwrite.bbs = FALSE, overwrite.routes = FALSE))
 ```
 
 ### Import the BBS state-level data into R
