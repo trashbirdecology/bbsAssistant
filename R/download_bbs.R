@@ -92,6 +92,8 @@ download_bbs <-
         if(choice==1) overwrite.bbs <- TRUE
         if(choice==2) overwrite.bbs <- FALSE
         rm(choice)
+    }else{
+      overwrite.bbs <- FALSE
     }
     
     #  If files do not exist OR overwrite ==TRUE, 
