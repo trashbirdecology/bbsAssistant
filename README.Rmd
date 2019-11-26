@@ -53,7 +53,7 @@ To make a contribution visit the [CONTRIBUTIONS.md](https://github.com/trashbird
 
 
 ## Contributors 
-Thanks to all contributors ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks to our contributors:
 <!-- ALL-CONTRIBUTORS-LIST:START-->
 <table>
   <tr>
