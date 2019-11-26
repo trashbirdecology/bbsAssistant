@@ -81,8 +81,6 @@ Thanks to all contributors ([emoji key](https://allcontributors.org/docs/en/emoj
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
 ## Acknowledgments
 We especially thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. We thank those who have made [contributions](https://github.com/TrashBirdEcology/bbsAssistant/graphs/contributors) of all sizes to this project. Finally, we thank two peer reviewers, [Ethan White](www.github.com/ethanwhite) and [Josepha Stachelek](www.github.com/jsta) whose feedback greatly improved the quality of this software and the [associated software paper](www.github.com/trashbirdecology/bbsassistant/paper/paper.md).
 This software is preliminary or provisional and is subject to revision. It is being provided to meet the need for timely best science. The software has not received final approval by the U.S. Geological Survey (USGS). No warranty, expressed or implied, is made by the USGS or the U.S. Government as to the functionality of the software and related material nor shall the fact of release constitute any such warranty. The software is provided on the condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from the authorized or unauthorized use of the software.
