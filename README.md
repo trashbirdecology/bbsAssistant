@@ -105,8 +105,7 @@ Wszola <br>Team Member</b></sub></a><br />
 
 ## Contributors
 
-Thanks to all contributors ([emoji
-key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks to our contributors:
 <!-- ALL-CONTRIBUTORS-LIST:START-->
 
 <table>
