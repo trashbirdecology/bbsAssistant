@@ -1,5 +1,5 @@
 ---
-title: 'bbsAssistant: A package for downloading and munging data and information from the North American Breeding Bird Survey'
+title: 'bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey'
 authors:
 - affiliation: '1'
   name: Jessica L Burnett
