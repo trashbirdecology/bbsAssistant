@@ -25,7 +25,7 @@ bulk-download the BBS point count and related (e.g., route-level
 conditions) via FTP, and to quickly subset the data by taxonomic
 classifications and/or geographical locations. This package also
 maintains data containing the trend and annual indices from the most
-recent (1996-2017) [hierarhchical population trend
+recent (1996-2017) [hierarchical population trend
 analyses](https://www.mbr-pwrc.usgs.gov/bbs/) (J. Sauer et al. 2017).
 
 ## Quick Start
