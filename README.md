@@ -14,6 +14,8 @@ status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](
 
 ## About
 
+_This repository contains the development version of __bbsAssistant__. Please visit the [USGS Biolab GitHub](https://github.com/usgs-biolab/bbsAssistant) for stable version(s) of this package._
+
 This R package contains functions for downloading and munging data from
 the [North American Breeding Bird
 Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) [via
