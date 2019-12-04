@@ -4,8 +4,7 @@ information from the North American Breeding Bird Survey.
 Last updated: 2019-12-02
 
 <!-- README.md is generated from README.Rmd. Please edit that file and render to push updates.-->
-
-[![status](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69/status.svg)](https://joss.theoj.org/papers/4b445373a7a7806c92e17bdd194a8e69)[![License:
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.01768/status.svg)](https://doi.org/10.21105/joss.01768)[![License:
 CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)[![All
 Contributors](https://img.shields.io/badge/all_contributors-4-lightgrey.svg?style=flat-square)](#contributors)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
