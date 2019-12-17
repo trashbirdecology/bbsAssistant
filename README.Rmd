@@ -15,7 +15,7 @@ _This repository contains the development version of __bbsAssistant__. Please vi
 This R package contains functions for downloading and munging data from the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) [via FTP](https://www.pwrc.usgs.gov/BBS/RawData/) [@pardieck2018north; @sauer2017first]. This package was created to allow the user to bulk-download the BBS point count and related (e.g., route-level conditions) via FTP, and to quickly subset the data by taxonomic classifications and/or geographical locations. This package also maintains data containing the trend and annual indices from the most recent (1996-2017) [hierarchical population trend analyses](https://www.mbr-pwrc.usgs.gov/bbs/) [@sauer2017north]. 
 
 ### Citation
-Burnett, J.L., Palomo-Muñoz, G., and Wszola, L.S., 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
 
 ## Quick Start
 ### Installing __bbsAssistant__
