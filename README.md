@@ -28,7 +28,7 @@ recent (1996-2017) [hierarchical population trend
 analyses](https://www.mbr-pwrc.usgs.gov/bbs/) (J. Sauer et al. 2017).
 
 ### Citation
-Burnett, J.L., Palomo-Muñoz, G., and Wszola, L.S., 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
 
 ## Quick Start
 
