@@ -12,6 +12,6 @@
 trend_ests_core_1966to2017
 }
 \description{
-More detail TBD
+Trend estimates for the core BBS area, 1966-2017
 }
 \keyword{datasets}

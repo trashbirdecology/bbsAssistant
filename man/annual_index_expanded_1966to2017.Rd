@@ -12,6 +12,6 @@
 annual_index_expanded_1966to2017
 }
 \description{
-Description TBD
+Annual population trend indices for species/regions in the expanded BBS region, 1966-2017
 }
 \keyword{datasets}

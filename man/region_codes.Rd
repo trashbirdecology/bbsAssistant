@@ -3,12 +3,12 @@
 \docType{data}
 \name{region_codes}
 \alias{region_codes}
-\title{Contains country and state numbers, and the associated zip filenames.#'}
-\format{Describe the format of df:
+\title{Country and state codes and associated zip filenames}
+\format{A data frame:
 \describe{
-\item{CountryNum}{BBS country codes associated with United States (484), Mexico (484), and Canada (840)}
+\item{CountryNum}{BBS country codes associated with United States-840, Mexico-484, and Canada-124}
 \item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
-\item{State}{The proper name of the (US/MEX) state or (CAN) province}
+\item{State}{The proper name of the US or Mexican state or Canadian province}
 \item{zip_states}{The filename of the .zip compressed BBS count data located on the FTP server. These files do not exist for Mexican states, so == NA}
 }}
 \source{
@@ -18,6 +18,6 @@
 region_codes
 }
 \description{
-Contains country and state numbers, and the associated zip filenames.#'
+Country and state codes and associated zip filenames
 }
 \keyword{datasets}
