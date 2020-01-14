@@ -11,8 +11,8 @@
 #'   \item{Region Name}{Full name of the region in North American according to its region code}
 #'   \item{N Routes}{Three-digit-code that identifies the route; unique within states}
 #'   \item{Trend}{Ratio of annual indices for the first and last year of the interval of interest}
-#'   \item{2.5% CI}{Lower 95% confidence interval of the annual index of abundance}
-#'   \item{97.5% CI}{Upper 95% confidence interval of the annual index of abundance}
+#'   \item{2.5\% CI}{Lower 95\% confidence interval of the annual index of abundance}
+#'   \item{97.5\% CI}{Upper 95\% confidence interval of the annual index of abundance}
 #'   \item{Relative Abundance}{Estimated relative abundance of species/region}
 #'         } 
 #' @source \url{https://www.mbr-pwrc.usgs.gov/bbs/BBS_1966-2017_core_trend_revised_v2.csv}
@@ -25,8 +25,8 @@
 #'   \item{Region}{Regions are states, Provinces, Bird Conservation Regions, BBS Regions, Canada excluding Newfoundland and Yukon, the lower 48 US states, and survey-wide excluding Newfoundland and Alaska.}
 #'   \item{Year}{Four digit year of survey, from 1966-2017}
 #'   \item{Index}{Annual index of species/region abundance estimated using a hierarchical model}
-#'   \item{2.5% CI}{Lower 95% confidence interval of the annual index of abundance}
-#'   \item{97.5% CI}{Upper 95% confidence interval of the annual index of abundance}
+#'   \item{2.5\% CI}{Lower 95\% confidence interval of the annual index of abundance}
+#'   \item{97.5\% CI}{Upper 95\% confidence interval of the annual index of abundance}
 #' }
 #' @source 
 #'   \url{https://www.mbr-pwrc.usgs.gov/bbs/inde_1993-2017_expanded.csv}
@@ -39,8 +39,8 @@
 #'   \item{Region}{Regions are states, Provinces, Bird Conservation Regions, BBS Regions, Canada excluding Newfoundland and Yukon, the lower 48 US states, and survey-wide excluding Newfoundland and Alaska.}
 #'   \item{Year}{Four digit year of survey, from 1966-2017}
 #'   \item{Index}{Annual index of species/region abundance estimated using a hierarchical model}
-#'   \item{2.5% CI}{Lower 95% confidence interval of the annual index of abundance}
-#'   \item{97.5% CI}{Upper 95% confidence interval of the annual index of abundance}
+#'   \item{2.5\% CI}{Lower 95\% confidence interval of the annual index of abundance}
+#'   \item{97.5\% CI}{Upper 95\% confidence interval of the annual index of abundance}
 #' }
 #' @source \url{https://www.mbr-pwrc.usgs.gov/bbs/inde_1966-2017_core_v2.csv}
 "annual_index_core_1966to2017"
