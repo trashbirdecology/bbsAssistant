@@ -11,7 +11,7 @@ CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://c
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
 build
 status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
-\[![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg)
+![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg)
 
 ## About
 
