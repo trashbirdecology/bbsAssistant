@@ -4,7 +4,15 @@
 \name{annual_index_expanded_1966to2017}
 \alias{annual_index_expanded_1966to2017}
 \title{Annual population trend indices for species/regions in the expanded BBS region, 1966-2017}
-\format{An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 491550 rows and 6 columns.}
+\format{A data frame:
+\describe{
+\item{AOU}{Five digit species identification number according to the bird species checklist of the American Ornithologist Union.}
+\item{Region}{Regions are states, Provinces, Bird Conservation Regions, BBS Regions, Canada excluding Newfoundland and Yukon, the lower 48 US states, and survey-wide excluding Newfoundland and Alaska.}
+\item{Year}{Four digit year of survey, from 1966-2017}
+\item{Index}{Annual index of species/region abundance estimated using a hierarchical model}
+\item{2.5\% CI}{Lower 95\% confidence interval of the annual index of abundance}
+\item{97.5\% CI}{Upper 95\% confidence interval of the annual index of abundance}
+}}
 \source{
 \url{https://www.mbr-pwrc.usgs.gov/bbs/inde_1993-2017_expanded.csv}
 }
@@ -12,6 +20,6 @@
 annual_index_expanded_1966to2017
 }
 \description{
-Description TBD
+Annual population trend indices for species/regions in the expanded BBS region, 1966-2017
 }
 \keyword{datasets}

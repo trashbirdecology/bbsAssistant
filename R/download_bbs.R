@@ -13,16 +13,13 @@
 #' # Load the region codes into memory
 #' \dontrun{
 #' data("region_codes")
-#' unique(region_codes$zip_states) # list of zip files available via USGS BBS FTP.
+#' unique(region_codes$zip_states) # a list of zip files available via USGS BBS FTP.
 #' }
 #'
 #' # download all route-level data from Canada
 #' \dontrun{
 #' download_bbs(state.names="Canada)
-#' }
-#'
 #' # download all route-level data from Nebraska
-#' \dontrun{
 #' download_bbs(state.names="Nebraska")
 #' }
 #'
