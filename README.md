@@ -1,19 +1,25 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2019-12-02
+Last updated: 2020-02-27
 
 <!-- README.md is generated from README.Rmd. Please edit that file and render to push updates.-->
+
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.01768/status.svg)](https://doi.org/10.21105/joss.01768)[![License:
-CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)[![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square)](#contributors)
+CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)
+[![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square)](#contributors)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
 build
 status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
-[![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg)
+\[![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg)
 
 ## About
 
-_This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major releases will be pushed to the [USGS Biolab GitHub](https://github.com/usgs-biolab/bbsAssistant)._
+*This repository contains the development version of **bbsAssistant**.
+Please submit [Issues
+here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major
+releases will be pushed to the [USGS Biolab
+GitHub](https://github.com/usgs-biolab/bbsAssistant).*
 
 This R package contains functions for downloading and munging data from
 the [North American Breeding Bird
@@ -28,7 +34,11 @@ recent (1996-2017) [hierarchical population trend
 analyses](https://www.mbr-pwrc.usgs.gov/bbs/) (J. Sauer et al. 2017).
 
 ### Citation
-Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
+
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R
+package for downloading and handling data and information from the North
+American Breeding Bird Survey: U.S. Geological Survey software release,
+<https://doi.org/10.5066/P93W0EAW>.
 
 ## Quick Start
 
@@ -168,16 +178,20 @@ of all sizes to this project. Finally, we thank two peer reviewers,
 [Ethan White](www.github.com/ethanwhite) and [Josepha
 Stachelek](www.github.com/jsta) whose feedback greatly improved the
 quality of this software and the [associated software
-paper](www.github.com/trashbirdecology/bbsassistant/paper/paper.md). [Logo](https://github.com/TrashBirdEcology/bbsAssistant/blob/master/man/figures/logo.png) by Gabby Palomo-Munoz.
-This software is preliminary or provisional and is subject to revision.
-It is being provided to meet the need for timely best science. The
-software has not received final approval by the U.S. Geological Survey
-(USGS). No warranty, expressed or implied, is made by the USGS or the
-U.S. Government as to the functionality of the software and related
-material nor shall the fact of release constitute any such warranty. The
-software is provided on the condition that neither the USGS nor the U.S.
-Government shall be held liable for any damages resulting from the
-authorized or unauthorized use of the software. 
+paper](www.github.com/trashbirdecology/bbsassistant/paper/paper.md).
+[Logo](https://github.com/TrashBirdEcology/bbsAssistant/blob/master/man/figures/logo.png)
+by Gabby Palomo-Munoz.
+
+This software has been approved for release by the U.S. Geological
+Survey (USGS). Although the software has been subjected to rigorous
+review, the USGS reserves the right to update the software as needed
+pursuant to further analysis and review. No warranty, expressed or
+implied, is made by the USGS or the U.S. Government as to the
+functionality of the software and related material nor shall the fact of
+release constitute any such warranty. Furthermore, the software is
+released on condition that neither the USGS nor the U.S. Government
+shall be held liable for any damages resulting from its authorized or
+unauthorized use.
 
 ## References
 
@@ -188,7 +202,7 @@ authorized or unauthorized use of the software.
 Pardieck, KL, DJ Ziolkowski Jr, M Lutmerding, and MAR Hudson. 2018.
 “North American Breeding Bird Survey Dataset 1966–2017, Version
 2017.0.” *US Geological Survey, Patuxent Wildlife Research Center,
-Laurel, Maryland, USA.\[online\] URL:
+Laurel, Maryland, USA. \[Online\] URL:
 Https://Www.pwrc.usgs.gov/BBS/RawData*.
 
 </div>
