@@ -9,6 +9,7 @@
 #'   \item{AOU}{Five-digit species identification number according to the bird species checklist of the American Ornithologist Union.}
 #'   \item{Species Name}{Common name accoridng to the bird species checklist of the American Ornithologists Union}
 #'   \item{Region Name}{Full name of the region in North American according to its region code}
+#'   \item{Region}{}
 #'   \item{N Routes}{Three-digit-code that identifies the route; unique within states}
 #'   \item{Trend}{Ratio of annual indices for the first and last year of the interval of interest}
 #'   \item{2.5\% CI}{Lower 95\% confidence interval of the annual index of abundance}
