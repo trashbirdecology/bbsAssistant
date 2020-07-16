@@ -1,18 +1,17 @@
-citHeader("To cite bbsAssistant in publications use:")
+citHeader("To cite the R package bbsAssistant, please use:")
 
 citEntry(
-  entry    = "Article",
-  title    = "",
-  author   = "",
-  journal  = "",
-  year     = "",
-  volume   = "",
-  number   = "",
-  pages    = "",
-  url      = "",
+  entry    = "bbsassistant",
+  title    = "bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey.",
+  author   = "Burnett, J.L., L.S. Wszola, and G. Palomo-Muñoz",
+  journal  = "Journal of Open Source Software",
+  doi      = "10.21105/joss.01768",
+  url      = "https://joss.theoj.org/papers/10.21105/joss.01768",
   textVersion = paste(
-    )
+       "Burnett, J.L., L.S. Wszola, and G. Palomo-Muñoz (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software. DOI:10.21105/joss.01768     
 )
+)
+
 
 
 citHeader("To cite the most recent version Breeding Bird Survey dataset in publication, please use:")
