@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-```{r, include = FALSE}
+```{r,echo=FALSE, warning=FALSE, message=FALSE}
 TRAVIS <- !identical(tolower(Sys.getenv("TRAVIS")), "true")
 knitr::opts_chunk$set(
   collapse = TRUE,echo=TRUE, warning = FALSE, message=FALSE,cache = FALSE,
@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```
 # Quick Start: Install and Load Development Version and Dependencies
 ```{r echo=TRUE, warning=FALSE, message=FALSE}
-# devtools::install_github("trashbirdecology/bbsAssistant", force=TRUE)
+# devtools::install_github("trashbirdecology/bbsAssistant", ref = "main", force=TRUE)
 library(bbsAssistant)
 ```
 
@@ -40,7 +40,7 @@ dir.create(bbsDir) # create the directory
 Next, we can use the function, `get_bbsData()` to retrieve all or a selection of the data from the USGS webpage using FTP. These compressed (.zip) files are stored to local directory, as specified by argument `data.dir`. Let's download only the data from US states Florida and Nebraska:
 
 ```{r download_bbs, message=FALSE}
-suppressMessages(download_bbs(state.names=c("FloriDA","NebrASKA"), data.dir = bbsDir, overwrite.bbs = FALSE, overwrite.routes = FALSE))
+suppressMessages(download_bbs(state.names=c("FloriDA","NebrASKA"), data.dir = bbsDir,                    overwrite.bbs = FALSE, overwrite.routes = FALSE))
 ```
 
 ### Import the BBS state-level data into R
@@ -161,8 +161,8 @@ There are a few options for obtaining species trends estimates and credibility m
 ### Steps for obtaining argument "url" in `get_credibility_trends()`:
 1. First, visit the USGS Patuxent Wildlife Research Center's [website for BBS results](https://www.mbr-pwrc.usgs.gov/) Online <https://www.mbr-pwrc.usgs.gov/>.
 2. Next, enable the drop-down **Survey Results**, and choose **Trend Estimates (by region)** (left) and choose the desired region (e.g. Florida). Finally, copy the URL address for the page including the results and credibility measures (e.g. Florida; see images below)
-![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_select_fl.png){width=300px}
-![](https://github.com/TrashBirdEcology/bbsAssistant/raw/master/images/regcred_fl_ex.png){width=600px}
+![](https://github.com/TrashBirdEcology/bbsAssistant/raw/main/images/regcred_select_trendests_byregion.png){width=300px}![](https://github.com/TrashBirdEcology/bbsAssistant/raw/main/images/regcred_select_fl.png){width=300px}
+![](https://github.com/TrashBirdEcology/bbsAssistant/raw/main/images/regcred_fl_ex.png){width=600px}
 
 ### Option 1: Download CSV for all species-region combinations
 We provide a function which 
