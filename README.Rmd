@@ -31,6 +31,7 @@ Install the development version of this package using devtools and load the pack
 ```{r install, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 devtools::install_github("trashbirdecology/bbsAssistant", 
                          dependencies = TRUE, 
+                         ref="main" # ensure it pulls from the 'main' branch, default
                          force=TRUE) # force to get most recent dev version
 library(bbsAssistant)
 ```

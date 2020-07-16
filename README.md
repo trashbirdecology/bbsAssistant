@@ -55,6 +55,7 @@ the package and dependencies:
 ``` r
 devtools::install_github("trashbirdecology/bbsAssistant", 
                          dependencies = TRUE, 
+                         ref="main" # ensure it pulls from the 'main' branch, default
                          force=TRUE) # force to get most recent dev version
 library(bbsAssistant)
 ```
