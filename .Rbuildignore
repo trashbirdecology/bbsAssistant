@@ -10,3 +10,4 @@
 ^cran-comments\.md$
 ^data-raw$
 ^\.github$
+^_pkgdown\.yml$
