@@ -1,7 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2020-02-27
+Last updated: 2020-07-16
 
 <!-- README.md is generated from README.Rmd. Please edit that file and render to push updates.-->
 
@@ -10,7 +10,7 @@ CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://c
 [![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square)](#contributors)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg)](https://www.tidyverse.org/lifecycle/#maturing)[![Travis
 build
-status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=master)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
+status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=main)](https://travis-ci.org/trashbirdecology/bbsAssistant)<img src="man/figures/logo.png" align="right" height=140/>
 ![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg)
 
 ## About
@@ -179,7 +179,7 @@ of all sizes to this project. Finally, we thank two peer reviewers,
 Stachelek](www.github.com/jsta) whose feedback greatly improved the
 quality of this software and the [associated software
 paper](www.github.com/trashbirdecology/bbsassistant/paper/paper.md).
-[Logo](https://github.com/TrashBirdEcology/bbsAssistant/blob/master/man/figures/logo.png)
+[Logo](https://github.com/TrashBirdEcology/bbsAssistant/blob/main/man/figures/logo.png)
 by Gabby Palomo-Munoz.
 
 This software has been approved for release by the U.S. Geological
