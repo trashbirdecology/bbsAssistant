@@ -4,11 +4,13 @@
 \alias{get_species}
 \title{Download and import BBS, NACC, and AOU species list}
 \usage{
-
-  get_species(bbs.spp.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/SpeciesList.txt",
-  nacc.spp.url = "http://checklist.aou.org/taxa.csv?type=charset\%3Dutf-8\%3Bsubspecies\%3Dno\%3B",
+get_species(
+  bbs.spp.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/SpeciesList.txt",
+ 
+    nacc.spp.url = "http://checklist.aou.org/taxa.csv?type=charset\%3Dutf-8\%3Bsubspecies\%3Dno\%3B",
   aou.alpha.url = "https://www.birdpop.org/docs/misc/IBPAOU.zip",
-  data.dir = paste0(getwd(), "/raw-data/"))
+  data.dir = paste0(getwd(), "/raw-data/")
+)
 }
 \arguments{
 \item{bbs.spp.url}{URL for SpeciesList.txt file, retrieved via FTP.}
@@ -19,9 +21,12 @@
 
 \item{aou.alpha}{URL for the 4- and 6-letter alpha codes associated with latin names (source: IBP).}
 }
+\value{
+A list comprising the BBS species list (bbs.spp), the \href{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B}{NACC species checklist} (nacc.spp), and the AOU alpha checklist (aou.alpha).
+}
 \description{
 Read in list of species names, alpha codes, and taxonomic information from various sources (BBS, AOU/AOS, IBP, NACC).
 For more information on species alpha codes please visit https://www.birdpop.org/pages/birdSpeciesCodes.php
 For more information on AOU/AOS/NACC species checklists please visit http://checklist.aou.org/
-Portions of this function (lines for importing and munging the BBS species list, specieslist.txt) were borrowed from the function \href{https://github.com/oharar/rBBS/blob/master/R/GetSpNames.R}{rBBS::getSpNames()}. This package is not actively maintained, therefore we export it via \code{bbsAssistant}.
+Portions of this function (lines for importing and munging the BBS species list, specieslist.txt) were borrowed from the function \href{https://github.com/oharar/rBBS/blob/master/R/GetSpNames.R}{\code{rBBS::getSpNames()}}. This package is not actively maintained, therefore we export it via \code{bbsAssistant}.
 }

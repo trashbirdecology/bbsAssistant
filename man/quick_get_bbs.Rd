@@ -4,11 +4,16 @@
 \alias{quick_get_bbs}
 \title{A wrapper function for downloading (\code{bbsAssistant::download_bbs()}) from the USGS FTP server and importing (\code{bbsAssistant::import_bbs()}) the BBS into the environment.}
 \usage{
-
-  quick_get_bbs(data.link = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
-  data.dir = here::here("raw-data/"), country.names = NULL,
-  state.names = NULL, overwrite.bbs = NULL, overwrite.routes = NULL,
-  get.conditions = FALSE, overwrite.conditions = NULL)
+quick_get_bbs(
+  data.link = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
+  data.dir = here::here("raw-data/"),
+  country.names = NULL,
+  state.names = NULL,
+  overwrite.bbs = NULL,
+  overwrite.routes = NULL,
+  get.conditions = FALSE,
+  overwrite.conditions = NULL
+)
 }
 \arguments{
 \item{data.link}{URL to the location of 'States' compressed files on the USGS server. Defaults to the FTP location.}

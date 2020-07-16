@@ -4,10 +4,14 @@
 \alias{download_bbs}
 \title{Download (and optionally subset) USGS Breeding Bird Survey data to file and import into the environment.}
 \usage{
-
-  download_bbs(data.link = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
-  data.dir = here::here("raw-data/"), country.names = NULL,
-  state.names = NULL, overwrite.bbs = NULL, overwrite.routes = NULL)
+download_bbs(
+  data.link = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
+  data.dir = here::here("raw-data/"),
+  country.names = NULL,
+  state.names = NULL,
+  overwrite.bbs = NULL,
+  overwrite.routes = NULL
+)
 }
 \arguments{
 \item{data.link}{URL to the location of 'States' compressed files on the USGS server. Defaults to the FTP location.}
@@ -24,5 +28,5 @@
 .zip files saved to local directory, as specified by data.dir
 }
 \description{
-This function downloads a select subset or all the compressed, state-level BBS data from the USGS server via FTP. Parts of this function were adapted from \href{http://www.github.com/oharar/rbbs}{oharar/rBBS}. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter \code{file}.
+This function downloads a select subset or all the compressed, state-level BBS data from the USGS server via FTP. Parts of this function were adapted from \href{http://www.github.com/oharar/rbbs}{\strong{oharar/rBBS}}. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter \code{file}.
 }

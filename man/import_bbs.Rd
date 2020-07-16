@@ -4,8 +4,11 @@
 \alias{import_bbs}
 \title{Import BBS data into R from file.}
 \usage{
-import_bbs(data.dir = paste0(getwd(), "/raw-data/"),
-  state.names = NULL, overwrite.routes = TRUE)
+import_bbs(
+  data.dir = paste0(getwd(), "/raw-data/"),
+  state.names = NULL,
+  overwrite.routes = TRUE
+)
 }
 \arguments{
 \item{data.dir}{Location of the compressed (.zip) route-level files (one per region/states) to be imported into R. Files will also be unzipped to this directory as ".csv".}

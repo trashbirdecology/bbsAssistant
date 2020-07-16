@@ -4,11 +4,15 @@
 \alias{get_routes}
 \title{Download and import the route-level information via FTP (USGS BBS)}
 \usage{
-
-  get_routes(routes.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/routes.zip",
-  data.dir = here::here("raw-data/"), active.only = TRUE,
-  route.type = 1, bbs.stratum = NULL, bcr.num = NULL,
-  overwrite = NULL)
+get_routes(
+  routes.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/routes.zip",
+  data.dir = here::here("raw-data/"),
+  active.only = TRUE,
+  route.type = 1,
+  bbs.stratum = NULL,
+  bcr.num = NULL,
+  overwrite = NULL
+)
 }
 \arguments{
 \item{routes.url}{URL for location of the routes.zip folder.}

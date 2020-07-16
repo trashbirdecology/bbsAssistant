@@ -4,10 +4,12 @@
 \alias{get_conditions}
 \title{Download and import the annual conditions per route  via FTP (USGS BBS)}
 \usage{
-
-  get_conditions(conds.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/Weather.zip",
-  data.dir = here::here("raw-data/"), active.only = FALSE,
-  overwrite = NULL)
+get_conditions(
+  conds.url = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/Weather.zip",
+  data.dir = here::here("raw-data/"),
+  active.only = FALSE,
+  overwrite = NULL
+)
 }
 \arguments{
 \item{conds.url}{URL for location of the routes.zip folder.}

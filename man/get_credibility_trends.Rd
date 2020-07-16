@@ -4,8 +4,10 @@
 \alias{get_credibility_trends}
 \title{Get data credibility and trends from the BBS analysis results}
 \usage{
-
-  get_credibility_trends(url = "https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?FLA&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C")
+get_credibility_trends(
+ 
+    url = "https://www.mbr-pwrc.usgs.gov/cgi-bin/atlasa15.pl?FLA&2&15&csrfmiddlewaretoken=3YKakk7LxT2ki6NSpl4mstudYCqdW02C"
+)
 }
 \arguments{
 \item{url}{Web address of the region or state for which species' population trends and credibility ratings are to be scraped. Default example is 'Kansas,USA'.}

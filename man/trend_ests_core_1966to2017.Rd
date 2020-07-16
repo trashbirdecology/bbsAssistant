@@ -4,7 +4,8 @@
 \name{trend_ests_core_1966to2017}
 \alias{trend_ests_core_1966to2017}
 \title{Trend estimates for the core BBS area, 1966-2017}
-\format{A data frame:
+\format{
+A data frame:
 \describe{
 \item{Credibility Code}{Color code corresponding to the quality of the data for the species/region combination: R=Red, Y=Yellow, B=Blue. Descriptions of the categories can be found at \url{https://www.mbr-pwrc.usgs.gov/bbs/trendmap17/credinfo.html}}
 \item{Sample Size}{Color code corresponding to the quality of the data for the species/region combination: R=Red, Y=Yellow, B=Blue. Descriptions of the categories can be found at  \url{https://www.mbr-pwrc.usgs.gov/bbs/trendmap17/credinfo.html}}
@@ -16,10 +17,11 @@
 \item{Region Name}{Full name of the region in North American according to its region code}
 \item{N Routes}{Three-digit-code that identifies the route; unique within states}
 \item{Trend}{Ratio of annual indices for the first and last year of the interval of interest}
-\item{2.5\% CI}{Lower 95\% confidence interval of the annual index of abundance}
-\item{97.5\% CI}{Upper 95\% confidence interval of the annual index of abundance}
+\item{2.5\\% CI}{Lower 95\\% confidence interval of the annual index of abundance}
+\item{97.5\\% CI}{Upper 95\\% confidence interval of the annual index of abundance}
 \item{Relative Abundance}{Estimated relative abundance of species/region}
-}}
+}
+}
 \source{
 \url{https://www.mbr-pwrc.usgs.gov/bbs/BBS_1966-2017_core_trend_revised_v2.csv}
 }
