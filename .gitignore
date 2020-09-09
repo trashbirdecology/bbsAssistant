@@ -21,6 +21,13 @@ data/readme.rtf
 /tests/temp-dir/
 README.knit.md
 README.utf8.md
-
 /vignettes/function-overview_cache/
+
 docs
+
+
+## ignore all the sb item downloads when prepping the data
+/data-raw/**.zip
+/data-raw/**.pdf
+/data-raw/**.xml
+/data-raw/**.txt
