@@ -3,19 +3,25 @@
 
 unpack_bbs_data <- function(
     sb_dir, 
-    
+    country, 
+    state
 )
-    
     
 
 # UNPACK STATES.ZIP --------------------------------------------------------------
-## when unpacked, this folder contains yet more compressed files for each state/region
+# when unpacked, this folder contains yet more compressed files for each state/region
 state_dir <- paste0(sb_dir,"/States/")
-states.zipped <- list.files(state_dir, full.names=TRUE) 
-lapply(states.zipped, unzip, exdir=state_dir)
+# Unzip the States.zip into the sb_id item directory
+unzip(list.files(sb_dir, full.names=TRUE, pattern="States.zip"), exdir = sb_dir)
+# all newly created .zip files....
+states.zipped <- list.files(state_dir, full.names=TRUE, ".zip") 
+
+# UNPACK ALL STATES FILES -------------------------------------------------
+if(!exists("state") & !exists("country")){ lapply(states.zipped, unzip, exdir=state_dir) }
 
 
-# UNPACK INDIVIDUAL REGIONS -----------------------------------------------
-if(exists("regions")){
-    
+# UNPACK INDIVIDUAL STATES IF SPECIFIED -----------------------------------------------
+if(exists("state")){
+
+        
 }
