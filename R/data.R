@@ -1,3 +1,4 @@
+
 # region_codes ------------------------------------------------------------
 #' Country and state codes and associated zip filenames 
 #' @format A data frame:
@@ -31,6 +32,8 @@
 #' @source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 "bbs_recent"
 
+
+# BELOW NEED UPDATING -----------------------------------------------------
 # trend_ests_core_1966to2017 ----------------------------------------------
 #' Trend estimates for the core BBS area, 1966-2017
 #' @format A data frame:
