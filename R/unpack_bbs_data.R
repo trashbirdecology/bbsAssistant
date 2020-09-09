@@ -19,8 +19,9 @@ states.zipped <- list.files(state_dir, full.names=TRUE, ".zip")
 # If neither state nor country are specified, just unpack all the state files. 
 if(is.null(state) & is.null(country)){ lapply(states.zipped, unzip, exdir=state_dir) }
 
-# UNPACK INDIVIDUAL STATES IF SPECIFIED -----------------------------------------------
-# WILL ADD THIS FEATURE SOON!!!
+# UNPACK INDIVIDUAL STATES, OR STATES BY COUNTRY IF SPECIFIED -----------------------------------------------
+# WILL ADD THIS FEATURE SOON!!!!!!
+
 
 # END FUNCTION ------------------------------------------------------------
 
