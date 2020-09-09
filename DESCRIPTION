@@ -18,6 +18,7 @@ Imports:
     magrittr, 
     readr,
     rvest,
+    sbtools,
     stringr,
     tidyr,
     sbtools,

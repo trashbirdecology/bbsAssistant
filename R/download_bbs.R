@@ -1,13 +1,14 @@
-#' @title Download (and optionally subset) USGS Breeding Bird Survey data to file and import into the environment.
-#' @description This function downloads a select subset or all the compressed, state-level BBS data from the USGS server via FTP. Parts of this function were adapted from [**oharar/rBBS**](http://www.github.com/oharar/rbbs). Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter `file`.
-#' @param data.link URL to the location of 'States' compressed files on the USGS server. Defaults to the FTP location.
+#' @title Download (and optionally subset) USGS Breeding Bird Survey observations data. 
+#' @description This function downloads a select subset or all the compressed, state-level BBS data from the permanent store at the USGS ScienceBase repository. 
+#' @version Specify the dataset release version (by release year). Please see /data-raw/sb_items for a list of available datasets and their associated release year.
 #' @param country.namess Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico). Country identities correspond with country codes (BBS): 484==Mexico; 124==Canada; 840==United States. State/region files DNE for Mexico as of November 2019
 #' @param state.names Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").
-#' @param data.dir Where to save the 'raw' BBS data. Defaults to subdir 'raw-data' in the current working directory.
+#' @param data.dir Where to save the 'raw' BBS data. Defaults to directory 'data-raw' in the current working directory.
 #' @param overwrite.bbs Logical. Defaults NULL. If TRUE will overwrite existing BBS data in data.dir. NULL will prompt user to force overwrite if .zip files exist in data.dir.
+#' @sb.id Specify the dataset to download based on the unique ScienceBase Item identifier. If `version` is specified, this will be ignored.
 #' @importFrom magrittr %>%
 #' @importFrom utils download.file
-#' @return .zip files saved to local directory, as specified by data.dir
+#' @return .csv 
 #' @export download_bbs
 #' @examples
 #' # Load the region codes into memory
@@ -24,8 +25,9 @@
 #' }
 #'
 download_bbs <-
-    function(data.link =  "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
-             data.dir = here::here("raw-data/"),
+    function(
+             version=2020,
+             data.dir = here::here("data-raw/"),
              country.names= NULL, 
              state.names = NULL,
              overwrite.bbs = NULL, 
