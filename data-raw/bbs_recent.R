@@ -53,7 +53,6 @@ region_codes <- region_codes %>%
 
 bbs_recent <- left_join(bbs_recent, region_codes)
 
-
 # Grab citation from associated xml ---------------------------------------
 bbs_recent_citation <- sbtools::item_get_fields(sb_id, "citation")
                         
