@@ -5,7 +5,6 @@ bibliography: paper/paper.bib
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file and render to push updates.-->
 <!-- badges: start -->
 [![R build status](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg)](https://github.com/trashbirdecology/bbsAssistant/actions)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.01768/status.svg)](https://doi.org/10.21105/joss.01768)[![License:
@@ -36,20 +35,41 @@ devtools::install_github("trashbirdecology/bbsAssistant",
 library(bbsAssistant)
 ```
 
-## Quick-download and import
-Quickly retrieve all or a subset (states/regions) of the BBS data using the wrapper function, `quick_get_bbs()`:
-```{r quick-get-bbs, eval=FALSE}
-bbs<- bbsAssistant::quick_get_bbs(state.names = c("Florida", "Nebraska"),  # get only two states for convenience. Leave blank to retrieve all states/regions.
-                     overwrite.bbs = FALSE, overwrite.routes = FALSE,  # overwrite routes.csv and bbs data = FALSE
-                     get.conditions = TRUE, overwrite.conditions = FALSE) # get weather conditions, does not overwrite
+## Quick Start
+Quickly retrieve the most recent version of the BBS observations dataset (this dataset currently contains >6.5 million rows). The BBS datasets are typically released on an annual basis, and comprise the QA/QC'd dataset containing observations from years 1966 to the most recent. __Unless you are reproducing analyses of historical versions of the BBS annual releases, the most recent release should suffice for your purposes.__ 
 
+We have stored a data package inside `bbsAssistant` called __bbs_recent__ containing the most recent observations dataset. Retrieve as follows:
+```{r bbs_recent, eval=FALSE} 
+data(bbs_recent, package="bbsAssistant") # this saves as a promise in environment
+# bbs <- data(bbs_recent, package="bbsAssistant") # this saves as an object in R environment
 ```
+
+## BBS Data Availability
+The two primary products resulting from the annual BBS roadside survesys, the [observations data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9) and the [analysis results](), are now archived and served at the US Geological Survey's ScienceBase The most recent annual releases will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function `get_bbs_data()`.
+
+```{r dataset-lookup, eval=TRUE, echo=FALSE, warnings=FALSE}
+datasets <- read.csv("data-raw/sb_items.csv")
+```
+A lookup table containing the available datasets (N = `r length(unique(datasets$sb_item))`) and analysis results will be regularly updated, and comprises the following entries: 
+```{r datasets, eval=TRUE, echo=FALSE, warnings=FALSE}
+library(magrittr)
+library(kableExtra)
+library(dplyr)
+datasets %>% select(-legacy_format, -sb_parent) %>%  
+  relocate(sb_item, .after = last_col()) %>%
+  kable()
+```
+
+
+
+
+
 
 ## Additional Information 
 ### Vignettes and package manual
 For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette(s) (`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`). 
 
-### Contributions to and interactions within the project
+### Contributing and Code of Conduct
 To make a contribution visit the [CONTRIBUTIONS.md](https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md). Contributors __must adhere to the [Code of Conduct](https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md).__ For questions, comments, or issues, feel free to email the maintainer [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues) (preferred).
 
 ## Project Team

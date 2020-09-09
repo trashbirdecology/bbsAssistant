@@ -1,9 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2020-07-16
-
-<!-- README.md is generated from README.Rmd. Please edit that file and render to push updates.-->
+Last updated: 2020-09-09
 
 <!-- badges: start -->
 
@@ -60,17 +58,307 @@ devtools::install_github("trashbirdecology/bbsAssistant",
 library(bbsAssistant)
 ```
 
-## Quick-download and import
+## Quick Start
 
-Quickly retrieve all or a subset (states/regions) of the BBS data using
-the wrapper function,
-`quick_get_bbs()`:
+Quickly retrieve the most recent version of the BBS observations dataset
+(this dataset currently contains \>6.5 million rows). The BBS datasets
+are typically released on an annual basis, and comprise the QA/QC’d
+dataset containing observations from years 1966 to the most recent.
+**Unless you are reproducing analyses of historical versions of the BBS
+annual releases, the most recent release should suffice for your
+purposes.**
+
+We have stored a data package inside `bbsAssistant` called
+**bbs\_recent** containing the most recent observations dataset.
+Retrieve as
+follows:
 
 ``` r
-bbs<- bbsAssistant::quick_get_bbs(state.names = c("Florida", "Nebraska"),  # get only two states for convenience. Leave blank to retrieve all states/regions.
-                     overwrite.bbs = FALSE, overwrite.routes = FALSE,  # overwrite routes.csv and bbs data = FALSE
-                     get.conditions = TRUE, overwrite.conditions = FALSE) # get weather conditions, does not overwrite
+data(bbs_recent, package="bbsAssistant") # this saves as a promise in environment
+# bbs <- data(bbs_recent, package="bbsAssistant") # this saves as an object in R environment
 ```
+
+## BBS Data Availability
+
+The two primary products resulting from the annual BBS roadside
+survesys, the [observations
+data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9)
+and the [analysis results](), are now archived and served at the US
+Geological Survey’s ScienceBase The most recent annual releases will be
+downloaded as the default in this package, but the user has the option
+to specify historical dataset releases should they choose. Please see
+the function `get_bbs_data()`.
+
+A lookup table containing the available datasets (N = 5) and analysis
+results will be regularly updated, and comprises the following entries:
+
+    ## 
+    ## Attaching package: 'dplyr'
+
+    ## The following object is masked from 'package:kableExtra':
+    ## 
+    ##     group_rows
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     filter, lag
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     intersect, setdiff, setequal, union
+
+<table>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+sb\_title
+
+</th>
+
+<th style="text-align:right;">
+
+release\_year
+
+</th>
+
+<th style="text-align:left;">
+
+data\_type
+
+</th>
+
+<th style="text-align:right;">
+
+year\_start
+
+</th>
+
+<th style="text-align:right;">
+
+year\_end
+
+</th>
+
+<th style="text-align:left;">
+
+sb\_item
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+2020 Release - North American Breeding Bird Survey Dataset (1966-2019)
+
+</td>
+
+<td style="text-align:right;">
+
+2020
+
+</td>
+
+<td style="text-align:left;">
+
+observations
+
+</td>
+
+<td style="text-align:right;">
+
+1966
+
+</td>
+
+<td style="text-align:right;">
+
+2019
+
+</td>
+
+<td style="text-align:left;">
+
+5ea04e9a82cefae35a129d65
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+2019 Release - North American Breeding Bird Survey Dataset (1966-2018)
+
+</td>
+
+<td style="text-align:right;">
+
+2019
+
+</td>
+
+<td style="text-align:left;">
+
+observations
+
+</td>
+
+<td style="text-align:right;">
+
+1966
+
+</td>
+
+<td style="text-align:right;">
+
+2018
+
+</td>
+
+<td style="text-align:left;">
+
+5d65256ae4b09b198a26c1d7
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+2018 Release - North American Breeding Bird Survey Dataset (1966-2017)
+
+</td>
+
+<td style="text-align:right;">
+
+2018
+
+</td>
+
+<td style="text-align:left;">
+
+observations
+
+</td>
+
+<td style="text-align:right;">
+
+1966
+
+</td>
+
+<td style="text-align:right;">
+
+2017
+
+</td>
+
+<td style="text-align:left;">
+
+5af45ebce4b0da30c1b448ca
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+2017 Release - North American Breeding Bird Survey Dataset (1966-2016)
+
+</td>
+
+<td style="text-align:right;">
+
+2017
+
+</td>
+
+<td style="text-align:left;">
+
+observations
+
+</td>
+
+<td style="text-align:right;">
+
+1966
+
+</td>
+
+<td style="text-align:right;">
+
+2016
+
+</td>
+
+<td style="text-align:left;">
+
+5cf7d4d5e4b07f02a7046479
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+2001-2016 Releases (legacy format) - North American Breeding Bird Survey
+Dataset
+
+</td>
+
+<td style="text-align:right;">
+
+2016
+
+</td>
+
+<td style="text-align:left;">
+
+observations
+
+</td>
+
+<td style="text-align:right;">
+
+1966
+
+</td>
+
+<td style="text-align:right;">
+
+2015
+
+</td>
+
+<td style="text-align:left;">
+
+5d00efafe4b0573a18f5e03a
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 ## Additional Information
 
@@ -81,7 +369,7 @@ For function descriptions please build the manual
 vignette(s) (`devtools::build_vignettes()`; or run
 `/vignettes/vignettes.Rmd`).
 
-### Contributions to and interactions within the project
+### Contributing and Code of Conduct
 
 To make a contribution visit the
 [CONTRIBUTIONS.md](https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md).
