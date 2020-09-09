@@ -2,11 +2,11 @@
 % Please edit documentation in R/download_bbs.R
 \name{download_bbs}
 \alias{download_bbs}
-\title{Download (and optionally subset) USGS Breeding Bird Survey data to file and import into the environment.}
+\title{Download (and optionally subset) USGS Breeding Bird Survey observations data.}
 \usage{
 download_bbs(
-  data.link = "ftp://ftpext.usgs.gov/pub/er/md/laurel/BBS/DataFiles/States/",
-  data.dir = here::here("raw-data/"),
+  version = 2020,
+  data.dir = here::here("data-raw/"),
   country.names = NULL,
   state.names = NULL,
   overwrite.bbs = NULL,
@@ -14,9 +14,7 @@ download_bbs(
 )
 }
 \arguments{
-\item{data.link}{URL to the location of 'States' compressed files on the USGS server. Defaults to the FTP location.}
-
-\item{data.dir}{Where to save the 'raw' BBS data. Defaults to subdir 'raw-data' in the current working directory.}
+\item{data.dir}{Where to save the 'raw' BBS data. Defaults to directory 'data-raw' in the current working directory.}
 
 \item{state.names}{Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").}
 
@@ -25,8 +23,8 @@ download_bbs(
 \item{country.namess}{Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico). Country identities correspond with country codes (BBS): 484==Mexico; 124==Canada; 840==United States. State/region files DNE for Mexico as of November 2019}
 }
 \value{
-.zip files saved to local directory, as specified by data.dir
+.csv
 }
 \description{
-This function downloads a select subset or all the compressed, state-level BBS data from the USGS server via FTP. Parts of this function were adapted from \href{http://www.github.com/oharar/rbbs}{\strong{oharar/rBBS}}. Note: this function requires an internet connection. If the bbs data are on file, please specify in the parameter \code{file}.
+This function downloads a select subset or all the compressed, state-level BBS data from the permanent store at the USGS ScienceBase repository.
 }

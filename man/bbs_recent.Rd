@@ -13,7 +13,7 @@ A data frame with 6797797 rows and 14 columns (as of 2020-09-09).
 \item{State}{The proper name of the US or Mexican state or Canadian province}
 \item{RPID}{Route run type}
 \item{Year}{Year in which the BBS observations was taken.}
-\item{AOU}{Numeric AOU code.}
+\item{AOU}{Numeric AOU code.}-0
 \item{StopTotal}{}
 \item{Count10}{}
 \item{Count20}{}

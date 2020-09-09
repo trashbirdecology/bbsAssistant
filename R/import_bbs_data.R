@@ -1,10 +1,10 @@
 #' @title Read BBS data from local file into R environment. 
-#' @description  Called inside `get_bbs_data()` but can be used independently.
+#' @description  Called inside `get_bbs_data()` but can be used independently if the user provides correct sb_dir. 
 #' @param sb_dir Directory location for the ScienceBase item.
 #' @param state Optional. Imports certain files based on producer-supplied state/province codes or English names.
 #' @param country Optional. Imports certain files based on producer-supplied country/nation codes or English names.
 
-import_bbs_data <- function(sb_dir, state, country){
+import_bbs_data <- function(sb_dir, state=NULL, country=NULL){
     
 # Get list of the available obesrvation filenames -----------------------------------------------------------
 state.fns <- list.files(paste0(sb_dir, "/States/"), pattern=".csv", full.names=TRUE)
@@ -39,7 +39,6 @@ citation <- sbtools::item_get_fields(sb_id, "citation")
 # Create a list of data and information to export or return to `get_bbs_data` ----------------------------------
 bbs <- list(observations, routes, weather, citation)
 names(bbs) <- c("observations", "routes", "weather", "citation")
-
 
 # END FUNCTION ------------------------------------------------------------
 return(bbs)

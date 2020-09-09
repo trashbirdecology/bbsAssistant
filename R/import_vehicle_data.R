@@ -1,6 +1,9 @@
 #' @description Unzips and imports the VehicleData.zip (into weather.csv) file associated with each BBS dataset. 
+#' @title Import the VehicleData (number of vehicles observed during each stop).
 #' @param sb_dir Directory for the ScienceBase (sb) item.
+#' @export import_vehicle_data
 
+ 
 import_vehicle_data <- function(sb_dir){
     # Unzip the States.zip into the SB item directory  (sb_dir) 
     unzip(list.files(sb_dir, full.names=TRUE, pattern="ehicleData.zip"), exdir = sb_dir)
