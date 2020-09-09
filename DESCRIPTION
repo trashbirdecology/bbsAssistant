@@ -21,8 +21,7 @@ Imports:
     sbtools,
     stringr,
     tidyr,
-    sbtools,
-    xml2
+    sbtools
 Suggests:
     covr,
     ggplot2,
