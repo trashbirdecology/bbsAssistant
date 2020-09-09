@@ -6,7 +6,7 @@
 /bbsData/
 README_files/
 bbsDataFlorida.feather
-README.tex
+README.stex
 README.log
 inst/doc
 doc
@@ -27,7 +27,4 @@ docs
 
 
 ## ignore all the sb item downloads when prepping the data
-/data-raw/**.zip
-/data-raw/**.pdf
-/data-raw/**.xml
-/data-raw/**.txt
+/data-raw/5ea04e9a82cefae35a129d65
