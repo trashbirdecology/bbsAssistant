@@ -1,8 +1,6 @@
-
-
 ## This script contains the code to prepare the original data from ScienceBase 
 ## eventually I will generalize this script to allow the user to provide any sb item they want, BUT for now, I just need to get the most recent datset into the package..
-
+library(dplyr)
 # Import sb_items ---------------------------------------------------------
 sb_items <- readr::read_csv(here::here("/data-raw/sb_items.csv"))
 # grab the sb item idenitfier associated with the most recent year end.
@@ -55,6 +53,10 @@ region_codes <- region_codes %>%
 
 bbs_recent <- left_join(bbs_recent, region_codes)
 
+
+# Grab citation from associated xml ---------------------------------------
+bbs_recent_citation <- sbtools::item_get_fields(sb_id, "citation")
+                        
 # Write the data to package files as .RDA ---------------------------------
 usethis::use_data(bbs_recent, overwrite=TRUE)
 

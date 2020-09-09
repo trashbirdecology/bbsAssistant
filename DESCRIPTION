@@ -29,7 +29,8 @@ Suggests:
     rmarkdown,
     spelling,
     testthat (>= 2.1.0),
-    usethis
+    usethis, 
+    xml2
 VignetteBuilder: knitr
 Language: en-US
 URL: https://github.com/trashbirdecology/bbsAssistant

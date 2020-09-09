@@ -76,6 +76,10 @@ follows:
 ``` r
 data(bbs_recent, package="bbsAssistant") # this saves as a promise in environment
 # bbs <- data(bbs_recent, package="bbsAssistant") # this saves as an object in R environment
+
+# Use sbtools
+# sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier
+# sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
 ```
 
 ## BBS Data Availability
@@ -91,21 +95,6 @@ the function `get_bbs_data()`.
 
 A lookup table containing the available datasets (N = 5) and analysis
 results will be regularly updated, and comprises the following entries:
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following object is masked from 'package:kableExtra':
-    ## 
-    ##     group_rows
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
 
 <table>
 
