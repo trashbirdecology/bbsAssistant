@@ -1,0 +1,6 @@
+﻿sb_parent,sb_item,sb_title,release_year,data_type,year_start,year_end,legacy_format
+52b1dfa8e4b0d9b325230cd9,5ea04e9a82cefae35a129d65,2020 Release - North American Breeding Bird Survey Dataset (1966-2019),2020,observations,1966,2019,n
+52b1dfa8e4b0d9b325230cd9,5d65256ae4b09b198a26c1d7,2019 Release - North American Breeding Bird Survey Dataset (1966-2018),2019,observations,1966,2018,n
+52b1dfa8e4b0d9b325230cd9,5af45ebce4b0da30c1b448ca,2018 Release - North American Breeding Bird Survey Dataset (1966-2017),2018,observations,1966,2017,n
+52b1dfa8e4b0d9b325230cd9,5cf7d4d5e4b07f02a7046479,2017 Release - North American Breeding Bird Survey Dataset (1966-2016),2017,observations,1966,2016,n
+52b1dfa8e4b0d9b325230cd9,5d00efafe4b0573a18f5e03a,2001-2016 Releases (legacy format) - North American Breeding Bird Survey Dataset,2016,observations,1966,2015,y
