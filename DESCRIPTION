@@ -17,7 +17,6 @@ Imports:
     dplyr,
     magrittr, 
     readr,
-    rvest,
     sbtools,
     stringr,
     tidyr,
