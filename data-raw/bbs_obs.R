@@ -1,3 +1,4 @@
+## code to prepare `bbs_obs` dataset
 ## This script contains the code to prepare the original data from ScienceBase 
 ## eventually I will generalize this script to allow the user to provide any sb item they want, BUT for now, I just need to get the most recent datset into the package..
 library(dplyr)

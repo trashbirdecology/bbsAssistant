@@ -22,14 +22,14 @@ get_bbs_data <- function(
     state=NULL
 ){
 # Retrieve dataset lookup table -------------------------------------------
-as.environment("package:bbsAssistant")
-sb_items <- data(sb_items, envir = "bbsAssistant")
-
+sb_items <- data(sb_items, package="bbsAssistant")
+data()
 # When sb_id & bbs_version == NULL -------------------------------------------------
 # If the sb_id and bbs_version are not defined, default to the most recent dataset release. 
     if(is.null(sb_id) & is.null(bbs_version)){
         ind=max(sb_items$release_year)
-        sb_id <- sb_items[sb_items$release_year==ind,"sb_item"] %>% as.character()
+        sb_id <- sb_items[sb_items$release_year==ind,]$sb_item
+        sb_id <- as.character(sb_id)
         message("FYI: neither `sb_id` nor `bbs_version` were specified. \nDownloading the most recent version of the BBS dataset titled,\n",sbtools::item_get_fields(sb_id,"title"))
     }
 
