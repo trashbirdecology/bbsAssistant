@@ -7,30 +7,31 @@ Authors@R: c(
   person("Gabriela", "Palomo-Muñoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")),
   person("Lyndsie", "Wszola", email = "", role = "aut", comment = c(ORCID = "0000-0002-2660-2048")))
 Description: This package provides helper functions for downloading and manipulating North American Breeding Bird Survey (BBS) data and metadata from the U.S. Geological Survey. The functionality streamlines this the process by which these data are accessed, downloaded locally, and imported into R.Depends: R (>= 3.5.1).  
-License: MIT + file LICENSE
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Imports: 
-    here,
-    dplyr,
-    magrittr, 
-    readr,
-    stringr,
-    tidyr,
-    sbtools
+    here (>= 0.1),
+    dplyr (>= 1.0.0),
+    magrittr (>= 1.5),
+    readr (>= 1.3.1),
+    stringr (>= 1.4.0),
+    tidyr (>= 1.1.0),
+    sbtools (>= 1.1.12)
 Suggests:
-    covr,
-    ggplot2,
-    knitr,
-    rmarkdown,
-    spelling,
+    covr (>= 3.5.0),
+    ggplot2 (>= 3.3.1),
+    knitr (>= 1.28),
+    rmarkdown (>= 2.2),
+    spelling (>= 2.1),
     testthat (>= 2.1.0),
-    usethis
+    usethis (>= 1.6.1)
 VignetteBuilder: knitr
 Language: en-US
 URL: https://github.com/trashbirdecology/bbsAssistant
 BugReports: https://github.com/trashbirdecology/bbsAssistant/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 4.0.0)
+    
