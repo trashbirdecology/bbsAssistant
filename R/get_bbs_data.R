@@ -13,31 +13,32 @@
 #' @export
 
 get_bbs_data <- function(
-    sb_id, 
-    bbs_version, 
-    dir, 
+    sb_id=NULL, 
+    bbs_version=NULL, 
+    sb_dir=NULL,
+    dir=NULL, 
     country=NULL, 
     state=NULL
 ){
 # Retrieve dataset lookup table -------------------------------------------
-sb_items <- readr::read_csv(here::here("/data-raw/sb_items.csv"))
+data(sb_items)
 
 # When sb_id & bbs_version == NULL -------------------------------------------------
 # If the sb_id and bbs_version are not defined, default to the most recent dataset release. 
-    if(!exists("sb_id") & !exists("bbs_version")){
+    if(is.null(sb_id) & is.null(bbs_version)){
         ind=max(sb_items$release_year)
         sb_id <- sb_items[sb_items$release_year==ind,"sb_item"] %>% as.character()
         message("FYI: neither `sb_id` nor `bbs_version` were specified. \nDownloading the most recent version of the BBS dataset titled,\n",sbtools::item_get_fields(sb_id,"title"))
-    }    
+    }
 
-# When bbs_version is defined -------------------------------------------------
-if(exists("bbs_version")){
+# When sb_id is undefined & bbs_version is defined -------------------------------------------------
+if(is.null(sb_id) & !is.null(bbs_version)){
     sb_id <- sb_items %>% filter(release_year) %>%  
         dplyr::select(sb_item) %>% as.character()
-    }
-    
+}
+
 # When sb_dir DNE, define it... ------------------------
-if(!exists("sb_dir")){
+if(is.null(sb_dir)){
     sb_dir <- paste0(here::here("data-raw/"), sb_id) # define the new directory
 }
 
@@ -46,12 +47,16 @@ suppressWarnings(dir.create(sb_dir)) # create directory for data associated with
 
 # Download the SB item files via `download_bbs_data()` -------------------------------------------------------
 download_bbs_data(sb_id, sb_dir)
-    # TO DO: provide FILE subsetting via sbtools::item_get_file or something like that...
+        # TO DO: provide FILE subsetting via sbtools::item_get_file or something like that...
 
 # Unzip the state files via `unpack_bbs_data()` --------------------------------------------------
-unpack_bbs_data(sb_dir, state=state, country=country)
+if(is.null("state")) {state <- NULL}
+if(is.null("country")) {country <- NULL}
+unpack_bbs_data(sb_dir, state, country=country)
 
 # Import bbs observations data  --------------------------------------------------------------------
+if(is.null("state")) {state <- NULL}
+if(is.null("country")) {country <- NULL}
 bbs_data <- import_bbs_data(sb_dir, state=state, country=country)
 
 
