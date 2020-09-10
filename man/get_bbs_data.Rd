@@ -8,7 +8,6 @@ get_bbs_data(
   sb_id = NULL,
   bbs_version = NULL,
   sb_dir = NULL,
-  dir = NULL,
   country = NULL,
   state = NULL
 )
@@ -18,13 +17,11 @@ get_bbs_data(
 
 \item{bbs_version}{Specify the dataset release version (by release year) for retrieval from ScienceBase. Please see /data-raw/sb_items for a list of available datasets and their associated release year.}
 
-\item{sb_dir}{Where to save the files associated with the ScienceBase item. efaults to (a created) folder within folder 'data-raw' in the current working directory.}
+\item{sb_dir}{Directory within which the BBS compressed and decompressed files associated with the ScienceBase item will be stored. Location defaults to a new folder named after the ScienceBase identifier tag (sb_id), in ~/data-raw/<SB_ID>.}
 
 \item{country}{Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico).}
 
 \item{state}{Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").}
-
-\item{data_dir}{Directory within which the BBS compressed and decompressed files associated with the ScienceBase item will be stored. Location defaults to a new folder named after the ScienceBase identifier tag (sb_id), in ~/data-raw/<SB_ID>.}
 }
 \description{
 This function downloads all files associated with a single version (defaults to the most recent release) of the BBS observations dataset from USGS ScienceBase repository, and allows the user to import all or a subset (based on Country, State, or Province).
