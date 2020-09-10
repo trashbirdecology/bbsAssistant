@@ -17,12 +17,19 @@ CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://c
 <img src="man/figures/logo.png" align="right" height=140/>
 
 ## About
-_This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major releases will be pushed to the [USGS Biolab GitHub](https://github.com/usgs-biolab/bbsAssistant)._
+_This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major releases will be pushed to the [USGS Biolab GitHub](https://github.com/usgs-biolab/bbsAssistant) (and here)._
 
-This R package contains functions for downloading and munging data from the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) [via FTP](https://www.pwrc.usgs.gov/BBS/RawData/) [@pardieck2018north; @sauer2017first]. This package was created to allow the user to bulk-download the BBS point count and related (e.g., route-level conditions) via FTP, and to quickly subset the data by taxonomic classifications and/or geographical locations. This package also maintains data containing the trend and annual indices from the most recent (1996-2017) [hierarchical population trend analyses](https://www.mbr-pwrc.usgs.gov/bbs/) [@sauer2017north]. 
+This R package contains functions for downloading, importing, and munging the the observations data and the analysis results from the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) [via USGS ScienceBase repository](https://sciencebase.gov/). This package was created to allow the user to bulk-download the BBS point count and related (e.g., route-level conditions) via the ScienceBase API (using [R package `sbtools`](https://cran.r-project.org/package=sbtools), and to quickly subset the data by taxonomic classifications, jurisdictional boundaries, and geospatial bounding boxes.
 
-### Citation
-Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
+### Citations
+__For the R package bbsAssistant__:
+> Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
+
+__For the BBS dataset and/or analysis results__, citations are provided as both a message when importing the product, and also as a list element in the imported object.
+
+__For the companion software paper__:
+>  Burnett et al., (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768, https://doi.org/10.21105/joss.01768
+
 
 ## Quick Start
 ### Installing __bbsAssistant__
@@ -30,7 +37,7 @@ Install the development version of this package using devtools and load the pack
 ```{r install, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 devtools::install_github("trashbirdecology/bbsAssistant", 
                          dependencies = TRUE, 
-                         ref="main" # ensure it pulls from the 'main' branch, default
+                         ref="sciencebase-major-updates", # ensure it pulls from the 'main' branch, defaults to 'master otherwise'
                          force=TRUE) # force to get most recent dev version
 library(bbsAssistant)
 ```

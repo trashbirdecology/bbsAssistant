@@ -11,8 +11,4 @@ sbtools::item_file_download(sb_id = sb_id,
                                 dest_dir = sb_dir, 
                             overwrite_file = TRUE)   
 
-    
-    
-# END FUNCTION ------------------------------------------------------------
-return(item.files)
 }

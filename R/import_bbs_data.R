@@ -23,7 +23,7 @@ for(i in seq_along(state.fns)){
         dplyr::mutate(StateNum = as.integer(StateNum), 
                CountryNum = as.integer(CountryNum) 
         )
-    observations <- dplyr::bind_rows(temp, state.data)
+    observations <- dplyr::bind_rows(temp, observations)
     }
 
 # Load the route level metadata for this dataset release -------------------------------

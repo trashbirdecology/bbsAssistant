@@ -27,13 +27,12 @@ sb_items <- readr::read_csv(here::here("/data-raw/sb_items.csv"))
     if(!exists("sb_id") & !exists("bbs_version")){
         ind=max(sb_items$release_year)
         sb_id <- sb_items[sb_items$release_year==ind,"sb_item"] %>% as.character()
-        message("Neither `sb_id` nor `bbs_version` were specified, therefore your computer has made the executive decision to retrieve the most recent version of the BBS dataset. recent version of the BBS dataset:\n",
-                "    Title: ", sbtools::item_get_fields(sb_id,"title"))
+        message("FYI: neither `sb_id` nor `bbs_version` were specified. \nDownloading the most recent version of the BBS dataset titled,\n",sbtools::item_get_fields(sb_id,"title"))
     }    
 
 # When bbs_version is defined -------------------------------------------------
 if(exists("bbs_version")){
-    sb_id <- sb_items %>% filter(release_year==bbs_version) %>% 
+    sb_id <- sb_items %>% filter(release_year) %>%  
         dplyr::select(sb_item) %>% as.character()
     }
     
@@ -47,19 +46,17 @@ suppressWarnings(dir.create(sb_dir)) # create directory for data associated with
 
 # Download the SB item files via `download_bbs_data()` -------------------------------------------------------
 download_bbs_data(sb_id, sb_dir)
-    # TO DO: provide file subsetting via sbtools::item_get_file or something like that...
+    # TO DO: provide FILE subsetting via sbtools::item_get_file or something like that...
 
 # Unzip the state files via `unpack_bbs_data()` --------------------------------------------------
-unpack_bbs_data(sb_dir)
-
-
+unpack_bbs_data(sb_dir, state=state, country=country)
 
 # Import bbs observations data  --------------------------------------------------------------------
-bbs_data <- import_bbs_data(sb_dir, state, country)
-
-
+bbs_data <- import_bbs_data(sb_dir, state=state, country=country)
 
 
 # END FUNCTION ------------------------------------------------------------
+
+message("¡¡¡PLEASE FOR THE LOVE OF .... SOMETHING YOU CARE ABOUT!!!!\nIf you use the BBS dataset in your publications, presentations, webpages, etc., please cite it. The citation for the dataset you just retrieved using `get_bbs_data()` is provided in the list, and is provided here, free of charge: \n","    ", bbs_data$citation)
 return(bbs_data)
 }

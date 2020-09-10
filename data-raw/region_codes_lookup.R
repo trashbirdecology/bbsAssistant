@@ -4,11 +4,10 @@
 
 # Import the raw lookup table ------------------------------------------------------------------
 region_codes <- readr::read_csv(here::here("/data-raw/region_codes.csv")) %>% 
-    mutate(
+    dplyr::mutate(
         CountryNum = as.integer(CountryNum), 
         StateNum   = as.integer(StateNum)
     )
-
 
 # Write the data to package files as .RDA ---------------------------------
 usethis::use_data(region_codes, overwrite=TRUE)
