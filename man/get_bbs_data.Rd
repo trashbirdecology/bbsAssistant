@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_bbs_data.R
 \name{get_bbs_data}
 \alias{get_bbs_data}
-\title{Downloads all files associated with a single version of the USGS Breeding Bird Survey observations data.}
+\title{One-stop shop for downloading and importing the USGS Breeding Bird Survey observations data.}
 \usage{
 get_bbs_data(sb_id, bbs_version, dir, country = NULL, state = NULL)
 }
