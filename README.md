@@ -47,20 +47,21 @@ and geospatial bounding boxes.
 
 ### Citations
 
-**For the R package bbsAssistant**: \> Burnett, J.L., Wszola, L., and
-Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and
-handling data and information from the North American Breeding Bird
-Survey: U.S. Geological Survey software release,
+**For the R package bbsAssistant**:  
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R
+package for downloading and handling data and information from the North
+American Breeding Bird Survey: U.S. Geological Survey software release,
 <https://doi.org/10.5066/P93W0EAW>.
 
 **For the BBS dataset and/or analysis results**, citations are provided
 as both a message when importing the product, and also as a list element
 in the imported object.
 
-**For the companion software paper**: \> Burnett et al., (2019).
-bbsAssistant: An R package for downloading and handling data and
-information from the North American Breeding Bird Survey. Journal of
-Open Source Software, 4(44), 1768, <https://doi.org/10.21105/joss.01768>
+**For the companion software paper**:  
+Burnett et al., (2019). bbsAssistant: An R package for downloading and
+handling data and information from the North American Breeding Bird
+Survey. Journal of Open Source Software, 4(44), 1768,
+<https://doi.org/10.21105/joss.01768>
 
 ## Quick Start
 
