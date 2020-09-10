@@ -14,7 +14,10 @@ CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://c
 ![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg)
 <!-- [![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=main)](https://travis-ci.org/trashbirdecology/bbsAssistant) -->
 <!-- badges: end -->
-<img src="man/figures/logo.png" align="right" height=140/> \#\# ALERT
+<img src="man/figures/logo.png" align="right" height=140/>
+
+## ALERT
+
 Due to changes in the location of the BBS observations and results
 datasets, this package is undergoing a transformation (written
 2020-09-09).

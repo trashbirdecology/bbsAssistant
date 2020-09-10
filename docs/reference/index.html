@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">bbsAssistant</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -93,18 +93,6 @@
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/function-overview.html">A quick overview of bbsAssistant functionality</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -156,15 +144,9 @@
       <tr>
         
         <td>
-          <p><code><a href="annual_index_core_1966to2017.html">annual_index_core_1966to2017</a></code> </p>
+          <p><code><a href="bbs_obs.html">bbs_obs</a></code> </p>
         </td>
-        <td><p>Annual population trend indices for species/regions in the core BBS region, 1966-2017</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="annual_index_expanded_1966to2017.html">annual_index_expanded_1966to2017</a></code> </p>
-        </td>
-        <td><p>Annual population trend indices for species/regions in the expanded BBS region, 1966-2017</p></td>
+        <td><p>Contains the most recent release of the BBS observations dataset.</p></td>
       </tr><tr>
         
         <td>
@@ -174,63 +156,45 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="download_bbs.html">download_bbs()</a></code> </p>
+          <p><code><a href="download_bbs_data.html">download_bbs_data()</a></code> </p>
         </td>
-        <td><p>Download (and optionally subset) USGS Breeding Bird Survey data to file and import into the environment.</p></td>
+        <td><p>Download the BBS dataset files associated with a single ScienceBase identifier</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_analysis_results.html">get_analysis_results()</a></code> </p>
+          <p><code><a href="get_bbs_data.html">get_bbs_data()</a></code> </p>
         </td>
-        <td><p>Get annual abundance indices from BBS analyses.</p></td>
+        <td><p>One-stop shop for downloading and importing the USGS Breeding Bird Survey observations data.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_conditions.html">get_conditions()</a></code> </p>
+          <p><code><a href="import_bbs_data.html">import_bbs_data()</a></code> </p>
         </td>
-        <td><p>Download and import the annual conditions per route  via FTP (USGS BBS)</p></td>
+        <td><p>Read BBS data from local file into R environment.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_credibility_trends.html">get_credibility_trends()</a></code> </p>
+          <p><code><a href="import_routes.html">import_routes()</a></code> </p>
         </td>
-        <td><p>Get data credibility and trends from the BBS analysis results</p></td>
+        <td><p>Import the route-level covariates/metadata associated with the BBS dataset.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_routes.html">get_routes()</a></code> </p>
+          <p><code><a href="import_vehicle_data.html">import_vehicle_data()</a></code> </p>
         </td>
-        <td><p>Download and import the route-level information via FTP (USGS BBS)</p></td>
+        <td><p>Import the VehicleData (number of vehicles observed during each stop).</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="get_species.html">get_species()</a></code> </p>
+          <p><code><a href="import_weather.html">import_weather()</a></code> </p>
         </td>
-        <td><p>Download and import BBS, NACC, and AOU species list</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="import_bbs.html">import_bbs()</a></code> </p>
-        </td>
-        <td><p>Import BBS data into R from file.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="quick_get_bbs.html">quick_get_bbs()</a></code> </p>
-        </td>
-        <td><p>A wrapper function for downloading (<code>bbsAssistant::download_bbs()</code>) from the USGS FTP server and importing (<code>bbsAssistant::import_bbs()</code>) the BBS into the environment.</p></td>
+        <td><p>Import the weather conditions associated with route-level observations.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="region_codes.html">region_codes</a></code> </p>
         </td>
         <td><p>Country and state codes and associated zip filenames</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trend_ests_core_1966to2017.html">trend_ests_core_1966to2017</a></code> </p>
-        </td>
-        <td><p>Trend estimates for the core BBS area, 1966-2017</p></td>
       </tr>
     </tbody>
     </table>

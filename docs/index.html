@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="A package for downloading and munging data and information from the North American Breeding Bird Survey">
-<meta property="og:description" content="This package provides helper functions for downloading and manipulating North American Breeding Bird Survey (BBS) data and metadata from the U.S. Geological Survey. The functionality streamlines this the process by which these data are accessed, downloaded locally, and imported into R.Depends: R (&gt;= 3.5.1). ">
+<meta property="og:description" content="This package provides helper functions for downloading and manipulating North American Breeding Bird Survey (BBS) data and metadata from the U.S. Geological Survey. The functionality streamlines this the process by which these data are accessed, downloaded locally, and imported into R.Depends: R (&gt;= 3.5.1).  ">
 <meta property="og:image" content="http://trashbirdecology.github.io/bbsAssistant/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">bbsAssistant</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -52,18 +52,6 @@
 </li>
 <li>
   <a href="reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/function-overview.html">A quick overview of bbsAssistant functionality</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -89,19 +77,28 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<p><strong>bbsAssistant</strong>: An R package for downloading and handling data and information from the North American Breeding Bird Survey. ================ Last updated: 2020-07-16</p>
-<!-- README.md is generated from README.Rmd. Please edit that file and render to push updates.-->
+<p><strong>bbsAssistant</strong>: An R package for downloading and handling data and information from the North American Breeding Bird Survey. ================ Last updated: 2020-09-09</p>
 <!-- badges: start -->
 <p><a href="https://github.com/trashbirdecology/bbsAssistant/actions"><img src="https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <a href="https://doi.org/10.21105/joss.01768"><img src="https://joss.theoj.org/papers/10.21105/joss.01768/status.svg" alt="DOI"></a><a href="http://creativecommons.org/publicdomain/zero/1.0/"><img src="https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg" alt="License: CC0-1.0"></a> <a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square" alt="Contributors"></a> <a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg" alt="lifecycle"></a> <img src="https://img.shields.io/badge/USGS-Core-lightgrey.svg" alt="usgs"><!-- [![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=main)](https://travis-ci.org/trashbirdecology/bbsAssistant) --><!-- badges: end --><img src="reference/figures/logo.png" align="right" height="140/"></p>
+<div id="alert" class="section level2">
+<h2 class="hasAnchor">
+<a href="#alert" class="anchor"></a>ALERT</h2>
+<p>Due to changes in the location of the BBS observations and results datasets, this package is undergoing a transformation (written 2020-09-09).</p>
+<p>Currently (again, as of 2020-09-09), we are working on the following and in the following order: - Saving most recent Sauer analysis results to the package - Updating the subsetting functions - Functions for obtaining old observations dataset versions - Functions for obtaining old analysis results - Updating the taxonomic matching capacity - Mapping and visualization features</p>
+</div>
 <div id="about" class="section level2">
 <h2 class="hasAnchor">
 <a href="#about" class="anchor"></a>About</h2>
-<p><em>This repository contains the development version of <strong>bbsAssistant</strong>. Please submit <a href="https://github.com/TrashBirdEcology/bbsAssistant/issues">Issues here</a>. Major releases will be pushed to the <a href="https://github.com/usgs-biolab/bbsAssistant">USGS Biolab GitHub</a>.</em></p>
-<p>This R package contains functions for downloading and munging data from the <a href="https://www.pwrc.usgs.gov/bbs/">North American Breeding Bird Survey</a> (BBS) <a href="https://www.pwrc.usgs.gov/BBS/RawData/">via FTP</a> (Pardieck et al. 2018; J. R. Sauer et al. 2017). This package was created to allow the user to bulk-download the BBS point count and related (e.g., route-level conditions) via FTP, and to quickly subset the data by taxonomic classifications and/or geographical locations. This package also maintains data containing the trend and annual indices from the most recent (1996-2017) <a href="https://www.mbr-pwrc.usgs.gov/bbs/">hierarchical population trend analyses</a> (J. Sauer et al. 2017).</p>
-<div id="citation" class="section level3">
+<p><em>This repository contains the development version of <strong>bbsAssistant</strong>. Please submit <a href="https://github.com/TrashBirdEcology/bbsAssistant/issues">Issues here</a>. Major releases will be pushed to the <a href="https://github.com/usgs-biolab/bbsAssistant">USGS Biolab GitHub</a> (and here).</em></p>
+<p>This R package contains functions for downloading, importing, and munging the the observations data and the analysis results from the <a href="https://www.pwrc.usgs.gov/bbs/">North American Breeding Bird Survey</a> (BBS) <a href="https://sciencebase.gov/">via USGS ScienceBase repository</a>. This package was created to allow the user to bulk-download the BBS point count and related (e.g., route-level conditions) via the ScienceBase API (using <a href="https://cran.r-project.org/package=sbtools">R package <code>sbtools</code></a>, and to quickly subset the data by taxonomic classifications, jurisdictional boundaries, and geospatial bounding boxes.</p>
+<div id="citations" class="section level3">
 <h3 class="hasAnchor">
-<a href="#citation" class="anchor"></a>Citation</h3>
-<p>Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, <a href="https://doi.org/10.5066/P93W0EAW" class="uri">https://doi.org/10.5066/P93W0EAW</a>.</p>
+<a href="#citations" class="anchor"></a>Citations</h3>
+<p><strong>For the R package bbsAssistant</strong>:<br>
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, <a href="https://doi.org/10.5066/P93W0EAW" class="uri">https://doi.org/10.5066/P93W0EAW</a>.</p>
+<p><strong>For the BBS dataset and/or analysis results</strong>, citations are provided as both a message when importing the product, and also as a list element in the imported object.</p>
+<p><strong>For the companion software paper</strong>:<br>
+Burnett et al., (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768, <a href="https://doi.org/10.21105/joss.01768" class="uri">https://doi.org/10.21105/joss.01768</a></p>
 </div>
 </div>
 <div id="quick-start" class="section level2">
@@ -112,20 +109,154 @@
 <a href="#installing-bbsassistant" class="anchor"></a>Installing <strong>bbsAssistant</strong>
 </h3>
 <p>Install the development version of this package using devtools and load the package and dependencies:</p>
-<div class="sourceCode" id="cb1"><pre class="r">devtools::install_github("trashbirdecology/bbsAssistant", 
-                         dependencies = TRUE, 
-                         ref="main" # ensure it pulls from the 'main' branch, default
-                         force=TRUE) # force to get most recent dev version
-library(bbsAssistant)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"trashbirdecology/bbsAssistant"</span>,
+                         <span class="kw">ref</span><span class="kw">=</span><span class="st">"sciencebase-major-updates"</span>, <span class="co"># ensure it pulls from the 'main' branch. function defaults to 'master' branch, otherwise.</span>
+                         <span class="kw">force</span><span class="kw">=</span><span class="fl">TRUE</span>) <span class="co"># force to get most recent dev version</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">bbsAssistant</span>)</pre></div>
 </div>
 </div>
-<div id="quick-download-and-import" class="section level2">
+<div id="quick-start-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#quick-download-and-import" class="anchor"></a>Quick-download and import</h2>
-<p>Quickly retrieve all or a subset (states/regions) of the BBS data using the wrapper function, <code><a href="reference/quick_get_bbs.html">quick_get_bbs()</a></code>:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="no">bbs</span><span class="kw">&lt;-</span> <span class="kw pkg">bbsAssistant</span><span class="kw ns">::</span><span class="fu"><a href="reference/quick_get_bbs.html">quick_get_bbs</a></span>(<span class="kw">state.names</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Florida"</span>, <span class="st">"Nebraska"</span>),  <span class="co"># get only two states for convenience. Leave blank to retrieve all states/regions.</span>
-                     <span class="kw">overwrite.bbs</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">overwrite.routes</span> <span class="kw">=</span> <span class="fl">FALSE</span>,  <span class="co"># overwrite routes.csv and bbs data = FALSE</span>
-                     <span class="kw">get.conditions</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">overwrite.conditions</span> <span class="kw">=</span> <span class="fl">FALSE</span>) <span class="co"># get weather conditions, does not overwrite</span></pre></div>
+<a href="#quick-start-1" class="anchor"></a>Quick Start</h2>
+<p>Start here to quickly retrieve the most recent version of the BBS observations dataset (this dataset currently contains &gt;6.5 million rows). The BBS datasets are typically released on an annual basis, and comprise the QA/QC’d dataset containing observations from years 1966 to the most recent. <strong>Unless you are reproducing analyses of historical versions of the BBS annual releases, the most recent release should suffice for your purposes.</strong></p>
+<p>We have stored a data package inside <code>bbsAssistant</code> called <strong>bbs_recent</strong> containing the most recent observations dataset. Retrieve as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="no">bbs_obs</span>, <span class="kw">package</span><span class="kw">=</span><span class="st">"bbsAssistant"</span>) <span class="co"># this saves as a promise in environment</span>
+<span class="co"># Not run</span>
+<span class="co">## bbs &lt;- data(bbs_obs, package="bbsAssistant") # this saves as an object in R environment</span>
+
+<span class="co">## sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier</span>
+<span class="co">## sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)</span></pre></div>
+</div>
+<div id="bbs-data-availability" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bbs-data-availability" class="anchor"></a>BBS Data Availability</h2>
+<p>There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the <a href="https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9">observations data</a> and the analysis results. The datasets (observations, results) are permanenetly and publicly available at <a href="http://sciencebase.gov">USGS ScienceBase</a>.</p>
+<p>The most recent annual releases of the observations and results datasets are stored as data objects in this package (see <code><a href="https://rdrr.io/r/utils/data.html">data(bbs)</a></code>) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function <code><a href="reference/get_bbs_data.html">get_bbs_data()</a></code>.</p>
+<p>A lookup table containing the available datasets (N = 5) and analysis results will be regularly updated, and comprises the following entries:</p>
+<table class="table">
+<thead><tr>
+<th style="text-align:left;">
+<p>sb_title</p>
+</th>
+<th style="text-align:right;">
+<p>release_year</p>
+</th>
+<th style="text-align:left;">
+<p>data_type</p>
+</th>
+<th style="text-align:right;">
+<p>year_start</p>
+</th>
+<th style="text-align:right;">
+<p>year_end</p>
+</th>
+<th style="text-align:left;">
+<p>sb_item</p>
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<p>2020 Release - North American Breeding Bird Survey Dataset (1966-2019)</p>
+</td>
+<td style="text-align:right;">
+<p>2020</p>
+</td>
+<td style="text-align:left;">
+<p>observations</p>
+</td>
+<td style="text-align:right;">
+<p>1966</p>
+</td>
+<td style="text-align:right;">
+<p>2019</p>
+</td>
+<td style="text-align:left;">
+<p>5ea04e9a82cefae35a129d65</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<p>2019 Release - North American Breeding Bird Survey Dataset (1966-2018)</p>
+</td>
+<td style="text-align:right;">
+<p>2019</p>
+</td>
+<td style="text-align:left;">
+<p>observations</p>
+</td>
+<td style="text-align:right;">
+<p>1966</p>
+</td>
+<td style="text-align:right;">
+<p>2018</p>
+</td>
+<td style="text-align:left;">
+<p>5d65256ae4b09b198a26c1d7</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<p>2018 Release - North American Breeding Bird Survey Dataset (1966-2017)</p>
+</td>
+<td style="text-align:right;">
+<p>2018</p>
+</td>
+<td style="text-align:left;">
+<p>observations</p>
+</td>
+<td style="text-align:right;">
+<p>1966</p>
+</td>
+<td style="text-align:right;">
+<p>2017</p>
+</td>
+<td style="text-align:left;">
+<p>5af45ebce4b0da30c1b448ca</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<p>2017 Release - North American Breeding Bird Survey Dataset (1966-2016)</p>
+</td>
+<td style="text-align:right;">
+<p>2017</p>
+</td>
+<td style="text-align:left;">
+<p>observations</p>
+</td>
+<td style="text-align:right;">
+<p>1966</p>
+</td>
+<td style="text-align:right;">
+<p>2016</p>
+</td>
+<td style="text-align:left;">
+<p>5cf7d4d5e4b07f02a7046479</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<p>2001-2016 Releases (legacy format) - North American Breeding Bird Survey Dataset</p>
+</td>
+<td style="text-align:right;">
+<p>2016</p>
+</td>
+<td style="text-align:left;">
+<p>observations</p>
+</td>
+<td style="text-align:right;">
+<p>1966</p>
+</td>
+<td style="text-align:right;">
+<p>2015</p>
+</td>
+<td style="text-align:left;">
+<p>5d00efafe4b0573a18f5e03a</p>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="additional-information" class="section level2">
 <h2 class="hasAnchor">
@@ -133,11 +264,11 @@ library(bbsAssistant)</pre></div>
 <div id="vignettes-and-package-manual" class="section level3">
 <h3 class="hasAnchor">
 <a href="#vignettes-and-package-manual" class="anchor"></a>Vignettes and package manual</h3>
-<p>For function descriptions please build the manual (<code>devtools::build_manual("bbsAssistant)</code>) and for an example build the vignette(s) (<code><a href="https://devtools.r-lib.org//reference/build_vignettes.html">devtools::build_vignettes()</a></code>; or run <code>/vignettes/vignettes.Rmd</code>).</p>
+<p>VIGNETTES ARE CURRENTLY UNDER CONSTRUCTION DUE TO PACKAGE OVERHAUL/MAKEOVER! <!-- For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette(s) (`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`); or visit the [package website]().  --></p>
 </div>
-<div id="contributions-to-and-interactions-within-the-project" class="section level3">
+<div id="contributing-and-code-of-conduct" class="section level3">
 <h3 class="hasAnchor">
-<a href="#contributions-to-and-interactions-within-the-project" class="anchor"></a>Contributions to and interactions within the project</h3>
+<a href="#contributing-and-code-of-conduct" class="anchor"></a>Contributing and Code of Conduct</h3>
 <p>To make a contribution visit the <a href="https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md">CONTRIBUTIONS.md</a>. Contributors <strong>must adhere to the <a href="https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md">Code of Conduct</a>.</strong> For questions, comments, or issues, feel free to email the maintainer <a href="mailto:jburnett@usgs.gov">Jessica Burnett</a> or submit an <a href="https://github.com/TrashBirdEcology/bbsAssistant/issues">Issue</a> (preferred).</p>
 </div>
 </div>
@@ -185,17 +316,6 @@ library(bbsAssistant)</pre></div>
 <div id="references" class="section level2">
 <h2 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h2>
-<div id="refs" class="references">
-<div id="ref-pardieck2018north">
-<p>Pardieck, KL, DJ Ziolkowski Jr, M Lutmerding, and MAR Hudson. 2018. “North American Breeding Bird Survey Dataset 1966–2017, Version 2017.0.” <em>US Geological Survey, Patuxent Wildlife Research Center, Laurel, Maryland, USA. <br><span class="math display"><em>O</em><em>n</em><em>l</em><em>i</em><em>n</em><em>e</em></span><br> URL: <a href="Https://Www.pwrc.usgs.gov/BBS/RawData" class="uri">Https://Www.pwrc.usgs.gov/BBS/RawData</a></em>.</p>
-</div>
-<div id="ref-sauer2017first">
-<p>Sauer, John R, Keith L Pardieck, David J Ziolkowski Jr, Adam C Smith, Marie-Anne R Hudson, Vicente Rodriguez, Humberto Berlanga, Daniel K Niven, and William A Link. 2017. “The First 50 Years of the North American Breeding Bird Survey.” <em>The Condor: Ornithological Applications</em> 119 (3). Oxford University Press: 576–93. <a href="https://doi.org/10.1650/CONDOR-17-83.1" class="uri">https://doi.org/10.1650/CONDOR-17-83.1</a>.</p>
-</div>
-<div id="ref-sauer2017north">
-<p>Sauer, JR, D Niven, J Hines, David Ziolkowski Jr, KL Pardieck, JE Fallon, and William Link. 2017. “The North American Breeding Bird Survey, Results and Analysis 1966-2015.”</p>
-</div>
-</div>
 </div>
 
   </div>
