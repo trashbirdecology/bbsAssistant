@@ -6,7 +6,7 @@
 /bbsData/
 README_files/
 bbsDataFlorida.feather
-README.tex
+README.stex
 README.log
 inst/doc
 doc
@@ -21,6 +21,10 @@ data/readme.rtf
 /tests/temp-dir/
 README.knit.md
 README.utf8.md
-
 /vignettes/function-overview_cache/
+
 docs
+
+
+## ignore all the sb item downloads when prepping the data
+/data-raw/5ea04e9a82cefae35a129d65
