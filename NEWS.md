@@ -1,5 +1,3 @@
-# bbsAssistant 3.0.0
-
 # bbsAssistant 2.0.0
 
 __2020.09.09__  The BBS observations and analysis results datasets have each moved to a permanent digital repository at the USGS ScienceBase. As a consequence, many of version 1.0.0 functions need to be heavily modified. This version represents the removal of defunct functions associated with the former location of the datasets. 
