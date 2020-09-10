@@ -51,11 +51,8 @@ region_codes <- region_codes %>%
   mutate(StateNum = as.integer(StateNum)) %>% 
   mutate(State = as.character(State)) 
 
-bbs_recent <- left_join(bbs_recent, region_codes)
-
-# Grab citation from associated xml ---------------------------------------
-bbs_recent_citation <- sbtools::item_get_fields(sb_id, "citation")
-                        
+bbs_obs <- left_join(bbs_recent, region_codes)
+               
 # Write the data to package files as .RDA ---------------------------------
-usethis::use_data(bbs_recent, overwrite=TRUE)
+usethis::use_data(bbs_obs, overwrite=TRUE)
 

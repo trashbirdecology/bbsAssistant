@@ -11,7 +11,7 @@
 #' @source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 "region_codes"
 
-# bbs_recent  (most recent version of bbs observations) --------------------------------------------------------------
+# bbs_obs  (most recent version of bbs observations) --------------------------------------------------------------
 #' Contains the most recent release of the BBS observations dataset. 
 #' @format A data frame with 6797797 rows and 14 columns (as of 2020-09-09).
 #' \describe{
@@ -30,6 +30,6 @@
 #'   \item{Count50}{}
 #' }
 #' @source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
-"bbs_recent"
+"bbs_obs"
 
 
