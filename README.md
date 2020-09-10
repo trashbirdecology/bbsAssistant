@@ -14,7 +14,17 @@ CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://c
 ![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg)
 <!-- [![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=main)](https://travis-ci.org/trashbirdecology/bbsAssistant) -->
 <!-- badges: end -->
-<img src="man/figures/logo.png" align="right" height=140/>
+<img src="man/figures/logo.png" align="right" height=140/> \#\# ALERT
+Due to changes in the location of the BBS observations and results
+datasets, this package is undergoing a transformation (written
+2020-09-09).
+
+Currently (again, as of 2020-09-09), we are working on the following and
+in the following order: - Saving most recent Sauer analysis results to
+the package - Updating the subsetting functions - Functions for
+obtaining old observations dataset versions - Functions for obtaining
+old analysis results - Updating the taxonomic matching capacity -
+Mapping and visualization features
 
 ## About
 
@@ -22,26 +32,35 @@ CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://c
 Please submit [Issues
 here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major
 releases will be pushed to the [USGS Biolab
-GitHub](https://github.com/usgs-biolab/bbsAssistant).*
+GitHub](https://github.com/usgs-biolab/bbsAssistant) (and here).*
 
-This R package contains functions for downloading and munging data from
-the [North American Breeding Bird
-Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) [via
-FTP](https://www.pwrc.usgs.gov/BBS/RawData/) (Pardieck et al. 2018; J.
-R. Sauer et al. 2017). This package was created to allow the user to
-bulk-download the BBS point count and related (e.g., route-level
-conditions) via FTP, and to quickly subset the data by taxonomic
-classifications and/or geographical locations. This package also
-maintains data containing the trend and annual indices from the most
-recent (1996-2017) [hierarchical population trend
-analyses](https://www.mbr-pwrc.usgs.gov/bbs/) (J. Sauer et al. 2017).
+This R package contains functions for downloading, importing, and
+munging the the observations data and the analysis results from the
+[North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/)
+(BBS) [via USGS ScienceBase repository](https://sciencebase.gov/). This
+package was created to allow the user to bulk-download the BBS point
+count and related (e.g., route-level conditions) via the ScienceBase API
+(using [R package
+`sbtools`](https://cran.r-project.org/package=sbtools), and to quickly
+subset the data by taxonomic classifications, jurisdictional boundaries,
+and geospatial bounding boxes.
 
-### Citation
+### Citations
 
-Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R
-package for downloading and handling data and information from the North
-American Breeding Bird Survey: U.S. Geological Survey software release,
+**For the R package bbsAssistant**: \> Burnett, J.L., Wszola, L., and
+Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and
+handling data and information from the North American Breeding Bird
+Survey: U.S. Geological Survey software release,
 <https://doi.org/10.5066/P93W0EAW>.
+
+**For the BBS dataset and/or analysis results**, citations are provided
+as both a message when importing the product, and also as a list element
+in the imported object.
+
+**For the companion software paper**: \> Burnett et al., (2019).
+bbsAssistant: An R package for downloading and handling data and
+information from the North American Breeding Bird Survey. Journal of
+Open Source Software, 4(44), 1768, <https://doi.org/10.21105/joss.01768>
 
 ## Quick Start
 
@@ -52,21 +71,20 @@ the package and dependencies:
 
 ``` r
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         dependencies = TRUE, 
-                         ref="main" # ensure it pulls from the 'main' branch, default
+                         ref="sciencebase-major-updates", # ensure it pulls from the 'main' branch. function defaults to 'master' branch, otherwise.
                          force=TRUE) # force to get most recent dev version
 library(bbsAssistant)
 ```
 
 ## Quick Start
 
-Quickly retrieve the most recent version of the BBS observations dataset
-(this dataset currently contains \>6.5 million rows). The BBS datasets
-are typically released on an annual basis, and comprise the QA/QC’d
-dataset containing observations from years 1966 to the most recent.
-**Unless you are reproducing analyses of historical versions of the BBS
-annual releases, the most recent release should suffice for your
-purposes.**
+Start here to quickly retrieve the most recent version of the BBS
+observations dataset (this dataset currently contains \>6.5 million
+rows). The BBS datasets are typically released on an annual basis, and
+comprise the QA/QC’d dataset containing observations from years 1966 to
+the most recent. **Unless you are reproducing analyses of historical
+versions of the BBS annual releases, the most recent release should
+suffice for your purposes.**
 
 We have stored a data package inside `bbsAssistant` called
 **bbs\_recent** containing the most recent observations dataset.
@@ -74,21 +92,25 @@ Retrieve as
 follows:
 
 ``` r
-data(bbs_recent, package="bbsAssistant") # this saves as a promise in environment
-# bbs <- data(bbs_recent, package="bbsAssistant") # this saves as an object in R environment
+data(bbs_obs, package="bbsAssistant") # this saves as a promise in environment
+# Not run
+## bbs <- data(bbs_obs, package="bbsAssistant") # this saves as an object in R environment
 
-# Use sbtools
-# sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier
-# sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
+## sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier
+## sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
 ```
 
 ## BBS Data Availability
 
-The two primary products resulting from the annual BBS roadside
-survesys, the [observations
+There are currently two primary products released from the USGS that are
+derived from the annual BBS roadside surveys, the [observations
 data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9)
-and the [analysis results](), are now archived and served at the US
-Geological Survey’s ScienceBase The most recent annual releases will be
+and the analysis results. The datasets (observations, results) are
+permanenetly and publicly available at [USGS
+ScienceBase](http://sciencebase.gov).
+
+The most recent annual releases of the observations and results datasets
+are stored as data objects in this package (see `data(bbs)`) will be
 downloaded as the default in this package, but the user has the option
 to specify historical dataset releases should they choose. Please see
 the function `get_bbs_data()`.
@@ -353,10 +375,9 @@ observations
 
 ### Vignettes and package manual
 
-For function descriptions please build the manual
-(`devtools::build_manual("bbsAssistant)`) and for an example build the
-vignette(s) (`devtools::build_vignettes()`; or run
-`/vignettes/vignettes.Rmd`).
+VIGNETTES ARE CURRENTLY UNDER CONSTRUCTION DUE TO PACKAGE
+OVERHAUL/MAKEOVER\!
+<!-- For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette(s) (`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`); or visit the [package website]().  -->
 
 ### Contributing and Code of Conduct
 
@@ -477,36 +498,3 @@ shall be held liable for any damages resulting from its authorized or
 unauthorized use.
 
 ## References
-
-<div id="refs" class="references">
-
-<div id="ref-pardieck2018north">
-
-Pardieck, KL, DJ Ziolkowski Jr, M Lutmerding, and MAR Hudson. 2018.
-“North American Breeding Bird Survey Dataset 1966–2017, Version
-2017.0.” *US Geological Survey, Patuxent Wildlife Research Center,
-Laurel, Maryland, USA. \[Online\] URL:
-Https://Www.pwrc.usgs.gov/BBS/RawData*.
-
-</div>
-
-<div id="ref-sauer2017first">
-
-Sauer, John R, Keith L Pardieck, David J Ziolkowski Jr, Adam C Smith,
-Marie-Anne R Hudson, Vicente Rodriguez, Humberto Berlanga, Daniel K
-Niven, and William A Link. 2017. “The First 50 Years of the North
-American Breeding Bird Survey.” *The Condor: Ornithological
-Applications* 119 (3). Oxford University Press: 576–93.
-<https://doi.org/10.1650/CONDOR-17-83.1>.
-
-</div>
-
-<div id="ref-sauer2017north">
-
-Sauer, JR, D Niven, J Hines, David Ziolkowski Jr, KL Pardieck, JE
-Fallon, and William Link. 2017. “The North American Breeding Bird
-Survey, Results and Analysis 1966-2015.”
-
-</div>
-
-</div>
