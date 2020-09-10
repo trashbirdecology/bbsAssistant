@@ -5,7 +5,7 @@
 \alias{sb_items}
 \title{A lookup table that is manually updated by the package maintainers. It is used as a quick reference to identify which datasets are available for import from ScienceBase, and are compatible with this package.}
 \format{
-A data frame:
+A data frame containing N rows and 5 columns
 \describe{
 \item{sb_parent}{ScienceBase unique identifier associated with the parent item (often the project identifier).}
 \item{sb_item}{ScienceBase unique identifier associated with each dataset release.}

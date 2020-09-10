@@ -7,19 +7,21 @@
 \format{
 A data frame with 6797797 rows and 14 columns (as of 2020-09-09).
 \describe{
-\item{RouteDataID}{}
+\item{AOU}{Numeric AOU code.}
+\item{Count10}{...}
+\item{Count20}{...}
+\item{Count30}{...}
+\item{Count40}{...}
+\item{Count50}{...}
 \item{CountryNum}{BBS country codes associated with United States-840, Mexico-484, and Canada-124}
-\item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
-\item{State}{The proper name of the US or Mexican state or Canadian province}
+\item{Route}{...}
+\item{RouteDataID}{...}
 \item{RPID}{Route run type}
+\item{SpeciesTotal}{...}
+\item{State}{The proper name of the US or Mexican state or Canadian province}
+\item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
+\item{StopTotal}{Number of individuals of a given species ('AOU') identified by the observer at the end of every 10th stop within the route.}
 \item{Year}{Year in which the BBS observations was taken.}
-\item{AOU}{Numeric AOU code.}-0
-\item{StopTotal}{}
-\item{Count10}{}
-\item{Count20}{}
-\item{Count30}{}
-\item{Count40}{}
-\item{Count50}{}
 }
 }
 \source{
