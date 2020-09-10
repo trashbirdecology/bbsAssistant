@@ -1,5 +1,5 @@
 #' @title One-stop shop for downloading and importing the USGS Breeding Bird Survey observations data. 
-#' @description This function downloads all files assocaited with a single version (defaults to the most recent release) of the BBS observations dataset from USGS ScienceBase repository, and allows the user to import all or a subset (based on Country, State, or Province). 
+#' @description This function downloads all files associated with a single version (defaults to the most recent release) of the BBS observations dataset from USGS ScienceBase repository, and allows the user to import all or a subset (based on Country, State, or Province). 
 #' @param data_dir Directory within which the BBS compressed and decompressed files associated with the ScienceBase item will be stored. Location defaults to a new folder named after the ScienceBase identifier tag (sb_id), in ~/data-raw/<SB_ID>.
 #' @param bbs_version Specify the dataset release version (by release year) for retrieval from ScienceBase. Please see /data-raw/sb_items for a list of available datasets and their associated release year.
 #' @param sb_id Specify the dataset to download based on the unique ScienceBase Item identifier for retrieval from ScienceBase. If `bbs_version` is specified, this will be ignored.

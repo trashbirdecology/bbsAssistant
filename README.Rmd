@@ -67,7 +67,7 @@ data(bbs_obs, package="bbsAssistant") # this saves as a promise in environment
 ```
 
 ## BBS Data Availability
-There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the [observations data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9) and the analysis results. The datasets (observations, results) are permanenetly and publicly available at [USGS ScienceBase](http://sciencebase.gov). 
+There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the [observations data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9) and the analysis results. The datasets (observations, results) are permanently and publicly available at [USGS ScienceBase](http://sciencebase.gov). 
 
 The most recent annual releases of the observations and results datasets are stored as data objects in this package (see `data(bbs)`) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function `get_bbs_data()`.
 
