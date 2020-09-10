@@ -6,6 +6,11 @@
 \usage{
 download_bbs_data(sb_id, sb_dir)
 }
+\arguments{
+\item{sb_id}{Temp description}
+
+\item{sb_dirTemp}{Temp description}
+}
 \description{
 Called inside \code{get_bbs_data()}. This is functionally sbtools::item_file_download, but forces the overwrite_file=TRUE condition, and specifies the directory to store item files.
 }
