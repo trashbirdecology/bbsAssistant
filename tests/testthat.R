@@ -1,7 +1,4 @@
-library("testthat")
-library("bbsAssistant")
+library(testthat)
+library(bbsAssistant)
 
-# Skip on travis
-if (Sys.getenv("USER") != "travis") {
- test_check("bbsAssistant")
-}
+test_check("bbsAssistant")
