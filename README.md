@@ -1,7 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2020-09-09
+Last updated: 2020-09-22
 
 <!-- badges: start -->
 
@@ -75,7 +75,7 @@ the package and dependencies:
 
 ``` r
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         ref="sciencebase-major-updates", # ensure it pulls from the 'main' branch. function defaults to 'master' branch, otherwise.
+                         ref="main", # ensure it pulls from the 'main' branch. function defaults to 'master' branch, otherwise.
                          force=TRUE) # force to get most recent dev version
 library(bbsAssistant)
 ```

@@ -48,7 +48,7 @@ Burnett et al., (2019). bbsAssistant: An R package for downloading and handling 
 Install the development version of this package using devtools and load the package and dependencies:
 ```{r install, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         ref="sciencebase-major-updates", # ensure it pulls from the 'main' branch. function defaults to 'master' branch, otherwise.
+                         ref="main", # ensure it pulls from the 'main' branch. function defaults to 'master' branch, otherwise.
                          force=TRUE) # force to get most recent dev version
 library(bbsAssistant)
 ```
