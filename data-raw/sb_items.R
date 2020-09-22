@@ -2,7 +2,7 @@
 
 sb_items <-
     readr::read_csv(here::here("/data-raw/sb_items.csv")) %>%
-    mutate(
+    dplyr::mutate(
         release_year = as.integer(release_year),
         year_end = as.integer(year_end),
         year_start = as.integer(year_start)
