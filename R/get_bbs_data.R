@@ -22,8 +22,8 @@ get_bbs_data <- function(
     state=NULL
 ){
 # Retrieve dataset lookup table -------------------------------------------
-sb_items <- data(sb_items, package="bbsAssistant")
-data()
+data("sb_items", package="bbsAssistant")
+
 # When sb_id & bbs_version == NULL -------------------------------------------------
 # If the sb_id and bbs_version are not defined, default to the most recent dataset release. 
     if(is.null(sb_id) & is.null(bbs_version)){
