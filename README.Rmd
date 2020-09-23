@@ -86,7 +86,6 @@ datasets %>% select(-legacy_format, -sb_parent) %>%
 
 ## Additional Information 
 ### Vignettes and package manual
-
 VIGNETTES ARE CURRENTLY UNDER CONSTRUCTION DUE TO PACKAGE OVERHAUL/MAKEOVER!
 <!-- For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette(s) (`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`); or visit the [package website]().  -->
 
@@ -107,34 +106,8 @@ To make a contribution visit the [CONTRIBUTIONS.md](https://github.com/trashbird
 </table>
 
 
-<!-- ## Contributors  -->
-<!-- Thanks to our contributors: -->
-<!-- <!-- ALL-CONTRIBUTORS-LIST:START--> -->
-<!-- <table> -->
-<!--   <tr> -->
-<!--      <td align="center"> -->
-<!--      <a href="http://ethanwhite.org"><img src="https://avatars0.githubusercontent.com/u/744427?v=4" width="100px;" alt="Ethan White"/><br /><sub><b>Ethan White</b></sub></a><br /> -->
-<!--      <!-- <a href="#userTesting-Ethan White" title="User Testing">📓</a>  --> -->
-<!--      <!-- <a href="#review-Ethan White" title="Documentation">📖</a> --> -->
-<!--      </td> -->
-<!--       <td align="center"> -->
-<!--       <a href="https://jsta.rbind.io/"><img src="https://avatars0.githubusercontent.com/u/7844578?s=400&v=4" width="100px;" alt="Joseph Stachelek"/><br /><sub><b>Joseph Stachelek</b></sub></a><br /> -->
-<!--       <!-- <a href="#userTesting-jsta" title="User Testing">📓</a> --> -->
-<!--       <!-- <a href="#review-jsta" title="Documentation">📖</a> --> -->
-<!--       <!-- <a href="#bugs-jsta" title="Bugs">🐛</a> --> -->
-<!--      </td> -->
-<!--      <td align="center"> -->
-<!--      <a href="https://mbjoseph.github.io"><img src="https://avatars3.githubusercontent.com/u/2664564?v=4" width="100px;" alt="Max Joseph"/><br /><sub><b>Max Joseph</b></sub></a><br /> -->
-<!--      <!-- <a href="https://github.com/TrashBirdEcology/bbsAssistant/commits?author=mbjoseph" title="Documentation">📖</a> --> -->
-<!--      </td> -->
-<!--     <td align="center"> -->
-<!--     <a href="https://github.com/Bisaloo"><img src="https://avatars1.githubusercontent.com/u/10783929?s=460&v=4" width="100px;" alt="Hugh Gruson"/><br /><sub><b>Hugh Gruson</b></sub></a> -->
-<!--      <!-- <a href="#review-bisaloo" title="Documentation">📖</a> --> -->
-<!--      </td> -->
-<!--   </tr> -->
-<!-- </table> -->
 
-<!-- <!-- ALL-CONTRIBUTORS-LIST:END --> Acknowledgments
+## Acknowledgments
 We especially thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. We thank those who have made [contributions](https://github.com/TrashBirdEcology/bbsAssistant/graphs/contributors) of all sizes to this project. Finally, we thank two peer reviewers, [Ethan White](www.github.com/ethanwhite) and [Josepha Stachelek](www.github.com/jsta) whose feedback greatly improved the quality of this software and the [associated software paper](www.github.com/trashbirdecology/bbsassistant/paper/paper.md). [Logo](https://github.com/TrashBirdEcology/bbsAssistant/blob/main/man/figures/logo.png) by Gabby Palomo-Munoz.
 
 This software has been approved for release by the U.S. Geological Survey (USGS). Although the software has been subjected to rigorous review, the USGS reserves the right to update the software as needed pursuant to further analysis and review. No warranty, expressed or implied, is made by the USGS or the U.S. Government as to the functionality of the software and related material nor shall the fact of release constitute any such warranty. Furthermore, the software is released on condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from its authorized or unauthorized use.

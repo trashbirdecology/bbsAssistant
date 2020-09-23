@@ -426,37 +426,12 @@ Wszola <br>Team Member</b></sub></a><br />
 
 </table>
 
-<!-- ## Contributors  -->
+## Acknowledgments
 
-<!-- Thanks to our contributors: -->
-
-<!-- <!-- ALL-CONTRIBUTORS-LIST:START-->
-
-–\> <!-- <table> --> <!--   <tr> --> <!--      <td align="center"> -->
-<!--      <a href="http://ethanwhite.org"><img src="https://avatars0.githubusercontent.com/u/744427?v=4" width="100px;" alt="Ethan White"/><br /><sub><b>Ethan White</b></sub></a><br /> -->
-<!--      <!-- <a href="#userTesting-Ethan White" title="User Testing">📓</a>  -->
-–\>
-<!--      <!-- <a href="#review-Ethan White" title="Documentation">📖</a> -->
-–\> <!--      </td> --> <!--       <td align="center"> -->
-<!--       <a href="https://jsta.rbind.io/"><img src="https://avatars0.githubusercontent.com/u/7844578?s=400&v=4" width="100px;" alt="Joseph Stachelek"/><br /><sub><b>Joseph Stachelek</b></sub></a><br /> -->
-<!--       <!-- <a href="#userTesting-jsta" title="User Testing">📓</a> -->
-–\>
-<!--       <!-- <a href="#review-jsta" title="Documentation">📖</a> -->
-–\> <!--       <!-- <a href="#bugs-jsta" title="Bugs">🐛</a> --> –\>
-<!--      </td> --> <!--      <td align="center"> -->
-<!--      <a href="https://mbjoseph.github.io"><img src="https://avatars3.githubusercontent.com/u/2664564?v=4" width="100px;" alt="Max Joseph"/><br /><sub><b>Max Joseph</b></sub></a><br /> -->
-<!--      <!-- <a href="https://github.com/TrashBirdEcology/bbsAssistant/commits?author=mbjoseph" title="Documentation">📖</a> -->
-–\> <!--      </td> --> <!--     <td align="center"> -->
-<!--     <a href="https://github.com/Bisaloo"><img src="https://avatars1.githubusercontent.com/u/10783929?s=460&v=4" width="100px;" alt="Hugh Gruson"/><br /><sub><b>Hugh Gruson</b></sub></a> -->
-<!--      <!-- <a href="#review-bisaloo" title="Documentation">📖</a> -->
-–\> <!--      </td> --> <!--   </tr> --> <!-- </table> -->
-
-<!-- <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-Acknowledgments We especially thank the participatory scientists who
-collect data annually for the North American Breeding Bird Survey, and
-the Patuxent Wildlife Research Center for making these data publicly and
-easily accessible. We thank those who have made
+We especially thank the participatory scientists who collect data
+annually for the North American Breeding Bird Survey, and the Patuxent
+Wildlife Research Center for making these data publicly and easily
+accessible. We thank those who have made
 [contributions](https://github.com/TrashBirdEcology/bbsAssistant/graphs/contributors)
 of all sizes to this project. Finally, we thank two peer reviewers,
 [Ethan White](www.github.com/ethanwhite) and [Josepha
