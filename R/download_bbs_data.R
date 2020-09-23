@@ -2,6 +2,7 @@
 #' @description Called inside `get_bbs_data()`. This is functionally sbtools::item_file_download, but forces the overwrite_file=TRUE condition, and specifies the directory to store item files.
 #' @param sb_id Temp description
 #' @param sb_dir Temp description
+#' @export download_bbs_data
 
 download_bbs_data <- function(sb_id, sb_dir){
 
