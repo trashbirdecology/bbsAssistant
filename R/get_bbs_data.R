@@ -62,6 +62,7 @@ if(is.null("state")) {state <- NULL}
 if(is.null("country")) {country <- NULL}
 bbs_data <- import_bbs_data(sb_dir, state=state, country=country)
 
+bbs_data$sb_id <- sb_id # add the sciencebase identifier
 
 
 # END FUNCTION ------------------------------------------------------------
