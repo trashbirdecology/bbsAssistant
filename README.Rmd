@@ -72,7 +72,7 @@ There are currently two primary products released from the USGS that are derived
 The most recent annual releases of the observations and results datasets are stored as data objects in this package (see `data(bbs)`) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function `get_bbs_data()`.
 
 ```{r dataset-lookup,  eval=TRUE, message=FALSE, warning=FALSE, echo=FALSE}
-datasets <- read.csv("data-raw/sb_items.csv")
+datasets <- bbsAssistant::sb_items
 ```
 A lookup table containing the available datasets (N = `r length(unique(datasets$sb_item))`) and analysis results will be regularly updated, and comprises the following entries: 
 ```{r datasets, eval=TRUE, message=FALSE, warning=FALSE, echo=FALSE}
