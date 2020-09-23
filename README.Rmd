@@ -57,13 +57,12 @@ library(bbsAssistant)
 Start here to quickly retrieve the most recent version of the BBS observations dataset (this dataset currently contains >6.5 million rows). The BBS datasets are typically released on an annual basis, and comprise the QA/QC'd dataset containing observations from years 1966 to the most recent. __Unless you are reproducing analyses of historical versions of the BBS annual releases, the most recent release should suffice for your purposes.__ 
 
 We have stored a data package inside `bbsAssistant` called __bbs_recent__ containing the most recent observations dataset. Retrieve the most recent data in the package:
-```{r bbs_recent, eval=FALSE, echo=TRUE} 
+```{r bbs_recent, eval=TRUE, echo=TRUE} 
 data <- bbsAssistant::bbs_obs
 ```
 or download the data files directly:
-```{r bbs_recent2, eval=FALSE, echo=TRUE} 
+```{r bbs_recent2, eval=TRUE, echo=TRUE} 
 sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier 
-sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
 ```
 
 ## BBS Data Availability
@@ -112,4 +111,16 @@ We especially thank the participatory scientists who collect data annually for t
 
 This software has been approved for release by the U.S. Geological Survey (USGS). Although the software has been subjected to rigorous review, the USGS reserves the right to update the software as needed pursuant to further analysis and review. No warranty, expressed or implied, is made by the USGS or the U.S. Government as to the functionality of the software and related material nor shall the fact of release constitute any such warranty. Furthermore, the software is released on condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from its authorized or unauthorized use.
 
-## References
+## How to Cite the Data
+Easily retrieve the text citation for the specified dataset using `sbtools`:
+```{r cite, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+sbtools::item_get_fields(sb_id, "citation")
+```
+
+If you use the package data, the text citations are available in the package citation file:
+```{r cite.local, echo=TRUE, eval=TRUE, message=FALSE, warning=FALSE}
+citation("bbsAssistant")
+# print(citation("bbsAssistant"), bibtex=TRUE)# for bibtex
+```
+
+

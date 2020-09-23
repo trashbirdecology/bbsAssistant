@@ -102,7 +102,6 @@ or download the data files directly:
 
 ``` r
 sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier 
-sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
 ```
 
 ## BBS Data Availability
@@ -452,4 +451,45 @@ released on condition that neither the USGS nor the U.S. Government
 shall be held liable for any damages resulting from its authorized or
 unauthorized use.
 
-## References
+## How to Cite the Data
+
+Easily retrieve the text citation for the specified dataset using
+`sbtools`:
+
+``` r
+sbtools::item_get_fields(sb_id, "citation")
+```
+
+    ## [1] "Pardieck, K.L., Ziolkowski Jr., D.J., Lutmerding, M., Aponte, V.I., and Hudson, M-A.R., 2020, North American Breeding Bird Survey Dataset 1966 - 2019: U.S. Geological Survey data release, https://doi.org/10.5066/P9J6QUF6."
+
+If you use the package data, the text citations are available in the
+package citation file:
+
+``` r
+citation("bbsAssistant")
+```
+
+    ## 
+    ## To cite the R package bbsAssistant, please use: To cite the most recent
+    ## version of the Breeding Bird Survey dataset, please use: To cite a
+    ## different version of the Breeding Bird Survey dataset, please visit the
+    ## [project
+    ## page](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9).
+    ## 
+    ##   Burnett, J.L., L.S. Wszola, and G. Palomo-Muñoz (2019). bbsAssistant:
+    ##   An R package for downloading and handling data and information from
+    ##   the North American Breeding Bird Survey. Journal of Open Source
+    ##   Software. DOI:10.21105/joss.01768
+    ## 
+    ##   Pardieck, K.L., Ziolkowski Jr., D.J., Lutmerding, M., Aponte, V.I.,
+    ##   and Hudson, M-A.R., 2020, North American Breeding Bird Survey Dataset
+    ##   1966 - 2019: U.S. Geological Survey data release,
+    ##   https://doi.org/10.5066/P9J6QUF6
+    ## 
+    ## To see these entries in BibTeX format, use 'print(<citation>,
+    ## bibtex=TRUE)', 'toBibtex(.)', or set
+    ## 'options(citation.bibtex.max=999)'.
+
+``` r
+# print(citation("bbsAssistant"), bibtex=TRUE)# for bibtex
+```
