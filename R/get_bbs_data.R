@@ -19,7 +19,8 @@ get_bbs_data <- function(
     bbs_version=NULL, 
     sb_dir=NULL,
     country=NULL, 
-    state=NULL
+    state=NULL, 
+    overwrite=FALSE
 ){
 # Retrieve dataset lookup table -------------------------------------------
 data("sb_items", package="bbsAssistant")
@@ -48,10 +49,11 @@ if(is.null(sb_dir)){
 # Create sb_dir -----------------------------------------------------------
 suppressWarnings(dir.create(sb_dir)) # create directory for data associated with the sb item (sb_id) if it does not already exist. 
 
-# Download the SB item files via `download_bbs_data()` -------------------------------------------------------
-download_bbs_data(sb_id, sb_dir)
-        # TO DO: provide FILE subsetting via sbtools::item_get_file or something like that...
 
+# Download the SB item files via `download_bbs_data()` -------------------------------------------------------
+if(overwrite|length(list.files(sb_dir))==0){download_bbs_data(sb_id, sb_dir)}else(paste("Directory  ", sb_dir, " exists and is populated. To overwrite, please specify overwrite=TRUE"))
+
+    
 # Unzip the state files via `unpack_bbs_data()` --------------------------------------------------
 if(is.null("state")) {state <- NULL}
 if(is.null("country")) {country <- NULL}
