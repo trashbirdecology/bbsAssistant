@@ -24,20 +24,21 @@ get_bbs_data <- function(
 # Retrieve dataset lookup table -------------------------------------------
 data("sb_items", package="bbsAssistant")
 
+# When sb_id is undefined & bbs_version is defined -------------------------------------------------
+if(is.null(sb_id) & !is.null(bbs_version)){
+    sb_id <- sb_items %>% filter(release_year==bbs_version) %>%  
+        dplyr::select(sb_item) %>% as.character()
+}
+
 # When sb_id & bbs_version == NULL -------------------------------------------------
 # If the sb_id and bbs_version are not defined, default to the most recent dataset release. 
-    if(is.null(sb_id) & is.null(bbs_version)){
+    if(is.null(sb_id)){
         ind=max(sb_items$release_year)
         sb_id <- sb_items[sb_items$release_year==ind,]$sb_item
         sb_id <- as.character(sb_id)
         message("FYI: neither `sb_id` nor `bbs_version` were specified. \nDownloading the most recent version of the BBS dataset titled,\n",sbtools::item_get_fields(sb_id,"title"))
     }
 
-# When sb_id is undefined & bbs_version is defined -------------------------------------------------
-if(is.null(sb_id) & !is.null(bbs_version)){
-    sb_id <- sb_items %>% filter(release_year==bbs_version) %>%  
-        dplyr::select(sb_item) %>% as.character()
-}
 
 # When sb_dir DNE, define it... ------------------------
 if(is.null(sb_dir)){
@@ -60,6 +61,7 @@ unpack_bbs_data(sb_dir, state, country=country)
 if(is.null("state")) {state <- NULL}
 if(is.null("country")) {country <- NULL}
 bbs_data <- import_bbs_data(sb_dir, state=state, country=country)
+
 
 
 # END FUNCTION ------------------------------------------------------------
