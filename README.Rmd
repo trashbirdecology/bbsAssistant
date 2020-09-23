@@ -56,14 +56,14 @@ library(bbsAssistant)
 ## Quick Start
 Start here to quickly retrieve the most recent version of the BBS observations dataset (this dataset currently contains >6.5 million rows). The BBS datasets are typically released on an annual basis, and comprise the QA/QC'd dataset containing observations from years 1966 to the most recent. __Unless you are reproducing analyses of historical versions of the BBS annual releases, the most recent release should suffice for your purposes.__ 
 
-We have stored a data package inside `bbsAssistant` called __bbs_recent__ containing the most recent observations dataset. Retrieve as follows:
+We have stored a data package inside `bbsAssistant` called __bbs_recent__ containing the most recent observations dataset. Retrieve the most recent data in the package:
 ```{r bbs_recent, eval=FALSE, echo=TRUE} 
-data(bbs_obs, package="bbsAssistant") # this saves as a promise in environment
-# Not run
-## bbs <- data(bbs_obs, package="bbsAssistant") # this saves as an object in R environment
-
-## sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier
-## sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
+data <- bbsAssistant::bbs_obs
+```
+or download the data files directly:
+```{r bbs_recent2, eval=FALSE, echo=TRUE} 
+sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier 
+sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
 ```
 
 ## BBS Data Availability

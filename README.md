@@ -1,7 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2020-09-22
+Last updated: 2020-09-23
 
 <!-- badges: start -->
 
@@ -92,16 +92,17 @@ suffice for your purposes.**
 
 We have stored a data package inside `bbsAssistant` called
 **bbs\_recent** containing the most recent observations dataset.
-Retrieve as
-follows:
+Retrieve the most recent data in the package:
 
 ``` r
-data(bbs_obs, package="bbsAssistant") # this saves as a promise in environment
-# Not run
-## bbs <- data(bbs_obs, package="bbsAssistant") # this saves as an object in R environment
+data <- bbsAssistant::bbs_obs
+```
 
-## sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier
-## sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
+or download the data files directly:
+
+``` r
+sb_id = "5ea04e9a82cefae35a129d65" #specify the item identifier 
+sbtools::item_get_fields(sb_id, "citation") #use sbtools package to easily retrieve the citation for the relevant dataset (internet connection required)
 ```
 
 ## BBS Data Availability
