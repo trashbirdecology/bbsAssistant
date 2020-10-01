@@ -24,33 +24,48 @@ data(package="bbsAssistant")
 ```
 
 ```{r get_data}
-get_bbs_data()
-
+bbs_data<- get_bbs_data() # make take a hot minute if you haven't already downloaded the data....
+df <- left_join(bbs_data$observations, bbs_data$routes)  # lazy but whatever
+rm(bbs_data) # clear list, unless you want it still or need the weather...
 ```
 
-```{r merge_shit}
-bbs<-left_join(bbs_obs, region_codes)
+```{r takealook}
+# glimpse(bbs_data$observations) # the most recent (unless otherwise specified) bbs observations
+# glimpse(bbs_data$routes) # route data associated 
+# glimpse(bbs_data$weather) # weather associated with route data
 ```
 # ~20 (or more) strata (state/prov * BCR) and for each strata, "two or more routes where the species has been observed and at least one route with 10 or more years of data."
 
 ```{r summary}
-nrow(bbs %>% 
-  filter(SpeciesTotal==0))#should be zero..
+# nrow(df[df$SpeciesTotal==0,])## ensuring this is presence-only data
 
-nyears.per.spproute <- bbs %>% 
-  mutate(AOU=as.factor(AOU)) %>% 
+nyears.per.spproute <- df %>% 
+  # mutate(AOU=as.factor(AOU)) %>% 
   group_by(CountryNum, StateNum, Route, AOU) %>% 
-  summarise(n())
-# number of years of observations per species per route (by country/state route id)
+  summarise(nyears=n()) # number of years of observations per species per route (by country/state route id)
+hist(nyears.per.spproute$nyears)
 
-nyears.per.spproute %>% filter(nyears>=10)
-
-nyears.per.spp
-# 2+ routes per state*bcr strata
- # routes with at least 10 years of (not necessarily continuous) data
-
+nyears.per.bcrstate <- df %>% 
+  group_by(Stratum, CountryNum, StateNum, AOU) %>% 
+  summarise(nyears=n()) # number of years of observations per species per stratum & state)
+hist(nyears.per.bcrstate$nyears)
 ```
 
 
+```{r }
+nbirds.per.stratum <- df %>% 
+  group_by(Stratum, AOU, Year) %>% 
+  summarise(total.obs=sum(SpeciesTotal)) #total count of specices per stratum
 
+hist(nbirds.per.stratum$total.obs)
 
+max(nbirds.per.stratum$total.obs) ## this is probably right but make sure its a fkn duck or something
+nbirds.per.stratum$AOU %>% unique() ## unique birds here
+```
+
+```{r }
+nbirds.per.state <- df %>% 
+  group_by(CountryNum, StateNum, AOU, Year) %>% 
+  summarise(total.obs=sum(SpeciesTotal)) # 
+nbirds.per.state$AOU %>% unique() ## unique birds here
+```

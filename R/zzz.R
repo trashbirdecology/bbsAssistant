@@ -1,4 +1,3 @@
-
 ## Startup functions ------------------------------------
 #' .onAttach start message
 #'
