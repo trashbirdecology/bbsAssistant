@@ -17,11 +17,6 @@ knitr::opts_chunk$set(
 ```{r setup}
 devtools::install_github("trashbirdecology/bbsAssistant", "main", force=TRUE)
 library(bbsAssistant)
-library(dplyr)
-```
-
-```{r dataavail}
-data(package="bbsAssistant")
 ```
 
 ```{r dataavail}
