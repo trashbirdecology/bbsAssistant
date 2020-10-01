@@ -42,9 +42,7 @@ rm(bbs_data) # clear list, unless you want it still or need the weather or speci
 
 ```{r summary}
 # nrow(df[df$SpeciesTotal==0,])## ensuring this is presence-only data
-
 nyears.per.spproute <- df %>% 
-  # mutate(AOU=as.factor(AOU)) %>% 
   group_by(CountryNum, StateNum, Route, AOU) %>% 
   summarise(nyears=n()) # number of years of observations per species per route (by country/state route id)
 hist(nyears.per.spproute$nyears)
