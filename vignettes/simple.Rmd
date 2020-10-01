@@ -15,8 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-## I recommend using force=TRUE, but do not here for build purposes. 
-# devtools::install_github("trashbirdecology/bbsAssistant", "main", force=FALSE)
+devtools::install_github("trashbirdecology/bbsAssistant", "main", force=FALSE)
 library(bbsAssistant)
 library(dplyr)
 ```
