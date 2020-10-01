@@ -1,5 +1,5 @@
 #' @title Read BBS data from local file into R environment. 
-#' @description  Called inside `get_bbs_data()` but can be used independently if the user provides correct sb_dir. 
+#' @description  Called inside `get_bbs_data()` but can be used independently if the user has already downloaded the data and provides the correct location for sb_dir. 
 #' @param sb_dir Directory location for the ScienceBase item.
 #' @param state Optional. Imports certain files based on producer-supplied state/province codes or English names.
 #' @param country Optional. Imports certain files based on producer-supplied country/nation codes or English names.

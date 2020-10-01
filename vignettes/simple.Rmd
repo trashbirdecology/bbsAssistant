@@ -15,5 +15,42 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+# devtools::install_github("trashbirdecology/bbsAssistant", "main")
 library(bbsAssistant)
+library(dplyr)
 ```
+```{r dataavail}
+data(package="bbsAssistant")
+```
+
+```{r get_data}
+get_bbs_data()
+
+```
+
+```{r merge_shit}
+bbs<-left_join(bbs_obs, region_codes)
+```
+# ~20 (or more) strata (state/prov * BCR) and for each strata, "two or more routes where the species has been observed and at least one route with 10 or more years of data."
+
+```{r summary}
+nrow(bbs %>% 
+  filter(SpeciesTotal==0))#should be zero..
+
+nyears.per.spproute <- bbs %>% 
+  mutate(AOU=as.factor(AOU)) %>% 
+  group_by(CountryNum, StateNum, Route, AOU) %>% 
+  summarise(n())
+# number of years of observations per species per route (by country/state route id)
+
+nyears.per.spproute %>% filter(nyears>=10)
+
+nyears.per.spp
+# 2+ routes per state*bcr strata
+ # routes with at least 10 years of (not necessarily continuous) data
+
+```
+
+
+
+
