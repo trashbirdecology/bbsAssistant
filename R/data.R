@@ -56,7 +56,7 @@
 #'   \item{AOU}{Numeric AOU code.}
 #'   \item{NACC}
 #' }
-#' @source Most recent version of NACC at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B}
+#' @source Most recent version of NACC at \url{}
 #' @source Most recent version of AOU at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B}
 #' @source Most recent version of species list associated with BBS data at SpeciesList.txt at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B"}
 "species_list"
