@@ -9,6 +9,7 @@ data(region_codes)
 data(species_list)
 
 
+# Merge the data into a single list ---------------------------------------
 bbs_data <- list(bbs_obs, region_codes, species_list)
 names(bbs_data) <- c("bbs_obs","region_codes", "species_list")
     
