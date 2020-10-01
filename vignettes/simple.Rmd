@@ -35,7 +35,6 @@ rm(bbs_data) # clear list, unless you want it still or need the weather...
 # glimpse(bbs_data$routes) # route data associated 
 # glimpse(bbs_data$weather) # weather associated with route data
 ```
-# ~20 (or more) strata (state/prov * BCR) and for each strata, "two or more routes where the species has been observed and at least one route with 10 or more years of data."
 
 ```{r summary}
 # nrow(df[df$SpeciesTotal==0,])## ensuring this is presence-only data
