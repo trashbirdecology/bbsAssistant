@@ -3,17 +3,14 @@
 \docType{data}
 \name{species_list}
 \alias{species_list}
-\title{Basic taxonomy (AOU, NACC) merged with the most recent release of the BBS observations dataset.}
+\title{Taxonomic information from teh American Ornithological Society's AOU code.}
 \format{
-A data frame .
+A data frame with 2158 rows and 17 variables.
 \describe{
 \item{AOU}{Numeric AOU code.}
-\item{NACC}
 }
 }
 \source{
-Most recent version of NACC at \url{http://checklist.aou.org/taxa.csv?type=charset\%3Dutf-8\%3Bsubspecies\%3Dno\%3B}
-
 Most recent version of AOU at \url{http://checklist.aou.org/taxa.csv?type=charset\%3Dutf-8\%3Bsubspecies\%3Dno\%3B}
 
 Most recent version of species list associated with BBS data at SpeciesList.txt at \url{http://checklist.aou.org/taxa.csv?type=charset\%3Dutf-8\%3Bsubspecies\%3Dno\%3B"}
@@ -22,6 +19,6 @@ Most recent version of species list associated with BBS data at SpeciesList.txt 
 species_list
 }
 \description{
-Basic taxonomy (AOU, NACC) merged with the most recent release of the BBS observations dataset.
+Taxonomic information from teh American Ornithological Society's AOU code.
 }
 \keyword{datasets}

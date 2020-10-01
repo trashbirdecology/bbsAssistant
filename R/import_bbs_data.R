@@ -38,9 +38,12 @@ weather <-  suppressMessages(import_weather(sb_dir))
 # Get dataset citation(s) -------------------------------------------------
 citation <- sbtools::item_get_fields(sb_id, "citation")
 
+
+# Get species list (aou) --------------------------------------------------
+data(species_list)
 # Create a list of data and information to export or return to `get_bbs_data` ----------------------------------
-bbs <- list(observations, routes, weather, citation)
-names(bbs) <- c("observations", "routes", "weather", "citation")
+bbs <- list(observations, routes, weather, citation, species_list)
+names(bbs) <- c("observations", "routes", "weather", "citation", "species_list")
 
 # END FUNCTION ------------------------------------------------------------
 return(bbs)
