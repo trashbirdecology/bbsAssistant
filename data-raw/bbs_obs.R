@@ -13,7 +13,7 @@ sb_dir <- paste0(here::here("data-raw/"), sb_id) # define the new directory
 suppressWarnings(dir.create(sb_dir)) # create directory for data associated with the sb item (sb_id) if it does not already exist.
 
 # Download  and unzip the BBS data ----------------------------------------
-get_bbs_data(overwrite=TRUE)
+get_bbs_data(overwrite=FALSE)
 
 # Import the BBS data list ------------------------------------------------
 bbs_data <- import_bbs_data(sb_id, sb_dir)

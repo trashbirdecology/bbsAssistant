@@ -24,8 +24,16 @@ library(dplyr)
 data(package="bbsAssistant")
 ```
 
+```{r dataavail}
+data(bbs_obs, package="bbsAssistant")
+data(bbs_obs, package="bbsAssistant")
+```
+
+
+
 ```{r get_data}
-bbs_data<- get_bbs_data() # make take a hot minute if you haven't already downloaded the data....
+## alternatively, locally download the data...
+# bbs_data<- get_bbs_data() # make take a hot minute if you haven't already downloaded the data....
 df <- left_join(bbs_data$observations, bbs_data$routes)  # lazy but whatever
 rm(bbs_data) # clear list, unless you want it still or need the weather...
 ```
