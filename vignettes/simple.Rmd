@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-# remotes::install_github(repo="trashbirdecology/bbsAssistant", ref="main", force=FALSE)
+remotes::install_github(repo="trashbirdecology/bbsAssistant", ref="main", force=FALSE)
 library(bbsAssistant)
 library(dplyr)
 ```
@@ -23,8 +23,6 @@ library(dplyr)
 ```{r dataavail}
 data(package="bbsAssistant")
 ```
-
-
 
 
 ```{r get_data}
