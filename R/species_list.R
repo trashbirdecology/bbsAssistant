@@ -12,6 +12,6 @@ aou <- aou %>%
     dplyr::mutate(AOU=stringr::str_pad(aou$id, 5, pad="0")) %>% 
     dplyr::select(-id)
 
-
+species_list=aou
 # Save to /data/ ---------------------------------------------------------------
 usethis::use_data(species_list, overwrite = TRUE)
