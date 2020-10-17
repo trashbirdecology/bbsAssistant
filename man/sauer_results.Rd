@@ -15,16 +15,16 @@ NOTE ALSO: NOT ALL COLUMNS ARE DESCRIBE HERE. CURRENTLY, ONLY THE COLUMNS ASSOCI
 \item{Credibility.Code}{Qualitative credibility score as described in metadata. }
 \item{Model}{}
 \item{N.Routes}{}
-\item{Precision}{Describes the precision of the Credibility.Code., as a function of what percent change per year can be detected over the 'long term'. One of c("R","Y", " "). "R"= results sufficient to detect 3\% change/year; "Y"= imprecise, cannot detect 3\% change/year; "R"= very imprecise, cannot detect 5\% change/year;
-\item{Region}{3-character codes for each of the 3 "region type" Region types include States/Provinces, Bird Conservation Regions (BCRs), and a catchall for BBS administrative regions and countries. See \code{Region.Name} for full names. }
-\item{Region.Name}{Full name of attribute \code{Region}. }
+\item{Precision}{Describes the precision of the Credibility.Code., as a function of what percent change per year can be detected over the 'long term'. One of c("R","Y", " "). "R"= results sufficient to detect 3\%\ change/year; "Y"= imprecise, cannot detect 3\%\ change/year; "R"= very imprecise, cannot detect 5\%\ change/year;
+\item{Region}{3-character codes for each of the 3 "region type" Region types include States/Provinces, Bird Conservation Regions (BCRs), and a catchall for BBS administrative regions and countries. See "Region.Name" for full names. }
+\item{Region.Name}{Full name of attribute "Region". }
 \item{Relative.Abundance}{Adjusted, mean annual index for a region for a 3-year period (+/- 1 year; given at midpoint).}
 \item{Sample.Size}{Qualitative credibility score as described in metadata. "R"= sample based on < 5 routes for the 'long term' ("very small samples"); "Y"= sample based on > 5 and < 14 routes for the 'long term'; " " (no code)  sample based on >= 14 routes for the 'long term'}
-\item{Significance}{One of c(1, " "); 1=significant, 95\% credible interval does not include zero; " " (no value): estimate falls
-falls outside the 95\% credible interval for the estimate and " " (no value) if the trend estimate falls within the 95\% credible interval. }
+\item{Significance}{One of c(1, " "); 1=significant, 95\%\ credible interval does not include zero; " " (no value): estimate falls
+falls outside the 95\%\ credible interval for the estimate and " " (no value) if the trend estimate falls within the 95\%\ credible interval. }
 \item{Trend}{Estimate as the ratio of first and last year of regional observations, from the annual indices. }
-\item{X2.5.CI}{2.5\% Credible Interval}
-\item{X97.5.5.CI}{97.5\% Credible Interval}
+\item{X2.5.CI}{2.5\%\ Credible Interval}
+\item{X97.5.5.CI}{97.5\%\ Credible Interval}
 }
 }
 \source{

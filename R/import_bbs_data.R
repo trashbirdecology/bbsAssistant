@@ -39,7 +39,7 @@ weather <-  suppressMessages(import_weather(sb_dir))
 citation <- sbtools::item_get_fields(sb_id, "citation")
 
 
-# Get species list (aou) --------------------------------------------------
+# Get species list (Currently abides to AOU standards per BBS metadata) --------------------------------------------------
 data(species_list)
 # Create a list of data and information to export or return to `get_bbs_data` ----------------------------------
 bbs <- list(observations, routes, weather, citation, species_list)
