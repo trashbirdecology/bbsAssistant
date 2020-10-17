@@ -40,7 +40,9 @@ citation <- sbtools::item_get_fields(sb_id, "citation")
 
 
 # Get species list (Currently abides to AOU standards per BBS metadata) --------------------------------------------------
-data(species_list)
+# data(species_list, package="bbsAssistant")
+bbs_obs <- bbsAssistant::bbs_obs
+
 # Create a list of data and information to export or return to `get_bbs_data` ----------------------------------
 bbs <- list(observations, routes, weather, citation, species_list)
 names(bbs) <- c("observations", "routes", "weather", "citation", "species_list")

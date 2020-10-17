@@ -7,6 +7,7 @@
 #' @param state A vector of one or more state names for importing only a subset of the downloaded data. 
 #' @param country Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico). 
 #' @param state Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").
+#' @param overwrite Logical. Default TRUE will overwrite the local files within sb_dir (defaults to /data-raw/). 
 #' @importFrom magrittr %>%
 #' @importFrom utils download.file
 #' @importFrom stats "filter"
@@ -23,8 +24,8 @@ get_bbs_data <- function(
     overwrite=FALSE
 ){
 # Retrieve dataset lookup table -------------------------------------------
-data("sb_items", package="bbsAssistant")
-
+# data(sb_items, package="bbsAssistant")
+sb_items    <- bbsAssistant::sb_items
 # When sb_id is undefined & bbs_version is defined -------------------------------------------------
 if(is.null(sb_id) & !is.null(bbs_version)){
     sb_id <- sb_items %>% filter(release_year==bbs_version) %>%  
