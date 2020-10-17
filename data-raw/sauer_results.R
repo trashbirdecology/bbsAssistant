@@ -3,8 +3,7 @@
 ## This script contains the code to prepare the original data from the ScienceBase directory as downloaded based on sb_id
 
 # Define the sb_id to grab ---------------------------------------------------------
-sb_items <- read.csv(here("/data-raw/sb_items.csv"))
-
+sb_items <- read.csv(file = "./data-raw/sb_items.csv")
 sb_items<-sb_items[sb_items$data_type=="sauer_results" & sb_items$release_year==max(sb_items$release_year) ,] # filter acting up...
 sb_id <- sb_items$sb_item
 
@@ -31,10 +30,10 @@ for(i in seq_along(fns)){
     if(exists("temp")) rm(temp)
     names(sauer_results)[i] <-
         gsub(".*/(.+).csv*", "\\1", fns[i])
+    ## for some reason roxygen translation is **Removing the list names**
+    ## therefore^, I have annoying added a variable to determine the 
 }
 
-str(sauer_results)
-names(sauer_results)
 
 # # Write the data to package files as .RDA ---------------------------------
 usethis::use_data(sauer_results, overwrite = TRUE)

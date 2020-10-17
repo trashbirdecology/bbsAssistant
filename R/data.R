@@ -1,5 +1,5 @@
 # sb_items ------------------------------------------------------------
-#' A lookup table that is manually updated by the package maintainers. It is used as a quick reference to identify which datasets are available for import from ScienceBase, and are compatible with this package.  
+#' A lookup table that is manually updated by the package maintainers. It is used as a quick reference to identify which datasets are available for import from ScienceBase, and are compatible with this package.
 #' @format A data frame containing N rows and 5 columns
 #' \describe{
 #'   \item{sb_parent}{ScienceBase unique identifier associated with the parent item (often the project identifier).}
@@ -14,7 +14,7 @@
 "sb_items"
 
 # region_codes ------------------------------------------------------------
-#' Country and state codes and associated zip filenames 
+#' Country and state codes and associated zip filenames
 #' @format A data frame:
 #' \describe{
 #'   \item{CountryNum}{Integer. BBS country codes associated with United States-840, Mexico-484, and Canada-124}
@@ -26,7 +26,7 @@
 "region_codes"
 
 # bbs_obs  (most recent version of bbs observations) --------------------------------------------------------------
-#' Contains the most recent release of the BBS observations dataset. 
+#' Contains the most recent release of the BBS observations dataset.
 #' @format A data frame with 6797797 rows and 14 columns (as of 2020-09-09).
 #' \describe{
 #'   \item{AOU}{Numeric AOU code.}
@@ -61,32 +61,32 @@
 
 
 # sauer_results  (most recent version of bbs observations) --------------------------------------------------------------
-#' Contains the most recent release of the BBS observations dataset. 
-#' The data object is a list, wherein the list names (`names(sauer_results)`) correspond with the .csv filenames provided in ScienceBase; call `bbsAssistant::sb_items` for more information. 
+#' Contains the most recent release of the BBS observations dataset.
+#' The data object is a list, wherein the list names (names(sauer_results)) correspond with the .csv filenames provided in ScienceBase; call `bbsAssistant::sb_items` for more information.
 #' @format A list containing a varying number of data frames associated with the most recent release of analysis results by Sauer et al. Please visit the `source` for more information, including metadata which describes each results file.
 #'  \describe{
-#'  NOTE: THE COLUMNS HERE ARE DESCRIBED IN GREATER DETAIL AT THE SCIENCEBASE ITEM (call `bbsAssistant::sb_items` for hyperlink for relevant sb_id). 
+#'  NOTE: THE COLUMNS HERE ARE DESCRIBED IN GREATER DETAIL AT THE SCIENCEBASE ITEM (see "sb_items" hyperlink for relevant sb_id).
 #'  NOTE ALSO: NOT ALL COLUMNS ARE DESCRIBE HERE. CURRENTLY, ONLY THE COLUMNS ASSOCIATED WITH THE 2020 RELEASE ARE DESCRIBED.
-#'   \item{Abundance}{}
-#'   \item{AOU}{5-digit (leading zeroes enforced here) codes designated by the AOU. Metadata does not point to a version history. Potential source:}
-#'   \item{Credibility.Code}{Qualitative credibility score as described in metadata. }
-#'   \item{Model}{}
-#'   \item{N.Routes}{}
-#'   \item{Precision}{Describes the precision of the Credibility.Code., as a function of what percent change per year can be detected over the 'long term'. One of c("R","Y", " "). "R"= results sufficient to detect 3%\ change/year; "Y"= imprecise, cannot detect 3%\ change/year; "R"= very imprecise, cannot detect 5%\ change/year;
-#'   \item{Region}{3-character codes for each of the 3 "region type" Region types include States/Provinces, Bird Conservation Regions (BCRs), and a catchall for BBS administrative regions and countries. See "Region.Name" for full names. }
-#'   \item{Region.Name}{Full name of attribute "Region". }
-#'   \item{Relative.Abundance}{Adjusted, mean annual index for a region for a 3-year period (+/- 1 year; given at midpoint).}
-#'   \item{Sample.Size}{Qualitative credibility score as described in metadata. "R"= sample based on < 5 routes for the 'long term' ("very small samples"); "Y"= sample based on > 5 and < 14 routes for the 'long term'; " " (no code)  sample based on >= 14 routes for the 'long term'}
-#'   \item{Significance}{One of c(1, " "); 1=significant, 95%\ credible interval does not include zero; " " (no value): estimate falls
-#'   falls outside the 95%\ credible interval for the estimate and " " (no value) if the trend estimate falls within the 95%\ credible interval. }
-#'   \item{Trend}{Estimate as the ratio of first and last year of regional observations, from the annual indices. }
-#'   \item{X2.5.CI}{2.5%\ Credible Interval}
-#'   \item{X97.5.5.CI}{97.5%\ Credible Interval}
+#'  @details The object, sauer_results, comprises (currently) 4 data frames, each containing the results of different analyses as described in original metadata.
+#'  \itemize{ # data frame
+#'  \item{  # variable within
+#'  }
+#'  }
+#'  \itemize{ # data frame
+#'  \item{  # variable within
+#'  }
+#'  }
+#'  \itemize{ # data frame
+#'  \item{  # variable within
+#'  }
+#'  }
+#'  \itemize{ # data frame
+#'  \item{  # variable within
+#'  }
+#'  }
 #' }
 #' @source \url{https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4}
 "sauer_results"
 
 
 # TBA cws_results -----------------------------------------------------------
-
-
