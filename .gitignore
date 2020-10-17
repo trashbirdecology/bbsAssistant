@@ -25,5 +25,8 @@ docs
 
 ## ignore all the sb item downloads when prepping the data
 /data-raw/5ea04e9a82cefae35a129d65
-
+/data-raw/5d65256ae4b09b198a26c1d7
+/data-raw/5cf7d4d5e4b07f02a7046479
+/data-raw/5d00efafe4b0573a18f5e03a
+/data-raw/5ea1e02c82cefae35a16ebc4
 /data-raw/weather.csv
