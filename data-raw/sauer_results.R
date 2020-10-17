@@ -3,12 +3,11 @@
 ## This script contains the code to prepare the original data from the ScienceBase directory as downloaded based on sb_id
 
 # Define the sb_id to grab ---------------------------------------------------------
-sb_items <- readr::read_csv(here::here("/data-raw/sb_items.csv"))
-# grab the sb item idenitfier associated with the most recent year end.
-sb_id <- sb_items %>%
-    filter(data_type == "sauer_results") %>%
-    filter(year_end == max(year_end)) %>%
-    dplyr::select(sb_item) %>% as.character()
+sb_items <- read.csv(here("/data-raw/sb_items.csv"))
+
+sb_items<-sb_items[sb_items$data_type=="sauer_results" & sb_items$release_year==max(sb_items$release_year) ,] # filter acting up...
+sb_id <- sb_items$sb_item
+
 
 # Create subdirectory for the sb_id files  -----------------------------------------------------------------
 sb_dir <-
@@ -19,7 +18,8 @@ suppressWarnings(dir.create(sb_dir)) # create directory for data associated with
 sbtools::item_file_download(sb_id = sb_id, dest_dir = sb_dir, overwrite_file=TRUE)
 
 # Specify relevant files to bring in -----------------------------
-fns <- list.files(sb_dir, pattern = "trend|inde", full.names=TRUE) # all of Sauer's relevant results files contain these phrases.... for now...
+# all of Sauer's relevant results files contain these phrases.... for now...
+fns <- list.files(sb_dir, pattern = "trend|inde", full.names=TRUE) 
 
 # Bring them in --------------------------------------------------------
 sauer_results <- list()
@@ -34,6 +34,7 @@ for(i in seq_along(fns)){
 }
 
 str(sauer_results)
+names(sauer_results)
 
 # # Write the data to package files as .RDA ---------------------------------
 usethis::use_data(sauer_results, overwrite = TRUE)
