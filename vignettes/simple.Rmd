@@ -1,9 +1,9 @@
 ---
 title: "simple"
-output: rmarkdown::html_vignette
+output: rmarkdown::render
 vignette: >
   %\VignetteIndexEntry{simple}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{rmarkdown::render}
   %\VignetteEncoding{UTF-8}
 ---
 
