@@ -21,15 +21,19 @@ sbtools::item_file_download(sb_id = sb_id, dest_dir = sb_dir, overwrite_file=TRU
 # Specify relevant files to bring in -----------------------------
 fns <- list.files(sb_dir, pattern = "trend|inde", full.names=TRUE) # all of Sauer's relevant results files contain these phrases.... for now...
 
-# Bring them in eh --------------------------------------------------------
+# Bring them in --------------------------------------------------------
 sauer_results <- list()
 for(i in seq_along(fns)){
     if(grep(".csv",fns[i], value=FALSE)){
         temp <- read.csv(fns[i])
-        }
+        }else{print('break');next}
     sauer_results[[i]] <- temp
     if(exists("temp")) rm(temp)
-    }
+    names(sauer_results)[i] <-
+        gsub(".*/(.+).csv*", "\\1", fns[i])
+}
+
+str(sauer_results)
 
 # # Write the data to package files as .RDA ---------------------------------
 usethis::use_data(sauer_results, overwrite = TRUE)
