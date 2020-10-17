@@ -23,6 +23,8 @@ get_bbs_data(
 \item{country}{Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico).}
 
 \item{state}{Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").}
+
+\item{overwrite}{Logical. Default TRUE will overwrite the local files within sb_dir (defaults to /data-raw/).}
 }
 \description{
 This function downloads all files associated with a single version (defaults to the most recent release) of the BBS observations dataset from USGS ScienceBase repository, and allows the user to import all or a subset (based on Country, State, or Province).
