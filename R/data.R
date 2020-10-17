@@ -59,3 +59,35 @@
 #' @source Most recent version of species list associated with BBS data at SpeciesList.txt at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B"}
 "species_list"
 
+
+# sauer_results  (most recent version of bbs observations) --------------------------------------------------------------
+#' Contains the most recent release of the BBS observations dataset. 
+#' The data object is a list, wherein the list names (`names(sauer_results)`) correspond with the .csv filenames provided in ScienceBase; call `bbsAssistant::sb_items` for more information. 
+#' @format A list containing a varying number of data frames associated with the most recent release of analysis results by Sauer et al. Please visit the `source` for more information, including metadata which describes each results file.
+#'  \describe{
+#'  NOTE: THE COLUMNS HERE ARE DESCRIBED IN GREATER DETAIL AT THE SCIENCEBASE ITEM (call `bbsAssistant::sb_items` for hyperlink for relevant sb_id). 
+#'  NOTE ALSO: NOT ALL COLUMNS ARE DESCRIBE HERE. CURRENTLY, ONLY THE COLUMNS ASSOCIATED WITH THE 2020 RELEASE ARE DESCRIBED.
+#'   \item{Abundance}{}
+#'   \item{AOU}{5-digit (leading zeroes enforced here) codes designated by the AOU. Metadata does not point to a version history. Potential source:}
+#'   \item{Credibility.Code}{Qualitative credibility score as described in metadata. }
+#'   \item{Model}{}
+#'   \item{N.Routes}{}
+#'   \item{Precision}{Describes the precision of the Credibility.Code., as a function of what percent change per year can be detected over the 'long term'. One of c("R","Y", " "). "R"= results sufficient to detect 3% change/year; "Y"= imprecise, cannot detect 3% change/year; "R"= very imprecise, cannot detect 5% change/year;
+#'   \item{Region}{3-character codes for each of the 3 "region type" Region types include States/Provinces, Bird Conservation Regions (BCRs), and a catchall for BBS administrative regions and countries. See `Region.Name` for full names. }
+#'   \item{Region.Name}{Full name of attribute `Region`. }
+#'   \item{Relative.Abundance}{Adjusted, mean annual index for a region for a 3-year period (+/- 1 year; given at midpoint).}
+#'   \item{Sample.Size}{Qualitative credibility score as described in metadata. "R"= sample based on < 5 routes for the 'long term' ("very small samples"); "Y"= sample based on > 5 and < 14 routes for the 'long term'; " " (no code)  sample based on >= 14 routes for the 'long term'}
+#'   \item{Significance}{One of c(1, " "); 1=significant, 95% credible interval does not include zero; " " (no value): estimate falls
+#'   falls outside the 95% credible interval for the estimate and " " (no value) if the trend estimate falls within the 95% credible interval. }
+#'   \item{Trend}{Estimate as the ratio of first and last year of regional observations, from the annual indices. }
+#'   \item{X2.5.CI}{2.5% Credible Interval}
+#'   \item{X97.5.5.CI}{97.5% Credible Interval}
+#' }
+#' @source \url{https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4}
+"sauer_results"
+
+
+
+# TBA cws_results -----------------------------------------------------------
+
+
