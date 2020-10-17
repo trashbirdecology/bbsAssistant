@@ -2,16 +2,16 @@
 .Rhistory
 .RData
 .Ruserdata
-.DS_Store
+# for mac
+.DS_Store 
+# local download of the BBS dataset. very large.
 /bbsData/
-README_files/
+
 bbsDataFlorida.feather
 README.stex
 README.log
 inst/doc
-doc
 Meta
-docs/
 vignettes/vignettes.pdf
 data/readme.rtf
 
@@ -20,7 +20,7 @@ README.knit.md
 README.utf8.md
 /vignettes/function-overview_cache/
 
-docs
+/docs/
 
 
 ## ignore all the sb item downloads when prepping the data
@@ -30,3 +30,6 @@ docs
 /data-raw/5d00efafe4b0573a18f5e03a
 /data-raw/5ea1e02c82cefae35a16ebc4
 /data-raw/weather.csv
+
+## ignore vignette cache
+/vignettes/simple_cache/
