@@ -44,7 +44,7 @@ if(is.null(sb_id) & !is.null(bbs_version)){
 
 # When sb_dir DNE, define it... ------------------------
 if(is.null(sb_dir)){
-    sb_dir <- paste0(here::here("data-raw/"), sb_id) # define the new directory
+    sb_dir <- paste0("./data-raw/", sb_id) # define the new directory
 }
 
 # Create sb_dir -----------------------------------------------------------

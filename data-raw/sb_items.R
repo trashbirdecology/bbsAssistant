@@ -1,7 +1,7 @@
 ## code to prepare `sb_items` dataset goes here
 
 sb_items <-
-    readr::read_csv(here::here("/data-raw/sb_items.csv")) %>%
+    readr::read_csv("./data-raw/sb_items.csv") %>%
     dplyr::mutate(
         release_year = as.integer(release_year),
         year_end = as.integer(year_end),

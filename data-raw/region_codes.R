@@ -3,7 +3,7 @@
 ## This is the script for automating the creation of the dataset using 
 
 # Import the raw lookup table ------------------------------------------------------------------
-region_codes <- readr::read_csv(here::here("/data-raw/region_codes.csv")) %>% 
+region_codes <- readr::read_csv("./data-raw/region_codes.csv") %>% 
     dplyr::mutate(
         CountryNum = as.integer(CountryNum), 
         StateNum   = as.integer(StateNum)

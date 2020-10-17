@@ -4,17 +4,20 @@
 
 # Define the sb_id to grab ---------------------------------------------------------
 sb_items <- read.csv(file = "./data-raw/sb_items.csv")
+# need to munge a little first
 sb_items<-sb_items[sb_items$data_type=="sauer_results" & sb_items$release_year==max(sb_items$release_year) ,] # filter acting up...
 sb_id <- sb_items$sb_item
 
 
 # Create subdirectory for the sb_id files  -----------------------------------------------------------------
-sb_dir <-
-    paste0(here::here("data-raw/"), sb_id) # define the new directory
+sb_dir <- paste0("./data-raw/", sb_id) # define the new directory
 suppressWarnings(dir.create(sb_dir)) # create directory for data associated with the sb item (sb_id) if it does not already exist.
 
 # Download the item files to sb_dir -------------------------------------------------
-sbtools::item_file_download(sb_id = sb_id, dest_dir = sb_dir, overwrite_file=TRUE)
+# NOTE: `sbtools::item_file_download` has overwrite arg, but when set to TRUE and sb_dir exists, it throws an error)
+if(!(sb_id %in% list.files("./data-raw/", full.names = FALSE))){
+sbtools::item_file_download(sb_id = sb_id, dest_dir = sb_dir, overwrite_file=TRUE) 
+}
 
 # Specify relevant files to bring in -----------------------------
 # all of Sauer's relevant results files contain these phrases.... for now...

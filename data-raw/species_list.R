@@ -12,6 +12,8 @@ aou <- aou %>%
     dplyr::mutate(AOU=stringr::str_pad(aou$id, 5, pad="0")) %>% 
     dplyr::select(-id)
 
-species_list=aou
+
+# Merge all the lists into a single list ----------------------------------
+species_list <- aou # rihgt now just aou, but leave here for future additions
 # Save to /data/ ---------------------------------------------------------------
 usethis::use_data(species_list, overwrite = TRUE)
