@@ -4,12 +4,7 @@
 \alias{import_bbs_data}
 \title{Read BBS data from local file into R environment.}
 \usage{
-import_bbs_data(
-  sb_id = "5ea04e9a82cefae35a129d65",
-  sb_dir,
-  state = NULL,
-  country = NULL
-)
+import_bbs_data(sb_id, sb_dir, state = NULL, country = NULL)
 }
 \arguments{
 \item{sb_id}{Identifier for SB item}
