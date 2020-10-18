@@ -6,6 +6,13 @@
 \usage{
 unpack_bbs_data(sb_dir, country, state)
 }
+\arguments{
+\item{sb_dir}{...}
+
+\item{country}{...}
+
+\item{state}{...}
+}
 \description{
 Decompress the BBS observation files as obtained from ScienceBase.
 }

@@ -13,10 +13,10 @@ aou <- aou %>%
 
 # REMOVE FRENCH NAMES BECAUSE SPELL CHECK HATES MY GUTS
 aou <- aou %>% 
-    dplyr::select(-french_name)
+    dplyr::select(-french_name, -annotation)
 
 # Merge all the lists into a single list ----------------------------------
 species_list <- aou # rihgt now just aou, but leave here for future additions
 
 # Save to /data/ ---------------------------------------------------------------
-usethis::use_data(species_list, overwrite = TRUE)
+usethis::use_data(species_list, overwrite = TRUE, internal=TRUE)

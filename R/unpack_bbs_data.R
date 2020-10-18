@@ -1,11 +1,10 @@
 #' @title Decompress the BBS observation files as obtained from ScienceBase.
-#' @param sb_dir
-#' @param country
-#' @state
-#' @country
+#' @param sb_dir ...
+#' @param country ...
+#' @param state  ...
+#' @param country ...
 #' 
 #' @export unpack_bbs_data
-
 
 unpack_bbs_data <- function(
     sb_dir, 
