@@ -37,6 +37,6 @@ for(i in seq_along(fns)){
     ## therefore^, I have annoying added a variable to determine the 
 }
 
-
+## append 
 # # Write the data to package files as .RDA ---------------------------------
 usethis::use_data(sauer_results, overwrite = TRUE)

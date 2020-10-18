@@ -21,7 +21,6 @@
 #' @source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 "bbs_obs"
 
-
 # sb_items ------------------------------------------------------------
 #' A lookup table that is manually updated by the package maintainers. It is used as a quick reference to identify which datasets are available for import from ScienceBase, and are compatible with this package.
 #' @format A data frame containing N rows and 5 columns
@@ -81,23 +80,13 @@
 #'  NOTE: THE COLUMNS HERE ARE DESCRIBED IN GREATER DETAIL AT THE SCIENCEBASE ITEM (see "sb_items" hyperlink for relevant sb_id).
 #'  NOTE ALSO: NOT ALL COLUMNS ARE DESCRIBE HERE. CURRENTLY, ONLY THE COLUMNS ASSOCIATED WITH THE 2020 RELEASE ARE DESCRIBED.
 #'  @details The object, sauer_results, comprises (currently) 4 data frames, each containing the results of different analyses as described in original metadata.
-#'  \itemize{ # data frame
-#'  \item{  # variable within
+#'  \itemize{ # the list
+#'  \item{@param BBS_1966-2018_core_best_trend ...} 
+#'  \item{@param BBS_1993-2018_expanded_trend_best ... } 
+#'  \item{@param inde_best_1993-2018_expanded ... } 
+#'  \item{@param inde_best_1966-2018_core ... } 
 #'  }
-#'  }
-#'  \itemize{ # data frame
-#'  \item{  # variable within
-#'  }
-#'  }
-#'  \itemize{ # data frame
-#'  \item{  # variable within
-#'  }
-#'  }
-#'  \itemize{ # data frame
-#'  \item{  # variable within
-#'  }
-#'  }
-#' }
+#' 
 #' @source \url{https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4}
 "sauer_results"
 
