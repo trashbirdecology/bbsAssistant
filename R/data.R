@@ -1,3 +1,27 @@
+# bbs_obs  (most recent version of bbs observations) --------------------------------------------------------------
+#' Contains the most recent release of the BBS observations dataset.
+#' @format A data frame with 6797797 rows and 14 columns (as of 2020-09-09).
+#' \describe{
+#'   \item{AOU}{Numeric AOU code.}
+#'   \item{Count10}{...}
+#'   \item{Count20}{...}
+#'   \item{Count30}{...}
+#'   \item{Count40}{...}
+#'   \item{Count50}{...}
+#'   \item{CountryNum}{BBS country codes associated with United States-840, Mexico-484, and Canada-124}
+#'   \item{Route}{...}
+#'   \item{RouteDataID}{...}
+#'   \item{RPID}{Route run type}
+#'   \item{SpeciesTotal}{...}
+#'   \item{State}{The proper name of the US or Mexican state or Canadian province}
+#'   \item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
+#'   \item{StopTotal}{Number of individuals of a given species ('AOU') identified by the observer at the end of every 10th stop within the route.}
+#'   \item{Year}{Year in which the BBS observations was taken.}
+#' }
+#' @source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
+"bbs_obs"
+
+
 # sb_items ------------------------------------------------------------
 #' A lookup table that is manually updated by the package maintainers. It is used as a quick reference to identify which datasets are available for import from ScienceBase, and are compatible with this package.
 #' @format A data frame containing N rows and 5 columns
@@ -25,40 +49,30 @@
 #' @source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 "region_codes"
 
-# bbs_obs  (most recent version of bbs observations) --------------------------------------------------------------
-#' Contains the most recent release of the BBS observations dataset.
-#' @format A data frame with 6797797 rows and 14 columns (as of 2020-09-09).
-#' \describe{
-#'   \item{AOU}{Numeric AOU code.}
-#'   \item{Count10}{...}
-#'   \item{Count20}{...}
-#'   \item{Count30}{...}
-#'   \item{Count40}{...}
-#'   \item{Count50}{...}
-#'   \item{CountryNum}{BBS country codes associated with United States-840, Mexico-484, and Canada-124}
-#'   \item{Route}{...}
-#'   \item{RouteDataID}{...}
-#'   \item{RPID}{Route run type}
-#'   \item{SpeciesTotal}{...}
-#'   \item{State}{The proper name of the US or Mexican state or Canadian province}
-#'   \item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
-#'   \item{StopTotal}{Number of individuals of a given species ('AOU') identified by the observer at the end of every 10th stop within the route.}
-#'   \item{Year}{Year in which the BBS observations was taken.}
-#' }
-#' @source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
-"bbs_obs"
-
-
-# species_list (get and import aou data) --------------------------------------------------------------
+# species_list (currently just aou data from url) --------------------------------------------------------------
 #' Taxonomic information from teh American Ornithological Society's AOU code.
 #' @format A data frame with 2158 rows and 17 variables.
 #' \describe{
 #'   \item{AOU}{Numeric AOU code.}
+#'   \item{avibase.id}{Identifier for Avibase database. Source \url{http://avibase.bsc-eoc.org/}}
+#'   \item{rank}{...}
+#'   \item{common_name}{English common name.}
+#'   \item{order}{Phylogenetic order.}
+#'   \item{family}{Phylogenetic family}
+#'   \item{subfamily}{Phylogenetic sub-family}
+#'   \item{genus}{Phylogenetic genera}
+#'   \item{species}{Phylogenetic species epithet}
+#'   \item{status_accidental}{...}
+#'   \item{status_hawaiin}{}
+#'   \item{status_introduced}{...}
+#'   \item{status_misplaced}{...}
+#'   \item{status_extinct}{...}
+#'   \item{status_nonbreeding}{...}
 #' }
 #' @source Most recent version of AOU at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B}
 #' @source Most recent version of species list associated with BBS data at SpeciesList.txt at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B"}
 "species_list"
-
+names(species_list)
 
 # sauer_results  (most recent version of bbs observations) --------------------------------------------------------------
 #' Contains the most recent release of the BBS observations dataset.
@@ -87,6 +101,5 @@
 #' }
 #' @source \url{https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4}
 "sauer_results"
-
 
 # TBA cws_results -----------------------------------------------------------

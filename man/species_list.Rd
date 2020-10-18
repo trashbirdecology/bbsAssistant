@@ -8,6 +8,20 @@
 A data frame with 2158 rows and 17 variables.
 \describe{
 \item{AOU}{Numeric AOU code.}
+\item{avibase.id}{Identifier for Avibase database. Source \url{http://avibase.bsc-eoc.org/}}
+\item{rank}{...}
+\item{common_name}{English common name.}
+\item{order}{Phylogenetic order.}
+\item{family}{Phylogenetic family}
+\item{subfamily}{Phylogenetic sub-family}
+\item{genus}{Phylogenetic genera}
+\item{species}{Phylogenetic species epithet}
+\item{status_accidental}{...}
+\item{status_hawaiin}{}
+\item{status_introduced}{...}
+\item{status_misplaced}{...}
+\item{status_extinct}{...}
+\item{status_nonbreeding}{...}
 }
 }
 \source{

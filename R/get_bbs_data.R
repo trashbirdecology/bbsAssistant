@@ -56,12 +56,12 @@ if(overwrite|length(list.files(sb_dir))==0){download_bbs_data(sb_id, sb_dir)}els
 # Unzip the state files via `unpack_bbs_data()` --------------------------------------------------
 if(is.null("state")) {state <- NULL}
 if(is.null("country")) {country <- NULL}
-unpack_bbs_data(sb_dir, state, country=country)
+bbsAssistant::unpack_bbs_data(sb_dir, state, country=country)
 
 # Import bbs observations data  --------------------------------------------------------------------
 if(is.null("state")) {state <- NULL}
 if(is.null("country")) {country <- NULL}
-bbs_data <- import_bbs_data(sb_id, sb_dir, state=state, country=country)
+bbs_data <- bbsAssistant::import_bbs_data(sb_id, sb_dir, state=state, country=country)
 
 bbs_data$sb_id <- sb_id # add the sciencebase identifier
 
