@@ -3,6 +3,7 @@ title: "**bbsAssistant**: An R package for downloading and handling data and inf
 date: "Last updated: `r Sys.Date()`"
 bibliography: paper/paper.bib
 output: github_document
+always_allow_html: true
 ---
 
 <!-- badges: start -->
@@ -22,8 +23,9 @@ output: github_document
 ## ALERT  
 Due to changes in the location of the BBS observations and results datasets, this package is undergoing a transformation (written 2020-09-09). 
 
-Currently (again, as of 2020-09-09), we are working on the following and in the following order:
-- Saving most recent Sauer analysis results to the package
+Currently (as of 2020-09-09), we are working on the following and in the following order:  
+
+- Providing the most recent Sauer analysis results as data objects
 - Updating the subsetting functions
 - Functions for obtaining old observations dataset versions
 - Functions for obtaining old analysis results
@@ -37,14 +39,14 @@ _This repository contains the development version of __bbsAssistant__. Please su
 This R package contains functions for downloading, importing, and munging the the observations data and the analysis results from the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) [via USGS ScienceBase repository](https://sciencebase.gov/). This package was created to allow the user to bulk-download the BBS point count and related (e.g., route-level conditions) via the ScienceBase API (using [R package `sbtools`](https://cran.r-project.org/package=sbtools), and to quickly subset the data by taxonomic classifications, jurisdictional boundaries, and geospatial bounding boxes.
 
 ### Citations
-__For the R package bbsAssistant__:  
-Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
+__For the BBS dataset and analysis results__, call `r citation("bbsAssistant")` or see library loading message.
 
-__For the BBS dataset and/or analysis results__, citations are provided as both a message when importing the product, and also as a list element in the imported object.  
+__For general use of the R package bbsAssistant__ and/or __companion paper__:  
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
 
-__For the companion software paper__:  
-Burnett et al., (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768, https://doi.org/10.21105/joss.01768
+_or_ 
 
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768, https://doi.org/10.21105/joss.01768
 
 ## Quick Start
 ### Installing __bbsAssistant__
@@ -83,15 +85,17 @@ library(kableExtra)
 library(dplyr)
 datasets %>% select(-legacy_format, -sb_parent) %>%  
   relocate(sb_item, .after = last_col()) %>%
-  kable()
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = TRUE, position = "left") %>% 
+  column_spec(1, width = "40em") %>% 
+  row_spec(1, background = "yellow")
 ```
 
-## Additional Information 
-### Vignettes and package manual
+## Vignettes and package manual
 VIGNETTES ARE CURRENTLY UNDER CONSTRUCTION DUE TO PACKAGE OVERHAUL/MAKEOVER!
 <!-- For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette(s) (`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`); or visit the [package website]().  -->
 
-### Contributing and Code of Conduct
+## Contributing
 To make a contribution visit the [CONTRIBUTIONS.md](https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md). Contributors __must adhere to the [Code of Conduct](https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md).__ For questions, comments, or issues, feel free to email the maintainer [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues) (preferred).
 
 ## Project Team

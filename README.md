@@ -28,12 +28,15 @@ Due to changes in the location of the BBS observations and results
 datasets, this package is undergoing a transformation (written
 2020-09-09).
 
-Currently (again, as of 2020-09-09), we are working on the following and
-in the following order: - Saving most recent Sauer analysis results to
-the package - Updating the subsetting functions - Functions for
-obtaining old observations dataset versions - Functions for obtaining
-old analysis results - Updating the taxonomic matching capacity -
-Mapping and visualization features
+Currently (as of 2020-09-09), we are working on the following and in the
+following order:
+
+  - Providing the most recent Sauer analysis results as data objects
+  - Updating the subsetting functions
+  - Functions for obtaining old observations dataset versions
+  - Functions for obtaining old analysis results
+  - Updating the taxonomic matching capacity
+  - Mapping and visualization features
 
 ## About
 
@@ -56,21 +59,38 @@ and geospatial bounding boxes.
 
 ### Citations
 
-**For the R package bbsAssistant**:  
-Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. 2019, bbsAssistant: An R
-package for downloading and handling data and information from the North
-American Breeding Bird Survey: U.S. Geological Survey software release,
-<https://doi.org/10.5066/P93W0EAW>.
+**For the BBS dataset and analysis results**, call list(title =
+“bbsAssistant: An R package for downloading and handling data and
+information from the North American Breeding Bird Survey.”, author =
+list(list(given = NULL, family = “Burnett”, role = NULL, email = NULL,
+comment = NULL), list(given = NULL, family = “J.L.”, role = NULL, email
+= NULL, comment = NULL), list(given = “L.S.”, family = “Wszola”, role =
+NULL, email = NULL, comment = NULL), list(given = “G.”, family =
+“Palomo-Muñoz”, role = NULL, email = NULL, comment = NULL)), journal =
+“Journal of Open Source Software”, doi = “10.21105/joss.01768”, url =
+“<https://joss.theoj.org/papers/10.21105/joss.01768>”), list(title =
+“North American Breeding Bird Survey Dataset 1966-2019: U.S.
+Geological Survey data release”, author = list(list(given = NULL, family
+= “Burnett”, role = NULL, email = NULL, comment = NULL), list(given =
+NULL, family = “J.L.”, role = NULL, email = NULL, comment = NULL),
+list(given = “L.S.”, family = “Wszola”, role = NULL, email = NULL,
+comment = NULL), list(given = “G.”, family = “Palomo-Muñoz”, role =
+NULL, email = NULL, comment = NULL)), doi = “10.50666/P9J6QUF6”, url =
+“<https://doi.org/10.5066/P9J6QUF6>”) or see library loading message.
 
-**For the BBS dataset and/or analysis results**, citations are provided
-as both a message when importing the product, and also as a list element
-in the imported object.
+**For general use of the R package bbsAssistant** and/or **companion
+paper**:  
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An
+R package for downloading and handling data and information from the
+North American Breeding Bird Survey: U.S. Geological Survey software
+release, <https://doi.org/10.5066/P93W0EAW>.
 
-**For the companion software paper**:  
-Burnett et al., (2019). bbsAssistant: An R package for downloading and
-handling data and information from the North American Breeding Bird
-Survey. Journal of Open Source Software, 4(44), 1768,
-<https://doi.org/10.21105/joss.01768>
+*or*
+
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An
+R package for downloading and handling data and information from the
+North American Breeding Bird Survey. Journal of Open Source Software,
+4(44), 1768, <https://doi.org/10.21105/joss.01768>
 
 ## Quick Start
 
@@ -126,9 +146,10 @@ to specify historical dataset releases should they choose. Please see
 the function `get_bbs_data()`.
 
 A lookup table containing the available datasets (N = 5) and analysis
-results will be regularly updated, and comprises the following entries:
+results will be regularly updated, and comprises the following
+entries:
 
-<table>
+<table class="table table-striped" style="">
 
 <thead>
 
@@ -178,37 +199,37 @@ sb\_item
 
 <tr>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 40em; background-color: yellow !important;">
 
 2020 Release - North American Breeding Bird Survey Dataset (1966-2019)
 
 </td>
 
-<td style="text-align:right;">
+<td style="text-align:right;background-color: yellow !important;">
 
 2020
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;background-color: yellow !important;">
 
 observations
 
 </td>
 
-<td style="text-align:right;">
+<td style="text-align:right;background-color: yellow !important;">
 
 1966
 
 </td>
 
-<td style="text-align:right;">
+<td style="text-align:right;background-color: yellow !important;">
 
 2019
 
 </td>
 
-<td style="text-align:left;">
+<td style="text-align:left;background-color: yellow !important;">
 
 5ea04e9a82cefae35a129d65
 
@@ -218,7 +239,7 @@ observations
 
 <tr>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 40em; ">
 
 2019 Release - North American Breeding Bird Survey Dataset (1966-2018)
 
@@ -258,7 +279,7 @@ observations
 
 <tr>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 40em; ">
 
 2018 Release - North American Breeding Bird Survey Dataset (1966-2017)
 
@@ -298,7 +319,7 @@ observations
 
 <tr>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 40em; ">
 
 2017 Release - North American Breeding Bird Survey Dataset (1966-2016)
 
@@ -338,7 +359,7 @@ observations
 
 <tr>
 
-<td style="text-align:left;">
+<td style="text-align:left;width: 40em; ">
 
 2001-2016 Releases (legacy format) - North American Breeding Bird Survey
 Dataset
@@ -381,15 +402,13 @@ observations
 
 </table>
 
-## Additional Information
-
-### Vignettes and package manual
+## Vignettes and package manual
 
 VIGNETTES ARE CURRENTLY UNDER CONSTRUCTION DUE TO PACKAGE
 OVERHAUL/MAKEOVER\!
 <!-- For function descriptions please build the manual (`devtools::build_manual("bbsAssistant)`) and for an example build the vignette(s) (`devtools::build_vignettes()`; or run `/vignettes/vignettes.Rmd`); or visit the [package website]().  -->
 
-### Contributing and Code of Conduct
+## Contributing
 
 To make a contribution visit the
 [CONTRIBUTIONS.md](https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md).
