@@ -25,11 +25,14 @@ data(package="bbsAssistant")
 ```
 
 
-```{r get_data}
-message("This might take ~20 seconds, patience..")
+```{r load_recent_data, eval=FALSE}
+bbs_obs <- bbsAssistant::bbs_obs # get only the observations
+```
 
-## alternatively, locally download the data...
-bbs_data <- get_bbs_data() # make take a hot minute if you haven't already downloaded the data....
+Get the most recent bbs observations, routes, and weather
+<!-- for some reason the following command (get_bbs_data())  won't run inside a chunk...getting a curl fetch error... -->
+`r bbs_data <- get_bbs_data() # make take a hot minute if you` 
+```{r get_data}
 df <- left_join(bbs_data$observations, bbs_data$routes)  # lazy but whatever
 rm(bbs_data) # clear list, unless you want it still or need the weather or species
 ```
@@ -41,6 +44,9 @@ rm(bbs_data) # clear list, unless you want it still or need the weather or speci
 ```
 
 ```{r summary}
+# grab data from Florida
+ind <- bbsAssistant::region_codes %>% filter(State=="FLORIDA")
+df <- df %>% filter(StateNum %in% ind$StateNum)
 # nrow(df[df$SpeciesTotal==0,])## ensuring this is presence-only data
 nyears.per.spproute <- df %>% 
   group_by(CountryNum, StateNum, Route, AOU) %>% 
@@ -69,5 +75,7 @@ nbirds.per.stratum$AOU %>% unique() ## unique birds here
 nbirds.per.state <- df %>% 
   group_by(CountryNum, StateNum, AOU, Year) %>% 
   summarise(total.obs=sum(SpeciesTotal)) # 
-nbirds.per.state$AOU %>% unique() ## unique birds here
+unique.spp <- nbirds.per.state$AOU %>% unique() ## unique birds here by AOU number
+
+species_list %>% filter(AOU %in% unique.spp) %>% dplyr::select(common_name, AOU, genus, species) %>% glimpse()
 ```

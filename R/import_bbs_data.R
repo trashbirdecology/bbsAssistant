@@ -34,14 +34,21 @@ weather <-  suppressMessages(bbsAssistant::import_weather(sb_dir))
 # unique(routes$StateNum) %in% unique(state.data$StateNum) # THIS SHOULD BE A TEST!
 # unique(state.data$RouteDataID) %>% length() # should also be a test....
 
-species_list <- bbsAssistant::species_list
 
 # Get dataset citation(s) -------------------------------------------------
 citation <- sbtools::item_get_fields(sb_id, "citation")
 
 # Get species list (Currently abides to AOU standards per BBS metadata) --------------------------------------------------
 # data(species_list, package="bbsAssistant")
+species_list <- bbsAssistant::species_list
+
+
+# Load in the emost recent observations data -------------------------------
 bbs_obs <- bbsAssistant::bbs_obs
+
+
+# Add filtering/subsetting functions for states, countries, species -------
+
 
 # Create a list of data and information to export or return to `get_bbs_data`----------------------------------dfnames <-
 bbs <- list(observations, routes, weather, citation, species_list)

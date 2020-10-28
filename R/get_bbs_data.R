@@ -41,7 +41,6 @@ if(is.null(sb_id) & !is.null(bbs_version)){
         message("FYI: neither `sb_id` nor `bbs_version` were specified. \nDownloading the most recent version of the BBS dataset titled,\n",sbtools::item_get_fields(sb_id,"title"))
     }
 
-
 # When sb_dir DNE, define it... ------------------------
 if(is.null(sb_dir)){
     sb_dir <- paste0("./data-raw/", sb_id) # define the new directory
@@ -51,7 +50,7 @@ if(is.null(sb_dir)){
 suppressWarnings(dir.create(sb_dir)) # create directory for data associated with the sb item (sb_id) if it does not already exist. 
 
 # Download the SB item files via `download_bbs_data()` -------------------------------------------------------
-if(overwrite|length(list.files(sb_dir))==0){download_bbs_data(sb_id, sb_dir)}else(paste("Directory  ", sb_dir, " exists and is populated. To overwrite, please specify overwrite=TRUE"))
+if(overwrite|length(list.files(sb_dir))==0){download_bbs_data(sb_id, sb_dir)}else(paste("BBS data directory ", sb_dir, " exists and is populated. To overwrite, please specify overwrite=TRUE"))
 
 # Unzip the state files via `unpack_bbs_data()` --------------------------------------------------
 if(is.null("state")) {state <- NULL}
