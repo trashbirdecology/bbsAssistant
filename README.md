@@ -59,24 +59,8 @@ and geospatial bounding boxes.
 
 ### Citations
 
-**For the BBS dataset and analysis results**, call list(title =
-“bbsAssistant: An R package for downloading and handling data and
-information from the North American Breeding Bird Survey.”, author =
-list(list(given = NULL, family = “Burnett”, role = NULL, email = NULL,
-comment = NULL), list(given = NULL, family = “J.L.”, role = NULL, email
-= NULL, comment = NULL), list(given = “L.S.”, family = “Wszola”, role =
-NULL, email = NULL, comment = NULL), list(given = “G.”, family =
-“Palomo-Muñoz”, role = NULL, email = NULL, comment = NULL)), journal =
-“Journal of Open Source Software”, doi = “10.21105/joss.01768”, url =
-“<https://joss.theoj.org/papers/10.21105/joss.01768>”), list(title =
-“North American Breeding Bird Survey Dataset 1966-2019: U.S.
-Geological Survey data release”, author = list(list(given = NULL, family
-= “Burnett”, role = NULL, email = NULL, comment = NULL), list(given =
-NULL, family = “J.L.”, role = NULL, email = NULL, comment = NULL),
-list(given = “L.S.”, family = “Wszola”, role = NULL, email = NULL,
-comment = NULL), list(given = “G.”, family = “Palomo-Muñoz”, role =
-NULL, email = NULL, comment = NULL)), doi = “10.50666/P9J6QUF6”, url =
-“<https://doi.org/10.5066/P9J6QUF6>”) or see library loading message.
+**For the BBS dataset and analysis results**, call
+`citation("bbsAssistant")` or see library loading message.
 
 **For general use of the R package bbsAssistant** and/or **companion
 paper**:  
@@ -101,7 +85,7 @@ the package and dependencies:
 
 ``` r
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         ref="main", # ensure it pulls from the 'main' branch. function defaults to 'master' branch, otherwise.
+                         ref="main", # ensure it pulls from the 'main' branch. Function may still default to 'master' branch, otherwise.
                          force=TRUE) # force to get most recent dev version
 library(bbsAssistant)
 ```
