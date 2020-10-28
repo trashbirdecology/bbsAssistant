@@ -1,10 +1,11 @@
 ---
 title: "simple"
-output: rmarkdown::render
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{simple}
-  %\VignetteEngine{rmarkdown::render}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
+  %\usepackage[UTF-8]{inputenc}  
 ---
 
 ```{r, include = FALSE, echo=FALSE}
@@ -24,7 +25,6 @@ library(kableExtra)
 ```{r dataavail}
 data(package="bbsAssistant")
 ```
-
 
 ```{r load_recent_data, eval=FALSE}
 bbs_obs <- bbsAssistant::bbs_obs # get only the observations

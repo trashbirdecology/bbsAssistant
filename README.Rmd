@@ -34,7 +34,7 @@ Currently (as of 2020-09-09), we are working on the following and in the followi
 
 
 ## About
-_This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major releases will be pushed to the [USGS Biolab GitHub](https://github.com/usgs-biolab/bbsAssistant) (and here)._
+_This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major releases will be pushed to the [this repository](https://github.com/usgs-biolab/bbsAssistant) and to the [USGS ScienceBase digital repository](https://www.sciencebase.gov/catalog/item/5de53a0fe4b02caea0e8fa72).
 
 This R package contains functions for downloading, importing, and munging the the observations data and the analysis results from the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) [via USGS ScienceBase repository](https://sciencebase.gov/). This package was created to allow the user to bulk-download the BBS point count and related (e.g., route-level conditions) via the ScienceBase API (using [R package `sbtools`](https://cran.r-project.org/package=sbtools), and to quickly subset the data by taxonomic classifications, jurisdictional boundaries, and geospatial bounding boxes.
 
@@ -85,7 +85,7 @@ library(kableExtra)
 library(dplyr)
 datasets %>% select(-legacy_format, -sb_parent) %>%  
   relocate(sb_item, .after = last_col()) %>%
-  kable(caption="List of datasets currently available for download at USGS ScienceBase. Highlighted and bolded row indicates the default BBS observations dataset stored internally in the package.") %>% 
+  kable(caption="List of datasets currently available for download at USGS ScienceBase. Highlighted and bold row indicates the default BBS observations dataset stored internally in the package.") %>% 
   kable_styling(bootstrap_options = "striped", full_width = TRUE, position = "left") %>% 
   column_spec(1, width = "40em") %>% 
   row_spec(1, background = "yellow", bold = TRUE)

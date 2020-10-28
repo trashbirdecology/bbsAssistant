@@ -15,7 +15,7 @@
 #'   \item{SpeciesTotal}{...}
 #'   \item{State}{The proper name of the US or Mexican state or Canadian province}
 #'   \item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
-#'   \item{StopTotal}{Number of individuals of a given species ('AOU') identified by the observer at the end of every 10th stop within the route.}
+#'   \item{StopTotal}{Number of individuals of a given species ('AOU') identified by the observer at the end of every 10 stop within the route.}
 #'   \item{Year}{Year in which the BBS observations was taken.}
 #' }
 #' @source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
@@ -49,7 +49,7 @@
 "region_codes"
 
 # species_list (currently just aou data from url) --------------------------------------------------------------
-#' Taxonomic information from teh American Ornithological Society's AOU code.
+#' Taxonomic information from the American Ornithological Society's AOU code.
 #' @format A data frame with 2158 rows and 17 variables.
 #' \describe{
 #'   \item{AOU}{Numeric AOU code.}
@@ -88,6 +88,7 @@
 #'  }
 #' 
 #' @source \url{https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4}
+#' 
 "sauer_results"
 
 # TBA cws_results -----------------------------------------------------------

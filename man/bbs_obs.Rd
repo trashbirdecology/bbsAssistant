@@ -20,7 +20,7 @@ A data frame with 6797797 rows and 14 columns (as of 2020-09-09).
 \item{SpeciesTotal}{...}
 \item{State}{The proper name of the US or Mexican state or Canadian province}
 \item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
-\item{StopTotal}{Number of individuals of a given species ('AOU') identified by the observer at the end of every 10th stop within the route.}
+\item{StopTotal}{Number of individuals of a given species ('AOU') identified by the observer at the end of every 10 stop within the route.}
 \item{Year}{Year in which the BBS observations was taken.}
 }
 }

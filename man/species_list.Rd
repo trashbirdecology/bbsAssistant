@@ -3,7 +3,7 @@
 \docType{data}
 \name{species_list}
 \alias{species_list}
-\title{Taxonomic information from teh American Ornithological Society's AOU code.}
+\title{Taxonomic information from the American Ornithological Society's AOU code.}
 \format{
 A data frame with 2158 rows and 17 variables.
 \describe{
@@ -33,6 +33,6 @@ Most recent version of species list associated with BBS data at SpeciesList.txt 
 species_list
 }
 \description{
-Taxonomic information from teh American Ornithological Society's AOU code.
+Taxonomic information from the American Ornithological Society's AOU code.
 }
 \keyword{datasets}
