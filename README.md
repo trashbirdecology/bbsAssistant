@@ -130,10 +130,18 @@ to specify historical dataset releases should they choose. Please see
 the function `get_bbs_data()`.
 
 A lookup table containing the available datasets (N = 5) and analysis
-results will be regularly updated, and comprises the following
-entries:
+results will be regularly updated, and comprises the following entries:
 
 <table class="table table-striped" style="">
+
+<caption>
+
+List of datasets currently available for download at USGS ScienceBase.
+Highlighted and bolded row indicates the default BBS observations
+dataset stored internally in the
+package.
+
+</caption>
 
 <thead>
 
@@ -183,37 +191,38 @@ sb\_item
 
 <tr>
 
-<td style="text-align:left;width: 40em; background-color: yellow !important;">
+<td style="text-align:left;width: 40em; font-weight: bold;background-color: yellow !important;">
 
-2020 Release - North American Breeding Bird Survey Dataset (1966-2019)
+2020 Release - North American Breeding Bird Survey Dataset
+(1966-2019)
 
 </td>
 
-<td style="text-align:right;background-color: yellow !important;">
+<td style="text-align:right;font-weight: bold;background-color: yellow !important;">
 
 2020
 
 </td>
 
-<td style="text-align:left;background-color: yellow !important;">
+<td style="text-align:left;font-weight: bold;background-color: yellow !important;">
 
 observations
 
 </td>
 
-<td style="text-align:right;background-color: yellow !important;">
+<td style="text-align:right;font-weight: bold;background-color: yellow !important;">
 
 1966
 
 </td>
 
-<td style="text-align:right;background-color: yellow !important;">
+<td style="text-align:right;font-weight: bold;background-color: yellow !important;">
 
 2019
 
 </td>
 
-<td style="text-align:left;background-color: yellow !important;">
+<td style="text-align:left;font-weight: bold;background-color: yellow !important;">
 
 5ea04e9a82cefae35a129d65
 

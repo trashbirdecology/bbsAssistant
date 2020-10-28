@@ -85,10 +85,10 @@ library(kableExtra)
 library(dplyr)
 datasets %>% select(-legacy_format, -sb_parent) %>%  
   relocate(sb_item, .after = last_col()) %>%
-  kable() %>% 
+  kable(caption="List of datasets currently available for download at USGS ScienceBase. Highlighted and bolded row indicates the default BBS observations dataset stored internally in the package.") %>% 
   kable_styling(bootstrap_options = "striped", full_width = TRUE, position = "left") %>% 
   column_spec(1, width = "40em") %>% 
-  row_spec(1, background = "yellow")
+  row_spec(1, background = "yellow", bold = TRUE)
 ```
 
 ## Vignettes and package manual
