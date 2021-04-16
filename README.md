@@ -42,9 +42,7 @@ following order:
 
 *This repository contains the development version of **bbsAssistant**.
 Please submit [Issues
-here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major
-releases will be pushed to the [USGS Biolab
-GitHub](https://github.com/usgs-biolab/bbsAssistant) (and here).*
+here](https://github.com/TrashBirdEcology/bbsAssistant/issues).
 
 This R package contains functions for downloading, importing, and
 munging the the observations data and the analysis results from the
