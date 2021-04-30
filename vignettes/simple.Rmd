@@ -23,7 +23,7 @@ library(dplyr)
 library(kableExtra)
 ```
 
-```{r dataavail}
+```{r see_avail_data}
 data(package="bbsAssistant")
 ```
 
@@ -31,9 +31,8 @@ data(package="bbsAssistant")
 bbs_obs <- bbsAssistant::bbs_obs # get only the observations
 ```
 
-Get the most recent bbs observations, routes, and weather
-<!-- for some reason the following command (get_bbs_data())  won't run inside a chunk...getting a curl fetch error... -->
-`r bbs_data <- get_bbs_data() # make take a hot minute if you haven't retrieved the BBS dataset recently` 
+Get the most recent bbs observations, routes, and weather. Running `get_bbs_data()` # make take a hot minute if you haven't retrieved the BBS dataset recently` 
+<!-- for some reason the following command (get_bbs_data())  sometimes yields a  curl fetch error, but re-running typically works..not sure... -->
 ```{r get_data}
 suppressMessages(bbs_data <- bbsAsssistant::get_bbs_data())
 df <- left_join(bbs_data$observations, bbs_data$routes) 
