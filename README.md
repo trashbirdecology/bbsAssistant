@@ -41,8 +41,7 @@ following order:
 ## About
 
 \_This repository contains the development version of **bbsAssistant**.
-Please submit [Issues
-here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major
+Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major
 releases will be pushed to the [this
 repository](https://github.com/usgs-biolab/bbsAssistant) and to the
 [USGS ScienceBase digital
