@@ -33,15 +33,16 @@ bbs_obs <- bbsAssistant::bbs_obs # get only the observations
 
 Get the most recent bbs observations, routes, and weather
 <!-- for some reason the following command (get_bbs_data())  won't run inside a chunk...getting a curl fetch error... -->
-`r bbs_data <- get_bbs_data() # make take a hot minute if you` 
+`r bbs_data <- get_bbs_data() # make take a hot minute if you haven't retrieved the BBS dataset recently` 
 ```{r get_data}
-df <- left_join(bbs_data$observations, bbs_data$routes)  # lazy but whatever
-rm(bbs_data) # clear list, unless you want it still or need the weather or species
+suppressMessages(bbs_data <- bbsAsssistant::get_bbs_data())
+df <- left_join(bbs_data$observations, bbs_data$routes) 
+# rm(bbs_data) # clear list from mem, unless you want it still or need the weather or species
 ```
 
 ```{r takealook}
 # glimpse(bbs_data$observations) # the most recent (unless otherwise specified) bbs observations
-# glimpse(bbs_data$routes) # route data associated 
+# glimpse(bbs_data$routes) # route data associated
 # glimpse(bbs_data$weather) # weather associated with route data
 ```
 
