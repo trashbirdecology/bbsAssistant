@@ -54,6 +54,7 @@
 #' \describe{
 #'   \item{AOU}{Numeric AOU code.}
 #'   \item{avibase.id}{Identifier for Avibase database. Source \url{http://avibase.bsc-eoc.org/}}
+#'   \item{annotation}{...}
 #'   \item{rank}{...}
 #'   \item{common_name}{English common name.}
 #'   \item{order}{Phylogenetic order.}
