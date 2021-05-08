@@ -8,17 +8,17 @@
 A data frame with 6797797 rows and 14 columns (as of 2020-09-09).
 \describe{
 \item{AOU}{Numeric AOU code.}
-\item{Count10}{...}
-\item{Count20}{...}
-\item{Count30}{...}
-\item{Count40}{...}
-\item{Count50}{...}
+\item{Count10}{Total number of individual birds of species counted between at Route Locations (stops) 1-10 (AOU)}
+\item{Count20}{Total number of individual birds of species counted between at Route Locations (stops) 11-20 (AOU)}
+\item{Count30}{Total number of individual birds of species counted between at Route Locations (stops) 21-30 (AOU)}
+\item{Count40}{Total number of individual birds of species counted between at Route Locations (stops) 31-40 (AOU)}
+\item{Count50}{Total number of individual birds of species counted between at Route Locations (stops) 41-50 (AOU)}
 \item{CountryNum}{BBS country codes associated with United States-840, Mexico-484, and Canada-124}
-\item{Route}{...}
-\item{RouteDataID}{...}
-\item{RPID}{Route run type}
-\item{SpeciesTotal}{...}
-\item{State}{The proper name of the US or Mexican state or Canadian province}
+\item{Route}{Route number associated with route location and state/province. Route numbers are repeated across but not within states/provinces. When manipulating data from multiple states/provinces and/or countries, be sure to specify each of CountryNum, StateNum (or State), and Route.}
+\item{RouteDataID}{Unique ID associated with individal Route-Year-StateNum-CountryNum combinations.}
+\item{RPID}{Normal methodology is coded as \code{101}. Methodology used to collect data during a particular Route-Year-CountryNum-StateNum (i.e. RouteDataID). This should be ignored unless you are working with the BBS offices direclty to analyse or interpret data assocaited with the alternative sampling methods.}
+\item{SpeciesTotal}{Total number of birds counted per species (AOU) at all Route Locations (stops 1 through 50).}
+\item{State}{The proper name (English) of the US state, Mexican state or Canadian province}
 \item{StateNum}{BBS state numbers associated with each 'State' and 'CountryNum'}
 \item{StopTotal}{Number of individuals of a given species ('AOU') identified by the observer at the end of every 10 stop within the route.}
 \item{Year}{Year in which the BBS observations was taken.}
