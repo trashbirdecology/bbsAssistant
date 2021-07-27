@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>One-stop shop for downloading and importing the USGS Breeding Bird Survey observations data. — get_bbs_data • bbsAssistant</title>
+<title>Decompress the BBS observation files as obtained from ScienceBase. — unpack_bbs_data • bbsAssistant</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="One-stop shop for downloading and importing the USGS Breeding Bird Survey observations data. — get_bbs_data" />
-<meta property="og:description" content="This function downloads all files associated with a single version (defaults to the most recent release) of the BBS observations dataset from USGS ScienceBase repository, and allows the user to import all or a subset (based on Country, State, or Province)." />
+<meta property="og:title" content="Decompress the BBS observation files as obtained from ScienceBase. — unpack_bbs_data" />
+<meta property="og:description" content="Decompress the BBS observation files as obtained from ScienceBase." />
 <meta property="og:image" content="http://trashbirdecology.github.io/bbsAssistant/logo.png" />
 
 
@@ -131,50 +131,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>One-stop shop for downloading and importing the USGS Breeding Bird Survey observations data.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/trashbirdecology/bbsAssistant/blob/master/R/get_bbs_data.R'><code>R/get_bbs_data.R</code></a></small>
-    <div class="hidden name"><code>get_bbs_data.Rd</code></div>
+    <h1>Decompress the BBS observation files as obtained from ScienceBase.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/trashbirdecology/bbsAssistant/blob/master/R/unpack_bbs_data.R'><code>R/unpack_bbs_data.R</code></a></small>
+    <div class="hidden name"><code>unpack_bbs_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function downloads all files associated with a single version (defaults to the most recent release) of the BBS observations dataset from USGS ScienceBase repository, and allows the user to import all or a subset (based on Country, State, or Province).</p>
+    <p>Decompress the BBS observation files as obtained from ScienceBase.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_bbs_data</span><span class='op'>(</span>
-  sb_id <span class='op'>=</span> <span class='cn'>NULL</span>,
-  bbs_version <span class='op'>=</span> <span class='cn'>NULL</span>,
-  sb_dir <span class='op'>=</span> <span class='cn'>NULL</span>,
-  country <span class='op'>=</span> <span class='cn'>NULL</span>,
-  state <span class='op'>=</span> <span class='cn'>NULL</span>,
-  overwrite <span class='op'>=</span> <span class='cn'>FALSE</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>unpack_bbs_data</span><span class='op'>(</span><span class='va'>sb_dir</span>, <span class='va'>country</span>, <span class='va'>state</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>sb_id</th>
-      <td><p>Specify the dataset to download based on the unique ScienceBase Item identifier for retrieval from ScienceBase. If <code>bbs_version</code> is specified, this will be ignored.</p></td>
-    </tr>
-    <tr>
-      <th>bbs_version</th>
-      <td><p>Specify the dataset release version (by release year) for retrieval from ScienceBase. Please see /data-raw/sb_items for a list of available datasets and their associated release year.</p></td>
-    </tr>
-    <tr>
       <th>sb_dir</th>
-      <td><p>Directory within which the BBS compressed and decompressed files associated with the ScienceBase item will be stored. Location defaults to a new folder named after the ScienceBase identifier tag (sb_id), in ~/data-raw/&lt;SB_ID&gt;.</p></td>
+      <td><p>...</p></td>
     </tr>
     <tr>
       <th>country</th>
-      <td><p>Vector of country name(s), capitalization irrelevant. One of c(US, USA, United States, U.S.A., U.S., United States of America, CA, Canada, MX, Mexico).</p></td>
+      <td><p>...</p></td>
     </tr>
     <tr>
       <th>state</th>
-      <td><p>Vector of state names Default = NULL (all states). See column 'State' in data("region_codes").</p></td>
-    </tr>
-    <tr>
-      <th>overwrite</th>
-      <td><p>Logical. Default TRUE will overwrite the local files within sb_dir (defaults to /data-raw/).</p></td>
+      <td><p>...</p></td>
     </tr>
     </table>
 

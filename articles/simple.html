@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -72,7 +72,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/trashbirdecology/bbsAssistant/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -99,348 +99,53 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="dt">repo=</span><span class="st">"trashbirdecology/bbsAssistant"</span>, <span class="dt">ref=</span><span class="st">"main"</span>, <span class="dt">force=</span><span class="ot">FALSE</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#&gt; Using github PAT from envvar GITHUB_PAT</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">#&gt; Downloading GitHub repo trashbirdecology/bbsAssistant@main</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt; </span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt;   </span></span>
-<span id="cb1-6"><a href="#cb1-6"></a>   checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span><span class="dv">24</span><span class="op">/</span>8k48jl6d249_n_qfxwsl6xvm0000gn<span class="op">/</span>T<span class="op">/</span>Rtmp5dY5ei<span class="op">/</span>remotes61f329e11c0<span class="op">/</span>trashbirdecology<span class="op">-</span>bbsAssistant<span class="op">-</span>c90bd67<span class="op">/</span>DESCRIPTION’ ...</span>
-<span id="cb1-7"><a href="#cb1-7"></a>  </span>
-<span id="cb1-8"><a href="#cb1-8"></a>✔  checking <span class="cf">for</span> file ‘<span class="op">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span><span class="dv">24</span><span class="op">/</span>8k48jl6d249_n_qfxwsl6xvm0000gn<span class="op">/</span>T<span class="op">/</span>Rtmp5dY5ei<span class="op">/</span>remotes61f329e11c0<span class="op">/</span>trashbirdecology<span class="op">-</span>bbsAssistant<span class="op">-</span>c90bd67<span class="op">/</span>DESCRIPTION’ (684ms)</span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt; </span></span>
-<span id="cb1-10"><a href="#cb1-10"></a>  </span>
-<span id="cb1-11"><a href="#cb1-11"></a>─  preparing ‘bbsAssistant’<span class="op">:</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt;    checking DESCRIPTION meta-information ...</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="st">  </span></span>
-<span id="cb1-14"><a href="#cb1-14"></a>✔  checking DESCRIPTION meta<span class="op">-</span>information</span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt; </span></span>
-<span id="cb1-16"><a href="#cb1-16"></a>  </span>
-<span id="cb1-17"><a href="#cb1-17"></a>   Warning<span class="op">:</span><span class="st"> </span><span class="er">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span><span class="dv">24</span><span class="op">/</span>8k48jl6d249_n_qfxwsl6xvm0000gn<span class="op">/</span>T<span class="op">/</span>RtmpASbqer<span class="op">/</span>Rbuild6319965050<span class="op">/</span>bbsAssistant<span class="op">/</span>man<span class="op">/</span>sauer_results.Rd<span class="op">:</span><span class="dv">19</span><span class="op">:</span><span class="st"> </span>unknown macro <span class="st">'\item'</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:20: unknown macro '\item'</span></span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:21: unknown macro '\item'</span></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:22: unknown macro '\item'</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:23: unknown macro '\item'</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:25: unknown macro '\item'</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:26: unknown macro '\item'</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:27: unknown macro '\item'</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a><span class="co">#&gt; </span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>  </span>
-<span id="cb1-27"><a href="#cb1-27"></a>   Warning<span class="op">:</span><span class="st"> </span><span class="er">/</span>private<span class="op">/</span>var<span class="op">/</span>folders<span class="op">/</span><span class="dv">24</span><span class="op">/</span>8k48jl6d249_n_qfxwsl6xvm0000gn<span class="op">/</span>T<span class="op">/</span>RtmpASbqer<span class="op">/</span>Rbuild6319965050<span class="op">/</span>bbsAssistant<span class="op">/</span>man<span class="op">/</span>sauer_results.Rd<span class="op">:</span><span class="dv">30</span><span class="op">:</span><span class="st"> </span>unexpected section header <span class="st">'\source'</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:33: unexpected section header '\usage'</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:36: unexpected section header '\description'</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:40: unexpected section header '\keyword'</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co">#&gt;    Warning: /private/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/RtmpASbqer/Rbuild6319965050/bbsAssistant/man/sauer_results.Rd:41: unexpected </span><span class="re">END</span><span class="co">_OF_INPUT '</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co">#&gt;    '</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co">#&gt; </span></span>
-<span id="cb1-34"><a href="#cb1-34"></a>  </span>
-<span id="cb1-35"><a href="#cb1-35"></a>─  checking <span class="cf">for</span> LF line<span class="op">-</span>endings <span class="cf">in</span> source and make files and shell scripts</span>
-<span id="cb1-36"><a href="#cb1-36"></a><span class="co">#&gt; </span></span>
-<span id="cb1-37"><a href="#cb1-37"></a>  </span>
-<span id="cb1-38"><a href="#cb1-38"></a>─  checking <span class="cf">for</span> empty or unneeded directories</span>
-<span id="cb1-39"><a href="#cb1-39"></a><span class="co">#&gt; </span></span>
-<span id="cb1-40"><a href="#cb1-40"></a>  </span>
-<span id="cb1-41"><a href="#cb1-41"></a>─  building ‘bbsAssistant_<span class="dv">2</span>.<span class="dv">0</span>.<span class="fl">0.</span>tar.gz’</span>
-<span id="cb1-42"><a href="#cb1-42"></a><span class="co">#&gt; </span></span>
-<span id="cb1-43"><a href="#cb1-43"></a>  </span>
-<span id="cb1-44"><a href="#cb1-44"></a>   </span>
-<span id="cb1-45"><a href="#cb1-45"></a><span class="co">#&gt; </span></span>
-<span id="cb1-46"><a href="#cb1-46"></a><span class="co">#&gt; Installing package into '/Users/runner/work/_temp/Library'</span></span>
-<span id="cb1-47"><a href="#cb1-47"></a><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
-<span id="cb1-48"><a href="#cb1-48"></a><span class="kw">library</span>(bbsAssistant)</span>
-<span id="cb1-49"><a href="#cb1-49"></a><span class="co">#&gt; TERMS OF USE: North American Breeding Bird Survey Data: Users of these BBS data are obligated to formally recognize their use of the program's data in publications, presentations and other outlets. Additionally, all work using these data should acknowledge the thousands of U.S. and Canadian participants who annually perform  and coordinate the survey. It is in the best interest for the continued success of the BBS that authors submit a reprint or pdf of their work featuring BBS data to the National BBS staff for inclusion in the program's bibliography. If a publication is based solely on the analysis of BBS data, we recommend that you involve National BBS staff with the writing and/or review of the manuscript. DATA LIABILITY DISCLAIMER: North American Breeding Bird Survey Data.This database, identified as the North American Breeding Bird Survey Dataset, has been approved for release and publication by the U.S. Geological Survey (USGS) and the Canadian Wildlife Service of Environment Canada (EC). Although this database has been subjected to rigorous review and is substantially complete, the USGS and EC  reserve the right to revise the data pursuant to further analysis and review. Furthermore, it is released on the condition that the USGS, the U.S. Government, the EC, and the Canadian Government may not be held liable for any damages resulting from its authorized or unauthorized use.</span></span>
-<span id="cb1-50"><a href="#cb1-50"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb1-51"><a href="#cb1-51"></a><span class="co">#&gt; </span></span>
-<span id="cb1-52"><a href="#cb1-52"></a><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span id="cb1-54"><a href="#cb1-54"></a><span class="co">#&gt; </span></span>
-<span id="cb1-55"><a href="#cb1-55"></a><span class="co">#&gt;     filter, lag</span></span>
-<span id="cb1-56"><a href="#cb1-56"></a><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span id="cb1-57"><a href="#cb1-57"></a><span class="co">#&gt; </span></span>
-<span id="cb1-58"><a href="#cb1-58"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span>package<span class="op">=</span><span class="st">"bbsAssistant"</span><span class="op">)</span></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"This might take ~20 seconds, patience.."</span><span class="op">)</span>
-<span class="co">#&gt; This might take ~20 seconds, patience..</span>
-
-<span class="co">## alternatively, locally download the data...</span>
-<span class="va">bbs_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_bbs_data.html">get_bbs_data</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># make take a hot minute if you haven't already downloaded the data....</span>
-<span class="co">#&gt; FYI: neither `sb_id` nor `bbs_version` were specified. </span>
-<span class="co">#&gt; Downloading the most recent version of the BBS dataset titled,</span>
-<span class="co">#&gt; 2020 Release - North American Breeding Bird Survey Dataset (1966-2019)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Alabama.csv (File 1 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Alaska.csv (File 2 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Alberta.csv (File 3 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Arizona.csv (File 4 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Arkansa.csv (File 5 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//BritCol.csv (File 6 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Califor.csv (File 7 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Colorad.csv (File 8 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Connect.csv (File 9 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Delawar.csv (File 10 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Florida.csv (File 11 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Georgia.csv (File 12 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Idaho.csv (File 13 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Illinoi.csv (File 14 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Indiana.csv (File 15 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Iowa.csv (File 16 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Kansas.csv (File 17 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Kentuck.csv (File 18 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Louisia.csv (File 19 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Maine.csv (File 20 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Manitob.csv (File 21 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Marylan.csv (File 22 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Massach.csv (File 23 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Michiga.csv (File 24 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Minneso.csv (File 25 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Mississ.csv (File 26 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Missour.csv (File 27 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Montana.csv (File 28 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NBrunsw.csv (File 29 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NCaroli.csv (File 30 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NDakota.csv (File 31 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Nebrask.csv (File 32 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Nevada.csv (File 33 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Newfoun.csv (File 34 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NHampsh.csv (File 35 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NJersey.csv (File 36 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NMexico.csv (File 37 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NovaSco.csv (File 38 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Nunavut.csv (File 39 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NWTerri.csv (File 40 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//NYork.csv (File 41 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Ohio.csv (File 42 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Oklahom.csv (File 43 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Ontario.csv (File 44 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Oregon.csv (File 45 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//PEI.csv (File 46 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Pennsyl.csv (File 47 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Quebec.csv (File 48 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//RhodeIs.csv (File 49 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Saskatc.csv (File 50 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//SCaroli.csv (File 51 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//SDakota.csv (File 52 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Tenness.csv (File 53 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Texas.csv (File 54 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Utah.csv (File 55 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Vermont.csv (File 56 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Virgini.csv (File 57 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//W_Virgi.csv (File 58 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Washing.csv (File 59 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Wiscons.csv (File 60 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Wyoming.csv (File 61 of 62)</span>
-<span class="co">#&gt; Attempting to import file /Users/runner/work/bbsAssistant/bbsAssistant/data-raw/5ea04e9a82cefae35a129d65/States//Yukon.csv (File 62 of 62)</span>
-<span class="co">#&gt; PLEASE FOR THE LOVE OF .... SOMETHING YOU CARE ABOUT!!!!</span>
-<span class="co">#&gt; If you use the BBS dataset in your publications, presentations, webpages, etc., please cite it. The citation for the dataset you just retrieved using `get_bbs_data()` is provided in the list, and is provided here, free of charge: </span>
-<span class="co">#&gt;     Pardieck, K.L., Ziolkowski Jr., D.J., Lutmerding, M., Aponte, V.I., and Hudson, M-A.R., 2020, North American Breeding Bird Survey Dataset 1966 - 2019: U.S. Geological Survey data release, https://doi.org/10.5066/P9J6QUF6.</span>
-<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">bbs_data</span><span class="op">$</span><span class="va">observations</span>, <span class="va">bbs_data</span><span class="op">$</span><span class="va">routes</span><span class="op">)</span>  <span class="co"># lazy but whatever</span>
-<span class="co">#&gt; Joining, by = c("CountryNum", "StateNum", "Route")</span>
-<span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">bbs_data</span><span class="op">)</span> <span class="co"># clear list, unless you want it still or need the weather or species</span></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co"># glimpse(bbs_data$observations) # the most recent (unless otherwise specified) bbs observations</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span>repo<span class="op">=</span><span class="st">"trashbirdecology/bbsAssistant"</span>, ref<span class="op">=</span><span class="st">"main"</span>, force<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trashbirdecology/bbsAssistant">bbsAssistant</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">kableExtra</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span>package<span class="op">=</span><span class="st">"bbsAssistant"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">bbs_obs</span> <span class="op">&lt;-</span> <span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="../reference/bbs_obs.html">bbs_obs</a></span> <span class="co"># get only the observations</span></code></pre></div>
+<p>Get the most recent bbs observations, routes, and weather <!-- for some reason the following command (get_bbs_data())  won't run inside a chunk...getting a curl fetch error... --></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">bbs_data</span><span class="op">$</span><span class="va">observations</span>, <span class="va">bbs_data</span><span class="op">$</span><span class="va">routes</span><span class="op">)</span>  <span class="co"># lazy but whatever</span>
+<span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">bbs_data</span><span class="op">)</span> <span class="co"># clear list, unless you want it still or need the weather or species</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># glimpse(bbs_data$observations) # the most recent (unless otherwise specified) bbs observations</span>
 <span class="co"># glimpse(bbs_data$routes) # route data associated </span>
-<span class="co"># glimpse(bbs_data$weather) # weather associated with route data</span></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="co"># glimpse(bbs_data$weather) # weather associated with route data</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># grab data from Florida</span>
+<span class="va">ind</span> <span class="op">&lt;-</span> <span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="../reference/region_codes.html">region_codes</a></span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">State</span><span class="op">==</span><span class="st">"FLORIDA"</span><span class="op">)</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">StateNum</span> <span class="op">%in%</span> <span class="va">ind</span><span class="op">$</span><span class="va">StateNum</span><span class="op">)</span>
 <span class="co"># nrow(df[df$SpeciesTotal==0,])## ensuring this is presence-only data</span>
 <span class="va">nyears.per.spproute</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">CountryNum</span>, <span class="va">StateNum</span>, <span class="va">Route</span>, <span class="va">AOU</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarise</span><span class="op">(</span>nyears<span class="op">=</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># number of years of observations per species per route (by country/state route id)</span>
-<span class="co">#&gt; `summarise()` regrouping output by 'CountryNum', 'StateNum', 'Route' (override with `.groups` argument)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nyears.per.spproute</span><span class="op">$</span><span class="va">nyears</span><span class="op">)</span></pre></div>
-<p><img src="simple_files/figure-html/summary-1.png" width="700"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">CountryNum</span>, <span class="va">StateNum</span>, <span class="va">Route</span>, <span class="va">AOU</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>nyears<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># number of years of observations per species per route (by country/state route id)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nyears.per.spproute</span><span class="op">$</span><span class="va">nyears</span><span class="op">)</span>
 
 <span class="va">nyears.per.bcrstate</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">Stratum</span>, <span class="va">CountryNum</span>, <span class="va">StateNum</span>, <span class="va">AOU</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarise</span><span class="op">(</span>nyears<span class="op">=</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># number of years of observations per species per stratum &amp; state)</span>
-<span class="co">#&gt; `summarise()` regrouping output by 'Stratum', 'CountryNum', 'StateNum' (override with `.groups` argument)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nyears.per.bcrstate</span><span class="op">$</span><span class="va">nyears</span><span class="op">)</span></pre></div>
-<p><img src="simple_files/figure-html/summary-2.png" width="700"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="va">nbirds.per.stratum</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">Stratum</span>, <span class="va">AOU</span>, <span class="va">Year</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarise</span><span class="op">(</span>total.obs<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">SpeciesTotal</span><span class="op">)</span><span class="op">)</span> <span class="co">#total count of specices per stratum</span>
-<span class="co">#&gt; `summarise()` regrouping output by 'Stratum', 'AOU' (override with `.groups` argument)</span>
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Stratum</span>, <span class="va">CountryNum</span>, <span class="va">StateNum</span>, <span class="va">AOU</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>nyears<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># number of years of observations per species per stratum &amp; state)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nyears.per.bcrstate</span><span class="op">$</span><span class="va">nyears</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nbirds.per.stratum</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Stratum</span>, <span class="va">AOU</span>, <span class="va">Year</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total.obs<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">SpeciesTotal</span><span class="op">)</span><span class="op">)</span> <span class="co">#total count of specices per stratum</span>
 
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nbirds.per.stratum</span><span class="op">$</span><span class="va">total.obs</span><span class="op">)</span></pre></div>
-<p><img src="simple_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">nbirds.per.stratum</span><span class="op">$</span><span class="va">total.obs</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">nbirds.per.stratum</span><span class="op">$</span><span class="va">total.obs</span><span class="op">)</span> <span class="co">## this is probably right but make sure its a fkn duck or something</span>
-<span class="co">#&gt; [1] 17808</span>
-<span class="va">nbirds.per.stratum</span><span class="op">$</span><span class="va">AOU</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span> <span class="co">## unique birds here</span>
-<span class="co">#&gt;   [1] "00060" "00510" "00540" "00580" "00630" "00640" "00650" "00670" "00720"</span>
-<span class="co">#&gt;  [10] "00740" "00800" "01180" "01200" "01260" "01280" "01340" "01440" "01770"</span>
-<span class="co">#&gt;  [19] "01780" "01830" "01840" "01860" "01880" "01900" "01910" "01920" "01940"</span>
-<span class="co">#&gt;  [28] "01960" "01970" "01980" "01990" "02000" "02001" "02010" "02020" "02030"</span>
-<span class="co">#&gt;  [37] "02060" "02070" "02080" "02110" "02160" "02180" "02190" "02210" "02260"</span>
-<span class="co">#&gt;  [46] "02580" "02730" "02800" "02890" "03100" "03131" "03140" "03152" "03160"</span>
-<span class="co">#&gt;  [55] "03190" "03200" "03250" "03260" "03270" "03280" "03300" "03370" "03390"</span>
-<span class="co">#&gt;  [64] "03440" "03520" "03600" "03620" "03640" "03650" "03680" "03730" "03750"</span>
-<span class="co">#&gt;  [73] "03780" "03824" "03826" "03827" "03830" "03860" "03870" "03900" "03940"</span>
-<span class="co">#&gt;  [82] "04050" "04090" "04120" "04160" "04200" "04201" "04206" "04230" "04440"</span>
-<span class="co">#&gt;  [91] "04450" "04520" "04770" "04880" "04881" "04900" "04930" "04932" "04950"</span>
-<span class="co">#&gt; [100] "04960" "04961" "04980" "05010" "05032" "05110" "05130" "05500" "05870"</span>
-<span class="co">#&gt; [109] "05930" "05970" "05980" "06110" "06120" "06130" "06140" "06170" "06220"</span>
-<span class="co">#&gt; [118] "06230" "06240" "06310" "06370" "06480" "06520" "06710" "06730" "06810"</span>
-<span class="co">#&gt; [127] "06882" "07030" "07031" "07040" "07050" "07180" "07250" "07290" "07310"</span>
-<span class="co">#&gt; [136] "07510" "07660" "10210" "20630" "21930" "22860" "52021" "00534" "00634"</span>
-<span class="co">#&gt; [145] "00690" "01320" "01326" "01400" "01720" "01945" "02035" "02040" "02280"</span>
-<span class="co">#&gt; [154] "02860" "03290" "03330" "03333" "03822" "03823" "03920" "03930" "03950"</span>
-<span class="co">#&gt; [163] "04060" "04280" "04560" "04610" "04650" "04790" "05060" "05190" "05600"</span>
-<span class="co">#&gt; [172] "05630" "05750" "06010" "06100" "06280" "06630" "06830" "06840" "07270"</span>
-<span class="co">#&gt; [181] "07360" "07550" "51830" "00470" "00700" "00880" "01140" "01150" "01210"</span>
-<span class="co">#&gt; [190] "01250" "01310" "01330" "01870" "02090" "02120" "02630" "02780" "03210"</span>
-<span class="co">#&gt; [199] "03255" "03310" "03320" "03420" "03430" "03451" "03560" "03850" "03880"</span>
-<span class="co">#&gt; [208] "04171" "04430" "04660" "04679" "04740" "05070" "05120" "05290" "05460"</span>
-<span class="co">#&gt; [217] "05470" "05520" "05810" "06040" "06080" "06121" "06190" "06270" "06290"</span>
-<span class="co">#&gt; [226] "06360" "06380" "06390" "06670" "06740" "06760" "06770" "06870" "07210"</span>
-<span class="co">#&gt; [235] "07280" "07560" "07610" "01205" "01350" "01420" "01782" "01861" "02610"</span>
-<span class="co">#&gt; [244] "02770" "02882" "03000" "03091" "03550" "03660" "03670" "03960" "04100"</span>
-<span class="co">#&gt; [253] "04123" "04205" "04290" "04402" "04470" "04661" "04670" "04940" "05011"</span>
-<span class="co">#&gt; [262] "05077" "05090" "05210" "05400" "05420" "05490" "05780" "05840" "05950"</span>
-<span class="co">#&gt; [271] "05986" "06122" "06160" "06260" "06330" "06410" "06412" "06550" "06580"</span>
-<span class="co">#&gt; [280] "06590" "06620" "06750" "06860" "07190" "07240" "07260" "07320" "07350"</span>
-<span class="co">#&gt; [289] "07590" "00050" "01410" "01430" "01670" "02250" "02640" "03180" "03350"</span>
-<span class="co">#&gt; [298] "03410" "03840" "03910" "04180" "04210" "04461" "04490" "04530" "04540"</span>
-<span class="co">#&gt; [307] "04710" "04830" "04955" "05080" "05100" "05135" "05300" "05860" "05940"</span>
-<span class="co">#&gt; [316] "06292" "07060" "07070" "07460" "00040" "00770" "01331" "01370" "01460"</span>
-<span class="co">#&gt; [325] "02930" "03110" "03130" "03271" "03460" "03590" "03800" "03810" "03901"</span>
-<span class="co">#&gt; [334] "04190" "04295" "04390" "04460" "04462" "04570" "04580" "04720" "04860"</span>
-<span class="co">#&gt; [343] "04870" "04970" "05012" "05030" "05031" "05040" "05050" "05730" "05760"</span>
-<span class="co">#&gt; [352] "05800" "05910" "05935" "05960" "06000" "06490" "07130" "07170" "07315"</span>
-<span class="co">#&gt; [361] "07430" "07520" "03490" "04260" "04480" "05871" "01390" "05170" "05330"</span>
-<span class="co">#&gt; [370] "05580" "06450" "07222" "01290" "04665" "05670" "06420" "06570" "07352"</span>
-<span class="co">#&gt; [379] "03875" "06540" "07580" "00070" "01590" "02140" "02300" "03340" "04020"</span>
-<span class="co">#&gt; [388] "04590" "04630" "05140" "05220" "06470" "06600" "06610" "06720" "06790"</span>
-<span class="co">#&gt; [397] "07480" "01500" "03570" "03720" "07490" "01300" "01490" "01530" "01810"</span>
-<span class="co">#&gt; [406] "02150" "02240" "02881" "05261" "05480" "05540" "05610" "06413" "06780"</span>
-<span class="co">#&gt; [415] "00020" "01510" "02420" "03770" "04000" "04840" "05150" "05830" "05850"</span>
-<span class="co">#&gt; [424] "06460" "06500" "06850" "07400" "07570" "00010" "00030" "00590" "02230"</span>
-<span class="co">#&gt; [433] "03050" "03080" "04750" "06700" "05195" "02980" "00077" "00100" "00110"</span>
-<span class="co">#&gt; [442] "00270" "00370" "00380" "00400" "00420" "00440" "00530" "00550" "00600"</span>
-<span class="co">#&gt; [451] "00620" "00710" "00730" "01170" "01206" "01470" "01480" "01489" "01512"</span>
-<span class="co">#&gt; [460] "01520" "01540" "01550" "01630" "01650" "01657" "01660" "01710" "01800"</span>
-<span class="co">#&gt; [469] "02310" "02327" "02390" "02470" "02510" "02540" "02550" "02555" "02560"</span>
-<span class="co">#&gt; [478] "02590" "02650" "02700" "02720" "02721" "02740" "02840" "03010" "03020"</span>
-<span class="co">#&gt; [487] "03380" "03470" "03540" "03700" "03710" "04010" "04620" "04680" "05275"</span>
-<span class="co">#&gt; [496] "05280" "05360" "05491" "05530" "05570" "05590" "06070" "06150" "06180"</span>
-<span class="co">#&gt; [505] "06185" "06210" "06556" "06680" "06800" "06960" "06970" "07010" "07354"</span>
-<span class="co">#&gt; [514] "07470" "07540" "07630" "07650" "07680" "05225" "07571" "00300" "00320"</span>
-<span class="co">#&gt; [523] "00551" "01060" "01190" "02490" "05450" "05677" "05880" "00315" "00900"</span>
-<span class="co">#&gt; [532] "01360" "02970" "03790" "04021" "04130" "04330" "04641" "04642" "04689"</span>
-<span class="co">#&gt; [541] "04690" "04910" "05620" "05671" "05990" "06050" "06291" "06295" "06560"</span>
-<span class="co">#&gt; [550] "07000" "07150" "07220" "07221" "07380" "07670" "00011" "00012" "01690"</span>
-<span class="co">#&gt; [559] "02429" "02480" "03480" "04022" "04360" "04640" "05380" "05390" "06883"</span>
-<span class="co">#&gt; [568] "04813" "06300" "06660" "03070" "02810" "04080" "04125" "04250" "04320"</span>
-<span class="co">#&gt; [577] "04780" "04865" "05078" "05738" "05900" "07020" "02410" "03090" "05180"</span>
-<span class="co">#&gt; [586] "03732" "04920" "05660" "05680" "05690" "06296" "06440" "06650" "07300"</span>
-<span class="co">#&gt; [595] "01725" "02960" "03400" "06090" "06200" "06320" "06340" "07120" "03120"</span>
-<span class="co">#&gt; [604] "04447" "05650" "07080" "02950" "03450" "03975" "04070" "04110" "04172"</span>
-<span class="co">#&gt; [613] "04270" "04370" "04600" "04820" "05920" "06430" "07331" "07340" "03040"</span>
-<span class="co">#&gt; [622] "03089" "03740" "04040" "04220" "04300" "04691" "05260" "06640" "07353"</span>
-<span class="co">#&gt; [631] "02940" "02971" "02973" "04030" "04240" "07351" "07410" "00290" "03990"</span>
-<span class="co">#&gt; [640] "04310" "04882" "04890" "05240" "05250" "02920" "04812" "06685" "06690"</span>
-<span class="co">#&gt; [649] "03690" "03970" "04340" "04760" "04810" "05310" "05739" "05911" "07100"</span>
-<span class="co">#&gt; [658] "07330" "07420" "06686" "00230" "02320" "02460" "02820" "02830" "05270"</span>
-<span class="co">#&gt; [667] "05370" "05740" "07110" "03731" "03890" "04140" "04391" "04410" "04411"</span>
-<span class="co">#&gt; [676] "04451" "04510" "04550" "04700" "05700" "05790" "06510" "06880" "06900"</span>
-<span class="co">#&gt; [685] "07370" "16600" "01141" "02111" "03151" "05000" "03201" "07332" "03240"</span>
-<span class="co">#&gt; [694] "05212" "00490" "00570" "00660" "01207" "01220" "01230" "02870" "03095"</span>
-<span class="co">#&gt; [703] "04811" "07530" "07539" "08110" "19510" "04335" "00150" "00160" "00495"</span>
-<span class="co">#&gt; [712] "01740" "04730" "00480" "00080" "00090" "00120" "00140" "00210" "00240"</span>
-<span class="co">#&gt; [721] "00310" "00360" "00610" "00860" "01620" "01700" "01760" "02330" "02340"</span>
-<span class="co">#&gt; [730] "02350" "02356" "02430" "02500" "02680" "02750" "03760" "05340" "06940"</span>
-<span class="co">#&gt; [739] "06990" "07640"</span></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="va">nbirds.per.state</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">CountryNum</span>, <span class="va">StateNum</span>, <span class="va">AOU</span>, <span class="va">Year</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarise</span><span class="op">(</span>total.obs<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">SpeciesTotal</span><span class="op">)</span><span class="op">)</span> <span class="co"># </span>
-<span class="co">#&gt; `summarise()` regrouping output by 'CountryNum', 'StateNum', 'AOU' (override with `.groups` argument)</span>
-<span class="va">nbirds.per.state</span><span class="op">$</span><span class="va">AOU</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span> <span class="co">## unique birds here</span>
-<span class="co">#&gt;   [1] "00010" "00011" "00012" "00020" "00030" "00040" "00060" "00070" "00077"</span>
-<span class="co">#&gt;  [10] "00510" "00530" "00534" "00540" "00550" "00590" "00600" "00634" "00640"</span>
-<span class="co">#&gt;  [19] "00690" "00700" "00770" "01200" "01250" "01290" "01300" "01310" "01320"</span>
-<span class="co">#&gt;  [28] "01330" "01350" "01360" "01370" "01390" "01400" "01410" "01420" "01430"</span>
-<span class="co">#&gt;  [37] "01440" "01460" "01470" "01480" "01489" "01490" "01500" "01510" "01512"</span>
-<span class="co">#&gt;  [46] "01520" "01530" "01550" "01650" "01660" "01670" "01720" "01810" "01870"</span>
-<span class="co">#&gt;  [55] "01900" "01940" "02020" "02060" "02120" "02140" "02150" "02210" "02230"</span>
-<span class="co">#&gt;  [64] "02240" "02250" "02260" "02300" "02310" "02327" "02410" "02429" "02480"</span>
-<span class="co">#&gt;  [73] "02490" "02540" "02550" "02555" "02560" "02580" "02610" "02630" "02640"</span>
-<span class="co">#&gt;  [82] "02730" "02770" "02881" "02970" "02980" "03000" "03080" "03090" "03091"</span>
-<span class="co">#&gt;  [91] "03100" "03131" "03160" "03250" "03310" "03320" "03330" "03333" "03340"</span>
-<span class="co">#&gt; [100] "03370" "03420" "03430" "03451" "03480" "03490" "03520" "03550" "03560"</span>
-<span class="co">#&gt; [109] "03570" "03600" "03640" "03660" "03670" "03680" "03700" "03710" "03720"</span>
-<span class="co">#&gt; [118] "03750" "03770" "03780" "03790" "03880" "03900" "03920" "03930" "03940"</span>
-<span class="co">#&gt; [127] "04000" "04010" "04020" "04021" "04022" "04050" "04060" "04120" "04123"</span>
-<span class="co">#&gt; [136] "04130" "04200" "04220" "04280" "04330" "04360" "04402" "04440" "04470"</span>
-<span class="co">#&gt; [145] "04520" "04560" "04570" "04590" "04620" "04630" "04640" "04641" "04642"</span>
-<span class="co">#&gt; [154] "04660" "04661" "04665" "04670" "04679" "04680" "04689" "04690" "04740"</span>
-<span class="co">#&gt; [163] "04750" "04770" "04780" "04840" "04860" "04880" "04910" "04930" "04940"</span>
-<span class="co">#&gt; [172] "04950" "04970" "04980" "05011" "05012" "05070" "05077" "05080" "05090"</span>
-<span class="co">#&gt; [181] "05100" "05110" "05140" "05150" "05170" "05180" "05190" "05210" "05220"</span>
-<span class="co">#&gt; [190] "05225" "05240" "05290" "05330" "05380" "05390" "05400" "05420" "05450"</span>
-<span class="co">#&gt; [199] "05460" "05480" "05491" "05520" "05540" "05570" "05580" "05590" "05600"</span>
-<span class="co">#&gt; [208] "05610" "05620" "05670" "05671" "05677" "05810" "05830" "05840" "05850"</span>
-<span class="co">#&gt; [217] "05880" "05930" "05950" "05960" "05990" "06050" "06070" "06110" "06120"</span>
-<span class="co">#&gt; [226] "06130" "06140" "06150" "06160" "06170" "06180" "06185" "06190" "06210"</span>
-<span class="co">#&gt; [235] "06220" "06240" "06260" "06270" "06290" "06291" "06295" "06360" "06450"</span>
-<span class="co">#&gt; [244] "06460" "06470" "06500" "06520" "06550" "06556" "06560" "06570" "06590"</span>
-<span class="co">#&gt; [253] "06600" "06610" "06670" "06680" "06720" "06740" "06750" "06780" "06790"</span>
-<span class="co">#&gt; [262] "06800" "06810" "06830" "06850" "06860" "06870" "06882" "06970" "07000"</span>
-<span class="co">#&gt; [271] "07010" "07030" "07040" "07050" "07150" "07210" "07220" "07221" "07222"</span>
-<span class="co">#&gt; [280] "07240" "07250" "07260" "07270" "07280" "07350" "07380" "07400" "07480"</span>
-<span class="co">#&gt; [289] "07490" "07540" "07560" "07570" "07580" "07590" "07610" "07630" "07660"</span>
-<span class="co">#&gt; [298] "07670" "07680" "22860" "00100" "00110" "00150" "00230" "00290" "00300"</span>
-<span class="co">#&gt; [307] "00440" "00495" "00710" "01207" "01220" "01230" "01725" "01782" "01800"</span>
-<span class="co">#&gt; [316] "02010" "02420" "02590" "02740" "02870" "02882" "02890" "02940" "02971"</span>
-<span class="co">#&gt; [325] "02973" "03010" "03020" "03120" "03380" "03470" "03540" "03650" "03732"</span>
-<span class="co">#&gt; [334] "04030" "04040" "04080" "04125" "04180" "04240" "04250" "04290" "04310"</span>
-<span class="co">#&gt; [343] "04691" "04730" "04882" "04890" "05195" "05280" "05871" "06320" "06650"</span>
-<span class="co">#&gt; [352] "07020" "07170" "07190" "07300" "07351" "07353" "07410" "07430" "00080"</span>
-<span class="co">#&gt; [361] "00370" "00380" "00420" "01540" "01620" "01630" "01657" "01710" "02330"</span>
-<span class="co">#&gt; [370] "02460" "02650" "02720" "03760" "05270" "05275" "05360" "05530" "00610"</span>
-<span class="co">#&gt; [379] "01590" "01690" "01910" "01960" "02280" "02390" "02430" "02510" "03730"</span>
-<span class="co">#&gt; [388] "03870" "04171" "04230" "04610" "05010" "05060" "05370" "05630" "05870"</span>
-<span class="co">#&gt; [397] "05980" "06040" "06080" "06280" "06420" "06480" "06620" "06710" "07550"</span>
-<span class="co">#&gt; [406] "00270" "00320" "00470" "01170" "02190" "03390" "04090" "06540" "07571"</span>
-<span class="co">#&gt; [415] "00315" "00400" "00551" "00900" "01060" "01190" "01206" "01700" "02340"</span>
-<span class="co">#&gt; [424] "02750" "02830" "05340" "00580" "00720" "01326" "02080" "03875" "04650"</span>
-<span class="co">#&gt; [433] "04900" "05470" "06310" "06410" "06412" "06580" "06700" "06730" "06760"</span>
-<span class="co">#&gt; [442] "06770" "06840" "07180" "07310" "07510" "07354" "00630" "00650" "00670"</span>
-<span class="co">#&gt; [451] "00740" "00800" "01180" "01260" "01280" "01340" "01770" "01840" "01860"</span>
-<span class="co">#&gt; [460] "01880" "01920" "01945" "01970" "01980" "01990" "02000" "02001" "02030"</span>
-<span class="co">#&gt; [469] "02110" "02160" "02180" "02800" "02860" "03190" "03200" "03210" "03255"</span>
-<span class="co">#&gt; [478] "03260" "03270" "03290" "03950" "04160" "04450" "04881" "04961" "05130"</span>
-<span class="co">#&gt; [487] "05500" "05750" "05970" "06010" "06100" "06370" "06380" "06390" "06630"</span>
-<span class="co">#&gt; [496] "07290" "07360" "00090" "00120" "00140" "00210" "00240" "00310" "00360"</span>
-<span class="co">#&gt; [505] "00480" "00620" "00730" "00860" "01740" "01760" "02320" "02350" "02356"</span>
-<span class="co">#&gt; [514] "02470" "02500" "02680" "02700" "02721" "02820" "02840" "06940" "06960"</span>
-<span class="co">#&gt; [523] "06990" "07470" "07640" "07650" "01205" "01210" "01331" "02111" "02930"</span>
-<span class="co">#&gt; [532] "02950" "02960" "03201" "03240" "03280" "03350" "03400" "03450" "03460"</span>
-<span class="co">#&gt; [541] "03620" "03690" "03731" "03740" "03810" "03850" "03890" "03960" "03975"</span>
-<span class="co">#&gt; [550] "04070" "04110" "04140" "04172" "04210" "04260" "04270" "04300" "04320"</span>
-<span class="co">#&gt; [559] "04370" "04391" "04410" "04411" "04447" "04451" "04460" "04480" "04510"</span>
-<span class="co">#&gt; [568] "04530" "04540" "04550" "04580" "04600" "04700" "04710" "04720" "04813"</span>
-<span class="co">#&gt; [577] "04820" "04865" "04870" "04920" "04960" "05040" "05050" "05120" "05300"</span>
-<span class="co">#&gt; [586] "05650" "05690" "05700" "05730" "05738" "05740" "05760" "05780" "05790"</span>
-<span class="co">#&gt; [595] "05800" "05900" "05910" "05920" "05935" "05940" "06000" "06090" "06200"</span>
-<span class="co">#&gt; [604] "06292" "06330" "06340" "06430" "06440" "06510" "06640" "06880" "06900"</span>
-<span class="co">#&gt; [613] "07070" "07080" "07110" "07120" "07130" "07331" "07340" "07370" "07460"</span>
-<span class="co">#&gt; [622] "07520" "16600" "04430" "00490" "00570" "00660" "01141" "01780" "02780"</span>
-<span class="co">#&gt; [631] "02920" "03095" "03151" "03152" "03826" "03827" "03970" "03990" "04335"</span>
-<span class="co">#&gt; [640] "04340" "04760" "04810" "04811" "04812" "05000" "05310" "05739" "05911"</span>
-<span class="co">#&gt; [649] "06296" "06690" "07100" "07315" "07330" "07332" "07420" "07530" "07539"</span>
-<span class="co">#&gt; [658] "08110" "19510" "51830" "02810" "03040" "03050" "03070" "03089" "04205"</span>
-<span class="co">#&gt; [667] "05260" "05490" "00880" "01140" "01150" "01830" "02035" "02040" "02070"</span>
-<span class="co">#&gt; [676] "03140" "03300" "03440" "03822" "03823" "03824" "03830" "03860" "04201"</span>
-<span class="co">#&gt; [685] "04206" "04790" "04932" "05032" "06230" "07031" "10210" "20630" "21930"</span>
-<span class="co">#&gt; [694] "52021" "05212" "05680" "06883" "07352" "01861" "02090" "04490" "04955"</span>
-<span class="co">#&gt; [703] "05135" "06121" "06122" "06413" "05078" "05660" "03590" "05986" "04100"</span>
-<span class="co">#&gt; [712] "04295" "06300" "07320" "06685" "06686" "00050" "03110" "03130" "03180"</span>
-<span class="co">#&gt; [721] "03271" "03410" "03800" "03840" "03901" "03910" "04190" "04390" "04461"</span>
-<span class="co">#&gt; [730] "04462" "04830" "05030" "05031" "05860" "06490" "06660" "07060" "00160"</span>
-<span class="co">#&gt; [739] "05261" "05250"</span></pre></div>
+<span class="va">nbirds.per.stratum</span><span class="op">$</span><span class="va">AOU</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span> <span class="co">## unique birds here</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">nbirds.per.state</span> <span class="op">&lt;-</span> <span class="va">df</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">CountryNum</span>, <span class="va">StateNum</span>, <span class="va">AOU</span>, <span class="va">Year</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total.obs<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">SpeciesTotal</span><span class="op">)</span><span class="op">)</span> <span class="co"># </span>
+<span class="va">unique.spp</span> <span class="op">&lt;-</span> <span class="va">nbirds.per.state</span><span class="op">$</span><span class="va">AOU</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span> <span class="co">## unique birds here by AOU number</span>
+
+<span class="va">species_list</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">AOU</span> <span class="op">%in%</span> <span class="va">unique.spp</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">common_name</span>, <span class="va">AOU</span>, <span class="va">genus</span>, <span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

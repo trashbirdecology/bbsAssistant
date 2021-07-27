@@ -89,7 +89,7 @@ The data object is a list, wherein the list names (names(sauer_results)) corresp
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -115,7 +115,7 @@ The data object is a list, wherein the list names (names(sauer_results)) corresp
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/trashbirdecology/bbsAssistant/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -133,7 +133,7 @@ The data object is a list, wherein the list names (names(sauer_results)) corresp
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Contains the most recent release of the BBS observations dataset.
-The data object is a list, wherein the list names (<code>names(sauer_results)</code>) correspond with the .csv filenames provided in ScienceBase; call <code>bbsAssistant::sb_items</code> for more information.</h1>
+The data object is a list, wherein the list names (names(sauer_results)) correspond with the .csv filenames provided in ScienceBase; call <code>bbsAssistant::sb_items</code> for more information.</h1>
     <small class="dont-index">Source: <a href='https://github.com/trashbirdecology/bbsAssistant/blob/master/R/data.R'><code>R/data.R</code></a></small>
     <div class="hidden name"><code>sauer_results.Rd</code></div>
     </div>
@@ -146,23 +146,15 @@ The data object is a list, wherein the list names (<code>names(sauer_results)</c
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A list containing a varying number of data frames associated with the most recent release of analysis results by Sauer et al. Please visit the <code>source</code> for more information, including metadata which describes each results file.</p><dl>
-NOTE: THE COLUMNS HERE ARE DESCRIBED IN GREATER DETAIL AT THE SCIENCEBASE ITEM (call bbsAssistant::sb_items for hyperlink for relevant sb_id).
+NOTE: THE COLUMNS HERE ARE DESCRIBED IN GREATER DETAIL AT THE SCIENCEBASE ITEM (see "sb_items" hyperlink for relevant sb_id).
 NOTE ALSO: NOT ALL COLUMNS ARE DESCRIBE HERE. CURRENTLY, ONLY THE COLUMNS ASSOCIATED WITH THE 2020 RELEASE ARE DESCRIBED.
-<dt>Abundance</dt><dd><p></p></dd>
-<dt>AOU</dt><dd><p>5-digit (leading zeroes enforced here) codes designated by the AOU. Metadata does not point to a version history. Potential source:</p></dd>
-<dt>Credibility.Code</dt><dd><p>Qualitative credibility score as described in metadata.</p></dd>
-<dt>Model</dt><dd><p></p></dd>
-<dt>N.Routes</dt><dd><p></p></dd>
-<dt>Precision</dt><dd><p>Describes the precision of the Credibility.Code., as a function of what percent change per year can be detected over the 'long term'. One of c("R","Y", " "). "R"= results sufficient to detect 3%\ change/year; "Y"= imprecise, cannot detect 3%\ change/year; "R"= very imprecise, cannot detect 5%\ change/year;
-Region3-character codes for each of the 3 "region type" Region types include States/Provinces, Bird Conservation Regions (BCRs), and a catchall for BBS administrative regions and countries. See "Region.Name" for full names. 
-Region.NameFull name of attribute "Region". 
-Relative.AbundanceAdjusted, mean annual index for a region for a 3-year period (+/- 1 year; given at midpoint).
-Sample.SizeQualitative credibility score as described in metadata. "R"= sample based on &lt; 5 routes for the 'long term' ("very small samples"); "Y"= sample based on &gt; 5 and &lt; 14 routes for the 'long term'; " " (no code)  sample based on &gt;= 14 routes for the 'long term'
-SignificanceOne of c(1, " "); 1=significant, 95%\ credible interval does not include zero; " " (no value): estimate falls
-falls outside the 95%\ credible interval for the estimate and " " (no value) if the trend estimate falls within the 95%\ credible interval. 
-TrendEstimate as the ratio of first and last year of regional observations, from the annual indices. 
-X2.5.CI2.5%\ Credible Interval
-X97.5.5.CI97.5%\ Credible Interval</p></dd>
+@details The object, sauer_results, comprises (currently) 4 data frames, each containing the results of different analyses as described in original metadata.
+ # the list
+@param BBS_1966-2018_core_best_trend ...
+@param BBS_1993-2018_expanded_trend_best ... 
+@param inde_best_1993-2018_expanded ... 
+@param inde_best_1966-2018_core ... 
+
 
 </dl><p><a href='https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4'>https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4</a>
 
@@ -171,7 +163,7 @@ sauer_results
 
 
 Contains the most recent release of the BBS observations dataset.
-The data object is a list, wherein the list names (<code><a href='https://rdrr.io/r/base/names.html'>names(sauer_results)</a></code>) correspond with the .csv filenames provided in ScienceBase; call <code><a href='sb_items.html'>bbsAssistant::sb_items</a></code> for more information.
+The data object is a list, wherein the list names (names(sauer_results)) correspond with the .csv filenames provided in ScienceBase; call <code><a href='sb_items.html'>bbsAssistant::sb_items</a></code> for more information.
 
 datasets</p>
 
