@@ -72,23 +72,21 @@
 #' @source Most recent version of species list associated with BBS data at SpeciesList.txt at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B"}
 "species_list"
 
-# sauer_results  (most recent version of bbs observations) --------------------------------------------------------------
+# sauer_results  (the most recent version of bbs analytical results released by Dr. John Sauer on Sciencebase) --------------------------------------------------------------
 #' Contains the most recent release of the BBS observations dataset.
 #' The data object is a list, wherein the list names (names(sauer_results)) correspond with the .csv filenames provided in ScienceBase; call `bbsAssistant::sb_items` for more information.
 #' @format A list containing a varying number of data frames associated with the most recent release of analysis results by Sauer et al. Please visit the `source` for more information, including metadata which describes each results file.
 #'  \describe{
-#'  NOTE: THE COLUMNS HERE ARE DESCRIBED IN GREATER DETAIL AT THE SCIENCEBASE ITEM (see "sb_items" hyperlink for relevant sb_id).
-#'  NOTE ALSO: NOT ALL COLUMNS ARE DESCRIBE HERE. CURRENTLY, ONLY THE COLUMNS ASSOCIATED WITH THE 2020 RELEASE ARE DESCRIBED.
+#'  NOTE: Please see the respective ScienceBase item for greater detail of variables (data frame columns; see "sb_items" hyperlink for relevant sb_id)
+#'  NOTE: Not all columns are described here, only those associated with the 2020 release.
 #'  @details The object, sauer_results, comprises (currently) 4 data frames, each containing the results of different analyses as described in original metadata.
-#'  \itemize{ # the list
-#'  \item{@param BBS_1966-2018_core_best_trend ...} 
-#'  \item{@param BBS_1993-2018_expanded_trend_best ... } 
-#'  \item{@param inde_best_1993-2018_expanded ... } 
-#'  \item{@param inde_best_1966-2018_core ... } 
+#'  \itemize{ # the list of objects available for sauer_results
+#'  \item{@param BBS_1966-2018_core_best_trend}{...}
+#'  \item{@param BBS_1993-2018_expanded_trend_best}{...}
+#'  \item{@param inde_best_1993-2018_expanded}{...}
+#'  \item{@param inde_best_1966-2018_core}{...}
 #'  }
 #' 
 #' @source \url{https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4}
 #' 
 "sauer_results"
-
-# TBA cws_results -----------------------------------------------------------
