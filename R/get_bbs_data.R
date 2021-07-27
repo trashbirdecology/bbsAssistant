@@ -23,6 +23,7 @@ get_bbs_data <- function(
     state=NULL, 
     overwrite=FALSE
 ){
+  
 # Retrieve dataset lookup table -------------------------------------------
 # data(sb_items, package="bbsAssistant")
 sb_items    <- bbsAssistant::sb_items
@@ -42,7 +43,8 @@ if(is.null(sb_id) & !is.null(bbs_version)){
     }
 
 # When sb_dir DNE, define it... ------------------------
-if(is.null(sb_dir)){
+if(is.null(sb_dir)){ 
+    suppressMessages(dir.create("./data-raw/")) # create a home for the data
     sb_dir <- paste0("./data-raw/", sb_id) # define the new directory
 }
 
