@@ -10,12 +10,14 @@ vignette: >
 
 ```{r, include = FALSE, echo=FALSE}
 knitr::opts_chunk$set(
-    eval=FALSE,
+  eval = TRUE,
   collapse = TRUE,
-  comment = "#>", cache = TRUE
+  comment = "#>",
+  cache = TRUE
 )
 ```
 
+## Setup
 ```{r setup}
 remotes::install_github(repo="trashbirdecology/bbsAssistant", ref="main", force=FALSE)
 library(bbsAssistant)
@@ -23,18 +25,26 @@ library(dplyr)
 library(kableExtra)
 ```
 
-```{r dataavail}
+
+## Internal Data
+See available data objects and descriptions.
+```{r available-data}
 data(package="bbsAssistant")
 ```
 
-```{r load_recent_data, eval=FALSE}
-bbs_obs <- bbsAssistant::bbs_obs # get only the observations
+Create an object usign the most observations dataset, already saved in the package. This should suffice for most users. 
+```{r load-recent-data, eval=TRUE}
+bbs_obs <- bbsAssistant::bbs_obs # get only the observations dataset
 ```
 
 Get the most recent bbs observations, routes, and weather
-<!-- for some reason the following command (get_bbs_data())  won't run inside a chunk...getting a curl fetch error... -->
-`r bbs_data <- bbsAssistant::get_bbs_data() # make take a hot minute if you` 
-```{r get_data}
+<!-- Cannot identify the problem, but sometimes get_bbs_data won't run inside a code chunk in the .rmd.-->
+<!-- `r bbs_data <- bbsAssistant::get_bbs_data() # make take a hot minute if you`  -->
+```{r get_specified_data}
+bbs_data <- bbsAssistant::get_bbs_data() 
+```
+
+```{r }
 df <- dplyr::left_join(bbs_data$observations, bbs_data$routes)  # lazy but whatever
 rm(bbs_data) # clear list, unless you want it still or need the weather or species
 ```
