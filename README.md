@@ -1,7 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2020-10-28
+Last updated: 2021-04-30
 
 <!-- badges: start -->
 
@@ -40,9 +40,12 @@ following order:
 
 ## About
 
-*This repository contains the development version of **bbsAssistant**.
-Please submit [Issues
-here](https://github.com/TrashBirdEcology/bbsAssistant/issues).
+\_This repository contains the development version of **bbsAssistant**.
+Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). Major
+releases will be pushed to the [this
+repository](https://github.com/usgs-biolab/bbsAssistant) and to the
+[USGS ScienceBase digital
+repository](https://www.sciencebase.gov/catalog/item/5de53a0fe4b02caea0e8fa72).
 
 This R package contains functions for downloading, importing, and
 munging the the observations data and the analysis results from the
@@ -135,8 +138,8 @@ results will be regularly updated, and comprises the following entries:
 <caption>
 
 List of datasets currently available for download at USGS ScienceBase.
-Highlighted and bolded row indicates the default BBS observations
-dataset stored internally in the
+Highlighted and bold row indicates the default BBS observations dataset
+stored internally in the
 package.
 
 </caption>

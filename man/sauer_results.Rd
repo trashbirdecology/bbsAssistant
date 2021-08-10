@@ -12,10 +12,10 @@ NOTE: THE COLUMNS HERE ARE DESCRIBED IN GREATER DETAIL AT THE SCIENCEBASE ITEM (
 NOTE ALSO: NOT ALL COLUMNS ARE DESCRIBE HERE. CURRENTLY, ONLY THE COLUMNS ASSOCIATED WITH THE 2020 RELEASE ARE DESCRIBED.
 @details The object, sauer_results, comprises (currently) 4 data frames, each containing the results of different analyses as described in original metadata.
 \itemize{ # the list
-\item{@param BBS_1966-2018_core_best_trend ...}
-\item{@param BBS_1993-2018_expanded_trend_best ... }
-\item{@param inde_best_1993-2018_expanded ... }
-\item{@param inde_best_1966-2018_core ... }
+\item{@param BBS_1966-2018_core_best_trend}{...}
+\item{@param BBS_1993-2018_expanded_trend_best}{ ... }
+\item{@param inde_best_1993-2018_expanded}{ ... }
+\item{@param inde_best_1966-2018_core}{ ... }
 }
 }
 \source{

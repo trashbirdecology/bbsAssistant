@@ -25,9 +25,7 @@ Suggests:
     ggplot2 (>= 3.3.1),
     knitr (>= 1.28),
     rmarkdown (>= 2.2),
-    spelling (>= 2.1),
-    testthat (>= 2.1.0),
-    usethis (>= 1.6.1)
+    testthat (>= 2.1.0)
 VignetteBuilder: rmarkdown
 Language: en-US
 URL: https://github.com/trashbirdecology/bbsAssistant
