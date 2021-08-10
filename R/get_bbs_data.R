@@ -23,6 +23,7 @@ get_bbs_data <- function(
     state=NULL, 
     overwrite=FALSE
 ){
+  
 # Retrieve dataset lookup table -------------------------------------------
 # data(sb_items, package="bbsAssistant")
 sb_items    <- bbsAssistant::sb_items
@@ -38,11 +39,12 @@ if(is.null(sb_id) & !is.null(bbs_version)){
         ind=max(sb_items$release_year)
         sb_id <- sb_items[sb_items$release_year==ind,]$sb_item
         sb_id <- as.character(sb_id)
-        message("FYI: neither `sb_id` nor `bbs_version` were specified. \nDownloading the most recent version of the BBS dataset titled,\n",sbtools::item_get_fields(sb_id,"title"))
+        message("FYI: neither `sb_id` nor `bbs_version` were specified. \n Therefore, I, robot, will download the most recent version of the BBS dataset titled,\n",sbtools::item_get_fields(sb_id,"title"))
     }
 
 # When sb_dir DNE, define it... ------------------------
-if(is.null(sb_dir)){
+if(is.null(sb_dir)){ 
+    suppressMessages(dir.create("./data-raw/")) # create a home for the data
     sb_dir <- paste0("./data-raw/", sb_id) # define the new directory
 }
 

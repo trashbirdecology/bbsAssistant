@@ -36,7 +36,7 @@ Get the most recent bbs observations, routes, and weather. Running `get_bbs_data
 ```{r get_data}
 suppressMessages(bbs_data <- bbsAsssistant::get_bbs_data())
 df <- left_join(bbs_data$observations, bbs_data$routes) 
-# rm(bbs_data) # clear list from mem, unless you want it still or need the weather or species
+# rm(bbs_data) # clear list from memory, unless you want it still or need the weather or species
 ```
 
 ```{r takealook}
@@ -56,16 +56,16 @@ nyears.per.spproute <- df %>%
 hist(nyears.per.spproute$nyears)
 
 nyears.per.bcrstate <- df %>% 
-  group_by(Stratum, CountryNum, StateNum, AOU) %>% 
-  summarise(nyears=n()) # number of years of observations per species per stratum & state)
+  dplyr::group_by(Stratum, CountryNum, StateNum, AOU) %>% 
+  dplyr::summarise(nyears=n()) # number of years of observations per species per stratum & state)
 hist(nyears.per.bcrstate$nyears)
 ```
 
 
 ```{r }
 nbirds.per.stratum <- df %>% 
-  group_by(Stratum, AOU, Year) %>% 
-  summarise(total.obs=sum(SpeciesTotal)) #total count of specices per stratum
+  dplyr::group_by(Stratum, AOU, Year) %>% 
+  dplyr::summarise(total.obs=sum(SpeciesTotal)) #total count of specices per stratum
 
 hist(nbirds.per.stratum$total.obs)
 
@@ -75,8 +75,8 @@ nbirds.per.stratum$AOU %>% unique() ## unique birds here
 
 ```{r }
 nbirds.per.state <- df %>% 
-  group_by(CountryNum, StateNum, AOU, Year) %>% 
-  summarise(total.obs=sum(SpeciesTotal)) # 
+  dplyr::group_by(CountryNum, StateNum, AOU, Year) %>% 
+  dplyr::summarise(total.obs=sum(SpeciesTotal)) # 
 unique.spp <- nbirds.per.state$AOU %>% unique() ## unique birds here by AOU number
 
 species_list %>% filter(AOU %in% unique.spp) %>% dplyr::select(common_name, AOU, genus, species) %>% glimpse()
