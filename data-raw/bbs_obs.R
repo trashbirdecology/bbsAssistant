@@ -9,7 +9,7 @@ s <- read.csv("./data-raw/sb_items.csv")
 sb_items<-sb_items[sb_items$data_type=="observations" & sb_items$release_year==max(sb_items$release_year) ,] # filter acting up...
 
 # # Define the item and create subdirectory for the item  -----------------------------------------------------------------
-sb_dir <- paste0("./data-raw/", sb_id) # define the new directory
+sb_dir <- paste0("./data-raw/", sb_items$sb_item) # define the new directory
 suppressWarnings(dir.create(sb_dir)) # create directory for data associated with the sb item (sb_id) if it does not already exist.
 
 # Download  and unzip the BBS data ----------------------------------------
@@ -18,9 +18,8 @@ get_bbs_data(overwrite=FALSE)
 # Import the BBS data list ------------------------------------------------
 bbs_data <- import_bbs_data(sb_id, sb_dir)
 
-# Load the region_codes ---------------------------------------------------
-bbs_obs<-bbs_data$observations
+# Write the various data to package files as .RDA ---------------------------------
+usethis::use_data(bbs_obs$observations, overwrite=TRUE)
 
-# Write the data to package files as .RDA ---------------------------------
-usethis::use_data(bbs_obs, overwrite=TRUE)
+
 

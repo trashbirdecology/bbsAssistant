@@ -68,9 +68,9 @@
 #'   \item{status_extinct}{...}
 #'   \item{status_nonbreeding}{...}
 #' }
-#' @source Most recent version of AOU at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B}
 #' @source Most recent version of species list associated with BBS data at SpeciesList.txt at \url{http://checklist.aou.org/taxa.csv?type=charset%3Dutf-8%3Bsubspecies%3Dno%3B"}
 "species_list"
+
 
 # sauer_results  (the most recent version of bbs analytical results released by Dr. John Sauer on Sciencebase) --------------------------------------------------------------
 #' Contains the most recent release of the BBS observations dataset.
