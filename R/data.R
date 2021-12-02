@@ -39,7 +39,7 @@
 #'  \item{@param inde_best_1993-2018_expanded}{...}
 #'  \item{@param inde_best_1966-2018_core}{...}
 #'  }
-#' 
+#'
 #' @source \url{https://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4}
-#' 
+#'
 "usgs_results"

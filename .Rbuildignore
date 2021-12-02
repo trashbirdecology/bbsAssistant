@@ -1,14 +1,6 @@
-^codecov\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.travis\.yml$
-^doc$
-^Meta$
-^docs$
-^pkgdown$
-^cran-comments\.md$
 ^data-raw$
-^\.github$
-^_pkgdown\.yml$
-^CODE_OF_CONDUCT\.md$
+^README\.Rmd$
 ^LICENSE\.md$
+^\.github$

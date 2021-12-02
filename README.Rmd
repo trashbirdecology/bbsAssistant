@@ -1,7 +1,7 @@
 ---
 title: "**bbsAssistant**: An R package for downloading and handling data and information from the North American Breeding Bird Survey."
 date: "Last updated: `r Sys.Date()`"
-bibliography: paper/paper.bib
+bibliography: .github/paper/paper.bib
 output: github_document
 always_allow_html: true
 ---
@@ -17,10 +17,11 @@ always_allow_html: true
 <!-- ![dependencies](https://img.shields.io/librariesio/github/trashbirdecology/bbsassistant?style=flat-square&logo=appveyor) -->
 <!-- [![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=main)](https://travis-ci.org/trashbirdecology/bbsAssistant) -->
 <!-- badges: end -->
-<img src="man/figures/logo.png" align="right" height=140/>
+<img src=".github/figures/logo.png" align="right" height=140/>
+
 
 ## About
-_This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). 
+This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). 
 
 This package contains functions for downloading, importing, and (soon) visualizing the annual USGS release of the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) dataset [(retrieved from  USGS ScienceBase repository)](https://sciencebase.gov/). 
 
@@ -31,26 +32,17 @@ devtools::install_github("trashbirdecology/bbsAssistant",
                          force=FALSE) # force=TRUE to get most recent dev version
 ```
 
+
 ```{r libs, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-# .libPaths()
 library(bbsAssistant)
-# library(dplyr)
-# library(stringr)
-```
-
-```{r hidden, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
-# used for building the README locally and troubleshooting
 devtools::load_all()
-```
-
-Optional: specify `sb_id` as the USGS ScienceBase identifier for a specific data release. If sb_id is not supplied, will default to the most recent data release.
-```{r specs, echo=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
-sb_id="5ea04e9a82cefae35a129d65"
 ```
 
 ## Download, Unpack, and Import the Most Recent Dataset
 ```{r grab_bbs_data, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-bbs <- bbsAssistant::grab_bbs_data(sb_dir=NULL)
+bbs <- grab_bbs_data(sb_dir=NULL)
+# Optional: specify `sb_id` as the USGS ScienceBase identifier for a specific data release. If sb_id is not supplied, will default to the most recent data release.
+sb_id="5ea04e9a82cefae35a129d65"
 ```
 
 
@@ -107,24 +99,4 @@ To make a contribution visit the [CONTRIBUTIONS.md](https://github.com/trashbird
 <!--      </td> -->
 <!--   </tr> -->
 <!-- </table> -->
-
-
-
-## Acknowledgments
-We especially thank the participatory scientists who collect data annually for the North American Breeding Bird Survey, and the Patuxent Wildlife Research Center for making these data publicly and easily accessible. We thank those who have made [contributions](https://github.com/TrashBirdEcology/bbsAssistant/graphs/contributors) of all sizes to this project. Finally, we thank two peer reviewers, [Ethan White](www.github.com/ethanwhite) and [Josepha Stachelek](www.github.com/jsta) whose feedback greatly improved the quality of this software and the [associated software paper](www.github.com/trashbirdecology/bbsassistant/paper/paper.md). [Logo](https://github.com/TrashBirdEcology/bbsAssistant/blob/main/man/figures/logo.png) by Gabby Palomo-Munoz.
-
-This software has been approved for release by the U.S. Geological Survey (USGS). Although the software has been subjected to rigorous review, the USGS reserves the right to update the software as needed pursuant to further analysis and review. No warranty, expressed or implied, is made by the USGS or the U.S. Government as to the functionality of the software and related material nor shall the fact of release constitute any such warranty. Furthermore, the software is released on condition that neither the USGS nor the U.S. Government shall be held liable for any damages resulting from its authorized or unauthorized use.
-
-## How to Cite the Data
-Easily retrieve the text citation for the specified dataset using `sbtools`:
-```{r cite, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
-sbtools::item_get_fields(sb_id, "citation")
-```
-
-If you use the package data, the text citations are available in the package citation file:
-```{r cite.local, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
-citation("bbsAssistant")
-# print(citation("bbsAssistant"), bibtex=TRUE)# for bibtex
-```
-
 

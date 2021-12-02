@@ -1,13 +1,17 @@
 #' @title Read BBS data from local file into R environment.
-#' @description  
+#' @description
+#' @param sb_id
+#' @param sb_dir
 #' Imports BBS data from specified directory.
 #' Called inside `grab_bbs_data()`. Can be called directly but user must have sb_id and sb_dir specified.
 #' @keywords internal
 
 import_bbs_data <- function(sb_dir, sb_id) {
+
+
     # Where to save the unzipped files
     tempdir = tempdir()
-    
+
     # Create a vector of desired file locations.
     zipF <-
         list.files(path = paste0(sb_dir),
@@ -24,7 +28,7 @@ import_bbs_data <- function(sb_dir, sb_id) {
                )$Name)
     fns.50stop <-
         fns.50stop[stringr::str_detect(tolower(fns.50stop), pattern = ".zip")] # to remove the dir that isnt a .zip
-    
+
     fns.routes <- list.files(path = paste0(sb_dir),
                              pattern = "routes.zip",
                              full.names = TRUE)
@@ -34,8 +38,8 @@ import_bbs_data <- function(sb_dir, sb_id) {
     fns.weather <- list.files(path = paste0(sb_dir),
                               pattern = "eather.zip",
                               full.names = TRUE)
-    
-    
+
+
     # define potential columns and desired types to ensure consistency across data files
     col_types <- readr::cols(
         AOU = readr::col_integer(),
@@ -46,27 +50,27 @@ import_bbs_data <- function(sb_dir, sb_id) {
         StateNum = readr::col_integer(),
         Year = readr::col_integer()
     )
-    
-    
+
+
     # Get observations and routes ---------------------------------------------
     # observations <- sapply(fns, function(x) readr::read_csv(unzip(zipfile = x))) %>%
     # can't figure out how to do this with apply so just looping... le sigh.
-    
+
     observations <- list()
     for (i in seq_along(fns.50stop)) {
         observations[[i]]  <-
             readr::read_csv(unzip(zipfile = fns.50stop[i], exdir = tempdir), col_types = col_types)
     }
-    
+
     observations <- dplyr::bind_rows(observations)
-    
-    
+
+
     # Get dataset citation(s) -------------------------------------------------
     citation <- sbtools::item_get_fields(sb_id, "citation")
-    
+
     # Get species list --------------------------------------------------
     species_list <- import_species_list(sb_dir)
- 
+
 
 # Get route metadata -------------------------------------------------------
 routes <-   readr::read_csv(unzip(zipfile = fns.routes, exdir = tempdir), col_types = col_types)
@@ -77,8 +81,8 @@ weather <-   readr::read_csv(unzip(zipfile = fns.weather, exdir = tempdir), col_
 vehicle_data <-  readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types)
 
 observers <- weather %>%
-        make.dates() %>% 
-        make.rteno() %>% 
+        make.dates() %>%
+        make.rteno() %>%
         dplyr::select(ObsN, RTENO, Date, TotalSpp) %>%
         ##create binary for if observer's first year on the BBS and on the route
         dplyr::group_by(ObsN) %>% #observation identifier (number)
@@ -101,13 +105,13 @@ list.elements <-
     bbs <- lapply(
         list.elements,
         FUN = function(x) {
-            eval(parse(text = paste(x))) %>% 
+            eval(parse(text = paste(x))) %>%
                 make.rteno()
         }
     )
     names(bbs) <- list.elements
-    
-    
+
+
 
 # END FUNCTION ------------------------------------------------------------
     return(bbs)

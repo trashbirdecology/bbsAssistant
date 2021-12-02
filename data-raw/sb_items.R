@@ -1,5 +1,5 @@
 ## code to prepare `sb_items` dataset goes here
-
+library(dplyr)
 sb_items <-
     readr::read_csv("./data-raw/sb_items.csv") %>%
     dplyr::mutate(

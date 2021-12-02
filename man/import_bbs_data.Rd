@@ -4,10 +4,13 @@
 \alias{import_bbs_data}
 \title{Read BBS data from local file into R environment.}
 \usage{
-import_bbs_data(sb_dir)
+import_bbs_data(sb_dir, sb_id)
+}
+\arguments{
+\item{sb_dir}{Imports BBS data from specified directory.
+Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.}
 }
 \description{
-Imports BBS data from specified directory.
-Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.
+Read BBS data from local file into R environment.
 }
 \keyword{internal}
