@@ -27,7 +27,7 @@ if(is.null(sb_id)){
 sb_dir <- download_bbs_data(sb_id=sb_id, sb_dir=sb_dir, overwrite = overwrite)
 
 ## IMPORT 
-bbs <- import_bbs_data(sb_dir = sb_dir)
+bbs <- import_bbs_data(sb_dir = sb_dir, sb_id=sb_id)
 
 return(bbs)
 
