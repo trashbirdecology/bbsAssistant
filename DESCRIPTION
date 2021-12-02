@@ -15,4 +15,5 @@ Depends:
     R (>= 2.10)
 Imports: 
     utils,
-    magrittr
+    magrittr,
+    dplyr
