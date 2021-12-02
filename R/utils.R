@@ -1,5 +1,4 @@
 
-
 make.dates <- function(x){
     ## create variables julian and date
     ## only applies to data frames in the bbs list with particular existing vars.

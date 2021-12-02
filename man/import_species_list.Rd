@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_species_list.R
 \name{import_species_list}
 \alias{import_species_list}
-\title{Import the species list comprising names and numeric identifiers.}
+\title{Import Species Metadata}
 \usage{
 import_species_list(sb_dir)
 }
@@ -10,5 +10,6 @@ import_species_list(sb_dir)
 \item{sb_dir}{Directory for the ScienceBase (sb) item.}
 }
 \description{
-Imports the file specieslist.txt into R env
+Imports the file specieslist.txt. Is subsequently appended to the BBS dataset in \code{import_bbs_data()}
 }
+\keyword{internal}

@@ -1,7 +1,7 @@
 #' @title Import the BBS Data
 #' @description Import the BBS observations and metadata into environment.
-#' @param sb_id
-#' @param sb_dir
+#' @param sb_id ScienceBase Item identifier. Can be found in \code{sb_items}
+#' @param sb_dir Location of where the ScienceBase item files are located.
 #' Imports BBS data from specified directory.
 #' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.
 #' @keywords internal

@@ -2,15 +2,18 @@
 % Please edit documentation in R/import_bbs_data.R
 \name{import_bbs_data}
 \alias{import_bbs_data}
-\title{Read BBS data from local file into R environment.}
+\title{Import the BBS Data}
 \usage{
 import_bbs_data(sb_dir, sb_id)
 }
 \arguments{
-\item{sb_dir}{Imports BBS data from specified directory.
+\item{sb_dir}{Location of where the ScienceBase item files are located.
+Imports BBS data from specified directory.
 Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.}
+
+\item{sb_id}{ScienceBase Item identifier. Can be found in \code{sb_items}}
 }
 \description{
-Read BBS data from local file into R environment.
+Import the BBS observations and metadata into environment.
 }
 \keyword{internal}
