@@ -1,14 +1,3 @@
-#' Pipe operator
-#'
-#' See \code{magrittr::\link[magrittr:pipe]{\%>\%}} for details.
-#'
-#' @name %>%
-#' @rdname pipe
-#' @keywords internal
-#' @export
-#' @importFrom magrittr %>%
-#' @usage lhs \%>\% rhs
-NULL
 
 
 make.dates <- function(x){
@@ -20,7 +9,7 @@ make.dates <- function(x){
             dplyr::mutate(Date = as.Date(paste(Day, Month, Year, sep = "/"), format = "%d/%m/%Y"))
         x= x %>%
             dplyr::mutate(julian=julian(Date, origin=min(x$Date)))
-        
+
     }else(return(x))
 }
 
@@ -37,7 +26,7 @@ make.rteno <- function(x){
             stringr::str_pad(x$Route, width=3, side="left", pad="0"))
         x = x %>% dplyr::mutate(RTENO=RTENO) %>%
             dplyr::select(-CountryNum, -StateNum, -Route) # delete for mem and b/c this info is already captured in RTENO
-        
+
     }else(return(x))
 }
 
