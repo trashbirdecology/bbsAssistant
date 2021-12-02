@@ -12,7 +12,7 @@ grab_bbs_data <- function(sb_id=NULL, sb_dir=NULL, overwrite=FALSE){
 
 if(is.null(sb_id)){
     message("`sb_id` not specified. Downloading the most recent version of the BBS dataset.")
-    data("sb_items", package="bbsAssistant")
+    # data("sb_items", package="bbsAssistant")
     sb_id=sb_items[which.max(sb_items$release_year),]$sb_item
   }
 

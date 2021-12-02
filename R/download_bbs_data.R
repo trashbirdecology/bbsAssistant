@@ -13,18 +13,18 @@ download_bbs_data <-
         # browser()
         if (is.null(sb_id)) {
             message("sb_id not specified. Downloading the most recent version of the BBS dataset.")
-            data(sb_items)#, package="bbsAssistant")
+            # data(sb_items)#, package="bbsAssistant")
             sb_id = sb_items[which.max(sb_items$release_year), ]$sb_item
         }
-        
-        
+
+
         if (is.null(sb_dir)) {
             dir.create("data-in", showWarnings = FALSE)
             sb_dir = paste0("data-in/", sb_id)
             dir.create(sb_dir, showWarnings = FALSE)
         }
-        
-        
+
+
         # Download all files associated with the ScienceBase item (sb_id)
         ## sbtools does this inside item_file_download, but it throws an error stopping all other functions.
         ind = c("50-StopData.zip") %in% list.files(sb_dir)
@@ -37,7 +37,7 @@ download_bbs_data <-
             )
         } else
             ("The 50-StopData already exists in sb_dir and overwrite==FALSE. Not overwriting existing files.")
-        
-        
+
+
         return(sb_dir)
     }
