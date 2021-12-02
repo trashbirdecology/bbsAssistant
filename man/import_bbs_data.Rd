@@ -4,17 +4,10 @@
 \alias{import_bbs_data}
 \title{Read BBS data from local file into R environment.}
 \usage{
-import_bbs_data(sb_id, sb_dir, state = NULL, country = NULL)
-}
-\arguments{
-\item{sb_id}{Identifier for SB item}
-
-\item{sb_dir}{Directory location for the ScienceBase item.}
-
-\item{state}{Optional. Imports certain files based on producer-supplied state/province codes or English names.}
-
-\item{country}{Optional. Imports certain files based on producer-supplied country/nation codes or English names.}
+import_bbs_data(sb_dir)
 }
 \description{
-Called inside \code{get_bbs_data()} but can be used independently if the user has already downloaded the data and provides the correct location for sb_dir.
+Imports BBS data from specified directory.
+Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.
 }
+\keyword{internal}

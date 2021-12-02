@@ -2,15 +2,18 @@
 % Please edit documentation in R/download_bbs_data.R
 \name{download_bbs_data}
 \alias{download_bbs_data}
-\title{Download the BBS dataset files associated with a single ScienceBase identifier}
+\title{Download the BBS dataset files associated with a single ScienceBase identifier.}
 \usage{
-download_bbs_data(sb_id, sb_dir)
+download_bbs_data(sb_id = NULL, sb_dir = NULL, overwrite = FALSE)
 }
 \arguments{
-\item{sb_id}{Temp description}
+\item{sb_id}{Alphanumeric character. Equals the USGS Science Base identifier for a BBS dataset release.}
 
-\item{sb_dir}{Temp description}
+\item{sb_dir}{Directory for storing the downloaded files for sb_id}
+
+\item{overwrite}{Logical, default=TRUE. TRUE will overwrite existing files for sb_id if already exists within sb_dir}
 }
 \description{
-Called inside \code{get_bbs_data()}. This is functionally sbtools::item_file_download, but forces the overwrite_file=TRUE condition, and specifies the directory to store item files.
+This is functionally sbtools::item_file_download, but forces the overwrite_file=TRUE condition, and specifies the directory to store item files.
 }
+\keyword{Internal}
