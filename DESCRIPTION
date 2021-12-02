@@ -1,7 +1,7 @@
 Package: bbsAssistant
 Title: A package for downloading and munging data and information from the North American Breeding Bird Survey
-Version: 2.0.1
-Maintainer: Jessica Burnett <jburnett@usgs.gov>
+Version: 3.0.0
+Maintainer@R: Jessica Burnett <jburnett@usgs.gov>
 Authors@R: c(
   person("Jessica", "Burnett", email = "jburnett@usgs.gov", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
   person("Gabriela", "Palomo-Muoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")),
