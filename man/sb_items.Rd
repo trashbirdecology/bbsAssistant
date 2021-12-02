@@ -28,6 +28,6 @@ The table can be used as a reference for identifying BBS data availability on US
 }
 }
 \examples{
-sb_itens
+sb_items
 }
 \keyword{datasets}

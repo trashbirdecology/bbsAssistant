@@ -6,8 +6,8 @@
 \title{Country and State Codes}
 \format{
 A data frame with 97 rows and 3 columns
-\describe{
-\item CountryNum. alpha-country codes used by the BBS (840=United States of America; 484=Mexico; 124=Canada)
+\itemize{
+\item CountryNum. alpha-country codes used by the BBS. (840=United States of America; 484=Mexico; 124=Canada)
 \item StateNum.  state numbers associated with each State and CountryNum, assigned by the BBS
 \item State. proper name of the state or province
 }

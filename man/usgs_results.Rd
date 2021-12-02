@@ -3,19 +3,12 @@
 \docType{data}
 \name{usgs_results}
 \alias{usgs_results}
-\title{BBS Results Released by the USGS}
+\title{BBS Results Released by the USGS
+#'
+The data object is a list, wherein the list names (names(usgs_results)) correspond with the .csv filenames provided in ScienceBase; call \code{bbsAssistant::sb_items} for more information.
+NOTE: Please see the respective ScienceBase item for greater detail of variables (data frame columns; see "sb_items" hyperlink for relevant sb_id)}
 \format{
 A list containing a varying number of data frames associated with the most recent release of analysis results by Sauer et al. Please visit the \code{source} for more information, including metadata which describes each results file.
-\describe{
-NOTE: Please see the respective ScienceBase item for greater detail of variables (data frame columns; see "sb_items" hyperlink for relevant sb_id)
-NOTE: Not all columns are described here, only those associated with the 2020 release.
-@details The object, usgs_results, comprises (currently) 4 data frames, each containing the results of different analyses as described in original metadata.
-\itemize{
-\item{BBS_1966-2018_core_best_trend}{...}
-\item{BBS_1993-2018_expanded_trend_best}{...}
-\item{inde_best_1993-2018_expanded}{...}
-\item{nde_best_1966-2018_core}{...}
-}
 
 A list containing 4 data frames
 }
@@ -26,6 +19,18 @@ A list containing 4 data frames
 data(usgs_results)
 }
 \description{
+BBS Results Released by the USGS
+#'
 The data object is a list, wherein the list names (names(usgs_results)) correspond with the .csv filenames provided in ScienceBase; call \code{bbsAssistant::sb_items} for more information.
+NOTE: Please see the respective ScienceBase item for greater detail of variables (data frame columns; see "sb_items" hyperlink for relevant sb_id)
+}
+\details{
+The object, usgs_results, comprises (currently) 4 data frames, each containing the results of different analyses as described in original metadata.
+\itemize{
+\item BBS_1966-2018_core_best_trend. trends for 1966-2018, BBS core area. See ScienceBase metadata for information.
+\item BBS_1993-2018_expanded_trend_best. trends for 1993-2018. See ScienceBase metadata for information.
+\item inde_best_1993-2018_expanded. trends for 1993-2018. See ScienceBase metadata for information.
+\item nde_best_1966-2018_core. trends for 1966-2018. See ScienceBase metadata for information.
+}
 }
 \keyword{datasets}

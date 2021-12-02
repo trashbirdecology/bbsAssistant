@@ -20,6 +20,6 @@
 #' @usage data(sb_items)
 #' @format A data frame containing 7 rows and 9 columns
 #' @examples
-#' sb_itens
+#' sb_items
 #' @name sb_items
 NULL
