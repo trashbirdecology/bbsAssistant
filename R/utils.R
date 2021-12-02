@@ -23,8 +23,7 @@ make.rteno <- function(x){
             stringr::str_pad(x$CountryNum, width=3, side="left", pad="0"),
             stringr::str_pad(x$StateNum, width=2, side="left", pad="0"),
             stringr::str_pad(x$Route, width=3, side="left", pad="0"))
-        x = x %>% dplyr::mutate(RTENO=RTENO) %>%
-            dplyr::select(-CountryNum, -StateNum, -Route) # delete for mem and b/c this info is already captured in RTENO
+        x = x %>% dplyr::mutate(RTENO=RTENO)
 
     }else(return(x))
 }
