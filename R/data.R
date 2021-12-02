@@ -10,6 +10,7 @@
 #'   \item{year_start}{Earliest year of data in the associated dataset.}
 #'   \item{year_end}{Earliest year of data in the associated dataset.}
 #'   \item{legacy_format}{Used to specify whether the observations dataset is in a different format than more recent releases. This is defined by maintainers but based off of ScienceBase documentation.}
+#'   \item{sb_link}{URL pointing to the ScienceBase item. Used to download ScienceBase Items using package \code{`sbtools`} }
 #' }
 "sb_items"
 
