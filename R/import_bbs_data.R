@@ -4,7 +4,7 @@
 #' Called inside `grab_bbs_data()`. Can be called directly but user must have sb_id and sb_dir specified.
 #' @keywords internal
 
-import_bbs_data <- function(sb_dir) {
+import_bbs_data <- function(sb_dir, sb_id) {
     # Where to save the unzipped files
     tempdir = tempdir()
     

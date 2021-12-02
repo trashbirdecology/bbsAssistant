@@ -12,7 +12,7 @@ download_bbs_data <-
              overwrite = FALSE) {
         # browser()
         if (is.null(sb_id)) {
-            message("sb_id not specified. Downloading the most recent version of the BBS dataset.")
+            warning("sb_id not specified. Downloading the most recent version of the BBS dataset.")
             data(sb_items)#, package="bbsAssistant")
             sb_id = sb_items[which.max(sb_items$release_year), ]$sb_item
         }
