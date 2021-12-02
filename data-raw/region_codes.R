@@ -7,7 +7,8 @@ region_codes <- readr::read_csv("./data-raw/region_codes.csv") %>%
     dplyr::mutate(
         CountryNum = as.integer(CountryNum),
         StateNum   = as.integer(StateNum)
-    )
+    ) %>%
+  dplyr::select(-zip_states)
 
 # Write the data to package files as .RDA ---------------------------------
 usethis::use_data(region_codes, overwrite=TRUE)

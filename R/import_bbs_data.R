@@ -1,9 +1,9 @@
-#' @title Read BBS data from local file into R environment.
-#' @description
+#' @title Import the BBS Data
+#' @description Import the BBS observations and metadata into environment.
 #' @param sb_id
 #' @param sb_dir
 #' Imports BBS data from specified directory.
-#' Called inside `grab_bbs_data()`. Can be called directly but user must have sb_id and sb_dir specified.
+#' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.
 #' @keywords internal
 
 import_bbs_data <- function(sb_dir, sb_id) {
