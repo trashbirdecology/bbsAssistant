@@ -22,6 +22,8 @@ README.utf8.md
 
 /docs/
 
+## ignore locally saved files
+/data-in/
 
 ## ignore all the sb item downloads when prepping the data
 /data-raw/5ea04e9a82cefae35a129d65
