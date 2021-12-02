@@ -4,9 +4,19 @@
 \name{bbsAssistant-package}
 \alias{bbsAssistant}
 \alias{bbsAssistant-package}
-\title{bbsAssistant: What the Package Does (Title Case)}
+\title{bbsAssistant: A package for downloading and munging data and information from the North American Breeding Bird Survey}
 \description{
 To learn more about dplyr, start with the vignettes:
 \code{browseVignettes(package = "dplyr")}
+}
+\author{
+\strong{Maintainer}: Jessica Burnett \email{jburnett@usgs.gov} (\href{https://orcid.org/0000-0002-0896-5099}{ORCID})
+
+Authors:
+\itemize{
+  \item Gabriela Palomo-Muoz \email{gabriella.palomo@gmail.com}
+  \item Lyndsie Wszola (\href{https://orcid.org/0000-0002-2660-2048}{ORCID})
+}
+
 }
 \keyword{internal}

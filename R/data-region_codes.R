@@ -1,4 +1,3 @@
-
 #' Country and State Codes
 #'
 #' Country and state alpha and numeric codes used in official BBS dataset releases.

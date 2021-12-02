@@ -4,6 +4,7 @@
 #' A lookup table that is manually updated by the package maintainers.
 #'   The table can be used as a reference for identifying BBS data availability on USGS ScienceBase and is called internally when downloading datasets.
 #'
+#' @format A data frame containing 7 rows and 9 columns
 #' \itemize{
 #'   \item sb_parent. unique identifier associated with a ScienceBase parent item (often the project identifier).
 #'   \item sb_item.  ScienceBase unique identifier associated with each dataset release.
@@ -15,11 +16,9 @@
 #'   \item legacy_format.  Used to specify whether the observations dataset is in a different format than more recent releases. This is defined by maintainers but based off of ScienceBase documentation.
 #'   \item sb_link. URL pointing to the ScienceBase item. Used to download ScienceBase Items using package \code{`sbtools`}
 #' }
+#'
 #' @docType data
 #' @keywords datasets
-#' @usage data(sb_items)
-#' @format A data frame containing 7 rows and 9 columns
-#' @examples
-#' sb_items
 #' @name sb_items
+#' @usage data(sb_items)
 NULL

@@ -6,15 +6,6 @@
 \title{Table of USGS ScienceBase Products for the North American Breeding Bird Survey (BBS)}
 \format{
 A data frame containing 7 rows and 9 columns
-}
-\usage{
-data(sb_items)
-}
-\description{
-A lookup table that is manually updated by the package maintainers.
-The table can be used as a reference for identifying BBS data availability on USGS ScienceBase and is called internally when downloading datasets.
-}
-\details{
 \itemize{
 \item sb_parent. unique identifier associated with a ScienceBase parent item (often the project identifier).
 \item sb_item.  ScienceBase unique identifier associated with each dataset release.
@@ -27,7 +18,11 @@ The table can be used as a reference for identifying BBS data availability on US
 \item sb_link. URL pointing to the ScienceBase item. Used to download ScienceBase Items using package \code{`sbtools`}
 }
 }
-\examples{
-sb_items
+\usage{
+data(sb_items)
+}
+\description{
+A lookup table that is manually updated by the package maintainers.
+The table can be used as a reference for identifying BBS data availability on USGS ScienceBase and is called internally when downloading datasets.
 }
 \keyword{datasets}

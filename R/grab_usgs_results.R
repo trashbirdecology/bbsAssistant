@@ -4,10 +4,10 @@
 #' Refers to internal dataset \code{sb_items} to capture the most recent ScienceBase identifier, sb_id,
 #'
 #' @usage
-#' get_sb_items()
-#' @export sb_items
+#' grab_usgs_results()
+#' @export grab_usgs_results
 
-get_sb_items <- function(){
+grab_usgs_results <- function(){
   # munge the sb_items object to obtain the most recent version of the results.
   sb_items <-
     sb_items %>%
