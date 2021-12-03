@@ -13,19 +13,3 @@ make.dates <- function(x){
 }
 
 
-
-make.rteno <- function(x){
-    ## create variable RTENO
-    ## unique identifier for each route, which comprises unique country, state and route nums
-    ## only applies to data frames in the bbs list with particular existing vars.
-    if(all(c("CountryNum","StateNum","Route") %in% names(x))){
-        RTENO=paste0(
-            stringr::str_pad(x$CountryNum, width=3, side="left", pad="0"),
-            stringr::str_pad(x$StateNum, width=2, side="left", pad="0"),
-            stringr::str_pad(x$Route, width=3, side="left", pad="0"))
-        x = x %>% dplyr::mutate(RTENO=RTENO)
-
-    }else(return(x))
-}
-
-
