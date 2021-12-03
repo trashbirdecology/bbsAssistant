@@ -3,6 +3,7 @@
 export("%>%")
 export(grab_bbs_data)
 export(grab_usgs_results)
+export(make.dates)
 export(make.rteno)
 importFrom(magrittr,"%>%")
 importFrom(utils,unzip)
