@@ -2,19 +2,18 @@
 % Please edit documentation in R/import_bbs_data.R
 \name{import_bbs_data}
 \alias{import_bbs_data}
-\title{Read BBS data from local file into R environment.}
+\title{Import the BBS Data}
 \usage{
-import_bbs_data(sb_id, sb_dir, state = NULL, country = NULL)
+import_bbs_data(sb_dir, sb_id)
 }
 \arguments{
-\item{sb_id}{Identifier for SB item}
+\item{sb_dir}{Location of where the ScienceBase item files are located.
+Imports BBS data from specified directory.
+Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.}
 
-\item{sb_dir}{Directory location for the ScienceBase item.}
-
-\item{state}{Optional. Imports certain files based on producer-supplied state/province codes or English names.}
-
-\item{country}{Optional. Imports certain files based on producer-supplied country/nation codes or English names.}
+\item{sb_id}{ScienceBase Item identifier. Can be found in \code{sb_items}}
 }
 \description{
-Called inside \code{get_bbs_data()} but can be used independently if the user has already downloaded the data and provides the correct location for sb_dir.
+Import the BBS observations and metadata into environment.
 }
+\keyword{internal}
