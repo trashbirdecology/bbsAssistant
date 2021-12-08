@@ -13,7 +13,7 @@ always_allow_html: true
 [![R build status](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg?style=flat-square&logo=appveyor)](https://github.com/trashbirdecology/bbsAssistant/actions)
 [![License: CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&logo=appveyor)](http://creativecommons.org/publicdomain/zero/1.0/)
 [![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&logo=appveyor)](#contributors)
-![downloads](https://img.shields.io/github/downloads/trashbirdecology/bbsAssistant/total?style=flat-square&logo=appveyor)
+<!-- ![downloads](https://img.shields.io/github/downloads/trashbirdecology/bbsAssistant/total?style=flat-square&logo=appveyor) -->
 <!-- ![dependencies](https://img.shields.io/librariesio/github/trashbirdecology/bbsassistant?style=flat-square&logo=appveyor) -->
 <!-- [![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=main)](https://travis-ci.org/trashbirdecology/bbsAssistant) -->
 [![R-CMD-check](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg)](https://github.com/trashbirdecology/bbsAssistant/actions)
@@ -29,7 +29,7 @@ This package contains functions for downloading, importing, and (soon) visualizi
 ## Quick Start
 ```{r install, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         ref="convert-to-50-stop", # change to 'main' for releases
+                         ref="main", # change to 'main' for releases
                          force=FALSE) # force=TRUE to get most recent dev version
 ```
 
