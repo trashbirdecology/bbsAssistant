@@ -1,7 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2021-12-02
+Last updated: 2021-12-08
 
 <!-- badges: start -->
 
@@ -13,9 +13,10 @@ status](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/b
 [![License:
 CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&logo=appveyor)](http://creativecommons.org/publicdomain/zero/1.0/)
 [![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&logo=appveyor)](#contributors)
-![downloads](https://img.shields.io/github/downloads/trashbirdecology/bbsAssistant/total?style=flat-square&logo=appveyor)
+<!-- ![downloads](https://img.shields.io/github/downloads/trashbirdecology/bbsAssistant/total?style=flat-square&logo=appveyor) -->
 <!-- ![dependencies](https://img.shields.io/librariesio/github/trashbirdecology/bbsassistant?style=flat-square&logo=appveyor) -->
 <!-- [![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=main)](https://travis-ci.org/trashbirdecology/bbsAssistant) -->
+[![R-CMD-check](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg)](https://github.com/trashbirdecology/bbsAssistant/actions)
 <!-- badges: end -->
 <img src=".github/figures/logo.png" align="right" height=140/>
 
