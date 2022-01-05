@@ -36,7 +36,7 @@ devtools::install_github("trashbirdecology/bbsAssistant",
 
 ```{r libs, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
 library(bbsAssistant)
-devtools::load_all()
+# devtools::load_all()
 ```
 
 ## Download, Unpack, and Import the Most Recent Dataset
