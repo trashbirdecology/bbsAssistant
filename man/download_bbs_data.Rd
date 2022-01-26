@@ -16,4 +16,3 @@ download_bbs_data(sb_id = NULL, bbs_dir = NULL, overwrite = FALSE)
 \description{
 This is functionally sbtools::item_file_download, but forces the overwrite_file=TRUE condition, and specifies the directory to store item files.
 }
-\keyword{Internal}

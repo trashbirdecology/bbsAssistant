@@ -3,7 +3,7 @@
 #' @param sb_id Alphanumeric character. Equals the USGS Science Base identifier for a BBS dataset release.
 #' @param bbs_dir Directory for storing the downloaded files for sb_id
 #' @param overwrite Logical, default=TRUE. TRUE will overwrite existing files for sb_id if already exists within bbs_dir
-#' @keywords Internal
+#' @export download_bbs_data
 
 download_bbs_data <-
     function(sb_id = NULL,

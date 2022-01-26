@@ -5,7 +5,6 @@
 #' @param sb_dir Directory for the ScienceBase (sb) item.
 #' @keywords internal
 
-
 import_species_list <- function(sb_dir){
     fn <- list.files(sb_dir, full.names=TRUE, pattern="SpeciesList")
     species_list<-readr::read_fwf(fn, skip=c(9))## currently the best function for guessing the fixed widths...
