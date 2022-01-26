@@ -10,12 +10,10 @@
 \item{State}{proper name of the state or province as provided by BBS office}
 \item{ISO_a2}{ISO 2-character code for Country}
 \item{ISO_3166-2}{ISO character code for Country and State/Territory/Province}
-}}
+}
+\source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}}
 \format{
 An object of class \code{data.frame} with 96 rows and 7 columns.
-}
-\source{
-\url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 }
 \usage{
 region_codes
@@ -29,5 +27,6 @@ Country and State Codes
 \item{ISO_a2}{ISO 2-character code for Country}
 \item{ISO_3166-2}{ISO character code for Country and State/Territory/Province}
 }
+\source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 }
 \keyword{datasets}
