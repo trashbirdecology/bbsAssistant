@@ -4,12 +4,12 @@
 \alias{grab_bbs_data}
 \title{Downloads and Imports the BBS Observations and Associated Metadata}
 \usage{
-grab_bbs_data(sb_id = NULL, sb_dir = NULL, overwrite = FALSE)
+grab_bbs_data(sb_id = NULL, bbs_dir = NULL, overwrite = FALSE)
 }
 \arguments{
 \item{sb_id}{ScienceBase item number/identifier, used in sbtools.}
 
-\item{sb_dir}{The location where the BBS data will be stored. If not specified, will create a directory within the working directory called "data-raw."}
+\item{bbs_dir}{The location where the BBS data will be stored. If not specified, will create a directory within the working directory called "data-raw."}
 
 \item{overwrite}{Logical. Defaults to FALSE. FALSE will not download files if they exist in the specified directory.}
 }

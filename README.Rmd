@@ -36,20 +36,24 @@ devtools::install_github("trashbirdecology/bbsAssistant",
 
 ```{r libs, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
 library(bbsAssistant)
-# devtools::load_all()
+# view functions and data in package bbsAssistant
+# ls("package:bbsAssistant")
 ```
 
 ## Download, Unpack, and Import the Most Recent Dataset
 ```{r grab_bbs_data, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-bbs <- grab_bbs_data(sb_dir=NULL)
+bbs <- grab_bbs_data()
 # Optional: specify `sb_id` as the USGS ScienceBase identifier for a specific data release. If sb_id is not supplied, will default to the most recent data release.
-sb_id="5ea04e9a82cefae35a129d65"
 ```
-
-
 The object resulting from `bbsAssistant::import_bbs_data()` is a list comprising the following objects:
 ```{r view, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
 names(bbs)
+```
+
+## Filtering by State/Region
+Filter the dataset `bbs` using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns 'CountryNum' and 'StateNum') or ISO alpha codes and names (see columns 'iso_3155_2','iso_a2','name_fr','name_es'):
+```{r regioncodes, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
+bbsAssistant::region_codes
 ```
 
 
@@ -82,22 +86,6 @@ Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R pack
 _or_ 
 Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768, https://doi.org/10.21105/joss.01768
 
-<!-- ## Quick Start -->
-
 
 ## Contributing
-To make a contribution visit the [CONTRIBUTIONS.md](https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md). Contributors __must adhere to the [Code of Conduct](https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md).__ For questions, comments, or issues, feel free to email the maintainer [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues) (preferred).
-
-<!-- ## Project Team -->
-<!-- <table> -->
-<!--   <tr> -->
-<!--      <td align="center"> -->
-<!--           <a href="http://trashbirdecology.github.io/"><img src="https://avatars2.githubusercontent.com/u/9939381?s=460&v=4" width="100px;" alt="Jessica Burnett"/><br /><sub><b>Jessica Burnett <br>Team Lead & Maintainer</b></sub></a><br /> -->
-<!--            <td align="center"> -->
-<!--           <a href="https://github.com/GabsPalomo"><img src="https://avatars1.githubusercontent.com/u/28967490?s=460&v=4" width="100px;" alt="Gabby Palomo-Muñoz"/><br /><sub><b>Gabby Palomo-Muñoz <br>Team Member</b></sub></a><br /></td> -->
-<!--            <td align="center"> -->
-<!--           <a href="https://github.com/lsw5077"><img src="https://avatars0.githubusercontent.com/u/22730128?s=460&v=4" width="100px;" alt="Lyndsie Wszola"/><br /><sub><b>Lyndsie Wszola <br>Team Member</b></sub></a><br /> -->
-<!--      </td> -->
-<!--   </tr> -->
-<!-- </table> -->
-
+To make a contribution visit  [CONTRIBUTIONS.md](https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md). Contributors __must adhere to the [Code of Conduct](https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md).__ For questions, comments, or issues, feel free to email the maintainer [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues) (preferred).

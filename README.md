@@ -1,7 +1,7 @@
 **bbsAssistant**: An R package for downloading and handling data and
 information from the North American Breeding Bird Survey.
 ================
-Last updated: 2021-12-08
+Last updated: 2022-01-26
 
 <!-- badges: start -->
 
@@ -35,15 +35,15 @@ USGS ScienceBase repository)](https://sciencebase.gov/).
 
 ``` r
 library(bbsAssistant)
-devtools::load_all()
+# view functions and data in package bbsAssistant
+# ls("package:bbsAssistant")
 ```
 
 ## Download, Unpack, and Import the Most Recent Dataset
 
 ``` r
-bbs <- grab_bbs_data(sb_dir=NULL)
+bbs <- grab_bbs_data()
 # Optional: specify `sb_id` as the USGS ScienceBase identifier for a specific data release. If sb_id is not supplied, will default to the most recent data release.
-sb_id="5ea04e9a82cefae35a129d65"
 ```
 
 The object resulting from `bbsAssistant::import_bbs_data()` is a list
@@ -55,6 +55,32 @@ names(bbs)
 
     ## [1] "observations" "routes"       "observers"    "weather"      "species_list"
     ## [6] "citation"     "vehicle_data"
+
+## Filtering by State/Region
+
+Filter the dataset `bbs` using your preferred method. A lookup table is
+provided as a package dataset for filtering by country or state using
+the BBS codes (see columns ‘CountryNum’ and ‘StateNum’) or ISO alpha
+codes and names (see columns ‘iso_3155_2,’‘iso_a2,’‘name_fr,’‘name_es’):
+
+``` r
+bbsAssistant::region_codes
+```
+
+    ## # A tibble: 96 x 7
+    ##    CountryNum StateNum State               iso_3166_2 iso_a2 name_fr    name_es 
+    ##         <int>    <int> <chr>               <chr>      <chr>  <chr>      <chr>   
+    ##  1        484        1 aguascalientes      MX-AGU     MX     Aguascali~ Aguasca~
+    ##  2        484        2 baja california     MX-BCN     MX     Basse-Cal~ Baja Ca~
+    ##  3        484        3 baja california sur MX-BCS     MX     Basse-Cal~ Baja Ca~
+    ##  4        484        4 campeche            MX-CAM     MX     Campeche   Campeche
+    ##  5        484        5 chiapas             MX-CHP     MX     Chiapas    Chiapas 
+    ##  6        484        6 chihuahua           MX-CHH     MX     Chihuahua  Chihuah~
+    ##  7        484        7 coahuila            MX-COA     MX     Coahuila   Coahuil~
+    ##  8        484        8 colima              MX-COL     MX     Colima     Colima  
+    ##  9        484        9 mexico city         MX-DIF     MX     Mexico     Ciudad ~
+    ## 10        484       10 durango             MX-DUR     MX     Durango    Durango 
+    ## # ... with 86 more rows
 
 ## BBS Data Availability (including sb_id)
 
@@ -286,11 +312,9 @@ downloading and handling data and information from the North American
 Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768,
 <https://doi.org/10.21105/joss.01768>
 
-<!-- ## Quick Start -->
-
 ## Contributing
 
-To make a contribution visit the
+To make a contribution visit
 [CONTRIBUTIONS.md](https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md).
 Contributors **must adhere to the [Code of
 Conduct](https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md).**
@@ -298,16 +322,3 @@ For questions, comments, or issues, feel free to email the maintainer
 [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an
 [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues)
 (preferred).
-
-<!-- ## Project Team -->
-<!-- <table> -->
-<!--   <tr> -->
-<!--      <td align="center"> -->
-<!--           <a href="http://trashbirdecology.github.io/"><img src="https://avatars2.githubusercontent.com/u/9939381?s=460&v=4" width="100px;" alt="Jessica Burnett"/><br /><sub><b>Jessica Burnett <br>Team Lead & Maintainer</b></sub></a><br /> -->
-<!--            <td align="center"> -->
-<!--           <a href="https://github.com/GabsPalomo"><img src="https://avatars1.githubusercontent.com/u/28967490?s=460&v=4" width="100px;" alt="Gabby Palomo-Muñoz"/><br /><sub><b>Gabby Palomo-Muñoz <br>Team Member</b></sub></a><br /></td> -->
-<!--            <td align="center"> -->
-<!--           <a href="https://github.com/lsw5077"><img src="https://avatars0.githubusercontent.com/u/22730128?s=460&v=4" width="100px;" alt="Lyndsie Wszola"/><br /><sub><b>Lyndsie Wszola <br>Team Member</b></sub></a><br /> -->
-<!--      </td> -->
-<!--   </tr> -->
-<!-- </table> -->

@@ -1,20 +1,19 @@
 #' @title Import the BBS Data
 #' @description Import the BBS observations and metadata into environment.
 #' @param sb_id ScienceBase Item identifier. Can be found in \code{sb_items}
-#' @param sb_dir Location of where the ScienceBase item files are located.
+#' @param bbs_dir Location of where the ScienceBase item files are located.
 #' Imports BBS data from specified directory.
-#' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.
+#' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.
 #' @keywords internal
 
-import_bbs_data <- function(sb_dir, sb_id) {
-
+import_bbs_data <- function(bbs_dir, sb_id) {
 
     # Where to save the unzipped files
     tempdir = tempdir()
 
     # Create a vector of desired file locations.
     zipF <-
-        list.files(path = paste0(sb_dir),
+        list.files(path = paste0(bbs_dir),
                    pattern = "*50-StopData.zip",
                    full.names = TRUE)
     unzip(zipF, exdir = tempdir) # unzip the main one b/c not sure how to dig two dirs down in the sapply
@@ -29,13 +28,13 @@ import_bbs_data <- function(sb_dir, sb_id) {
     fns.50stop <-
         fns.50stop[stringr::str_detect(tolower(fns.50stop), pattern = ".zip")] # to remove the dir that isnt a .zip
 
-    fns.routes <- list.files(path = paste0(sb_dir),
+    fns.routes <- list.files(path = paste0(bbs_dir),
                              pattern = "routes.zip",
                              full.names = TRUE)
-    fns.vehicle <- list.files(path = paste0(sb_dir),
+    fns.vehicle <- list.files(path = paste0(bbs_dir),
                               pattern = "ehicle",
                               full.names = TRUE)
-    fns.weather <- list.files(path = paste0(sb_dir),
+    fns.weather <- list.files(path = paste0(bbs_dir),
                               pattern = "eather.zip",
                               full.names = TRUE)
 
@@ -69,7 +68,7 @@ import_bbs_data <- function(sb_dir, sb_id) {
     citation <- sbtools::item_get_fields(sb_id, "citation")
 
     # Get species list --------------------------------------------------
-    species_list <- import_species_list(sb_dir)
+    species_list <- import_species_list(bbs_dir)
 
 
     # Get route metadata -------------------------------------------------------
@@ -101,6 +100,7 @@ import_bbs_data <- function(sb_dir, sb_id) {
            "citation",
            "vehicle_data"
       )
+    # suppressWarnings(
 
     bbs <- lapply(
       list.elements,
@@ -109,6 +109,7 @@ import_bbs_data <- function(sb_dir, sb_id) {
           make.rteno()
       }
     )
+    # )
     names(bbs) <- list.elements
 
 

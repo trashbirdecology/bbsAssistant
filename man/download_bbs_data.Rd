@@ -4,14 +4,14 @@
 \alias{download_bbs_data}
 \title{Download the BBS dataset files associated with a single ScienceBase identifier.}
 \usage{
-download_bbs_data(sb_id = NULL, sb_dir = NULL, overwrite = FALSE)
+download_bbs_data(sb_id = NULL, bbs_dir = NULL, overwrite = FALSE)
 }
 \arguments{
 \item{sb_id}{Alphanumeric character. Equals the USGS Science Base identifier for a BBS dataset release.}
 
-\item{sb_dir}{Directory for storing the downloaded files for sb_id}
+\item{bbs_dir}{Directory for storing the downloaded files for sb_id}
 
-\item{overwrite}{Logical, default=TRUE. TRUE will overwrite existing files for sb_id if already exists within sb_dir}
+\item{overwrite}{Logical, default=TRUE. TRUE will overwrite existing files for sb_id if already exists within bbs_dir}
 }
 \description{
 This is functionally sbtools::item_file_download, but forces the overwrite_file=TRUE condition, and specifies the directory to store item files.

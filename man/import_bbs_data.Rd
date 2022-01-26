@@ -4,12 +4,12 @@
 \alias{import_bbs_data}
 \title{Import the BBS Data}
 \usage{
-import_bbs_data(sb_dir, sb_id)
+import_bbs_data(bbs_dir, sb_id)
 }
 \arguments{
-\item{sb_dir}{Location of where the ScienceBase item files are located.
+\item{bbs_dir}{Location of where the ScienceBase item files are located.
 Imports BBS data from specified directory.
-Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and sb_dir specified.}
+Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.}
 
 \item{sb_id}{ScienceBase Item identifier. Can be found in \code{sb_items}}
 }
