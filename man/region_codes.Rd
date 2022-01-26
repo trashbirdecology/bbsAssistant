@@ -9,7 +9,9 @@ A data frame with 97 rows and 3 columns
 \itemize{
 \item CountryNum. alpha-country codes used by the BBS. (840=United States of America; 484=Mexico; 124=Canada)
 \item StateNum.  state numbers associated with each State and CountryNum, assigned by the BBS
-\item State. proper name of the state or province
+\item State. proper name of the state or province as provided by BBS office.
+\item ISO_a2. ISO 2-character code for Country
+\item ISO_3166-2. ISO character code for Country and State/Territory/Province
 }
 }
 \source{
