@@ -5,7 +5,7 @@
 \alias{species_list}
 \title{Species List Lookup Table}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 2385 rows and 12 columns.
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 2385 rows and 11 columns.
 }
 \usage{
 species_list

@@ -3,6 +3,9 @@ df <- bbsAssistant::grab_bbs_data() ## need to update this to grab data if its a
 bbs <- df[['species_list']]
 bbs$AOU <- as.integer(as.character(bbs$AOU))
 
+# For now, remove french common name because BBS provides non-ASCII
+bbs <-subset(bbs,select=-c(French_Common_Name))
+
 ## Make some amendments for species of interest to align with IBP AOU tax
 # dup <- bbs[bbs$Genus == "Phalacrocorax",]
 # dup$Genus <- "Nannopterum"
