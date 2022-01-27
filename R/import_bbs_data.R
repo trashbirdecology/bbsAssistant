@@ -61,7 +61,6 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
       observations[[i]]  <-
         readr::read_csv(unzip(zipfile = fns.50stop[i], exdir = tempdir), col_types = col_types)
     }
-
     observations <- dplyr::bind_rows(observations)
 
 
