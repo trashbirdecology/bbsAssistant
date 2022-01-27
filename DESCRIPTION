@@ -23,7 +23,7 @@ Imports:
     stringr,
     utils
 Suggests: 
+    usethis,
     rnaturalearth
 Remotes: 
     github::ropensci/rnaturalearth
-
