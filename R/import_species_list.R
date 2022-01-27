@@ -5,13 +5,14 @@
 #' @param sb_dir Directory for the ScienceBase (sb) item.
 #' @keywords internal
 
-
 import_species_list <- function(sb_dir){
     fn <- list.files(sb_dir, full.names=TRUE, pattern="SpeciesList")
     species_list<-readr::read_fwf(fn, skip=c(9))## currently the best function for guessing the fixed widths...
     ## unfortunately, need to manually assign row 1 as header and remove the "line" row
     names(species_list) <- lapply(species_list[1, ], as.character)
     species_list <- species_list[-c(1:2),]
+
+    species_list$AOU <- as.integer(as.character(species_list$AOU))
 
     return(species_list)
 }

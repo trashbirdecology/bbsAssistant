@@ -3,13 +3,14 @@
 #' @param sb_id Alphanumeric character. Equals the USGS Science Base identifier for a BBS dataset release.
 #' @param bbs_dir Directory for storing the downloaded files for sb_id
 #' @param overwrite Logical, default=TRUE. TRUE will overwrite existing files for sb_id if already exists within bbs_dir
-#' @keywords Internal
+#' @export download_bbs_data
 
 download_bbs_data <-
     function(sb_id = NULL,
              bbs_dir = NULL,
              overwrite = FALSE) {
-        # browser()
+sb_items <- NULL # bind variable to avoid CMD CHK WARNING
+
         if (is.null(sb_id)) {
             message("sb_id not specified. Downloading the most recent version of the BBS dataset.")
             # data(sb_items)#, package="bbsAssistant")

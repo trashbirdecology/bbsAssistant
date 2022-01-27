@@ -21,9 +21,9 @@ Imports:
     readr,
     sbtools,
     stringr,
+    usethis,
     utils
 Suggests: 
     rnaturalearth
 Remotes: 
     github::ropensci/rnaturalearth
-

@@ -16,4 +16,3 @@ Called inside \code{grab_bbs_data()}. Can be called directly but user must have 
 \description{
 Import the BBS observations and metadata into environment.
 }
-\keyword{internal}
