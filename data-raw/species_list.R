@@ -14,13 +14,13 @@ bbs$Scientific_Name <- paste(bbs$Genus,
       sep=" ")
 
 ## Pull in the official AOU codes
-fn=list.files( pattern="IBP-AOS", recursive = TRUE, full.names = TRUE)
+fn=list.files( pattern="IBP-AOS", recursive = TRUE, full.names = TRUE) # from URL
 aou <- read.csv(fn)[c("COMMONNAME", "SCINAME", "SPEC", "SPEC6")]
 names(aou) <- c("English_Common_Name", "Scientific_Name", "AOU4", "AOU6")
 
 # Merge them
 species_list <- merge(bbs, aou)
-stopifnot(!any(is.na(species_list$AOU)))
+# stopifnot(!any(is.na(species_list$AOU)))
 
 
 usethis::use_data(species_list, overwrite = TRUE)
