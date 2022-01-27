@@ -18,6 +18,9 @@ See \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 \item{State}{proper name of the state or province as provided by BBS office}
 \item{ISO_a2}{ISO 2-character code for Country}
 \item{ISO_3166-2}{ISO character code for Country and State/Territory/Province}
+\item{State}{English name associated with ISO_3166-2. Names appearing in the BBS region codes list with accented characters were munged by development team slightly.}
+\item{name_fr}{French name associated with ISO_3166-2. Names appearing in the BBS region codes list with accented characters were munged by development team slightly.}
+\item{name_es}{Spanish (Espanol) name associated with ISO_3166-2. Names appearing in the BBS region codes list with accented characters were munged by development team slightly.}
 }
 }
 \keyword{datasets}

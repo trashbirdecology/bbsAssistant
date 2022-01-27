@@ -5,13 +5,25 @@
 \alias{species_list}
 \title{Species List Associated with Most Recent BBS Dataset Release}
 \format{
-An object of class \code{data.frame} with 756 rows and 10 columns.
+A \code{data.frame} with 756 rows and 9 variables
+\describe{
+\item{Seq}{row identifier used by BBS}
+\item{AOU}{species-level numeric code used by BBS}
+\item{English_Common_Name}{Common name in English}
+\item{French_Common_Name}{Common name in French}
+\item{Spanish_Common_Name}{Common name in Spanish}
+\item{ORDER}{taxonomic order}
+\item{Family}{taxonomic family}
+\item{Genus}{taxonomic genus}
+\item{Species}{taxonomic species epithet}
+}
+\source{
+\url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 }
 \usage{
 species_list
 }
 \description{
-See SB item \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
-A species list is provided by the BBS office in ScienceBase data releases. This dataset contains the most recent version of that dataset
+A species list is provided by the BBS office in ScienceBase data releases.See the ScienceBase catalog for metadata regarding taxonomic classifications.
 }
 \keyword{datasets}
