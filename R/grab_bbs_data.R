@@ -9,7 +9,7 @@
 #'
 #' @export grab_bbs_data
 grab_bbs_data <- function(sb_id=NULL, bbs_dir=NULL, overwrite=FALSE){
-
+## want to add feature when bbs_dir is not specified data saves to package directory.
 ## NEED TO ADD A NEST FEATURE--list or data frame, where data frame is a collapsed version of the list, with the citation removed
 if(is.null(sb_id)){
   sb_items <- bbsAssistant::sb_items
@@ -30,6 +30,7 @@ data.in.dir <- bbsAssistant::download_bbs_data(sb_id=sb_id, bbs_dir=bbs_dir, ove
 
 ## IMPORT
 bbs <- import_bbs_data(bbs_dir = data.in.dir, sb_id=sb_id)
+bbs$data.dir <- bbs_dir
 
 return(bbs)
 

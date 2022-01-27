@@ -1,12 +1,11 @@
 #' Make Identifying Variable for Routes
 #'
-#' Creates a new variable, \code{RTENO}, if dataframe has columns \code{c("CountryNum", "StateNum", "Route")}
+#' Creates a new variable, RTENO, if dataframe has columns c("CountryNum", "StateNum", "Route")
 #'
 #' @param df a flat data object.
 #' @usage make.rteno(df)
+#'
 #' @export make.rteno
-
-
 make.rteno <- function(df){
   ## create variable RTENO
   ## unique identifier for each route, which comprises unique country, state and route nums

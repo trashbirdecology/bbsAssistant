@@ -31,7 +31,7 @@ This package contains functions for downloading, importing, and (soon) visualizi
 devtools::install_github("trashbirdecology/bbsAssistant", 
                          ref="feature-add", # change to 'main' for releases
                          # ref="main", # change to 'main' for releases
-                         force=FALSE) # force=TRUE to get most recent dev version
+                         force=TRUE) # force=TRUE to get most recent dev version
 ```
 
 
@@ -97,7 +97,7 @@ datasets %>% select(-legacy_format, -sb_parent) %>%
   relocate(sb_item, .after = last_col()) %>%
   kable(caption="List of datasets currently available for download at USGS ScienceBase. Highlighted and bold row indicates the default BBS observations dataset stored internally in the package.") %>% 
   kable_styling(bootstrap_options = "striped", full_width = TRUE, position = "left") %>% 
-  column_spec(1, width = "40em") %>% 
+  column_spec(1, width = "100em") %>% 
   row_spec(1, background = "yellow", bold = TRUE)
 ```
 

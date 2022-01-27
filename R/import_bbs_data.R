@@ -4,8 +4,7 @@
 #' @param bbs_dir Location of where the ScienceBase item files are located.
 #' Imports BBS data from specified directory.
 #' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.
-#' @keywords internal
-
+#' @export import_bbs_data
 import_bbs_data <- function(bbs_dir, sb_id) {
 
     # Where to save the unzipped files

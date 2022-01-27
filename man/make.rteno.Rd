@@ -10,5 +10,5 @@ make.rteno(df)
 \item{df}{a flat data object.}
 }
 \description{
-Creates a new variable, \code{RTENO}, if dataframe has columns \code{c("CountryNum", "StateNum", "Route")}
+Creates a new variable, RTENO, if dataframe has columns c("CountryNum", "StateNum", "Route")
 }
