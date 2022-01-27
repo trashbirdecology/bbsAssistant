@@ -1,3 +1,4 @@
+library(usethis)
 # region_codes ------------------------------------------------------------
 #' Country and State Codes
 #'
@@ -800,6 +801,7 @@ region_codes <-
     class = "data.frame"
   )
 # Write the data to package files as .RDA
+
 usethis::use_data(region_codes, overwrite = TRUE)
 
 
