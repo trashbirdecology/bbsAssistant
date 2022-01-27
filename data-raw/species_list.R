@@ -4,9 +4,9 @@ bbs <- df[['species_list']]
 bbs$AOU <- as.integer(as.character(bbs$AOU))
 
 ## Make some amendments for species of interest to align with IBP AOU tax
-dup <- bbs[bbs$Genus == "Phalacrocorax",]
-dup$Genus <- "Nannopterum"
-bbs <- rbind(dup, bbs)
+# dup <- bbs[bbs$Genus == "Phalacrocorax",]
+# dup$Genus <- "Nannopterum"
+# bbs <- rbind(dup, bbs)
 
 # Create new var for sciname
 bbs$Scientific_Name <- paste(bbs$Genus,
@@ -19,7 +19,7 @@ aou <- read.csv(fn)[c("COMMONNAME", "SCINAME", "SPEC", "SPEC6")]
 names(aou) <- c("English_Common_Name", "Scientific_Name", "AOU4", "AOU6")
 
 # Merge them
-species_list <- merge(bbs, aou)
+species_list <- dplyr::full_join(bbs, aou)
 # stopifnot(!any(is.na(species_list$AOU)))
 
 
