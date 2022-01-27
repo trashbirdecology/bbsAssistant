@@ -8,6 +8,10 @@
 #' @export grab_usgs_results
 
 grab_usgs_results <- function(){
+
+data_type <- release_year <- sb_dir <-    NULL # bind variable to avoid CMD CHK WARNING
+
+
   # munge the sb_items object to obtain the most recent version of the results.
   sb_items <-
     sb_items %>%
@@ -25,7 +29,7 @@ grab_usgs_results <- function(){
 
   # Import ------------------------------------------------------------------
   fns <- list.files(mydir, pattern = "trend|inde", full.names = TRUE)
-  list.files(sb_dir)
+
   # Bring them in --------------------------------------------------------
   ## This needs to be improved, but fine for now.
   usgs_results <- list()

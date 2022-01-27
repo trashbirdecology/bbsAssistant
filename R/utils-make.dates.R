@@ -8,6 +8,10 @@
 #' @export make.dates
 
 make.dates <- function(df, collapse=FALSE){
+
+Day <- Month <- Year <- Date  <- NULL # bind variable to avoid CMD CHK WARNING
+
+
     ## create variables julian and date
     ## only applies to data frames in the bbs list with particular edfisting vars.
     ## called in import_bbs_data

@@ -7,6 +7,8 @@
 #' @export import_bbs_data
 import_bbs_data <- function(bbs_dir, sb_id) {
 
+ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARNING
+
     # Where to save the unzipped files
     tempdir = tempdir()
 

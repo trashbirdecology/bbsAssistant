@@ -9,7 +9,8 @@ download_bbs_data <-
     function(sb_id = NULL,
              bbs_dir = NULL,
              overwrite = FALSE) {
-        # browser()
+sb_items <- NULL # bind variable to avoid CMD CHK WARNING
+
         if (is.null(sb_id)) {
             message("sb_id not specified. Downloading the most recent version of the BBS dataset.")
             # data(sb_items)#, package="bbsAssistant")
