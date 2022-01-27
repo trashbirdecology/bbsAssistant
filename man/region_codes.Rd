@@ -3,15 +3,7 @@
 \docType{data}
 \name{region_codes}
 \alias{region_codes}
-\title{Country and State Codes
-\describe{
-\item{CountryNum}{alpha-country codes used by the BBS. (840=United States of America; 484=Mexico; 124=Canada)}
-\item{StateNum}{state numbers associated with each State and CountryNum, assigned by the BBS}
-\item{State}{proper name of the state or province as provided by BBS office}
-\item{ISO_a2}{ISO 2-character code for Country}
-\item{ISO_3166-2}{ISO character code for Country and State/Territory/Province}
-}
-\source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}}
+\title{Country and State Codes}
 \format{
 An object of class \code{data.frame} with 96 rows and 7 columns.
 }
@@ -19,7 +11,7 @@ An object of class \code{data.frame} with 96 rows and 7 columns.
 region_codes
 }
 \description{
-Country and State Codes
+See \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 \describe{
 \item{CountryNum}{alpha-country codes used by the BBS. (840=United States of America; 484=Mexico; 124=Canada)}
 \item{StateNum}{state numbers associated with each State and CountryNum, assigned by the BBS}
@@ -27,6 +19,5 @@ Country and State Codes
 \item{ISO_a2}{ISO 2-character code for Country}
 \item{ISO_3166-2}{ISO character code for Country and State/Territory/Province}
 }
-\source \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 }
 \keyword{datasets}

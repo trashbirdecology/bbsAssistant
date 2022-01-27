@@ -5,15 +5,13 @@
 \alias{species_list}
 \title{Species List Associated with Most Recent BBS Dataset Release}
 \format{
-An object of class \code{data.frame} with 756 rows and 9 columns.
-}
-\source{
-\url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
+An object of class \code{data.frame} with 756 rows and 10 columns.
 }
 \usage{
 species_list
 }
 \description{
+See SB item \url{https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9}
 A species list is provided by the BBS office in ScienceBase data releases. This dataset contains the most recent version of that dataset
 }
 \keyword{datasets}

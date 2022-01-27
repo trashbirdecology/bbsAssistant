@@ -12,5 +12,7 @@ import_species_list <- function(sb_dir){
     names(species_list) <- lapply(species_list[1, ], as.character)
     species_list <- species_list[-c(1:2),]
 
+    species_list$AOU <- as.integer(as.character(species_list$AOU))
+
     return(species_list)
 }

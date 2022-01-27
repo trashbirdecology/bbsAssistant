@@ -29,7 +29,8 @@ This package contains functions for downloading, importing, and (soon) visualizi
 ## Quick Start
 ```{r install, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         ref="main", # change to 'main' for releases
+                         ref="feature-add", # change to 'main' for releases
+                         # ref="main", # change to 'main' for releases
                          force=FALSE) # force=TRUE to get most recent dev version
 ```
 
@@ -45,7 +46,7 @@ library(bbsAssistant)
 bbs <- grab_bbs_data()
 # Optional: specify `sb_id` as the USGS ScienceBase identifier for a specific data release. If sb_id is not supplied, will default to the most recent data release.
 ```
-The object resulting from `bbsAssistant::import_bbs_data()` is a list comprising the following objects:
+The object resulting from `bbsAssistant::import_bbs_data()` is a list comprising the following elements:
 ```{r view, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
 names(bbs)
 ```
@@ -55,7 +56,29 @@ Filter the dataset `bbs` using your preferred method. A lookup table is provided
 ```{r regioncodes, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
 bbsAssistant::region_codes
 ```
+### Filter on species names
+View the species lists for your particular dataset by calling:
+```{r}
+bbs$species_list
+```
 
+or view the most recent species list (may be the same as yours..):
+```{r, eval=FALSE}
+bbsAssistant::species_list
+```
+
+Keep only _Passer domesticus_:
+```{r filter-hosp}
+# grab the aou code for House Sparrow  using common name 
+hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$English_Common_Name=="House Sparrow"]
+# or genus and species epithet
+hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$Genus=="Passer"& bbs$species_list$Species=="domesticus"]
+
+# filter the observations along  BBS's "AOU" code:
+test=bbs$observations
+test %>% filter(AOU == hosp.aou.code)
+bbs$observations %>% as.data.frame() %>% filter(AOU %in% hosp.aou.code)
+```
 
 ## BBS Data Availability (including sb_id)
 There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the [observations data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9) and the analysis results. The datasets (observations, results) are permanently and publicly available at [USGS ScienceBase](http://sciencebase.gov). 
