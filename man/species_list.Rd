@@ -5,7 +5,7 @@
 \alias{species_list}
 \title{Species List Lookup Table}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 756 rows and 9 columns.
+An object of class \code{data.frame} with 652 rows and 12 columns.
 }
 \usage{
 species_list
@@ -24,6 +24,9 @@ Species List Associated with Most Recent BBS Dataset Release
 \item{Family}{taxonomic family}
 \item{Genus}{taxonomic genus}
 \item{Species}{taxonomic species epithet}
+\item{Scientific_Name}{comprised of the Genus and Species as provided in BBS dataset}
+\item{AOU4}{4-letter alpha code from IBP AOU data (Seq4) \url{https://www.birdpop.org/pages/birdSpeciesCodes.php}. Ths should be double-checked when using for analytical purposes. }
+\item{AOU6}{4-letter alpha code from IBP AOU data (Seq6)\url{https://www.birdpop.org/pages/birdSpeciesCodes.php}. Ths should be double-checked when using for analytical purposes. }
 }
 }
 \keyword{datasets}
