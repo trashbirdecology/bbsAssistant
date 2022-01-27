@@ -63,7 +63,13 @@
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>species</dt>
+    <dl><dt>bbs_list</dt>
+<dd><p>A list with element "species_list", obtained from running bbsAssistant::get_bbs_data()...</p></dd>
+<dt>states</dt>
+<dd><p>vector of one or more states/territorties/sub-national political regions (see data(region_codes))</p></dd>
+<dt>countries</dt>
+<dd><p>vector of one or more nations/countries (see data(region_codes))</p></dd>
+<dt>species</dt>
 <dd><p>A vector of one or more species (using English Common Name) to subset the data by. Capitalization ignored.</p></dd>
 <dt>genera</dt>
 <dd><p>vector of one or more genera  to retain in data</p></dd>
@@ -75,12 +81,14 @@
 <dd><p>If TRUE and a single species is provided in 'species', this function will output list$observations with zero-filled data.</p></dd>
 <dt>year.range</dt>
 <dd><p>value(s) of year(s) by which to subset the data. If not specified will return all data in the dataset.</p></dd>
+<dt>keep.stop.level.data</dt>
+<dd><p>logical TRUE will keep the stop-level data and metadata. FALSE will remove these and provide only mean values or sums.</p></dd>
+<dt>QualityCurrentID</dt>
+<dd><p>an index used to indicate the quality of the BBS data. See BBS metadata at USGS ScienceBase for more infromation. Suggest keeping this value at 1 unless you know what you're doing</p></dd>
 <dt>active.only</dt>
 <dd><p>Logical. If TRUE keep only active routes. Discontinued routes will be discarded.</p></dd>
 <dt>observations.output</dt>
 <dd><p>return the object as a list of data frames ("list") or a single data frame ("flat" or "df" or "data.frame")</p></dd>
-<dt>list</dt>
-<dd><p>A list with element "species_list", obtained from running bbsAssistant::get_bbs_data()...</p></dd>
 </dl></div>
 
   </div>
