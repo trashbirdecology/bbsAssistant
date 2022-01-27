@@ -21,6 +21,12 @@ munge_bbs_data(
 )
 }
 \arguments{
+\item{bbs_list}{A list with element "species_list", obtained from running bbsAssistant::get_bbs_data()...}
+
+\item{states}{vector of one or more states/territorties/sub-national political regions (see data(region_codes))}
+
+\item{countries}{vector of one or more nations/countries (see data(region_codes))}
+
 \item{species}{A vector of one or more species (using English Common Name) to subset the data by. Capitalization ignored.}
 
 \item{genera}{vector of one or more genera  to retain in data}
@@ -33,11 +39,13 @@ munge_bbs_data(
 
 \item{year.range}{value(s) of year(s) by which to subset the data. If not specified will return all data in the dataset.}
 
+\item{keep.stop.level.data}{logical TRUE will keep the stop-level data and metadata. FALSE will remove these and provide only mean values or sums.}
+
+\item{QualityCurrentID}{an index used to indicate the quality of the BBS data. See BBS metadata at USGS ScienceBase for more infromation. Suggest keeping this value at 1 unless you know what you're doing}
+
 \item{active.only}{Logical. If TRUE keep only active routes. Discontinued routes will be discarded.}
 
 \item{observations.output}{return the object as a list of data frames ("list") or a single data frame ("flat" or "df" or "data.frame")}
-
-\item{list}{A list with element "species_list", obtained from running bbsAssistant::get_bbs_data()...}
 }
 \description{
 ...
