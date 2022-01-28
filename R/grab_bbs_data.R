@@ -5,8 +5,6 @@
 #' @param sb_id ScienceBase item number/identifier, used in sbtools.
 #' @param bbs_dir The location where the BBS data will be stored. If not specified, will create a directory within the working directory called "data-raw."
 #' @param overwrite Logical. Defaults to FALSE. FALSE will not download files if they exist in the specified directory.
-#'
-#'
 #' @export grab_bbs_data
 grab_bbs_data <- function(sb_id=NULL, bbs_dir=NULL, overwrite=FALSE){
 ## want to add feature when bbs_dir is not specified data saves to package directory.
@@ -31,6 +29,8 @@ data.in.dir <- bbsAssistant::download_bbs_data(sb_id=sb_id, bbs_dir=bbs_dir, ove
 
 ## IMPORT
 bbs <- import_bbs_data(bbs_dir = data.in.dir, sb_id=sb_id)
+
+# Haven't figured out exactly why yet, but we just want to ensure we don't have duplicate observations
 bbs$data.dir <- bbs_dir
 
 return(bbs)

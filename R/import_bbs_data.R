@@ -51,7 +51,6 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
       Year = readr::col_integer()
     )
 
-
     # Get observations and routes ---------------------------------------------
     # observations <- sapply(fns, function(x) readr::read_csv(unzip(zipfile = x))) %>%
     # can't figure out how to do this with apply so just looping... le sigh.
@@ -63,21 +62,18 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     }
     observations <- dplyr::bind_rows(observations)
 
-
     # Get dataset citation(s) -------------------------------------------------
     citation <- sbtools::item_get_fields(sb_id, "citation")
 
     # Get species list --------------------------------------------------
     species_list <- import_species_list(bbs_dir)
 
+    # Get route metadata -------------------------------------------------------
+    routes <-   suppressWarnings(readr::read_csv(unzip(zipfile = fns.routes, exdir = tempdir), col_types = col_types))
+    weather <-  suppressWarnings(readr::read_csv(unzip(zipfile = fns.weather, exdir = tempdir), col_types = col_types))
 
     # Get route metadata -------------------------------------------------------
-    routes <-   readr::read_csv(unzip(zipfile = fns.routes, exdir = tempdir), col_types = col_types)
-    # Get route metadata -------------------------------------------------------
-    weather <-   readr::read_csv(unzip(zipfile = fns.weather, exdir = tempdir), col_types = col_types)
-
-    # Get route metadata -------------------------------------------------------
-    vehicle_data <-  readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types)
+    vehicle_data <-  suppressWarnings(readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types))
 
     observers <- weather %>%
       make.dates() %>%
@@ -101,7 +97,6 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
            "vehicle_data"
       )
     # suppressWarnings(
-
     bbs <- lapply(
       list.elements,
       FUN = function(x) {
@@ -111,7 +106,6 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     )
     # )
     names(bbs) <- list.elements
-
 
 
     # END FUNCTION ------------------------------------------------------------

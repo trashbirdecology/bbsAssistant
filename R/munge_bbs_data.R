@@ -60,7 +60,7 @@ bbs_list$observations <- bbs_list$observations %>% dplyr::filter(Year %in% year.
 stopifnot(nrow(bbs_list$observations)>=2)
 
 # GRAB A LIST OF ALL SAMPLED ROUTES -------------------------------------------------------------------------
-##before further subsetting, we want to grab an index of which routes were sampled each year (after we subset by year and spatial extent/loc)
+## before further subsetting, we want to grab an index of which routes were sampled each year (after we subset by year and spatial extent/loc)
 sampled <-  bbs_list$observations %>%
   dplyr::distinct(Year, RTENO)
 stopifnot(all(sampled$RTENO %in% bbs_list$routes$RTENO))
@@ -144,13 +144,11 @@ for(i in seq_along(bbs_list)){
   bbs_list[[i]] <- bbs_list[[i]] %>% dplyr::filter(RTENO %in% rteno.filter)
 }
 
-
 # MUNGE COLUMNS -----------------------------------------------------------
 # Make a new variable for DATE
 bbs_list <- lapply(bbs_list, function(x) { x <- make.dates(x) })
 bbs_list <- lapply(bbs_list, function(x) { x <- make.rteno(x) }) # add RTENO where it doesn't exist yet
 bbs_list <- lapply(bbs_list, function(x) x <- x[!(tolower(names(x)) %in% "routedataid")])
-
 
 # CREATE VARIABLE FOR OBSERVER FIRST YEARS --------------------------------
 bbs_list$metadata <- bbs_list$weather %>%

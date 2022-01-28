@@ -43,7 +43,7 @@ library(bbsAssistant)
 
 ## Download, Unpack, and Import the Most Recent Dataset
 ```{r grab_bbs_data, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-bbs <- grab_bbs_data()
+bbs_list <- grab_bbs_data()
 # Optional: specify `sb_id` as the USGS ScienceBase identifier for a specific data release. If sb_id is not supplied, will default to the most recent data release.
 ```
 The object resulting from `bbsAssistant::import_bbs_data()` is a list comprising the following elements:
@@ -72,12 +72,12 @@ Keep only _Passer domesticus_:
 # grab the aou code for House Sparrow  using common name 
 hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$English_Common_Name=="House Sparrow"]
 # or genus and species epithet
-hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$Genus=="Passer"& bbs$species_list$Species=="domesticus"]
+hosp.aou.code <-
+  bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
+                         bbs$species_list$Species == "domesticus"]
 
 # filter the observations along  BBS's "AOU" code:
-test=bbs$observations
-test %>% filter(AOU == hosp.aou.code)
-bbs$observations %>% as.data.frame() %>% filter(AOU %in% hosp.aou.code)
+hosp.df <- munge_bbs_data(bbs_list, species = c("House SPARROW", "passer Domesticus",hosp.aou.code )) 
 ```
 
 ## BBS Data Availability (including sb_id)
