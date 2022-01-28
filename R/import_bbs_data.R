@@ -68,7 +68,7 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     citation <- sbtools::item_get_fields(sb_id, "citation")
 
     # Get species list --------------------------------------------------
-    species_list <- import_species_list(bbs_dir)
+    species_list <- bbsAssistant::import_species_list(bbs_dir)
 
 
     # Get route metadata -------------------------------------------------------

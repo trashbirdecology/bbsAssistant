@@ -22,8 +22,9 @@ if(is.null(sb_id)){
    if(is.null(bbs_dir)){
     dir.create("data-in", showWarnings = FALSE)
     bbs_dir=paste0("data-in/", sb_id)
+    cat('bbs_dir not specified. bbs dataset will be saved to ', bbs_dir,"\n")
     dir.create(bbs_dir, showWarnings = FALSE)
-  }else(stopifnot(dir.exists(bbs_dir)))
+  }else{stopifnot(dir.exists(bbs_dir))}
 
 ## DOWNLOAD THE DATA FROM SOURCE (or not if exists and overwrite=FALSE)
 data.in.dir <- bbsAssistant::download_bbs_data(sb_id=sb_id, bbs_dir=bbs_dir, overwrite = overwrite)
