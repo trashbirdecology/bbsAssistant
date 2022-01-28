@@ -12,4 +12,3 @@ import_species_list(bbs_dir)
 \description{
 Imports the file specieslist.txt. Is subsequently appended to the BBS dataset in \code{import_bbs_data()}
 }
-\keyword{internal}
