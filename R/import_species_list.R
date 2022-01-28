@@ -3,7 +3,7 @@
 #'
 #' @title Import the species list comprising names and numeric identifiers.
 #' @param bbs_dir Directory for the ScienceBase (sb) item.
-#' @export import_species_list
+#' @export
 import_species_list <- function(bbs_dir){
     fn <- list.files(bbs_dir, full.names=TRUE, pattern="SpeciesList")
     species_list<-readr::read_fwf(fn, skip=c(9))## currently the best function for guessing the fixed widths...

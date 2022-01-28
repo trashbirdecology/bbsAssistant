@@ -4,7 +4,7 @@
 #' @param bbs_dir Location of where the ScienceBase item files are located.
 #' Imports BBS data from specified directory.
 #' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.
-#' @export import_bbs_data
+#' @export
 import_bbs_data <- function(bbs_dir, sb_id) {
 
 ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARNING
@@ -68,7 +68,7 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     citation <- sbtools::item_get_fields(sb_id, "citation")
 
     # Get species list --------------------------------------------------
-    species_list <- bbsAssistant::import_species_list(bbs_dir)
+    species_list <- import_species_list(bbs_dir)
 
 
     # Get route metadata -------------------------------------------------------
