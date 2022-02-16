@@ -48,7 +48,7 @@ bbs_list <- grab_bbs_data()
 ```
 The object resulting from `bbsAssistant::import_bbs_data()` is a list comprising the following elements:
 ```{r view, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-names(bbs)
+names(bbs_list)
 ```
 
 ## Filtering by State/Region
@@ -59,7 +59,7 @@ bbsAssistant::region_codes
 ### Filter on species names
 View the species lists for your particular dataset by calling:
 ```{r}
-bbs$species_list
+bbs_list$species_list
 ```
 
 or view the most recent species list (may be the same as yours..):
@@ -70,14 +70,16 @@ bbsAssistant::species_list
 Keep only _Passer domesticus_:
 ```{r filter-hosp}
 # grab the aou code for House Sparrow  using common name 
-hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$English_Common_Name=="House Sparrow"]
+hosp.aou.code <- bbs_list$species_list$AOU[bbs_list$species_list$English_Common_Name=="House Sparrow"]
 # or genus and species epithet
 hosp.aou.code <-
-  bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
-                         bbs$species_list$Species == "domesticus"]
+  bbs_list$species_list$AOU[bbs_list$species_list$Genus == "Passer" &
+                         bbs_list$species_list$Species == "domesticus"]
 
 # filter the observations along  BBS's "AOU" code:
-hosp.df <- munge_bbs_data(bbs_list, species = c("House SPARROW", "passer Domesticus",hosp.aou.code )) 
+## note capitalization but spelling matters. can provide species as common, latin, or BBS "AOU" code
+hosp.df <- munge_bbs_data(bbs_list, 
+                          species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) 
 ```
 
 ## BBS Data Availability (including sb_id)

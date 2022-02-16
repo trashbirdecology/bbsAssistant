@@ -14,7 +14,7 @@
 #' @param observations.output return the object as a list of data frames ("list") or a single data frame ("flat" or "df" or "data.frame")
 #' @param keep.stop.level.data logical TRUE will keep the stop-level data and metadata. FALSE will remove these and provide only mean values or sums.
 #' @importFrom dplyr mutate filter across group_by ungroup all_of
-#' @export
+#' @export munge_bbs_data
 munge_bbs_data <-
   function(bbs_list,
            states = NULL, #chacer vecr of ISO or english names. see region_codes
@@ -30,7 +30,6 @@ munge_bbs_data <-
            active.only = FALSE,
            observations.output = "flat"
   ) {
-
 
     # ARG CHECKS --------------------------------------------------------------
     stopifnot(tolower(observations.output) %in% c("flat", "df","data.table","data.frame", "list"))
@@ -100,8 +99,6 @@ munge_bbs_data <-
       mutate(CarMean= round(rowSums(dplyr::across(dplyr::all_of(cols.car)))/50)) # rounded
     bbs_list$vehicle_data <- bbs_list$vehicle_data %>%
       mutate(NoiseMean= round(rowSums(dplyr::across(dplyr::all_of(cols.noise)))/50)) # rounded
-    bbs_list$vehicle_data <- bbs_list$vehicle_data %>%
-      mutate(WindMean= round(rowSums(dplyr::across(dplyr::all_of(cols.car)))/50)) # rounded
 
     # REMOVE STOP.LEVEL DATA (if specified) -----------------------------------
     if(!keep.stop.level.data){
@@ -119,7 +116,7 @@ munge_bbs_data <-
 
     # ZERO-FILL DATA ----------------------------------------------------------
     if(zero.fill){
-      if(is.null(species)|length(aous.keep)!=1){
+      if(is.null(species)|length(unique(aous.keep))!=1){
         message(
           "When zero.fill=TRUE, a single species should be provided in argument `species`. Not zero-filling the data.\n"
         )}else{
@@ -174,10 +171,37 @@ munge_bbs_data <-
       df <- dplyr::left_join(df, bbs_list$routes)
       df <- dplyr::left_join(df, bbs_list$metadata)
       df <- dplyr::left_join(df, bbs_list$weather)
-      bbs_list <- df
+      df <- dplyr::left_join(df, bbs_list$observers %>% dplyr::select(-ObsFirstYearOnBBS , -ObsFirstYearOnRTENO))
+      bbs_df <- df
       rm(df)
     }
 
-    return(bbs_list)
+
+# Final Light Munging -----------------------------------------------------
+### replace "NULL" values with NA
+for(i in seq_along(names(bbs_df))){
+  name=names(bbs_df[i])
+  if(tolower(name) %in% c("date","day", "year")) next() # skip the date col
+  rows=which(bbs_df[name]=="NULL")
+  if(length(rows)==0)next()
+  bbs_df[rows,name] <- NA
+}
+## ensure the binary variables aren't of class character.
+bbs_df$Assistant <- as.integer(bbs_df$Assistant )
+bbs_df$ObsFirstYearRoute <- as.integer(bbs_df$ObsFirstYearRoute)
+bbs_df$ObsFirstYearBBS <- as.integer(bbs_df$ObsFirstYearBBS)
+bbs_df$StartTemp <- as.integer(bbs_df$StartTemp)
+bbs_df$EndTemp <- as.integer(bbs_df$EndTemp)
+
+## Create mean wind, sky, temp (these data are only from Stop 1 and Stop 50...)
+bbs_df$WindMean <- abs(bbs_df$EndWind-bbs_df$StartWind)/2
+bbs_df$TempMean <- abs(bbs_df$EndTemp-bbs_df$StartTemp)/2
+names(bbs_df)
+
+
+# Output ------------------------------------------------------------------
+return(bbs_df)
+
+
 
   }
