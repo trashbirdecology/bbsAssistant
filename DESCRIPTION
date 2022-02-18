@@ -4,7 +4,7 @@ Version: 2.0.0
 Maintainer@R: Jessica Burnett <jburnett@usgs.gov>
 Authors@R: c(
   person("Jessica", "Burnett", email = "jburnett@usgs.gov", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0896-5099")),
-  person("Gabriela", "Palomo-Muoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")),
+  person("Gabriela", "Palomo-Munoz", email = "gabriella.palomo@gmail.com", role = "aut", comment = c(ORCID = "")),
   person("Lyndsie", "Wszola", email = "", role = "aut", comment = c(ORCID = "0000-0002-2660-2048")))
 Maintainer: Jessica Burnett <jburnett@usgs.gov>
 Description: A package for downloading, importing, and munging the official BBS data releases from USGS ScienceBase.
