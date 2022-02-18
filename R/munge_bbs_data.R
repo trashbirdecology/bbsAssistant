@@ -60,9 +60,9 @@ munge_bbs_data <-
 
     # GRAB A LIST OF ALL SAMPLED ROUTES -------------------------------------------------------------------------
     ## before further subsetting, we want to grab an index of which routes were sampled each year (after we subset by year and spatial extent/loc)
-    sampled <-  bbs_list$observations %>%
-      dplyr::distinct(Year, RTENO)
-    stopifnot(all(sampled$RTENO %in% bbs_list$routes$RTENO))
+    all.samples <-  bbs_list$observations %>%
+      dplyr::distinct(Year, RTENO, .keep_all=TRUE)
+    stopifnot(all(all.samples$RTENO %in% bbs_list$routes$RTENO))
 
     # TAXONOMIC SUBSETTING ----------------------------------------------------
     ## grab relevant taxonomic names and codes for subsetting BBS by species
@@ -115,17 +115,28 @@ munge_bbs_data <-
 
 
     # ZERO-FILL DATA ----------------------------------------------------------
+    # this finds the RTENO-year combinations that exist in the `sampled` data frame but no in bbs_observations.
+    # it ensures all sampled RTENO-year combinations are include.
     if(zero.fill){
       if(is.null(species)|length(unique(aous.keep))!=1){
         message(
           "When zero.fill=TRUE, a single species should be provided in argument `species`. Not zero-filling the data.\n"
         )}else{
-          # bbs_list$observations <-
-          sampled$AOU        <- unique(bbs_list$observations$AOU)[1]
-          sampled$RouteTotal <- 0
-          bbs_list$observations <- bbs_list$observations %>%
-            dplyr::full_join(sampled)
-        }
+        ##
+        ## force the AOU code to the unique in observations
+        sampled$AOU        <- unique(bbs_list$observations$AOU)[1]
+        ## force count to zero
+        sampled$RouteTotal <- 0
+
+        ## append the data to observations
+        bbs_list$observations <- bbs_list$observations %>%
+          dplyr::full_join(sampled) %>%
+          group_by(RTENO, Year) %>%
+          filter(RouteTotal == max(RouteTotal, na.rm = TRUE)) %>%
+          ungroup() %>%
+          distinct(RTENO, Year, .keep_all = TRUE)
+
+        }# end innter zero-fill ifelse
     }#end zero-fill data
 
 
@@ -136,6 +147,7 @@ munge_bbs_data <-
                                            bbs_list$routes$RTENO,
                                            bbs_list$weather$RTENO,
                                            bbs_list$vehicle_data$RTENO))
+
     # filter out of all relevant data frames..
     for(i in seq_along(bbs_list)){
       if(!"RTENO" %in% names(bbs_list[[i]]))next()
