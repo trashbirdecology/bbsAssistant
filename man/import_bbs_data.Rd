@@ -2,14 +2,15 @@
 % Please edit documentation in R/import_bbs_data.R
 \name{import_bbs_data}
 \alias{import_bbs_data}
-\title{Import the BBS Data}
+\title{Import the BBS Data
+
+Imports BBS data from specified directory.
+Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.}
 \usage{
 import_bbs_data(bbs_dir, sb_id)
 }
 \arguments{
-\item{bbs_dir}{Location of where the ScienceBase item files are located.
-Imports BBS data from specified directory.
-Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.}
+\item{bbs_dir}{Location of where the ScienceBase item files are located.}
 
 \item{sb_id}{ScienceBase Item identifier. Can be found in \code{sb_items}}
 }

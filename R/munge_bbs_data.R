@@ -34,7 +34,7 @@ munge_bbs_data <-
     # ARG CHECKS --------------------------------------------------------------
     stopifnot(tolower(observations.output) %in% c("flat", "df","data.table","data.frame", "list"))
     ## add binded variables to avoid RCMD CHECK WHINING
-    Date <- ObsN <- Active <- AOU <- RTENO <-Year <-iso_3166_2<- iso_a2 <- NULL
+    Date <- RouteTotal <- ObsN <- Active <- AOU <- RTENO <-Year <-iso_3166_2<- iso_a2 <-ObsFirstYearOnRTENO <- ObsFirstYearOnBBS  <-NULL
 
     # SUBSET BY SPATIAL INDEXES ---------------------------------------------------
     # grab region codes
@@ -131,10 +131,10 @@ munge_bbs_data <-
         ## append the data to observations
         bbs_list$observations <- bbs_list$observations %>%
           dplyr::full_join(sampled) %>%
-          group_by(RTENO, Year) %>%
-          filter(RouteTotal == max(RouteTotal, na.rm = TRUE)) %>%
-          ungroup() %>%
-          distinct(RTENO, Year, .keep_all = TRUE)
+          dplyr::group_by(RTENO, Year) %>%
+          dplyr::filter(RouteTotal == max(RouteTotal, na.rm = TRUE)) %>%
+          dplyr::ungroup() %>%
+          dplyr::distinct(RTENO, Year, .keep_all = TRUE)
 
         }# end innter zero-fill ifelse
     }#end zero-fill data

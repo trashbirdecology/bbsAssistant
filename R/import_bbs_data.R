@@ -1,10 +1,12 @@
 #' @title Import the BBS Data
+#'
+#' Imports BBS data from specified directory.
+#' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.
 #' @description Import the BBS observations and metadata into environment.
 #' @param sb_id ScienceBase Item identifier. Can be found in \code{sb_items}
 #' @param bbs_dir Location of where the ScienceBase item files are located.
-#' Imports BBS data from specified directory.
-#' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.
-#' @export
+#' @importFrom utils unzip
+#' @export import_bbs_data
 import_bbs_data <- function(bbs_dir, sb_id) {
 
 ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARNING
@@ -17,7 +19,7 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
         list.files(path = paste0(bbs_dir),
                    pattern = "*50-StopData.zip",
                    full.names = TRUE)
-    unzip(zipF, exdir = tempdir) # unzip the main one b/c not sure how to dig two dirs down in the sapply
+    utils::unzip(zipF, exdir = tempdir) # unzip the main one b/c not sure how to dig two dirs down in the sapply
     fns.50stop <-
         paste0(tempdir,
                "/",
