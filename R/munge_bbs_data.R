@@ -113,7 +113,6 @@ munge_bbs_data <-
       }
     }# end keep.stop.level.data
 
-
     # ZERO-FILL DATA ----------------------------------------------------------
     # this finds the RTENO-year combinations that exist in the `sampled` data frame but no in bbs_observations.
     # it ensures all sampled RTENO-year combinations are include.
@@ -124,13 +123,13 @@ munge_bbs_data <-
         )}else{
         ##
         ## force the AOU code to the unique in observations
-        sampled$AOU        <- unique(bbs_list$observations$AOU)[1]
+        all.samples$AOU        <- unique(bbs_list$observations$AOU)[1]
         ## force count to zero
-        sampled$RouteTotal <- 0
+        all.samples$RouteTotal <- 0
 
         ## append the data to observations
         bbs_list$observations <- bbs_list$observations %>%
-          dplyr::full_join(sampled) %>%
+          dplyr::full_join(all.samples) %>%
           dplyr::group_by(RTENO, Year) %>%
           dplyr::filter(RouteTotal == max(RouteTotal, na.rm = TRUE)) %>%
           dplyr::ungroup() %>%
@@ -208,12 +207,8 @@ bbs_df$EndTemp <- as.integer(bbs_df$EndTemp)
 ## Create mean wind, sky, temp (these data are only from Stop 1 and Stop 50...)
 bbs_df$WindMean <- abs(bbs_df$EndWind-bbs_df$StartWind)/2
 bbs_df$TempMean <- abs(bbs_df$EndTemp-bbs_df$StartTemp)/2
-names(bbs_df)
 
-
-# Output ------------------------------------------------------------------
+# RETURN DATA FRAME ------------------------------------------------------------------
 return(bbs_df)
 
-
-
-  }
+}
