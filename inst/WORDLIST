@@ -10,6 +10,7 @@ Palomo
 RTENO
 ScienceBase
 sciencebase
+geospatial
 StateNum
 USGS
 usgs
@@ -18,6 +19,9 @@ BBS
 df
 dir
 doi
+DOI
+passer
+Passer
 domesticus
 https
 iso
@@ -26,6 +30,7 @@ JOSS
 lifecycle
 magrittr
 md
+rmd
 onAttach
 sb
 sbtools
