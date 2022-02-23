@@ -56,7 +56,7 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<p><strong>bbsAssistant</strong>: An R package for downloading and handling data and information from the North American Breeding Bird Survey. ================ Last updated: 2022-02-16</p>
+<p><strong>bbsAssistant</strong>: An R package for downloading and handling data and information from the North American Breeding Bird Survey. ================ Last updated: 2022-02-23</p>
 <!-- badges: start -->
 
 <div class="section level2">
@@ -77,268 +77,82 @@
 <h2 id="download-unpack-and-import-the-most-recent-dataset">Download, Unpack, and Import the Most Recent Dataset<a class="anchor" aria-label="anchor" href="#download-unpack-and-import-the-most-recent-dataset"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bbs_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/grab_bbs_data.html">grab_bbs_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">bbs</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/grab_bbs_data.html">grab_bbs_data</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">## bbs_dir not specified. bbs dataset will be saved to  data-in/5ea04e9a82cefae35a129d65</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Optional: specify `sb_id` as the USGS ScienceBase identifier for a specific data release. If sb_id is not supplied, will default to the most recent data release.</span></code></pre></div>
 <p>The object resulting from <code><a href="reference/import_bbs_data.html">bbsAssistant::import_bbs_data()</a></code> is a list comprising the following elements:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bbs_list</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bbs</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">## [1] "observations" "routes"       "observers"    "weather"      "species_list"</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a><span class="co">## [6] "citation"     "vehicle_data" "data.dir"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="filtering-by-stateregion">Filtering by State/Region<a class="anchor" aria-label="anchor" href="#filtering-by-stateregion"></a>
 </h2>
-<p>Filter the dataset <code>bbs</code> using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns ‘CountryNum’ and ‘StateNum’) or ISO alpha codes and names (see columns ‘iso_3155_2,’‘iso_a2,’‘name_fr,’‘name_es’):</p>
+<p>Filter the dataset <code>bbs</code> using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and names (see columns iso_3155_2, iso_a2, name_fr, name_es):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="reference/region_codes.html">region_codes</a></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">##    CountryNum StateNum                     State iso_3166_2 iso_a2</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="co">## 1         484        1            aguascalientes     MX-AGU     MX</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="co">## 2         484        2           baja california     MX-BCN     MX</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="co">## 3         484        3       baja california sur     MX-BCS     MX</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">## 4         484        4                  campeche     MX-CAM     MX</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co">## 5         484        5                   chiapas     MX-CHP     MX</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">## 6         484        6                 chihuahua     MX-CHH     MX</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">## 7         484        7                  coahuila     MX-COA     MX</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co">## 8         484        8                    colima     MX-COL     MX</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="co">## 9         484        9               mexico city     MX-DIF     MX</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co">## 10        484       10                   durango     MX-DUR     MX</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co">## 11        484       11                guanajuato     MX-GUA     MX</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="co">## 12        484       12                  guerrero     MX-GRO     MX</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="co">## 13        484       13                   hidalgo     MX-HID     MX</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a><span class="co">## 14        484       14                   jalisco     MX-JAL     MX</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a><span class="co">## 15        484       15                    méxico     MX-MEX     MX</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a><span class="co">## 16        484       16                 michoacán     MX-MIC     MX</span></span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="co">## 17        484       17                   morelos     MX-MOR     MX</span></span>
-<span id="cb8-19"><a href="#cb8-19"></a><span class="co">## 18        484       18                   nayarit     MX-NAY     MX</span></span>
-<span id="cb8-20"><a href="#cb8-20"></a><span class="co">## 19        484       19                nuevo león     MX-NLE     MX</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a><span class="co">## 20        484       20                    oaxaca     MX-OAX     MX</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a><span class="co">## 21        484       21                    puebla     MX-PUE     MX</span></span>
-<span id="cb8-23"><a href="#cb8-23"></a><span class="co">## 22        484       22                 querétaro     MX-QUE     MX</span></span>
-<span id="cb8-24"><a href="#cb8-24"></a><span class="co">## 23        484       23              quintana roo     MX-ROO     MX</span></span>
-<span id="cb8-25"><a href="#cb8-25"></a><span class="co">## 24        484       24           san luis potosí     MX-SLP     MX</span></span>
-<span id="cb8-26"><a href="#cb8-26"></a><span class="co">## 25        484       25                   sinaloa     MX-SIN     MX</span></span>
-<span id="cb8-27"><a href="#cb8-27"></a><span class="co">## 26        484       26                    sonora     MX-SON     MX</span></span>
-<span id="cb8-28"><a href="#cb8-28"></a><span class="co">## 27        484       27                   tabasco     MX-TAB     MX</span></span>
-<span id="cb8-29"><a href="#cb8-29"></a><span class="co">## 28        484       28                tamaulipas     MX-TAM     MX</span></span>
-<span id="cb8-30"><a href="#cb8-30"></a><span class="co">## 29        484       29                  tlaxcala     MX-TLA     MX</span></span>
-<span id="cb8-31"><a href="#cb8-31"></a><span class="co">## 30        484       30                  veracruz     MX-VER     MX</span></span>
-<span id="cb8-32"><a href="#cb8-32"></a><span class="co">## 31        484       31                   yucatán     MX-YUC     MX</span></span>
-<span id="cb8-33"><a href="#cb8-33"></a><span class="co">## 32        484       32                 zacatecas     MX-ZAC     MX</span></span>
-<span id="cb8-34"><a href="#cb8-34"></a><span class="co">## 33        840        2                   alabama      US-AL     US</span></span>
-<span id="cb8-35"><a href="#cb8-35"></a><span class="co">## 34        840        3                    alaska      US-AK     US</span></span>
-<span id="cb8-36"><a href="#cb8-36"></a><span class="co">## 35        124        4                   alberta      CA-AB     CA</span></span>
-<span id="cb8-37"><a href="#cb8-37"></a><span class="co">## 36        840        6                   arizona      US-AZ     US</span></span>
-<span id="cb8-38"><a href="#cb8-38"></a><span class="co">## 37        840        7                  arkansas      US-AR     US</span></span>
-<span id="cb8-39"><a href="#cb8-39"></a><span class="co">## 38        124       11          british columbia      CA-BC     CA</span></span>
-<span id="cb8-40"><a href="#cb8-40"></a><span class="co">## 39        840       14                california      US-CA     US</span></span>
-<span id="cb8-41"><a href="#cb8-41"></a><span class="co">## 40        840       17                  colorado      US-CO     US</span></span>
-<span id="cb8-42"><a href="#cb8-42"></a><span class="co">## 41        840       18               connecticut      US-CT     US</span></span>
-<span id="cb8-43"><a href="#cb8-43"></a><span class="co">## 42        840       21                  delaware      US-DE     US</span></span>
-<span id="cb8-44"><a href="#cb8-44"></a><span class="co">## 43        840       22      district of columbia      US-DC     US</span></span>
-<span id="cb8-45"><a href="#cb8-45"></a><span class="co">## 44        840       25                   florida      US-FL     US</span></span>
-<span id="cb8-46"><a href="#cb8-46"></a><span class="co">## 45        840       27                   georgia      US-GA     US</span></span>
-<span id="cb8-47"><a href="#cb8-47"></a><span class="co">## 46        840       33                     idaho      US-ID     US</span></span>
-<span id="cb8-48"><a href="#cb8-48"></a><span class="co">## 47        840       34                  illinois      US-IL     US</span></span>
-<span id="cb8-49"><a href="#cb8-49"></a><span class="co">## 48        840       35                   indiana      US-IN     US</span></span>
-<span id="cb8-50"><a href="#cb8-50"></a><span class="co">## 49        840       36                      iowa      US-IA     US</span></span>
-<span id="cb8-51"><a href="#cb8-51"></a><span class="co">## 50        840       38                    kansas      US-KS     US</span></span>
-<span id="cb8-52"><a href="#cb8-52"></a><span class="co">## 51        840       39                  kentucky      US-KY     US</span></span>
-<span id="cb8-53"><a href="#cb8-53"></a><span class="co">## 52        840       42                 louisiana      US-LA     US</span></span>
-<span id="cb8-54"><a href="#cb8-54"></a><span class="co">## 53        840       44                     maine      US-ME     US</span></span>
-<span id="cb8-55"><a href="#cb8-55"></a><span class="co">## 54        124       45                  manitoba      CA-MB     CA</span></span>
-<span id="cb8-56"><a href="#cb8-56"></a><span class="co">## 55        840       46                  maryland      US-MD     US</span></span>
-<span id="cb8-57"><a href="#cb8-57"></a><span class="co">## 56        840       47             massachusetts      US-MA     US</span></span>
-<span id="cb8-58"><a href="#cb8-58"></a><span class="co">## 57        840       49                  michigan      US-MI     US</span></span>
-<span id="cb8-59"><a href="#cb8-59"></a><span class="co">## 58        840       50                 minnesota      US-MN     US</span></span>
-<span id="cb8-60"><a href="#cb8-60"></a><span class="co">## 59        840       51               mississippi      US-MS     US</span></span>
-<span id="cb8-61"><a href="#cb8-61"></a><span class="co">## 60        840       52                  missouri      US-MO     US</span></span>
-<span id="cb8-62"><a href="#cb8-62"></a><span class="co">## 61        840       53                   montana      US-MT     US</span></span>
-<span id="cb8-63"><a href="#cb8-63"></a><span class="co">## 62        840       54                  nebraska      US-NE     US</span></span>
-<span id="cb8-64"><a href="#cb8-64"></a><span class="co">## 63        840       55                    nevada      US-NV     US</span></span>
-<span id="cb8-65"><a href="#cb8-65"></a><span class="co">## 64        124       56             new brunswick      CA-NB     CA</span></span>
-<span id="cb8-66"><a href="#cb8-66"></a><span class="co">## 65        840       58             new hampshire      US-NH     US</span></span>
-<span id="cb8-67"><a href="#cb8-67"></a><span class="co">## 66        840       59                new jersey      US-NJ     US</span></span>
-<span id="cb8-68"><a href="#cb8-68"></a><span class="co">## 67        840       60                new mexico      US-NM     US</span></span>
-<span id="cb8-69"><a href="#cb8-69"></a><span class="co">## 68        840       61                  new york      US-NY     US</span></span>
-<span id="cb8-70"><a href="#cb8-70"></a><span class="co">## 69        124       57 newfoundland and labrador      CA-NL     CA</span></span>
-<span id="cb8-71"><a href="#cb8-71"></a><span class="co">## 70        840       63            north carolina      US-NC     US</span></span>
-<span id="cb8-72"><a href="#cb8-72"></a><span class="co">## 71        840       64              north dakota      US-ND     US</span></span>
-<span id="cb8-73"><a href="#cb8-73"></a><span class="co">## 72        124       43     northwest territories      CA-NT     CA</span></span>
-<span id="cb8-74"><a href="#cb8-74"></a><span class="co">## 73        124       65               nova scotia      CA-NS     CA</span></span>
-<span id="cb8-75"><a href="#cb8-75"></a><span class="co">## 74        124       62                   nunavut      CA-NU     CA</span></span>
-<span id="cb8-76"><a href="#cb8-76"></a><span class="co">## 75        840       66                      ohio      US-OH     US</span></span>
-<span id="cb8-77"><a href="#cb8-77"></a><span class="co">## 76        840       67                  oklahoma      US-OK     US</span></span>
-<span id="cb8-78"><a href="#cb8-78"></a><span class="co">## 77        124       68                   ontario      CA-ON     CA</span></span>
-<span id="cb8-79"><a href="#cb8-79"></a><span class="co">## 78        840       69                    oregon      US-OR     US</span></span>
-<span id="cb8-80"><a href="#cb8-80"></a><span class="co">## 79        840       72              pennsylvania      US-PA     US</span></span>
-<span id="cb8-81"><a href="#cb8-81"></a><span class="co">## 80        124       75      prince edward island      CA-PE     CA</span></span>
-<span id="cb8-82"><a href="#cb8-82"></a><span class="co">## 81        840       74               puerto rico      US-PR     PR</span></span>
-<span id="cb8-83"><a href="#cb8-83"></a><span class="co">## 82        124       76                    quebec      CA-QC     CA</span></span>
-<span id="cb8-84"><a href="#cb8-84"></a><span class="co">## 83        840       77              rhode island      US-RI     US</span></span>
-<span id="cb8-85"><a href="#cb8-85"></a><span class="co">## 84        124       79              saskatchewan      CA-SK     CA</span></span>
-<span id="cb8-86"><a href="#cb8-86"></a><span class="co">## 85        840       80            south carolina      US-SC     US</span></span>
-<span id="cb8-87"><a href="#cb8-87"></a><span class="co">## 86        840       81              south dakota      US-SD     US</span></span>
-<span id="cb8-88"><a href="#cb8-88"></a><span class="co">## 87        840       82                 tennessee      US-TN     US</span></span>
-<span id="cb8-89"><a href="#cb8-89"></a><span class="co">## 88        840       83                     texas      US-TX     US</span></span>
-<span id="cb8-90"><a href="#cb8-90"></a><span class="co">## 89        840       85                      utah      US-UT     US</span></span>
-<span id="cb8-91"><a href="#cb8-91"></a><span class="co">## 90        840       87                   vermont      US-VT     US</span></span>
-<span id="cb8-92"><a href="#cb8-92"></a><span class="co">## 91        840       88                  virginia      US-VA     US</span></span>
-<span id="cb8-93"><a href="#cb8-93"></a><span class="co">## 92        840       89                washington      US-WA     US</span></span>
-<span id="cb8-94"><a href="#cb8-94"></a><span class="co">## 93        840       90             west virginia      US-WV     US</span></span>
-<span id="cb8-95"><a href="#cb8-95"></a><span class="co">## 94        840       91                 wisconsin      US-WI     US</span></span>
-<span id="cb8-96"><a href="#cb8-96"></a><span class="co">## 95        840       92                   wyoming      US-WY     US</span></span>
-<span id="cb8-97"><a href="#cb8-97"></a><span class="co">## 96        124       93                     yukon      CA-YT     CA</span></span>
-<span id="cb8-98"><a href="#cb8-98"></a><span class="co">##                      name_fr                   name_es</span></span>
-<span id="cb8-99"><a href="#cb8-99"></a><span class="co">## 1             Aguascalientes            Aguascalientes</span></span>
-<span id="cb8-100"><a href="#cb8-100"></a><span class="co">## 2           Basse-Californie           Baja California</span></span>
-<span id="cb8-101"><a href="#cb8-101"></a><span class="co">## 3    Basse-Californie du Sud       Baja California Sur</span></span>
-<span id="cb8-102"><a href="#cb8-102"></a><span class="co">## 4                   Campeche                  Campeche</span></span>
-<span id="cb8-103"><a href="#cb8-103"></a><span class="co">## 5                    Chiapas                   Chiapas</span></span>
-<span id="cb8-104"><a href="#cb8-104"></a><span class="co">## 6                  Chihuahua                 Chihuahua</span></span>
-<span id="cb8-105"><a href="#cb8-105"></a><span class="co">## 7                   Coahuila      Coahuila de Zaragoza</span></span>
-<span id="cb8-106"><a href="#cb8-106"></a><span class="co">## 8                     Colima                    Colima</span></span>
-<span id="cb8-107"><a href="#cb8-107"></a><span class="co">## 9                     Mexico          Ciudad de México</span></span>
-<span id="cb8-108"><a href="#cb8-108"></a><span class="co">## 10                   Durango                   Durango</span></span>
-<span id="cb8-109"><a href="#cb8-109"></a><span class="co">## 11                Guanajuato                Guanajuato</span></span>
-<span id="cb8-110"><a href="#cb8-110"></a><span class="co">## 12                  Guerrero        Estado de Guerrero</span></span>
-<span id="cb8-111"><a href="#cb8-111"></a><span class="co">## 13                   Hidalgo         Estado de Hidalgo</span></span>
-<span id="cb8-112"><a href="#cb8-112"></a><span class="co">## 14                   Jalisco                   Jalisco</span></span>
-<span id="cb8-113"><a href="#cb8-113"></a><span class="co">## 15            État de Mexico          Estado de México</span></span>
-<span id="cb8-114"><a href="#cb8-114"></a><span class="co">## 16                 Michoacán                 Michoacán</span></span>
-<span id="cb8-115"><a href="#cb8-115"></a><span class="co">## 17                   Morelos                   Morelos</span></span>
-<span id="cb8-116"><a href="#cb8-116"></a><span class="co">## 18                   Nayarit                   Nayarit</span></span>
-<span id="cb8-117"><a href="#cb8-117"></a><span class="co">## 19                Nuevo León                Nuevo León</span></span>
-<span id="cb8-118"><a href="#cb8-118"></a><span class="co">## 20                    Oaxaca                    Oaxaca</span></span>
-<span id="cb8-119"><a href="#cb8-119"></a><span class="co">## 21                    Puebla                    Puebla</span></span>
-<span id="cb8-120"><a href="#cb8-120"></a><span class="co">## 22                 Querétaro                 Querétaro</span></span>
-<span id="cb8-121"><a href="#cb8-121"></a><span class="co">## 23              Quintana Roo              Quintana Roo</span></span>
-<span id="cb8-122"><a href="#cb8-122"></a><span class="co">## 24           San Luis Potosí           San Luis Potosí</span></span>
-<span id="cb8-123"><a href="#cb8-123"></a><span class="co">## 25                   Sinaloa                   Sinaloa</span></span>
-<span id="cb8-124"><a href="#cb8-124"></a><span class="co">## 26                    Sonora                    Sonora</span></span>
-<span id="cb8-125"><a href="#cb8-125"></a><span class="co">## 27                   Tabasco                   Tabasco</span></span>
-<span id="cb8-126"><a href="#cb8-126"></a><span class="co">## 28                Tamaulipas                Tamaulipas</span></span>
-<span id="cb8-127"><a href="#cb8-127"></a><span class="co">## 29                  Tlaxcala                  Tlaxcala</span></span>
-<span id="cb8-128"><a href="#cb8-128"></a><span class="co">## 30                  Veracruz                  Veracruz</span></span>
-<span id="cb8-129"><a href="#cb8-129"></a><span class="co">## 31                   Yucatán                   Yucatán</span></span>
-<span id="cb8-130"><a href="#cb8-130"></a><span class="co">## 32                 Zacatecas                 Zacatecas</span></span>
-<span id="cb8-131"><a href="#cb8-131"></a><span class="co">## 33                   Alabama                   Alabama</span></span>
-<span id="cb8-132"><a href="#cb8-132"></a><span class="co">## 34                    Alaska                    Alaska</span></span>
-<span id="cb8-133"><a href="#cb8-133"></a><span class="co">## 35                   Alberta                   Alberta</span></span>
-<span id="cb8-134"><a href="#cb8-134"></a><span class="co">## 36                   Arizona                   Arizona</span></span>
-<span id="cb8-135"><a href="#cb8-135"></a><span class="co">## 37                  Arkansas                  Arkansas</span></span>
-<span id="cb8-136"><a href="#cb8-136"></a><span class="co">## 38      Colombie-Britannique        Columbia Británica</span></span>
-<span id="cb8-137"><a href="#cb8-137"></a><span class="co">## 39                Californie                California</span></span>
-<span id="cb8-138"><a href="#cb8-138"></a><span class="co">## 40                  Colorado                  Colorado</span></span>
-<span id="cb8-139"><a href="#cb8-139"></a><span class="co">## 41               Connecticut               Connecticut</span></span>
-<span id="cb8-140"><a href="#cb8-140"></a><span class="co">## 42                  Delaware                  Delaware</span></span>
-<span id="cb8-141"><a href="#cb8-141"></a><span class="co">## 43                Washington          Washington D. C.</span></span>
-<span id="cb8-142"><a href="#cb8-142"></a><span class="co">## 44                   Floride                   Florida</span></span>
-<span id="cb8-143"><a href="#cb8-143"></a><span class="co">## 45                   Géorgie                   Georgia</span></span>
-<span id="cb8-144"><a href="#cb8-144"></a><span class="co">## 46                     Idaho                     Idaho</span></span>
-<span id="cb8-145"><a href="#cb8-145"></a><span class="co">## 47                  Illinois                  Illinois</span></span>
-<span id="cb8-146"><a href="#cb8-146"></a><span class="co">## 48                   Indiana                   Indiana</span></span>
-<span id="cb8-147"><a href="#cb8-147"></a><span class="co">## 49                      Iowa                      Iowa</span></span>
-<span id="cb8-148"><a href="#cb8-148"></a><span class="co">## 50                    Kansas                    Kansas</span></span>
-<span id="cb8-149"><a href="#cb8-149"></a><span class="co">## 51                  Kentucky                  Kentucky</span></span>
-<span id="cb8-150"><a href="#cb8-150"></a><span class="co">## 52                 Louisiane                  Luisiana</span></span>
-<span id="cb8-151"><a href="#cb8-151"></a><span class="co">## 53                     Maine                     Maine</span></span>
-<span id="cb8-152"><a href="#cb8-152"></a><span class="co">## 54                  Manitoba                  Manitoba</span></span>
-<span id="cb8-153"><a href="#cb8-153"></a><span class="co">## 55                  Maryland                  Maryland</span></span>
-<span id="cb8-154"><a href="#cb8-154"></a><span class="co">## 56             Massachusetts             Massachusetts</span></span>
-<span id="cb8-155"><a href="#cb8-155"></a><span class="co">## 57                  Michigan                  Míchigan</span></span>
-<span id="cb8-156"><a href="#cb8-156"></a><span class="co">## 58                 Minnesota                 Minnesota</span></span>
-<span id="cb8-157"><a href="#cb8-157"></a><span class="co">## 59               Mississippi                  Misisipi</span></span>
-<span id="cb8-158"><a href="#cb8-158"></a><span class="co">## 60                  Missouri                    Misuri</span></span>
-<span id="cb8-159"><a href="#cb8-159"></a><span class="co">## 61                   Montana                   Montana</span></span>
-<span id="cb8-160"><a href="#cb8-160"></a><span class="co">## 62                  Nebraska                  Nebraska</span></span>
-<span id="cb8-161"><a href="#cb8-161"></a><span class="co">## 63                    Nevada                    Nevada</span></span>
-<span id="cb8-162"><a href="#cb8-162"></a><span class="co">## 64         Nouveau-Brunswick           Nuevo Brunswick</span></span>
-<span id="cb8-163"><a href="#cb8-163"></a><span class="co">## 65             New Hampshire           Nuevo Hampshire</span></span>
-<span id="cb8-164"><a href="#cb8-164"></a><span class="co">## 66                New Jersey              Nueva Jersey</span></span>
-<span id="cb8-165"><a href="#cb8-165"></a><span class="co">## 67           Nouveau-Mexique              Nuevo México</span></span>
-<span id="cb8-166"><a href="#cb8-166"></a><span class="co">## 68          État de New York                Nueva York</span></span>
-<span id="cb8-167"><a href="#cb8-167"></a><span class="co">## 69   Terre-Neuve-et-Labrador      Terranova y Labrador</span></span>
-<span id="cb8-168"><a href="#cb8-168"></a><span class="co">## 70          Caroline du Nord        Carolina del Norte</span></span>
-<span id="cb8-169"><a href="#cb8-169"></a><span class="co">## 71            Dakota du Nord          Dakota del Norte</span></span>
-<span id="cb8-170"><a href="#cb8-170"></a><span class="co">## 72 Territoires du Nord-Ouest  Territorios del Noroeste</span></span>
-<span id="cb8-171"><a href="#cb8-171"></a><span class="co">## 73           Nouvelle-Écosse             Nueva Escocia</span></span>
-<span id="cb8-172"><a href="#cb8-172"></a><span class="co">## 74                   Nunavut                   Nunavut</span></span>
-<span id="cb8-173"><a href="#cb8-173"></a><span class="co">## 75                      Ohio                      Ohio</span></span>
-<span id="cb8-174"><a href="#cb8-174"></a><span class="co">## 76                  Oklahoma                  Oklahoma</span></span>
-<span id="cb8-175"><a href="#cb8-175"></a><span class="co">## 77                   Ontario                   Ontario</span></span>
-<span id="cb8-176"><a href="#cb8-176"></a><span class="co">## 78                    Oregon                    Oregón</span></span>
-<span id="cb8-177"><a href="#cb8-177"></a><span class="co">## 79              Pennsylvanie               Pensilvania</span></span>
-<span id="cb8-178"><a href="#cb8-178"></a><span class="co">## 80     Île-du-Prince-Édouard Isla del Príncipe Eduardo</span></span>
-<span id="cb8-179"><a href="#cb8-179"></a><span class="co">## 81                Porto Rico               Puerto Rico</span></span>
-<span id="cb8-180"><a href="#cb8-180"></a><span class="co">## 82                    Québec                    Quebec</span></span>
-<span id="cb8-181"><a href="#cb8-181"></a><span class="co">## 83              Rhode Island              Rhode Island</span></span>
-<span id="cb8-182"><a href="#cb8-182"></a><span class="co">## 84              Saskatchewan              Saskatchewan</span></span>
-<span id="cb8-183"><a href="#cb8-183"></a><span class="co">## 85           Caroline du Sud          Carolina del Sur</span></span>
-<span id="cb8-184"><a href="#cb8-184"></a><span class="co">## 86             Dakota du Sud            Dakota del Sur</span></span>
-<span id="cb8-185"><a href="#cb8-185"></a><span class="co">## 87                 Tennessee                 Tennessee</span></span>
-<span id="cb8-186"><a href="#cb8-186"></a><span class="co">## 88                     Texas                     Texas</span></span>
-<span id="cb8-187"><a href="#cb8-187"></a><span class="co">## 89                      Utah                      Utah</span></span>
-<span id="cb8-188"><a href="#cb8-188"></a><span class="co">## 90                   Vermont                   Vermont</span></span>
-<span id="cb8-189"><a href="#cb8-189"></a><span class="co">## 91                  Virginie                  Virginia</span></span>
-<span id="cb8-190"><a href="#cb8-190"></a><span class="co">## 92        État de Washington                Washington</span></span>
-<span id="cb8-191"><a href="#cb8-191"></a><span class="co">## 93      Virginie-Occidentale       Virginia Occidental</span></span>
-<span id="cb8-192"><a href="#cb8-192"></a><span class="co">## 94                 Wisconsin                 Wisconsin</span></span>
-<span id="cb8-193"><a href="#cb8-193"></a><span class="co">## 95                   Wyoming                   Wyoming</span></span>
-<span id="cb8-194"><a href="#cb8-194"></a><span class="co">## 96                     Yukon                     Yukón</span></span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="reference/region_codes.html">region_codes</a></span>, <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">##   CountryNum StateNum               State iso_3166_2 iso_a2</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">## 1        484        1      aguascalientes     MX-AGU     MX</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="co">## 2        484        2     baja california     MX-BCN     MX</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">## 3        484        3 baja california sur     MX-BCS     MX</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">## 4        484        4            campeche     MX-CAM     MX</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co">## 5        484        5             chiapas     MX-CHP     MX</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">## 6        484        6           chihuahua     MX-CHH     MX</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co">##                   name_fr             name_es</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="co">## 1          Aguascalientes      Aguascalientes</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co">## 2        Basse-Californie     Baja California</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="co">## 3 Basse-Californie du Sud Baja California Sur</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="co">## 4                Campeche            Campeche</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co">## 5                 Chiapas             Chiapas</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="co">## 6               Chihuahua           Chihuahua</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="filter-on-species-names">Filter on species names<a class="anchor" aria-label="anchor" href="#filter-on-species-names"></a>
 </h3>
 <p>View the species lists for your particular dataset by calling:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bbs_list</span><span class="op">$</span><span class="va">species_list</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">## # A tibble: 756 x 12</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="co">##    Seq     AOU English_Common_Na~ French_Common_N~ Spanish_Common_~ ORDER Family</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="co">##    &lt;chr&gt; &lt;int&gt; &lt;chr&gt;              &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; </span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="co">##  1 6      1770 Black-bellied Whi~ "Dendrocygne \x~ Dendrocygna aut~ Anse~ Anati~</span></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="co">##  2 7      1780 Fulvous Whistling~ "Dendrocygne fa~ Dendrocygna bic~ Anse~ Anati~</span></span>
-<span id="cb10-6"><a href="#cb10-6"></a><span class="co">##  3 8      1760 Emperor Goose      "Oie empereur"   Anser canagicus  Anse~ Anati~</span></span>
-<span id="cb10-7"><a href="#cb10-7"></a><span class="co">##  4 9      1690 Snow Goose         "Oie des neiges" Anser caerulesc~ Anse~ Anati~</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="co">##  5 10     1691 (Blue Goose) Snow~ "Oie des neiges~ Anser caerulesc~ Anse~ Anati~</span></span>
-<span id="cb10-9"><a href="#cb10-9"></a><span class="co">##  6 11     1700 Ross's Goose       "Oie de Ross"    Anser rossii     Anse~ Anati~</span></span>
-<span id="cb10-10"><a href="#cb10-10"></a><span class="co">##  7 13     1710 Greater White-fro~ "Oie rieuse"     Anser albifrons  Anse~ Anati~</span></span>
-<span id="cb10-11"><a href="#cb10-11"></a><span class="co">##  8 18     1730 Brant              "Bernache crava~ Branta bernicla  Anse~ Anati~</span></span>
-<span id="cb10-12"><a href="#cb10-12"></a><span class="co">##  9 19     1740 (Black Brant) Bra~ "Bernache crava~ Branta bernicla~ Anse~ Anati~</span></span>
-<span id="cb10-13"><a href="#cb10-13"></a><span class="co">## 10 21     1725 Cackling Goose     "Bernache de Hu~ Branta hutchins~ Anse~ Anati~</span></span>
-<span id="cb10-14"><a href="#cb10-14"></a><span class="co">## # ... with 746 more rows, and 5 more variables: Genus &lt;chr&gt;, Species &lt;chr&gt;,</span></span>
-<span id="cb10-15"><a href="#cb10-15"></a><span class="co">## #   Scientific_Name &lt;chr&gt;, AOU4 &lt;chr&gt;, AOU6 &lt;chr&gt;</span></span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span>,<span class="fl">3</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">## # A tibble: 3 x 12</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co">##   Seq     AOU English_Common_Name French_Common_N~ Spanish_Common_~ ORDER Family</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co">##   &lt;chr&gt; &lt;int&gt; &lt;chr&gt;               &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; </span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co">## 1 6      1770 Black-bellied Whis~ "Dendrocygne \x~ Dendrocygna aut~ Anse~ Anati~</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="co">## 2 7      1780 Fulvous Whistling-~ "Dendrocygne fa~ Dendrocygna bic~ Anse~ Anati~</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="co">## 3 8      1760 Emperor Goose       "Oie empereur"   Anser canagicus  Anse~ Anati~</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="co">## # ... with 5 more variables: Genus &lt;chr&gt;, Species &lt;chr&gt;, Scientific_Name &lt;chr&gt;,</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="co">## #   AOU4 &lt;chr&gt;, AOU6 &lt;chr&gt;</span></span></code></pre></div>
 <p>or view the most recent species list (may be the same as yours..):</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="reference/species_list.html">species_list</a></span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="reference/species_list.html">species_list</a></span>,<span class="fl">3</span><span class="op">)</span></code></pre></div>
 <p>Keep only <em>Passer domesticus</em>:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># grab the aou code for House Sparrow  using common name </span>
-<span class="va">hosp.aou.code</span> <span class="op">&lt;-</span> <span class="va">bbs_list</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">AOU</span><span class="op">[</span><span class="va">bbs_list</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">English_Common_Name</span><span class="op">==</span><span class="st">"House Sparrow"</span><span class="op">]</span>
+<span class="va">hosp.aou.code</span> <span class="op">&lt;-</span> <span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">AOU</span><span class="op">[</span><span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">English_Common_Name</span><span class="op">==</span><span class="st">"House Sparrow"</span><span class="op">]</span>
 <span class="co"># or genus and species epithet</span>
 <span class="va">hosp.aou.code</span> <span class="op">&lt;-</span>
-  <span class="va">bbs_list</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">AOU</span><span class="op">[</span><span class="va">bbs_list</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">Genus</span> <span class="op">==</span> <span class="st">"Passer"</span> <span class="op">&amp;</span>
-                         <span class="va">bbs_list</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"domesticus"</span><span class="op">]</span>
+  <span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">AOU</span><span class="op">[</span><span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">Genus</span> <span class="op">==</span> <span class="st">"Passer"</span> <span class="op">&amp;</span>
+                         <span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"domesticus"</span><span class="op">]</span>
 
-<span class="co"># filter the observations along  BBS's "AOU" code:</span>
+<span class="co"># filter the observations along  BBSs "AOU" code:</span>
 <span class="co">## note capitalization but spelling matters. can provide species as common, latin, or BBS "AOU" code</span>
-<span class="va">hosp.df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/munge_bbs_data.html">munge_bbs_data</a></span><span class="op">(</span><span class="va">bbs_list</span>, 
+<span class="va">hosp.df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/munge_bbs_data.html">munge_bbs_data</a></span><span class="op">(</span>bbs_list<span class="op">=</span><span class="va">bbs</span>, 
                           species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"House SPARROW"</span>, <span class="st">"passer Domesticus"</span>, <span class="va">hosp.aou.code</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">## When zero.fill=TRUE, a single species should be provided in argument `species`. Not zero-filling the data.</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="co">## Collapsing BBS data and metadata into a single data frame.</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO")</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">## Joining, by = c("RouteDataID", "CountryNum", "StateNum", "Route", "RPID",</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co">## "Year", "AOU", "RTENO", "RouteTotal")</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co">## Collapsing BBS data and metadata into a single data frame.</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO")</span></span>
 <span id="cb13-7"><a href="#cb13-7"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RTENO")</span></span>
 <span id="cb13-8"><a href="#cb13-8"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO")</span></span>
-<span id="cb13-9"><a href="#cb13-9"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO", "Month", "Day", "ObsN", "TotalSpp", "StartTemp", "EndTemp", "TempScale", "StartWind", "EndWind", "StartSky", "EndSky", "StartTime", "EndTime", "Assistant", "QualityCurrentID", "RunType", "Date", "julian")</span></span></code></pre></div>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO", "Month", "Day", "ObsN", "TotalSpp", "StartTemp", "EndTemp", "TempScale", "StartWind", "EndWind", "StartSky", "EndSky", "StartTime", "EndTime", "Assistant", "QualityCurrentID", "RunType", "Date", "julian")</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="co">## Joining, by = c("RTENO", "ObsN", "TotalSpp", "Date")</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="bbs-data-availability-including-sb_id">BBS Data Availability (including sb_id)<a class="anchor" aria-label="anchor" href="#bbs-data-availability-including-sb_id"></a>
 </h2>
-<p>There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the <a href="https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9" class="external-link">observations data</a> and the analysis results. The datasets (observations, results) are permanently and publicly available at <a href="http://sciencebase.gov" class="external-link">USGS ScienceBase</a>.</p>
+<p>There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the <a href="https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9" class="external-link">observations data</a> and the analysis results. The datasets (observations, results) are permanently and publicly available at <a href="https://www.sciencebase.gov" class="external-link">USGS ScienceBase</a>.</p>
 <p>The most recent annual releases of the observations and results datasets are stored as data objects in this package (see <code>data(bbs)</code>) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function <code>get_bbs_data()</code>.</p>
 A lookup table containing the available datasets (N = 7) and analysis results will be regularly updated, and comprises the following entries:
 <table class="table table table-striped" style>
@@ -543,7 +357,7 @@ Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R pack
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h2>
-<p>To make a contribution visit <a href="https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md" class="external-link">CONTRIBUTIONS.md</a>. Contributors <strong>must adhere to the <a href="https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md" class="external-link">Code of Conduct</a>.</strong> For questions, comments, or issues, feel free to email the maintainer <a href="mailto:jburnett@usgs.gov">Jessica Burnett</a> or submit an <a href="https://github.com/TrashBirdEcology/bbsAssistant/issues" class="external-link">Issue</a> (preferred).</p>
+<p>Contributors must adhere to the <a href="https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md" class="external-link">Code of Conduct</a>. For questions, comments, or issues, feel free to email the maintainer <a href="mailto:jburnett@usgs.gov">Jessica Burnett</a> or submit an <a href="https://github.com/TrashBirdEcology/bbsAssistant/issues" class="external-link">Issue</a> (preferred).</p>
 </div>
 
   </div>
@@ -576,7 +390,7 @@ Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R pack
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Jessica Burnett <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-0896-5099" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Gabriela Palomo-Munoz <br><small class="roles"> Author </small>  </li>
+<li>Gabriela Palomo-Munoz <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0661-413X" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Lyndsie Wszola <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-2660-2048" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
@@ -587,7 +401,7 @@ Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R pack
 <li><a href="https://doi.org/10.21105/joss.01768" class="external-link"><img src="https://joss.theoj.org/papers/10.21105/joss.01768/status.svg?style=flat-square&amp;logo=appveyor" alt="DOI"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="lifecycle"></a></li>
 <li><a href="https://github.com/trashbirdecology/bbsAssistant/actions" class="external-link"><img src="https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg?style=flat-square&amp;logo=appveyor" alt="R build status"></a></li>
-<li><a href="http://creativecommons.org/publicdomain/zero/1.0/" class="external-link"><img src="https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="License: CC0"></a></li>
+<li><a href="https://creativecommons.org/publicdomain/zero/1.0/" class="external-link"><img src="https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="License: CC0"></a></li>
 <li><a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="Contributors"></a></li>
 <li><a href="https://github.com/trashbirdecology/bbsAssistant/actions" class="external-link"><img src="https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
