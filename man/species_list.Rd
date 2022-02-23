@@ -25,8 +25,8 @@ Species List Associated with Most Recent BBS Dataset Release
 \item{Genus}{taxonomic genus}
 \item{Species}{taxonomic species epithet}
 \item{Scientific_Name}{comprised of the Genus and Species as provided in BBS dataset}
-\item{AOU4}{4-letter alpha code from IBP AOU data (Seq4) \url{https://www.birdpop.org/pages/birdSpeciesCodes.php}. Ths should be double-checked when using for analytical purposes. }
-\item{AOU6}{4-letter alpha code from IBP AOU data (Seq6)\url{https://www.birdpop.org/pages/birdSpeciesCodes.php}. Ths should be double-checked when using for analytical purposes. }
+\item{AOU4}{4-letter alpha code from IBP AOU data (Seq4) \url{https://www.birdpop.org/pages/birdSpeciesCodes.php}. This should be double-checked when using for analytical purposes. }
+\item{AOU6}{4-letter alpha code from IBP AOU data (Seq6)\url{https://www.birdpop.org/pages/birdSpeciesCodes.php}. This should be double-checked when using for analytical purposes. }
 }
 }
 \keyword{datasets}

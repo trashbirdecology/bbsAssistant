@@ -11,11 +11,8 @@ always_allow_html: true
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg?style=flat-square&logo=appveyor)](https://www.tidyverse.org/lifecycle/#maturing)
 ![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg?style=flat-square&logo=appveyor)
 [![R build status](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg?style=flat-square&logo=appveyor)](https://github.com/trashbirdecology/bbsAssistant/actions)
-[![License: CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&logo=appveyor)](http://creativecommons.org/publicdomain/zero/1.0/)
+[![License: CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&logo=appveyor)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&logo=appveyor)](#contributors)
-<!-- ![downloads](https://img.shields.io/github/downloads/trashbirdecology/bbsAssistant/total?style=flat-square&logo=appveyor) -->
-<!-- ![dependencies](https://img.shields.io/librariesio/github/trashbirdecology/bbsassistant?style=flat-square&logo=appveyor) -->
-<!-- [![Travis build status](https://travis-ci.org/trashbirdecology/bbsAssistant.svg?branch=main)](https://travis-ci.org/trashbirdecology/bbsAssistant) -->
 [![R-CMD-check](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg)](https://github.com/trashbirdecology/bbsAssistant/actions)
 <!-- badges: end -->
 <img src=".github/figures/logo.png" align="right" height=140/>
@@ -29,8 +26,8 @@ This package contains functions for downloading, importing, and (soon) visualizi
 ## Quick Start
 ```{r install, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
 devtools::install_github("trashbirdecology/bbsAssistant", 
-                         ref="feature-add", # change to 'main' for releases
-                         # ref="main", # change to 'main' for releases
+                         ref="feature-add", # change to main for releases
+                         # ref="main", # change to main for releases
                          force=TRUE) # force=TRUE to get most recent dev version
 ```
 
@@ -52,19 +49,19 @@ names(bbs)
 ```
 
 ## Filtering by State/Region
-Filter the dataset `bbs` using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns 'CountryNum' and 'StateNum') or ISO alpha codes and names (see columns 'iso_3155_2','iso_a2','name_fr','name_es'):
+Filter the dataset `bbs` using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and names (see columns iso_3155_2, iso_a2, name_fr, name_es):
 ```{r regioncodes, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-bbsAssistant::region_codes
+head(bbsAssistant::region_codes, 6)
 ```
 ### Filter on species names
 View the species lists for your particular dataset by calling:
 ```{r}
-bbs$species_list
+head(bbs$species_list,3)
 ```
 
 or view the most recent species list (may be the same as yours..):
 ```{r, eval=FALSE}
-bbsAssistant::species_list
+head(bbsAssistant::species_list,3)
 ```
 
 Keep only _Passer domesticus_:
@@ -76,14 +73,14 @@ hosp.aou.code <-
   bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
                          bbs$species_list$Species == "domesticus"]
 
-# filter the observations along  BBS's "AOU" code:
+# filter the observations along  BBSs "AOU" code:
 ## note capitalization but spelling matters. can provide species as common, latin, or BBS "AOU" code
 hosp.df <- munge_bbs_data(bbs_list=bbs, 
                           species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) 
 ```
 
 ## BBS Data Availability (including sb_id)
-There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the [observations data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9) and the analysis results. The datasets (observations, results) are permanently and publicly available at [USGS ScienceBase](http://sciencebase.gov). 
+There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the [observations data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9) and the analysis results. The datasets (observations, results) are permanently and publicly available at [USGS ScienceBase](https://www.sciencebase.gov). 
 
 The most recent annual releases of the observations and results datasets are stored as data objects in this package (see `data(bbs)`) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function `get_bbs_data()`.
 
@@ -113,4 +110,4 @@ Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R pack
 
 
 ## Contributing
-To make a contribution visit  [CONTRIBUTIONS.md](https://github.com/trashbirdecology/bbsAssistant/CONTRIBUTING.md). Contributors __must adhere to the [Code of Conduct](https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md).__ For questions, comments, or issues, feel free to email the maintainer [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues) (preferred).
+Contributors must adhere to the [Code of Conduct](https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md). For questions, comments, or issues, feel free to email the maintainer [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues) (preferred).

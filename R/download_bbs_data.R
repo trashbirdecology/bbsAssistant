@@ -36,8 +36,7 @@ sb_items <- NULL # bind variable to avoid CMD CHK WARNING
                 overwrite_file = TRUE
             )
         } else
-            ("The 50-StopData already exists in bbs_dir and overwrite==FALSE. Not overwriting existing files.")
-
+            ("The 50-StopData for specified ScienceBase item already exists in bbs_dir and overwrite==FALSE. Not overwriting existing files.")
 
         return(bbs_dir)
     }

@@ -23,7 +23,7 @@ munge_bbs_data(
 \arguments{
 \item{bbs_list}{A list with element "species_list", obtained from running bbsAssistant::get_bbs_data()...}
 
-\item{states}{vector of one or more states/territorties/sub-national political regions (see data(region_codes))}
+\item{states}{vector of one or more states/territories/sub-national political regions (see data(region_codes))}
 
 \item{countries}{vector of one or more nations/countries (see data(region_codes))}
 
@@ -41,7 +41,7 @@ munge_bbs_data(
 
 \item{keep.stop.level.data}{logical TRUE will keep the stop-level data and metadata. FALSE will remove these and provide only mean values or sums.}
 
-\item{QualityCurrentID}{an index used to indicate the quality of the BBS data. See BBS metadata at USGS ScienceBase for more infromation. Suggest keeping this value at 1 unless you know what you're doing}
+\item{QualityCurrentID}{an index used to indicate the quality of the BBS data. See BBS metadata at USGS ScienceBase for more information. Suggest keeping this value at 1 unless you know what you're doing}
 
 \item{active.only}{Logical. If TRUE keep only active routes. Discontinued routes will be discarded.}
 

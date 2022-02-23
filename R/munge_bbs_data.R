@@ -4,11 +4,11 @@
 #' @param bbs_list A list with element "species_list", obtained from running bbsAssistant::get_bbs_data()...
 #' @param species A vector of one or more species (using English Common Name) to subset the data by. Capitalization ignored.
 #' @param genera vector of one or more genera  to retain in data
-#' @param states vector of one or more states/territorties/sub-national political regions (see data(region_codes))
+#' @param states vector of one or more states/territories/sub-national political regions (see data(region_codes))
 #' @param countries vector of one or more nations/countries (see data(region_codes))
 #' @param order  vector of one or more orders to retain in data
 #' @param family vector of one or more families to retain in data
-#' @param QualityCurrentID an index used to indicate the quality of the BBS data. See BBS metadata at USGS ScienceBase for more infromation. Suggest keeping this value at 1 unless you know what you're doing
+#' @param QualityCurrentID an index used to indicate the quality of the BBS data. See BBS metadata at USGS ScienceBase for more information. Suggest keeping this value at 1 unless you know what you're doing
 #' @param zero.fill If TRUE and a single species is provided in 'species', this function will output list$observations with zero-filled data.
 #' @param active.only Logical. If TRUE keep only active routes. Discontinued routes will be discarded.
 #' @param observations.output return the object as a list of data frames ("list") or a single data frame ("flat" or "df" or "data.frame")
@@ -34,7 +34,7 @@ munge_bbs_data <-
     # ARG CHECKS --------------------------------------------------------------
     stopifnot(tolower(observations.output) %in% c("flat", "df","data.table","data.frame", "list"))
     ## add binded variables to avoid RCMD CHECK WHINING
-    Date <- RouteTotal <- ObsN <- Active <- AOU <- RTENO <-Year <-iso_3166_2<- iso_a2 <-ObsFirstYearOnRTENO <- ObsFirstYearOnBBS  <-NULL
+    State <- StateNum <- Date <- RouteTotal <- ObsN <- Active <- AOU <- RTENO <-Year <-iso_3166_2<- iso_a2 <-ObsFirstYearOnRTENO <- ObsFirstYearOnBBS  <-NULL
 
     # SUBSET BY SPATIAL INDEXES ---------------------------------------------------
     # grab region codes
@@ -45,11 +45,30 @@ munge_bbs_data <-
     }
     # by state/terr/prov
     if(!is.null(states)){
-      region_codes <- region_codes %>% dplyr::filter(tolower(gsub("-","", iso_3166_2)) %in% tolower(gsub("-","",states)))
-    }
-    if(nrow(region_codes)<1)stop("Region codes for countries and/or states not found. \nCall `bbsAssistant::region_codes` to ensure you are properly specifying regions.\n")
+      states <- tolower(gsub("-","",states)) # munge the states a little
+      all.region.codes <- c(tolower(region_codes$iso_3166_2),
+        gsub("-", "", tolower(region_codes$iso_3166_2)),
+        tolower(region_codes$State),
+        region_codes$StateNum
+        )
+      # overlap  <- states[which(states %in% all.region.codes)]
+      overlap <- all.region.codes[which(all.region.codes %in% states)]
 
-    # filter the bbs data by region_codes
+      if(length(overlap)>=1){
+        region_codes <-
+          region_codes %>%
+          dplyr::filter(gsub("-", "",tolower(StateNum)) %in% overlap |
+                          gsub("-", "",tolower(State)) %in% overlap |
+                          gsub("-", "",tolower(iso_3166_2))  %in% overlap
+          )
+
+
+
+      }else{message("states specified in arg `states` were not found. returning all states.")}
+    } # end states subsetting
+
+
+    # filter the bbs data by all region_codes
     bbs_list$observations <- bbs_list$observations[ bbs_list$observations$CountryNum %in% region_codes$CountryNum,]
     bbs_list$observations <- bbs_list$observations[ bbs_list$observations$StateNum %in% region_codes$StateNum,]
     stopifnot(nrow(bbs_list$observations)>=1)
@@ -57,16 +76,20 @@ munge_bbs_data <-
     # TEMPORAL SUBSETTING -----------------------------------------------------
     bbs_list$observations <- bbs_list$observations %>% dplyr::filter(Year %in% year.range)
     stopifnot(nrow(bbs_list$observations)>=2)
-
+# browser()
     # GRAB A LIST OF ALL SAMPLED ROUTES -------------------------------------------------------------------------
     ## before further subsetting, we want to grab an index of which routes were sampled each year (after we subset by year and spatial extent/loc)
     all.samples <-  bbs_list$observations %>%
       dplyr::distinct(Year, RTENO, .keep_all=TRUE)
     stopifnot(all(all.samples$RTENO %in% bbs_list$routes$RTENO))
+    stopifnot(nrow(all.samples)>=1)
 
     # TAXONOMIC SUBSETTING ----------------------------------------------------
     ## grab relevant taxonomic names and codes for subsetting BBS by species
-    if(is.null(species)){species <- unique(bbs_list$observations$AOU)}else{
+
+    if(is.null(species)){species <- unique(bbs_list$observations$AOU)
+    aous.keep <- unique(species)
+    }else{
       species <- tolower(species)
       sl      <- bbs_list$species_list
       inds = tolower(c(species, genera, family, order))
@@ -118,8 +141,8 @@ munge_bbs_data <-
     # it ensures all sampled RTENO-year combinations are include.
     if(zero.fill){
       if(is.null(species)|length(unique(aous.keep))!=1){
-        message(
-          "When zero.fill=TRUE, a single species should be provided in argument `species`. Not zero-filling the data.\n"
+        cat(
+          "FYI: when zero.fill=TRUE, a single species should be provided in argument `species`. Not zero-filling the data.\n"
         )}else{
         ##
         ## force the AOU code to the unique in observations
