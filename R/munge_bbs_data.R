@@ -1,5 +1,5 @@
-#' @title Subset BBS observations data by one or more species of interest.
-#' @description ...
+#' @title Subset BBS Data by One or More Parameters
+#' @description This function subsets the BBS observations using taxonomic, geospatial, or temporal features.
 #' @param year.range value(s) of year(s) by which to subset the data. If not specified will return all data in the dataset.
 #' @param bbs_list A list with element "species_list", obtained from running bbsAssistant::get_bbs_data()...
 #' @param species A vector of one or more species (using English Common Name) to subset the data by. Capitalization ignored.
@@ -13,125 +13,166 @@
 #' @param active.only Logical. If TRUE keep only active routes. Discontinued routes will be discarded.
 #' @param observations.output return the object as a list of data frames ("list") or a single data frame ("flat" or "df" or "data.frame")
 #' @param keep.stop.level.data logical TRUE will keep the stop-level data and metadata. FALSE will remove these and provide only mean values or sums.
-#' @importFrom dplyr mutate filter across group_by ungroup all_of
+#' @importFrom dplyr mutate filter across group_by ungroup all_of distinct left_join full_join select
 #' @export munge_bbs_data
 munge_bbs_data <-
   function(bbs_list,
-           states = NULL, #chacer vecr of ISO or english names. see region_codes
-           countries = NULL, #chacer vecr of ISO or english names see region_codes
+           states = NULL,
+           countries = NULL,
            species = NULL,
-           genera=NULL,
-           order=NULL,
-           family=NULL,
+           genera = NULL,
+           order = NULL,
+           family = NULL,
            zero.fill = TRUE,
            year.range = 1966:lubridate::year(Sys.Date()),
            keep.stop.level.data = FALSE,
            QualityCurrentID = 1,
            active.only = FALSE,
-           observations.output = "flat"
-  ) {
-
+           observations.output = "flat") {
     # ARG CHECKS --------------------------------------------------------------
-    stopifnot(tolower(observations.output) %in% c("flat", "df","data.table","data.frame", "list"))
+    stopifnot(
+      tolower(observations.output) %in% c("flat", "df", "data.table", "data.frame", "list")
+    )
     ## add binded variables to avoid RCMD CHECK WHINING
-    State <- StateNum <- Date <- RouteTotal <- ObsN <- Active <- AOU <- RTENO <-Year <-iso_3166_2<- iso_a2 <-ObsFirstYearOnRTENO <- ObsFirstYearOnBBS  <-NULL
+    State <-
+      StateNum <-
+      Date <-
+      RouteTotal <-
+      ObsN <-
+      Active <-
+      AOU <-
+      RTENO <-
+      Year <-
+      iso_3166_2 <-
+      iso_a2 <- ObsFirstYearOnRTENO <- ObsFirstYearOnBBS  <- NULL
 
     # SUBSET BY SPATIAL INDEXES ---------------------------------------------------
     # grab region codes
     region_codes <- bbsAssistant::region_codes
     # by country
-    if(!is.null(countries)){
-      region_codes <- region_codes %>% dplyr::filter(tolower(iso_a2) %in% tolower(countries))
+    if (!is.null(countries)) {
+      region_codes <-
+        region_codes %>% dplyr::filter(tolower(iso_a2) %in% tolower(countries))
     }
     # by state/terr/prov
-    if(!is.null(states)){
-      states <- tolower(gsub("-","",states)) # munge the states a little
-      all.region.codes <- c(tolower(region_codes$iso_3166_2),
+    if (!is.null(states)) {
+      states <- tolower(gsub("-", "", states)) # munge the states a little
+      all.region.codes <- c(
+        tolower(region_codes$iso_3166_2),
         gsub("-", "", tolower(region_codes$iso_3166_2)),
         tolower(region_codes$State),
         region_codes$StateNum
-        )
+      )
       # overlap  <- states[which(states %in% all.region.codes)]
-      overlap <- all.region.codes[which(all.region.codes %in% states)]
+      overlap <-
+        all.region.codes[which(all.region.codes %in% states)]
 
-      if(length(overlap)>=1){
+      if (length(overlap) >= 1) {
         region_codes <-
           region_codes %>%
-          dplyr::filter(gsub("-", "",tolower(StateNum)) %in% overlap |
-                          gsub("-", "",tolower(State)) %in% overlap |
-                          gsub("-", "",tolower(iso_3166_2))  %in% overlap
+          dplyr::filter(
+            gsub("-", "", tolower(StateNum)) %in% overlap |
+              gsub("-", "", tolower(State)) %in% overlap |
+              gsub("-", "", tolower(iso_3166_2))  %in% overlap
           )
 
 
 
-      }else{message("states specified in arg `states` were not found. returning all states.")}
+      } else{
+        message("states specified in arg `states` were not found. returning all states.")
+      }
     } # end states subsetting
 
 
     # filter the bbs data by all region_codes
-    bbs_list$observations <- bbs_list$observations[ bbs_list$observations$CountryNum %in% region_codes$CountryNum,]
-    bbs_list$observations <- bbs_list$observations[ bbs_list$observations$StateNum %in% region_codes$StateNum,]
-    stopifnot(nrow(bbs_list$observations)>=1)
+    bbs_list$observations <-
+      bbs_list$observations[bbs_list$observations$CountryNum %in% region_codes$CountryNum, ]
+    bbs_list$observations <-
+      bbs_list$observations[bbs_list$observations$StateNum %in% region_codes$StateNum, ]
+    stopifnot(nrow(bbs_list$observations) >= 1)
 
     # TEMPORAL SUBSETTING -----------------------------------------------------
-    bbs_list$observations <- bbs_list$observations %>% dplyr::filter(Year %in% year.range)
-    stopifnot(nrow(bbs_list$observations)>=2)
-# browser()
+    bbs_list$observations <-
+      bbs_list$observations %>% dplyr::filter(Year %in% year.range)
+    stopifnot(nrow(bbs_list$observations) >= 2)
+    # browser()
     # GRAB A LIST OF ALL SAMPLED ROUTES -------------------------------------------------------------------------
     ## before further subsetting, we want to grab an index of which routes were sampled each year (after we subset by year and spatial extent/loc)
     all.samples <-  bbs_list$observations %>%
-      dplyr::distinct(Year, RTENO, .keep_all=TRUE)
+      dplyr::distinct(Year, RTENO, .keep_all = TRUE)
     stopifnot(all(all.samples$RTENO %in% bbs_list$routes$RTENO))
-    stopifnot(nrow(all.samples)>=1)
+    stopifnot(nrow(all.samples) >= 1)
 
     # TAXONOMIC SUBSETTING ----------------------------------------------------
     ## grab relevant taxonomic names and codes for subsetting BBS by species
 
-    if(is.null(species)){species <- unique(bbs_list$observations$AOU)
-    aous.keep <- unique(species)
-    }else{
+    if (is.null(species)) {
+      species <- unique(bbs_list$observations$AOU)
+      aous.keep <- unique(species)
+    } else{
       species <- tolower(species)
       sl      <- bbs_list$species_list
       inds = tolower(c(species, genera, family, order))
-      cols = tolower(c("English_Common_Name", "Scientific_Name", "Family", "Genus","ORDER", "Species", "AOU", "AOU4", "AOU6"))
+      cols = tolower(
+        c(
+          "English_Common_Name",
+          "Scientific_Name",
+          "Family",
+          "Genus",
+          "ORDER",
+          "Species",
+          "AOU",
+          "AOU4",
+          "AOU6"
+        )
+      )
       aous.keep <- NULL
       ##i know there's a way to clean up with filter_Across or at or something but w/ev for now...
-      for(i in seq_along(cols)){
-        col.ind <- which(tolower(names(sl))==cols[i])
+      for (i in seq_along(cols)) {
+        col.ind <- which(tolower(names(sl)) == cols[i])
         row.ind <- which(tolower(sl[[col.ind]]) %in% inds)
         aous.keep <- c(sl$AOU[row.ind], aous.keep)
       }
       stopifnot(!is.null(aous.keep))
       ## now remove the unwanted species from observations
-      bbs_list$observations <- bbs_list$observations %>% dplyr::filter(AOU %in% aous.keep)
+      bbs_list$observations <-
+        bbs_list$observations %>% dplyr::filter(AOU %in% aous.keep)
     } # end species subsetting
 
     # BBS PROTOCOL SUBSETTING -----------------------------------------------------
-    bbs_list$weather <- bbs_list$weather %>% dplyr::filter(QualityCurrentID %in% QualityCurrentID)
-    if(active.only) bbs_list$routes  <- bbs_list$routes %>% dplyr::filter(Active==1)
+    bbs_list$weather <-
+      bbs_list$weather %>% dplyr::filter(QualityCurrentID %in% QualityCurrentID)
+    if (active.only)
+      bbs_list$routes  <- bbs_list$routes %>% dplyr::filter(Active == 1)
 
     # CREATE ROUTE-LEVEL MEANS AND SUMS ----------------------------------------
     cols.stop <- c(paste0("Stop", c(1:50))) # stop-level counts
     cols.wind <- c(paste0("Wind", c(1:50)))
-    cols.noise <- c(paste0("Noise", c(1:50))) # stop-level noise covar
+    cols.noise <-
+      c(paste0("Noise", c(1:50))) # stop-level noise covar
     cols.car <- c(paste0("Car", c(1:50))) # stop-level car covar
     bbs_list$observations <-
       bbs_list$observations %>%
-      mutate(RouteTotal=rowSums(dplyr::across(dplyr::all_of(cols.stop))))
+      dplyr::mutate(RouteTotal = rowSums(dplyr::across(dplyr::all_of(cols.stop))))
     bbs_list$vehicle_data <- bbs_list$vehicle_data %>%
-      mutate(CarMean= round(rowSums(dplyr::across(dplyr::all_of(cols.car)))/50)) # rounded
+      dplyr::mutate(CarMean = round(rowSums(dplyr::across(
+        dplyr::all_of(cols.car)
+      )) / 50)) # rounded
     bbs_list$vehicle_data <- bbs_list$vehicle_data %>%
-      mutate(NoiseMean= round(rowSums(dplyr::across(dplyr::all_of(cols.noise)))/50)) # rounded
+      dplyr::mutate(NoiseMean = round(rowSums(dplyr::across(
+        dplyr::all_of(cols.noise)
+      )) / 50)) # rounded
 
     # REMOVE STOP.LEVEL DATA (if specified) -----------------------------------
-    if(!keep.stop.level.data){
+    if (!keep.stop.level.data) {
       # now remove all the unwanted columns
-      cols=c(cols.stop, cols.noise, cols.car)
+      cols = c(cols.stop, cols.noise, cols.car)
       if (!keep.stop.level.data) {
         for (i in seq_along(bbs_list)) {
-          x=bbs_list[[i]]
-          if(is.null(nrow(x)))next()
-          bbs_list[[i]] <- x[,!(names(x) %in% cols)]
+          x = bbs_list[[i]]
+          if (is.null(nrow(x)))
+            next()
+          bbs_list[[i]] <- x[, !(names(x) %in% cols)]
         }
       }
     }# end keep.stop.level.data
@@ -139,14 +180,16 @@ munge_bbs_data <-
     # ZERO-FILL DATA ----------------------------------------------------------
     # this finds the RTENO-year combinations that exist in the `sampled` data frame but no in bbs_observations.
     # it ensures all sampled RTENO-year combinations are include.
-    if(zero.fill){
-      if(is.null(species)|length(unique(aous.keep))!=1){
+    if (zero.fill) {
+      if (is.null(species) | length(unique(aous.keep)) != 1) {
         cat(
           "FYI: when zero.fill=TRUE, a single species should be provided in argument `species`. Not zero-filling the data.\n"
-        )}else{
+        )
+      } else{
         ##
         ## force the AOU code to the unique in observations
-        all.samples$AOU        <- unique(bbs_list$observations$AOU)[1]
+        all.samples$AOU        <-
+          unique(bbs_list$observations$AOU)[1]
         ## force count to zero
         all.samples$RouteTotal <- 0
 
@@ -158,29 +201,44 @@ munge_bbs_data <-
           dplyr::ungroup() %>%
           dplyr::distinct(RTENO, Year, .keep_all = TRUE)
 
-        }# end innter zero-fill ifelse
+      }# end innter zero-fill ifelse
     }#end zero-fill data
 
 
     # FILTER ALL LIST ELEMENTS FOR RTENO --------------------------------------
     ## this section identifies all the RTENOs common to list elements and removes others.
     # define all common rtenos
-    rteno.filter <- Reduce(intersect, list(bbs_list$observations$RTENO,
-                                           bbs_list$routes$RTENO,
-                                           bbs_list$weather$RTENO,
-                                           bbs_list$vehicle_data$RTENO))
+    rteno.filter <-
+      Reduce(
+        intersect,
+        list(
+          bbs_list$observations$RTENO,
+          bbs_list$routes$RTENO,
+          bbs_list$weather$RTENO,
+          bbs_list$vehicle_data$RTENO
+        )
+      )
 
     # filter out of all relevant data frames..
-    for(i in seq_along(bbs_list)){
-      if(!"RTENO" %in% names(bbs_list[[i]]))next()
-      bbs_list[[i]] <- bbs_list[[i]] %>% dplyr::filter(RTENO %in% rteno.filter)
+    for (i in seq_along(bbs_list)) {
+      if (!"RTENO" %in% names(bbs_list[[i]]))
+        next()
+      bbs_list[[i]] <-
+        bbs_list[[i]] %>% dplyr::filter(RTENO %in% rteno.filter)
     }
 
     # MUNGE COLUMNS -----------------------------------------------------------
     # Make a new variable for DATE
-    bbs_list <- lapply(bbs_list, function(x) { x <- make.dates(x) })
-    bbs_list <- lapply(bbs_list, function(x) { x <- make.rteno(x) }) # add RTENO where it doesn't exist yet
-    bbs_list <- lapply(bbs_list, function(x) x <- x[!(tolower(names(x)) %in% "routedataid")])
+    bbs_list <- lapply(bbs_list, function(x) {
+      x <- make.dates(x)
+    })
+    bbs_list <-
+      lapply(bbs_list, function(x) {
+        x <- make.rteno(x)
+      }) # add RTENO where it doesn't exist yet
+    bbs_list <-
+      lapply(bbs_list, function(x)
+        x <- x[!(tolower(names(x)) %in% "routedataid")])
 
     # CREATE VARIABLE FOR OBSERVER FIRST YEARS --------------------------------
     bbs_list$metadata <- bbs_list$weather %>%
@@ -195,43 +253,51 @@ munge_bbs_data <-
     # Ensure No Duplicate Observations ----------------------------------------
     bbs_list$observations <- bbs_list$observations %>%
       group_by(RTENO, Year) %>%
-      filter(RouteTotal==max(RouteTotal, na.rm=TRUE)) %>%
+      filter(RouteTotal == max(RouteTotal, na.rm = TRUE)) %>%
       ungroup()
 
     # MAKE FLAT DATA OBJECT ---------------------------------------------------
-    if(observations.output!="list"){
+    if (observations.output != "list") {
       cat("Collapsing BBS data and metadata into a single data frame.\n")
-      df <- dplyr::left_join(bbs_list$observations, bbs_list$vehicle_data)
+      df <-
+        dplyr::left_join(bbs_list$observations, bbs_list$vehicle_data)
       df <- dplyr::left_join(df, bbs_list$routes)
       df <- dplyr::left_join(df, bbs_list$metadata)
       df <- dplyr::left_join(df, bbs_list$weather)
-      df <- dplyr::left_join(df, bbs_list$observers %>% dplyr::select(-ObsFirstYearOnBBS , -ObsFirstYearOnRTENO))
+      df <-
+        dplyr::left_join(
+          df,
+          bbs_list$observers %>% dplyr::select(-ObsFirstYearOnBBS ,-ObsFirstYearOnRTENO)
+        )
       bbs_df <- df
       rm(df)
     }
 
 
-# Final Light Munging -----------------------------------------------------
-### replace "NULL" values with NA
-for(i in seq_along(names(bbs_df))){
-  name=names(bbs_df[i])
-  if(tolower(name) %in% c("date","day", "year")) next() # skip the date col
-  rows=which(bbs_df[name]=="NULL")
-  if(length(rows)==0)next()
-  bbs_df[rows,name] <- NA
-}
-## ensure the binary variables aren't of class character.
-bbs_df$Assistant <- as.integer(bbs_df$Assistant )
-bbs_df$ObsFirstYearRoute <- as.integer(bbs_df$ObsFirstYearRoute)
-bbs_df$ObsFirstYearBBS <- as.integer(bbs_df$ObsFirstYearBBS)
-bbs_df$StartTemp <- as.integer(bbs_df$StartTemp)
-bbs_df$EndTemp <- as.integer(bbs_df$EndTemp)
+    # Final Light Munging -----------------------------------------------------
+    ### replace "NULL" values with NA
+    for (i in seq_along(names(bbs_df))) {
+      name = names(bbs_df[i])
+      if (tolower(name) %in% c("date", "day", "year"))
+        next()
+      # skip the date col
+      rows = which(bbs_df[name] == "NULL")
+      if (length(rows) == 0)
+        next()
+      bbs_df[rows, name] <- NA
+    }
+    ## ensure the binary variables aren't of class character.
+    bbs_df$Assistant <- as.integer(bbs_df$Assistant)
+    bbs_df$ObsFirstYearRoute <- as.integer(bbs_df$ObsFirstYearRoute)
+    bbs_df$ObsFirstYearBBS <- as.integer(bbs_df$ObsFirstYearBBS)
+    bbs_df$StartTemp <- as.integer(bbs_df$StartTemp)
+    bbs_df$EndTemp <- as.integer(bbs_df$EndTemp)
 
-## Create mean wind, sky, temp (these data are only from Stop 1 and Stop 50...)
-bbs_df$WindMean <- abs(bbs_df$EndWind-bbs_df$StartWind)/2
-bbs_df$TempMean <- abs(bbs_df$EndTemp-bbs_df$StartTemp)/2
+    ## Create mean wind, sky, temp (these data are only from Stop 1 and Stop 50...)
+    bbs_df$WindMean <- abs(bbs_df$EndWind - bbs_df$StartWind) / 2
+    bbs_df$TempMean <- abs(bbs_df$EndTemp - bbs_df$StartTemp) / 2
 
-# RETURN DATA FRAME ------------------------------------------------------------------
-return(bbs_df)
+    # RETURN DATA FRAME ------------------------------------------------------------------
+    return(bbs_df)
 
-}
+  }

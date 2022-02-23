@@ -25,7 +25,7 @@ if(is.null(sb_id)){
   }else{stopifnot(dir.exists(bbs_dir))}
 
 ## DOWNLOAD THE DATA FROM SOURCE (or not if exists and overwrite=FALSE)
-data.in.dir <- bbsAssistant::download_bbs_data(sb_id=sb_id, bbs_dir=bbs_dir, overwrite = overwrite)
+data.in.dir <- download_bbs_data(sb_id=sb_id, bbs_dir=bbs_dir, overwrite = overwrite)
 
 ## IMPORT
 bbs <- import_bbs_data(bbs_dir = data.in.dir, sb_id=sb_id)

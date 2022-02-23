@@ -4,6 +4,7 @@
 #' @param bbs_dir Directory for storing the downloaded files for sb_id
 #' @param overwrite Logical, default=TRUE. TRUE will overwrite existing files for sb_id if already exists within bbs_dir
 #' @export download_bbs_data
+#' @importFrom sbtools item_file_download
 
 download_bbs_data <-
     function(sb_id = NULL,

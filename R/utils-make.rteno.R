@@ -4,7 +4,8 @@
 #'
 #' @param df a flat data object.
 #' @usage make.rteno(df)
-#'
+#' @importFrom stringr str_pad
+#' @importFrom dplyr mutate
 #' @export make.rteno
 make.rteno <- function(df){
   ## create variable RTENO

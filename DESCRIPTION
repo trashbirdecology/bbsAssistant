@@ -16,7 +16,8 @@ RoxygenNote: 7.1.2
 Depends: 
     R (>= 2.10)
 Imports: 
-    dplyr, 
+    lubridate,
+    dplyr,
     magrittr,
     readr,
     sbtools,
@@ -25,9 +26,6 @@ Imports:
     utils
 Suggests: 
     spelling,
-    rnaturalearth,
     testthat (>= 3.0.0)
-Remotes: 
-    github::ropensci/rnaturalearth
 Language: en-US
 Config/testthat/edition: 3

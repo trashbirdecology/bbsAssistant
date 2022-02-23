@@ -2,10 +2,7 @@
 % Please edit documentation in R/import_bbs_data.R
 \name{import_bbs_data}
 \alias{import_bbs_data}
-\title{Import the BBS Data
-
-Imports BBS data from specified directory.
-Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.}
+\title{Import the BBS Data from a Specified Directory}
 \usage{
 import_bbs_data(bbs_dir, sb_id)
 }
@@ -16,4 +13,5 @@ import_bbs_data(bbs_dir, sb_id)
 }
 \description{
 Import the BBS observations and metadata into environment.
+Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.
 }

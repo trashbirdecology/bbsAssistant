@@ -5,6 +5,7 @@
 #' @param df a flat data object.
 #' @param collapse logical. If TRUE will remove the columns 'Day', 'Month', and 'Year'
 #' @usage make.dates(df, collapse=FALSE)
+#' @importFrom dplyr mutate select
 #' @export make.dates
 
 make.dates <- function(df, collapse=FALSE){

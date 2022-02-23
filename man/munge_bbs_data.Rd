@@ -2,7 +2,7 @@
 % Please edit documentation in R/munge_bbs_data.R
 \name{munge_bbs_data}
 \alias{munge_bbs_data}
-\title{Subset BBS observations data by one or more species of interest.}
+\title{Subset BBS Data by One or More Parameters}
 \usage{
 munge_bbs_data(
   bbs_list,
@@ -48,5 +48,5 @@ munge_bbs_data(
 \item{observations.output}{return the object as a list of data frames ("list") or a single data frame ("flat" or "df" or "data.frame")}
 }
 \description{
-...
+This function subsets the BBS observations using taxonomic, geospatial, or temporal features.
 }

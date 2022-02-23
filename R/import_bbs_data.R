@@ -1,11 +1,12 @@
-#' @title Import the BBS Data
+#' @title Import the BBS Data from a Specified Directory
 #'
-#' Imports BBS data from specified directory.
-#' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.
 #' @description Import the BBS observations and metadata into environment.
+#' Called inside \code{grab_bbs_data()}. Can be called directly but user must have sb_id and bbs_dir specified.
 #' @param sb_id ScienceBase Item identifier. Can be found in \code{sb_items}
 #' @param bbs_dir Location of where the ScienceBase item files are located.
 #' @importFrom utils unzip
+#' @importFrom readr cols col_integer col_character read_csv
+#' @importFrom dplyr group_by mutate ungroup
 #' @export import_bbs_data
 import_bbs_data <- function(bbs_dir, sb_id) {
 
@@ -98,7 +99,6 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
            "citation",
            "vehicle_data"
       )
-    # suppressWarnings(
     bbs <- lapply(
       list.elements,
       FUN = function(x) {
@@ -106,7 +106,6 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
           make.rteno()
       }
     )
-    # )
     names(bbs) <- list.elements
 
 
