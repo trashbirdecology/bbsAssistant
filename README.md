@@ -1,7 +1,7 @@
-**bbsAssistant**: An R package for downloading and handling data and
-information from the North American Breeding Bird Survey.
+**bbsAssistant**: An R package for Downloading and Handling Data and
+Information from the North American Breeding Bird Survey (BBS)
 ================
-Last updated: 2022-02-23
+Last updated: 2022-02-24
 
 <!-- badges: start -->
 
@@ -14,6 +14,8 @@ status](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/b
 CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&logo=appveyor)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&logo=appveyor)](#contributors)
 [![R-CMD-check](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg)](https://github.com/trashbirdecology/bbsAssistant/actions)
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 <!-- badges: end -->
 <img src=".github/figures/logo.png" align="right" height=140/>
 
@@ -23,10 +25,15 @@ This repository contains the development version of **bbsAssistant**.
 Please submit [Issues
 here](https://github.com/TrashBirdEcology/bbsAssistant/issues).
 
-This package contains functions for downloading, importing, and (soon)
-visualizing the annual USGS release of the [North American Breeding Bird
-Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) dataset [(retrieved from
-USGS ScienceBase repository)](https://sciencebase.gov/).
+This package contains functions for downloading, importing, and munging
+the official releases of the [North American Breeding Bird
+Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) data [(retrieved from USGS
+ScienceBase repository)](https://sciencebase.gov/).
+
+<!-- ## Potential Future Developments -->
+<!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  -->
+<!-- - [ ] Spatial visualization tools -->
+<!-- - [ ] -->
 
 ## Quick Start
 
@@ -366,9 +373,13 @@ Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768,
 
 ## Contributing
 
-Contributors must adhere to the [Code of
-Conduct](https://github.com/trashbirdecology/bbsAssistant/CODE_OF_CONDUCT.md).
-For questions, comments, or issues, feel free to email the maintainer
+## Code of Conduct
+
+Please note that the bbsAssistant project is released with a
+[Contributor Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms. For
+questions, comments, or issues, feel free to email the maintainer
 [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an
 [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues)
 (preferred).
