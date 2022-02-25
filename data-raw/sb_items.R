@@ -44,13 +44,13 @@ sb_items <-
       year_end = c(2019, 2018, 2017, 2016, 2015, 2018, 2017),
       legacy_format = c("n", "n", "n", "n", "y", NA, NA),
       sb_link = c(
-        "sciencebase.gov/catalog/item/5ea04e9a82cefae35a129d65",
-        "sciencebase.gov/catalog/item/5d65256ae4b09b198a26c1d7",
-        "sciencebase.gov/catalog/item/5af45ebce4b0da30c1b448ca",
-        "sciencebase.gov/catalog/item/5cf7d4d5e4b07f02a7046479",
-        "sciencebase.gov/catalog/item/5d00efafe4b0573a18f5e03a",
-        "sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4",
-        "sciencebase.gov/catalog/item/5eab196d82cefae35a2254e0"
+        "http://www.sciencebase.gov/catalog/item/5ea04e9a82cefae35a129d65",
+        "http://www.sciencebase.gov/catalog/item/5d65256ae4b09b198a26c1d7",
+        "http://www.sciencebase.gov/catalog/item/5af45ebce4b0da30c1b448ca",
+        "http://www.sciencebase.gov/catalog/item/5cf7d4d5e4b07f02a7046479",
+        "http://www.sciencebase.gov/catalog/item/5d00efafe4b0573a18f5e03a",
+        "http://www.sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4",
+        "http://www.sciencebase.gov/catalog/item/5eab196d82cefae35a2254e0"
       )
     ),
     row.names = c(NA,-7L),
