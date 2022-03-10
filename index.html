@@ -67,18 +67,18 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<p><strong>bbsAssistant</strong>: An R package for Downloading and Handling Data and Information from the North American Breeding Bird Survey (BBS) ================ Last updated: 2022-02-24</p>
+<p><strong>bbsAssistant</strong>: An R package for Downloading and Handling Data and Information from the North American Breeding Bird Survey (BBS) ================ Last updated: 2022-03-10</p>
 <!-- badges: start -->
 
 <div class="section level2">
 <h2 id="about">About<a class="anchor" aria-label="anchor" href="#about"></a>
 </h2>
 <p>This repository contains the development version of <strong>bbsAssistant</strong>. Please submit <a href="https://github.com/TrashBirdEcology/bbsAssistant/issues" class="external-link">Issues here</a>.</p>
-<p>This package contains functions for downloading, importing, and munging the official releases of the <a href="https://www.pwrc.usgs.gov/bbs/" class="external-link">North American Breeding Bird Survey</a> (BBS) data <a href="https://sciencebase.gov/" class="external-link">(retrieved from USGS ScienceBase repository)</a>.</p>
+<p>This package contains functions for downloading, importing, and munging the official releases of the <a href="https://www.pwrc.usgs.gov/bbs/" class="external-link">North American Breeding Bird Survey</a> (BBS) data <a href="https://www.sciencebase.gov/catalog" class="external-link">(retrieved from USGS ScienceBase repository)</a> with the help of package <a href="https://cran.r-project.org/package=sbtools" class="external-link">sbtools</a>.</p>
 <!-- ## Potential Future Developments -->
 <!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  -->
 <!-- - [ ] Spatial visualization tools -->
-<!-- - [ ] -->
+<!-- devtools::check(args = c("--no-examples", "--no-tests")) -->
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -107,21 +107,15 @@
 </h2>
 <p>Filter the dataset <code>bbs</code> using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and names (see columns iso_3155_2, iso_a2, name_fr, name_es):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="reference/region_codes.html">region_codes</a></span>, <span class="fl">6</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="reference/region_codes.html">region_codes</a></span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">##   CountryNum StateNum               State iso_3166_2 iso_a2</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co">## 1        484        1      aguascalientes     MX-AGU     MX</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a><span class="co">## 2        484        2     baja california     MX-BCN     MX</span></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="co">## 3        484        3 baja california sur     MX-BCS     MX</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a><span class="co">## 4        484        4            campeche     MX-CAM     MX</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co">## 5        484        5             chiapas     MX-CHP     MX</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co">## 6        484        6           chihuahua     MX-CHH     MX</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">##                   name_fr             name_es</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co">## 1          Aguascalientes      Aguascalientes</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="co">## 2        Basse-Californie     Baja California</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="co">## 3 Basse-Californie du Sud Baja California Sur</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co">## 4                Campeche            Campeche</span></span>
-<span id="cb8-13"><a href="#cb8-13"></a><span class="co">## 5                 Chiapas             Chiapas</span></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="co">## 6               Chihuahua           Chihuahua</span></span></code></pre></div>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="co">##                   name_fr             name_es</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="co">## 1          Aguascalientes      Aguascalientes</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">## 2        Basse-Californie     Baja California</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="co">## 3 Basse-Californie du Sud Baja California Sur</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="filter-on-species-names">Filter on species names<a class="anchor" aria-label="anchor" href="#filter-on-species-names"></a>
 </h3>
@@ -144,24 +138,17 @@
 <code class="sourceCode R"><span class="co"># grab the aou code for House Sparrow  using common name </span>
 <span class="va">hosp.aou.code</span> <span class="op">&lt;-</span> <span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">AOU</span><span class="op">[</span><span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">English_Common_Name</span><span class="op">==</span><span class="st">"House Sparrow"</span><span class="op">]</span>
 <span class="co"># or genus and species epithet</span>
-<span class="va">hosp.aou.code</span> <span class="op">&lt;-</span>
-  <span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">AOU</span><span class="op">[</span><span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">Genus</span> <span class="op">==</span> <span class="st">"Passer"</span> <span class="op">&amp;</span>
-                         <span class="va">bbs</span><span class="op">$</span><span class="va">species_list</span><span class="op">$</span><span class="va">Species</span> <span class="op">==</span> <span class="st">"domesticus"</span><span class="op">]</span>
+<span class="co"># hosp.aou.code &lt;-</span>
+<span class="co">#   bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &amp;</span>
+<span class="co">#                          bbs$species_list$Species == "domesticus"]</span>
 
-<span class="co"># filter the observations along  BBSs "AOU" code:</span>
-<span class="co">## note capitalization but spelling matters. can provide species as common, latin, or BBS "AOU" code</span>
-<span class="va">hosp.df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/munge_bbs_data.html">munge_bbs_data</a></span><span class="op">(</span>bbs_list<span class="op">=</span><span class="va">bbs</span>, 
-                          species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"House SPARROW"</span>, <span class="st">"passer Domesticus"</span>, <span class="va">hosp.aou.code</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">## Joining, by = c("RouteDataID", "CountryNum", "StateNum", "Route", "RPID",</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="co">## "Year", "AOU", "RTENO", "RouteTotal")</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="co">## Collapsing BBS data and metadata into a single data frame.</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO")</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RTENO")</span></span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO")</span></span>
-<span id="cb13-9"><a href="#cb13-9"></a><span class="co">## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO", "Month", "Day", "ObsN", "TotalSpp", "StartTemp", "EndTemp", "TempScale", "StartWind", "EndWind", "StartSky", "EndSky", "StartTime", "EndTime", "Assistant", "QualityCurrentID", "RunType", "Date", "julian")</span></span>
-<span id="cb13-10"><a href="#cb13-10"></a><span class="co">## Joining, by = c("RTENO", "ObsN", "TotalSpp", "Date")</span></span></code></pre></div>
+<span class="co"># filter the observations along  BBS "AOU" code:</span>
+<span class="co">## note spelling but not capitalization matters. </span>
+<span class="co">## can provide species arg as species' common or latin name(s) or as BBS "AOU" code(s)</span>
+<span class="va">hosp.df</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/munge_bbs_data.html">munge_bbs_data</a></span><span class="op">(</span>bbs_list<span class="op">=</span><span class="va">bbs</span>, species <span class="op">=</span> <span class="va">hosp.aou.code</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">## Creating a flat data frame as output object.</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R">                          <span class="co"># species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) </span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -425,12 +412,11 @@ Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R pack
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://doi.org/10.21105/joss.01768" class="external-link"><img src="https://joss.theoj.org/papers/10.21105/joss.01768/status.svg?style=flat-square&amp;logo=appveyor" alt="DOI"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="lifecycle"></a></li>
 <li><a href="https://github.com/trashbirdecology/bbsAssistant/actions" class="external-link"><img src="https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg?style=flat-square&amp;logo=appveyor" alt="R build status"></a></li>
 <li><a href="https://creativecommons.org/publicdomain/zero/1.0/" class="external-link"><img src="https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="License: CC0"></a></li>
 <li><a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="Contributors"></a></li>
 <li><a href="https://github.com/trashbirdecology/bbsAssistant/actions" class="external-link"><img src="https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.htm#stablel" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
 </ul>
 </div>
 
