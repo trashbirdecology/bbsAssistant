@@ -13,6 +13,7 @@ munge_bbs_data(
   order = NULL,
   family = NULL,
   zero.fill = TRUE,
+  rpid = 101,
   year.range = 1966:lubridate::year(Sys.Date()),
   keep.stop.level.data = FALSE,
   QualityCurrentID = 1,
@@ -36,6 +37,8 @@ munge_bbs_data(
 \item{family}{vector of one or more families to retain in data}
 
 \item{zero.fill}{If TRUE and a single species is provided in 'species', this function will output list$observations with zero-filled data.}
+
+\item{rpid}{mostly for internal use. See BBS metadata documentation for more details.}
 
 \item{year.range}{value(s) of year(s) by which to subset the data. If not specified will return all data in the dataset.}
 

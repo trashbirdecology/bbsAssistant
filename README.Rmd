@@ -21,12 +21,13 @@ always_allow_html: true
 ## About
 This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). 
 
-This package contains functions for downloading, importing, and munging the official releases of the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) data [(retrieved from  USGS ScienceBase repository)](https://www.sciencebase.gov/catalog). 
+This package contains functions for downloading, importing, and munging the official releases of the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) data [(retrieved from  USGS ScienceBase repository)](https://www.sciencebase.gov/catalog) with the help of package [sbtools](https://cran.r-project.org/package=sbtools). 
 
 <!-- ## Potential Future Developments -->
 <!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  -->
 <!-- - [ ] Spatial visualization tools -->
-<!-- - [ ] -->
+
+<!-- devtools::check(args = c("--no-examples", "--no-tests")) -->
 
 ## Quick Start
 ```{r install, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
