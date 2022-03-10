@@ -31,9 +31,8 @@ This package contains functions for downloading, importing, and munging the offi
 
 ## Quick Start
 ```{r install, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
-devtools::install_github("trashbirdecology/bbsAssistant", 
-                         ref="feature-add", # change to main for releases
-                         # ref="main", # change to main for releases
+remotes::install_github("trashbirdecology/bbsAssistant", 
+                         ref="main", # change to main for releases
                          force=TRUE) # force=TRUE to get most recent dev version
 ```
 
@@ -57,7 +56,7 @@ names(bbs)
 ## Filtering by State/Region
 Filter the dataset `bbs` using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and names (see columns iso_3155_2, iso_a2, name_fr, name_es):
 ```{r regioncodes, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-head(bbsAssistant::region_codes, 6)
+head(bbsAssistant::region_codes, 3)
 ```
 ### Filter on species names
 View the species lists for your particular dataset by calling:
@@ -75,14 +74,15 @@ Keep only _Passer domesticus_:
 # grab the aou code for House Sparrow  using common name 
 hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$English_Common_Name=="House Sparrow"]
 # or genus and species epithet
-hosp.aou.code <-
-  bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
-                         bbs$species_list$Species == "domesticus"]
+# hosp.aou.code <-
+#   bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
+#                          bbs$species_list$Species == "domesticus"]
 
-# filter the observations along  BBSs "AOU" code:
-## note capitalization but spelling matters. can provide species as common, latin, or BBS "AOU" code
-hosp.df <- munge_bbs_data(bbs_list=bbs, 
-                          species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) 
+# filter the observations along  BBS "AOU" code:
+## note spelling but not capitalization matters. 
+## can provide species arg as species' common or latin name(s) or as BBS "AOU" code(s)
+hosp.df <- munge_bbs_data(bbs_list=bbs, species = hosp.aou.code)
+                          # species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) 
 ```
 
 ## BBS Data Availability (including sb_id)
@@ -96,8 +96,8 @@ datasets <- bbsAssistant::sb_items
 A lookup table containing the available datasets (N = `r length(unique(datasets$sb_item))`) and analysis results will be regularly updated, and comprises the following entries: 
 ```{r datasets, eval=TRUE, message=FALSE, warning=FALSE, echo=FALSE}
 library(magrittr)
-library(kableExtra)
 library(dplyr)
+library(kableExtra)
 datasets %>% select(-legacy_format, -sb_parent) %>%  
   relocate(sb_item, .after = last_col()) %>%
   kable(caption="List of datasets currently available for download at USGS ScienceBase. Highlighted and bold row indicates the default BBS observations dataset stored internally in the package.") %>% 

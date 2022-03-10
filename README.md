@@ -1,12 +1,11 @@
 **bbsAssistant**: An R package for Downloading and Handling Data and
 Information from the North American Breeding Bird Survey (BBS)
 ================
-Last updated: 2022-02-24
+Last updated: 2022-03-10
 
 <!-- badges: start -->
 
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.01768/status.svg?style=flat-square&logo=appveyor)](https://doi.org/10.21105/joss.01768)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-lightgrey.svg?style=flat-square&logo=appveyor)](https://www.tidyverse.org/lifecycle/#maturing)
 ![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg?style=flat-square&logo=appveyor)
 [![R build
 status](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg?style=flat-square&logo=appveyor)](https://github.com/trashbirdecology/bbsAssistant/actions)
@@ -15,7 +14,7 @@ CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-squ
 [![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&logo=appveyor)](#contributors)
 [![R-CMD-check](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg)](https://github.com/trashbirdecology/bbsAssistant/actions)
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.htm#stablel)
 <!-- badges: end -->
 <img src=".github/figures/logo.png" align="right" height=140/>
 
@@ -28,12 +27,13 @@ here](https://github.com/TrashBirdEcology/bbsAssistant/issues).
 This package contains functions for downloading, importing, and munging
 the official releases of the [North American Breeding Bird
 Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) data [(retrieved from USGS
-ScienceBase repository)](https://sciencebase.gov/).
+ScienceBase repository)](https://www.sciencebase.gov/catalog) with the
+help of package [sbtools](https://cran.r-project.org/package=sbtools).
 
 <!-- ## Potential Future Developments -->
 <!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  -->
 <!-- - [ ] Spatial visualization tools -->
-<!-- - [ ] -->
+<!-- devtools::check(args = c("--no-examples", "--no-tests")) -->
 
 ## Quick Start
 
@@ -73,23 +73,17 @@ the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and
 names (see columns iso_3155_2, iso_a2, name_fr, name_es):
 
 ``` r
-head(bbsAssistant::region_codes, 6)
+head(bbsAssistant::region_codes, 3)
 ```
 
     ##   CountryNum StateNum               State iso_3166_2 iso_a2
     ## 1        484        1      aguascalientes     MX-AGU     MX
     ## 2        484        2     baja california     MX-BCN     MX
     ## 3        484        3 baja california sur     MX-BCS     MX
-    ## 4        484        4            campeche     MX-CAM     MX
-    ## 5        484        5             chiapas     MX-CHP     MX
-    ## 6        484        6           chihuahua     MX-CHH     MX
     ##                   name_fr             name_es
     ## 1          Aguascalientes      Aguascalientes
     ## 2        Basse-Californie     Baja California
     ## 3 Basse-Californie du Sud Baja California Sur
-    ## 4                Campeche            Campeche
-    ## 5                 Chiapas             Chiapas
-    ## 6               Chihuahua           Chihuahua
 
 ### Filter on species names
 
@@ -120,26 +114,21 @@ Keep only *Passer domesticus*:
 # grab the aou code for House Sparrow  using common name 
 hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$English_Common_Name=="House Sparrow"]
 # or genus and species epithet
-hosp.aou.code <-
-  bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
-                         bbs$species_list$Species == "domesticus"]
+# hosp.aou.code <-
+#   bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
+#                          bbs$species_list$Species == "domesticus"]
 
-# filter the observations along  BBSs "AOU" code:
-## note capitalization but spelling matters. can provide species as common, latin, or BBS "AOU" code
-hosp.df <- munge_bbs_data(bbs_list=bbs, 
-                          species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) 
+# filter the observations along  BBS "AOU" code:
+## note spelling but not capitalization matters. 
+## can provide species arg as species' common or latin name(s) or as BBS "AOU" code(s)
+hosp.df <- munge_bbs_data(bbs_list=bbs, species = hosp.aou.code)
 ```
 
-    ## Joining, by = c("RouteDataID", "CountryNum", "StateNum", "Route", "RPID",
-    ## "Year", "AOU", "RTENO", "RouteTotal")
+    ## Creating a flat data frame as output object.
 
-    ## Collapsing BBS data and metadata into a single data frame.
-
-    ## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO")
-    ## Joining, by = c("CountryNum", "StateNum", "Route", "RTENO")
-    ## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO")
-    ## Joining, by = c("CountryNum", "StateNum", "Route", "RPID", "Year", "RTENO", "Month", "Day", "ObsN", "TotalSpp", "StartTemp", "EndTemp", "TempScale", "StartWind", "EndWind", "StartSky", "EndSky", "StartTime", "EndTime", "Assistant", "QualityCurrentID", "RunType", "Date", "julian")
-    ## Joining, by = c("RTENO", "ObsN", "TotalSpp", "Date")
+``` r
+                          # species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) 
+```
 
 ## BBS Data Availability (including sb_id)
 

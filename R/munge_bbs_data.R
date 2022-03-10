@@ -57,10 +57,10 @@ munge_bbs_data <-
 
       for(i in seq_along(x)){
         if(!"RTENO" %in% colnames(x[[i]])){x.out[[i]] <- x[[i]]
-        next()}else{
-          x.out[[i]] <- x[[i]] %>%
-            filter(RTENO %in% temp.rtenos)
-        }
+        x.out[[i]] <- x[[i]]
+        next()}
+        x.out[[i]] <- x[[i]] %>%
+            dplyr::filter(RTENO %in% temp.rtenos)
       }
       names(x.out) <- names(x)
       rm(x)
@@ -153,10 +153,11 @@ munge_bbs_data <-
 
     # Grab a list of common RTENOS after the basic subsetting occurred --------
     # define myobservers
-    myobservers <- bbs_list$observers %>% filter(!ObsN %in% c("NA", NA))
+    myobservers <- bbs_list$observers
 
     ###
-    all.relevant.data <- .remove.rtenos(x=list(weather = myweather, observations = myobs, routes = myroutes, vehicle_data = mycars, observers = myobservers))
+    all.relevant.data <- .remove.rtenos(
+      x=list(weather = myweather, observations = myobs, routes = myroutes, vehicle_data = mycars, observers = myobservers))
     # any(is.na(list.filtered$observers$ObsN))
 
 
@@ -190,10 +191,7 @@ munge_bbs_data <-
         aous.keep <- c(sl$AOU[row.ind], aous.keep)
       }
       stopifnot(!is.null(aous.keep))
-      # ## now remove the unwanted species from observations
-      # relevant.obs <-
-      #   all.relevant.data$observations %>%
-      #       dplyr::filter(AOU %in% aous.keep)
+      aous.keep <- unique(aous.keep)
     } # end create aous.keep
 
     # MAKE ROUTE_LEVEL DATA -----------------
@@ -240,7 +238,7 @@ munge_bbs_data <-
     # this finds the RTENO-year combinations that exist in the `sampled` data frame but no in bbs_observations.
     # it ensures all sampled RTENO-year combinations are include.
     if (zero.fill) {
-      if (is.null(species) | length(unique(aous.keep)) != 1) {
+      if (is.null(species) | length(unique(aous.keep)) > 1) {
         message(
           "Warning: when zero.fill=TRUE, a single species should be provided in argument `species`. \n\tReturned data will NOT be zero-filled.\n"
         )
@@ -250,7 +248,7 @@ munge_bbs_data <-
         #### replace the AOU with aous.keep (a single value...)
         #### then keep the max value for route-year combination.
         all.relevant.data$observations <- all.relevant.data$observations %>%
-          mutate(RouteTotal = ifelse(AOU %in% aous.keep, RouteTotal, 0),
+          dplyr::mutate(RouteTotal = ifelse(AOU %in% aous.keep, RouteTotal, 0),
                  AOU        = aous.keep
           ) %>%
           dplyr::group_by(Year, RTENO) %>%
@@ -284,7 +282,7 @@ munge_bbs_data <-
     if (observations.output != "list") {
       cat("Creating a flat data frame as output object.\n")
       suppressMessages(bbs_df <- dplyr::inner_join(all.relevant.data$observations, all.relevant.data$vehicle_data)) # suppress join by messages in this chunk
-      bbs_df <- bbs_df %>% filter(if_any(everything(), ~ !is.na(.))) # just to be safe we aren't exporting rows with all NA values..
+
       suppressMessages(bbs_df <- dplyr::inner_join(bbs_df, bbs_list$routes))
       suppressMessages(bbs_df <- dplyr::inner_join(bbs_df, all.relevant.data$observers))
       suppressMessages(bbs_df <- dplyr::inner_join(bbs_df, all.relevant.data$weather))
@@ -306,6 +304,7 @@ munge_bbs_data <-
     }
     # names(bbs_df)
     ## ensure the binary variables aren't of class character.
+    # cat("wrapping up loose ends..\n")
   bbs_df <-
     bbs_df %>%
     dplyr::mutate(across(c("Assistant", "ObsFirstYearOnRTENO", "ObsFirstYearOnBBS",
