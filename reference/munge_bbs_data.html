@@ -59,6 +59,7 @@
   order <span class="op">=</span> <span class="cn">NULL</span>,
   family <span class="op">=</span> <span class="cn">NULL</span>,
   zero.fill <span class="op">=</span> <span class="cn">TRUE</span>,
+  rpid <span class="op">=</span> <span class="fl">101</span>,
   year.range <span class="op">=</span> <span class="fl">1966</span><span class="op">:</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>,
   keep.stop.level.data <span class="op">=</span> <span class="cn">FALSE</span>,
   QualityCurrentID <span class="op">=</span> <span class="fl">1</span>,
@@ -85,6 +86,8 @@
 <dd><p>vector of one or more families to retain in data</p></dd>
 <dt>zero.fill</dt>
 <dd><p>If TRUE and a single species is provided in 'species', this function will output list$observations with zero-filled data.</p></dd>
+<dt>rpid</dt>
+<dd><p>mostly for internal use. See BBS metadata documentation for more details.</p></dd>
 <dt>year.range</dt>
 <dd><p>value(s) of year(s) by which to subset the data. If not specified will return all data in the dataset.</p></dd>
 <dt>keep.stop.level.data</dt>
