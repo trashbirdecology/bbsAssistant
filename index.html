@@ -13,7 +13,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Download and Munge Data and Information from the North American Breeding Bird Survey ">
 <meta property="og:description" content="Tools to help efficiently manipulate the North American Breeding Bird 
-    Survey (BBS) data. `bbsAssistant` contains tools for downloading and/or importing 
+    Survey (BBS) data. bbsAssistant contains tools for downloading and/or importing 
     BBS data. Manipulation tools allow the user to filter observations and associated route-level metadata
     using taxonomic, spatial, or temporal filters, zero-fill the dataset for a given species, and condense
     the official dataset from stop-level to route-level data. ">
@@ -67,14 +67,14 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<p><strong>bbsAssistant</strong>: An R package for Downloading and Handling Data and Information from the North American Breeding Bird Survey (BBS) ================ Last updated: 2022-03-10</p>
+<p><strong>bbsAssistant</strong>: An R package for Downloading and Handling Data and Information from the North American Breeding Bird Survey (BBS) ================ Last updated: 2022-03-11</p>
 <!-- badges: start -->
 
 <div class="section level2">
 <h2 id="about">About<a class="anchor" aria-label="anchor" href="#about"></a>
 </h2>
 <p>This repository contains the development version of <strong>bbsAssistant</strong>. Please submit <a href="https://github.com/TrashBirdEcology/bbsAssistant/issues" class="external-link">Issues here</a>.</p>
-<p>This package contains functions for downloading, importing, and munging the official releases of the <a href="https://www.pwrc.usgs.gov/bbs/" class="external-link">North American Breeding Bird Survey</a> (BBS) data <a href="https://www.sciencebase.gov/catalog" class="external-link">(retrieved from USGS ScienceBase repository)</a> with the help of package <a href="https://cran.r-project.org/package=sbtools" class="external-link">sbtools</a>.</p>
+<p>This package contains functions for downloading, importing, and munging the official releases of the <a href="https://www.pwrc.usgs.gov/bbs/" class="external-link">North American Breeding Bird Survey</a> (BBS) data (retrieved from USGS ScienceBase repository) with the help of package <a href="https://cran.r-project.org/package=sbtools/" class="external-link">sbtools</a>.</p>
 <!-- ## Potential Future Developments -->
 <!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  -->
 <!-- - [ ] Spatial visualization tools -->
@@ -84,7 +84,7 @@
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trashbirdecology/bbsAssistant" class="external-link">bbsAssistant</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trashbirdecology/bbsAssistant/" class="external-link">bbsAssistant</a></span><span class="op">)</span>
 <span class="co"># view functions and data in package bbsAssistant</span>
 <span class="co"># ls("package:bbsAssistant")</span></code></pre></div>
 </div>
@@ -105,7 +105,7 @@
 <div class="section level2">
 <h2 id="filtering-by-stateregion">Filtering by State/Region<a class="anchor" aria-label="anchor" href="#filtering-by-stateregion"></a>
 </h2>
-<p>Filter the dataset <code>bbs</code> using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and names (see columns iso_3155_2, iso_a2, name_fr, name_es):</p>
+<p>Filter the dataset using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and names (see columns iso_3155_2, iso_a2, name_fr, name_es):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu">bbsAssistant</span><span class="fu">::</span><span class="va"><a href="reference/region_codes.html">region_codes</a></span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">##   CountryNum StateNum               State iso_3166_2 iso_a2</span></span>
@@ -154,7 +154,7 @@
 <div class="section level2">
 <h2 id="bbs-data-availability-including-sb_id">BBS Data Availability (including sb_id)<a class="anchor" aria-label="anchor" href="#bbs-data-availability-including-sb_id"></a>
 </h2>
-<p>There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the <a href="https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9" class="external-link">observations data</a> and the analysis results. The datasets (observations, results) are permanently and publicly available at <a href="https://www.sciencebase.gov" class="external-link">USGS ScienceBase</a>.</p>
+<p>There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the <a href="https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9" class="external-link">observations data</a> and the analysis results. The datasets (observations, results) are permanently and publicly available at <a href="https://www.sciencebase.gov/" class="external-link">USGS ScienceBase</a>.</p>
 <p>The most recent annual releases of the observations and results datasets are stored as data objects in this package (see <code>data(bbs)</code>) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function <code>get_bbs_data()</code>.</p>
 A lookup table containing the available datasets (N = 7) and analysis results will be regularly updated, and comprises the following entries:
 <table class="table table table-striped" style>
@@ -416,7 +416,6 @@ Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R pack
 <li><a href="https://creativecommons.org/publicdomain/zero/1.0/" class="external-link"><img src="https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="License: CC0"></a></li>
 <li><a href="#contributors"><img src="https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&amp;logo=appveyor" alt="Contributors"></a></li>
 <li><a href="https://github.com/trashbirdecology/bbsAssistant/actions" class="external-link"><img src="https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.htm#stablel" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
 </ul>
 </div>
 
