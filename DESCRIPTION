@@ -6,13 +6,13 @@ Authors@R: c(
   person("Gabriela", "Palomo-Munoz", role = "aut", comment = c(ORCID = "0000-0002-0661-413X")),
   person("Lyndsie", "Wszola", role = "aut", comment = c(ORCID = "0000-0002-2660-2048")))
 Description: Tools to help efficiently manipulate the North American Breeding Bird 
-    Survey (BBS) data. `bbsAssistant` contains tools for downloading and/or importing 
+    Survey (BBS) data. bbsAssistant contains tools for downloading and/or importing 
     BBS data. Manipulation tools allow the user to filter observations and associated route-level metadata
     using taxonomic, spatial, or temporal filters, zero-fill the dataset for a given species, and condense
     the official dataset from stop-level to route-level data. 
 License: CC0
 Encoding: UTF-8
-URL: https://github.com/trashbirdecology/bbsAssistant
+URL: https://github.com/trashbirdecology/bbsAssistant/
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2

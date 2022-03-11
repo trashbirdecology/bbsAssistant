@@ -1,20 +1,17 @@
 **bbsAssistant**: An R package for Downloading and Handling Data and
 Information from the North American Breeding Bird Survey (BBS)
 ================
-Last updated: 2022-03-10
+Last updated: 2022-03-11
 
 <!-- badges: start -->
 
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.01768/status.svg?style=flat-square&logo=appveyor)](https://doi.org/10.21105/joss.01768)
-![usgs](https://img.shields.io/badge/USGS-Core-lightgrey.svg?style=flat-square&logo=appveyor)
 [![R build
 status](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg?style=flat-square&logo=appveyor)](https://github.com/trashbirdecology/bbsAssistant/actions)
 [![License:
 CC0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg?style=flat-square&logo=appveyor)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![Contributors](https://img.shields.io/badge/all_contributors-8-lightgrey.svg?style=flat-square&logo=appveyor)](#contributors)
 [![R-CMD-check](https://github.com/trashbirdecology/bbsAssistant/workflows/R-CMD-check/badge.svg)](https://github.com/trashbirdecology/bbsAssistant/actions)
-[![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.htm#stablel)
 <!-- badges: end -->
 <img src=".github/figures/logo.png" align="right" height=140/>
 
@@ -26,9 +23,9 @@ here](https://github.com/TrashBirdEcology/bbsAssistant/issues).
 
 This package contains functions for downloading, importing, and munging
 the official releases of the [North American Breeding Bird
-Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) data [(retrieved from USGS
-ScienceBase repository)](https://www.sciencebase.gov/catalog) with the
-help of package [sbtools](https://cran.r-project.org/package=sbtools).
+Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) data (retrieved from USGS
+ScienceBase repository) with the help of package
+[sbtools](https://cran.r-project.org/package=sbtools/).
 
 <!-- ## Potential Future Developments -->
 <!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  -->
@@ -67,7 +64,7 @@ names(bbs)
 
 ## Filtering by State/Region
 
-Filter the dataset `bbs` using your preferred method. A lookup table is
+Filter the dataset using your preferred method. A lookup table is
 provided as a package dataset for filtering by country or state using
 the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and
 names (see columns iso_3155_2, iso_a2, name_fr, name_es):
@@ -137,7 +134,7 @@ derived from the annual BBS roadside surveys, the [observations
 data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9)
 and the analysis results. The datasets (observations, results) are
 permanently and publicly available at [USGS
-ScienceBase](https://www.sciencebase.gov).
+ScienceBase](https://www.sciencebase.gov/).
 
 The most recent annual releases of the observations and results datasets
 are stored as data objects in this package (see `data(bbs)`) will be
