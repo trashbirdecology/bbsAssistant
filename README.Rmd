@@ -73,11 +73,11 @@ hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$English_Common_Name=="Hou
 # hosp.aou.code <-
 #   bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
 #                          bbs$species_list$Species == "domesticus"]
-
+hofi          <- bbs$species_list$Scientific_Name[bbs$species_list$English_Common_Name=="House Finch"]
 # filter the observations along  BBS "AOU" code:
 ## note spelling but not capitalization matters. 
 ## can provide species arg as species' common or latin name(s) or as BBS "AOU" code(s)
-hosp.df <- munge_bbs_data(bbs_list=bbs, species = hosp.aou.code)
+hosp.df <- munge_bbs_data(bbs_list=bbs, species = c(hosp.aou.code, hofi))
                           # species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) 
 ```
 
