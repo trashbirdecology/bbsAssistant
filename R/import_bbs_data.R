@@ -60,8 +60,8 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
 
     observations <- list()
     for (i in seq_along(fns.50stop)) {
-      observations[[i]]  <-
-        readr::read_csv(unzip(zipfile = fns.50stop[i], exdir = tempdir), col_types = col_types)
+      f <- fns.50stop[i]
+      observations[[i]]  <- readr::read_csv(f, col_types = col_types)
     }
     observations <- dplyr::bind_rows(observations)
 
@@ -72,11 +72,12 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     species_list <- import_species_list(bbs_dir)
 
     # Get route metadata -------------------------------------------------------
-    routes <-   suppressWarnings(readr::read_csv(unzip(zipfile = fns.routes, exdir = tempdir), col_types = col_types))
-    weather <-  suppressWarnings(readr::read_csv(unzip(zipfile = fns.weather, exdir = tempdir), col_types = col_types))
+    routes <-   suppressWarnings(readr::read_csv(fns.routes, col_types = col_types))
+    weather <-   suppressWarnings(readr::read_csv(fns.weather, col_types = col_types))
+    vehicle_data <-  suppressWarnings(readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types)) # keep this as unzip
+    # routes <-   suppressWarnings(readr::read_csv(unzip(zipfile = fns.routes, exdir = tempdir), col_types = col_types))
+    # weather <-  suppressWarnings(readr::read_csv(unzip(zipfile = fns.weather, exdir = tempdir), col_types = col_types))
 
-    # Get route metadata -------------------------------------------------------
-    vehicle_data <-  suppressWarnings(readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types))
 
     observers <- weather %>%
       make.dates() %>%
@@ -107,7 +108,6 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
       }
     )
     names(bbs) <- list.elements
-
 
     # END FUNCTION ------------------------------------------------------------
     return(bbs)
