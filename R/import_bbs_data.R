@@ -20,7 +20,7 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
         list.files(path = paste0(bbs_dir),
                    pattern = "50-StopData.zip",
                    full.names = TRUE)
-    utils::unzip(zipF, exdir = tempdir) # unzip the main one b/c not sure how to dig two dirs down in the sapply
+    utils::unzip(zipF, exdir = tempdir) # unzip the top directory b/c not sure its possible to dig two dirs down into a zipped file..
     fns.50stop <-
         paste0(tempdir,
                "/",
@@ -61,6 +61,7 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     observations <- list()
     for (i in seq_along(fns.50stop)) {
       f <- fns.50stop[i]
+      # observations[[i]]  <- data.table::fread(f)
       observations[[i]]  <- readr::read_csv(f, col_types = col_types)
     }
     observations <- dplyr::bind_rows(observations)

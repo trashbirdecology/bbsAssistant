@@ -25,6 +25,7 @@ if(is.null(sb_id)){
   }else{stopifnot(dir.exists(bbs_dir))}
 
 ## DOWNLOAD THE DATA FROM SOURCE (or not if exists and overwrite=FALSE)
+  ## The output of download_bbs_data is a filepath.
 data.in.dir <- download_bbs_data(sb_id=sb_id, bbs_dir=bbs_dir, overwrite = overwrite)
 
 ## IMPORT
