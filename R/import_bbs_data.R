@@ -18,7 +18,7 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     # Create a vector of desired file locations.
     zipF <-
         list.files(path = paste0(bbs_dir),
-                   pattern = "*50-StopData.zip",
+                   pattern = "50-StopData.zip",
                    full.names = TRUE)
     utils::unzip(zipF, exdir = tempdir) # unzip the main one b/c not sure how to dig two dirs down in the sapply
     fns.50stop <-
