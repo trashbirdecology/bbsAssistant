@@ -69,16 +69,12 @@
 
 <p><strong>bbsAssistant</strong>: An R package for Downloading and Handling Data and Information from the North American Breeding Bird Survey (BBS) ================ Last updated: 2022-03-11</p>
 <!-- badges: start -->
-
 <div class="section level2">
 <h2 id="about">About<a class="anchor" aria-label="anchor" href="#about"></a>
 </h2>
 <p>This repository contains the development version of <strong>bbsAssistant</strong>. Please submit <a href="https://github.com/TrashBirdEcology/bbsAssistant/issues" class="external-link">Issues here</a>.</p>
 <p>This package contains functions for downloading, importing, and munging the official releases of the <a href="https://www.pwrc.usgs.gov/bbs/" class="external-link">North American Breeding Bird Survey</a> (BBS) data (retrieved from USGS ScienceBase repository) with the help of package <a href="https://cran.r-project.org/package=sbtools/" class="external-link">sbtools</a>.</p>
-<!-- ## Potential Future Developments -->
-<!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  -->
-<!-- - [ ] Spatial visualization tools -->
-<!-- devtools::check(args = c("--no-examples", "--no-tests")) -->
+<!-- ## Potential Future Developments --><!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  --><!-- - [ ] Spatial visualization tools --><!-- devtools::check(args = c("--no-examples", "--no-tests")) -->
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
@@ -155,196 +151,80 @@
 <h2 id="bbs-data-availability-including-sb_id">BBS Data Availability (including sb_id)<a class="anchor" aria-label="anchor" href="#bbs-data-availability-including-sb_id"></a>
 </h2>
 <p>There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the <a href="https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9" class="external-link">observations data</a> and the analysis results. The datasets (observations, results) are permanently and publicly available at <a href="https://www.sciencebase.gov/" class="external-link">USGS ScienceBase</a>.</p>
-<p>The most recent annual releases of the observations and results datasets are stored as data objects in this package (see <code>data(bbs)</code>) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function <code>get_bbs_data()</code>.</p>
-A lookup table containing the available datasets (N = 7) and analysis results will be regularly updated, and comprises the following entries:
-<table class="table table table-striped" style>
-<caption>
-List of datasets currently available for download at USGS ScienceBase. Highlighted and bold row indicates the default BBS observations dataset stored internally in the package.
-</caption>
+<p>The most recent annual releases of the observations and results datasets are stored as data objects in this package (see <code>data(bbs)</code>) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function <code>get_bbs_data()</code>.</p>A lookup table containing the available datasets (N = 7) and analysis results will be regularly updated, and comprises the following entries:<table class="table table table-striped" style>
+<caption>List of datasets currently available for download at USGS ScienceBase. Highlighted and bold row indicates the default BBS observations dataset stored internally in the package.</caption>
 <thead><tr>
-<th style="text-align:left;">
-sb_title
-</th>
-<th style="text-align:right;">
-release_year
-</th>
-<th style="text-align:left;">
-data_type
-</th>
-<th style="text-align:right;">
-year_start
-</th>
-<th style="text-align:right;">
-year_end
-</th>
-<th style="text-align:left;">
-sb_link
-</th>
-<th style="text-align:left;">
-sb_item
-</th>
+<th style="text-align:left;">sb_title</th>
+<th style="text-align:right;">release_year</th>
+<th style="text-align:left;">data_type</th>
+<th style="text-align:right;">year_start</th>
+<th style="text-align:right;">year_end</th>
+<th style="text-align:left;">sb_link</th>
+<th style="text-align:left;">sb_item</th>
 </tr></thead>
 <tbody>
 <tr>
-<td style="text-align:left;width: 100em; font-weight: bold;background-color: yellow !important;">
-2020 Release - North American Breeding Bird Survey Dataset (1966-2019)
-</td>
-<td style="text-align:right;font-weight: bold;background-color: yellow !important;">
-2020
-</td>
-<td style="text-align:left;font-weight: bold;background-color: yellow !important;">
-observations
-</td>
-<td style="text-align:right;font-weight: bold;background-color: yellow !important;">
-1966
-</td>
-<td style="text-align:right;font-weight: bold;background-color: yellow !important;">
-2019
-</td>
-<td style="text-align:left;font-weight: bold;background-color: yellow !important;">
-sciencebase.gov/catalog/item/5ea04e9a82cefae35a129d65
-</td>
-<td style="text-align:left;font-weight: bold;background-color: yellow !important;">
-5ea04e9a82cefae35a129d65
-</td>
+<td style="text-align:left;width: 100em; font-weight: bold;background-color: yellow !important;">2020 Release - North American Breeding Bird Survey Dataset (1966-2019)</td>
+<td style="text-align:right;font-weight: bold;background-color: yellow !important;">2020</td>
+<td style="text-align:left;font-weight: bold;background-color: yellow !important;">observations</td>
+<td style="text-align:right;font-weight: bold;background-color: yellow !important;">1966</td>
+<td style="text-align:right;font-weight: bold;background-color: yellow !important;">2019</td>
+<td style="text-align:left;font-weight: bold;background-color: yellow !important;">sciencebase.gov/catalog/item/5ea04e9a82cefae35a129d65</td>
+<td style="text-align:left;font-weight: bold;background-color: yellow !important;">5ea04e9a82cefae35a129d65</td>
 </tr>
 <tr>
-<td style="text-align:left;width: 100em; ">
-2019 Release - North American Breeding Bird Survey Dataset (1966-2018)
-</td>
-<td style="text-align:right;">
-2019
-</td>
-<td style="text-align:left;">
-observations
-</td>
-<td style="text-align:right;">
-1966
-</td>
-<td style="text-align:right;">
-2018
-</td>
-<td style="text-align:left;">
-sciencebase.gov/catalog/item/5d65256ae4b09b198a26c1d7
-</td>
-<td style="text-align:left;">
-5d65256ae4b09b198a26c1d7
-</td>
+<td style="text-align:left;width: 100em; ">2019 Release - North American Breeding Bird Survey Dataset (1966-2018)</td>
+<td style="text-align:right;">2019</td>
+<td style="text-align:left;">observations</td>
+<td style="text-align:right;">1966</td>
+<td style="text-align:right;">2018</td>
+<td style="text-align:left;">sciencebase.gov/catalog/item/5d65256ae4b09b198a26c1d7</td>
+<td style="text-align:left;">5d65256ae4b09b198a26c1d7</td>
 </tr>
 <tr>
-<td style="text-align:left;width: 100em; ">
-2018 Release - North American Breeding Bird Survey Dataset (1966-2017)
-</td>
-<td style="text-align:right;">
-2018
-</td>
-<td style="text-align:left;">
-observations
-</td>
-<td style="text-align:right;">
-1966
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-sciencebase.gov/catalog/item/5af45ebce4b0da30c1b448ca
-</td>
-<td style="text-align:left;">
-5af45ebce4b0da30c1b448ca
-</td>
+<td style="text-align:left;width: 100em; ">2018 Release - North American Breeding Bird Survey Dataset (1966-2017)</td>
+<td style="text-align:right;">2018</td>
+<td style="text-align:left;">observations</td>
+<td style="text-align:right;">1966</td>
+<td style="text-align:right;">2017</td>
+<td style="text-align:left;">sciencebase.gov/catalog/item/5af45ebce4b0da30c1b448ca</td>
+<td style="text-align:left;">5af45ebce4b0da30c1b448ca</td>
 </tr>
 <tr>
-<td style="text-align:left;width: 100em; ">
-2017 Release - North American Breeding Bird Survey Dataset (1966-2016)
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-observations
-</td>
-<td style="text-align:right;">
-1966
-</td>
-<td style="text-align:right;">
-2016
-</td>
-<td style="text-align:left;">
-sciencebase.gov/catalog/item/5cf7d4d5e4b07f02a7046479
-</td>
-<td style="text-align:left;">
-5cf7d4d5e4b07f02a7046479
-</td>
+<td style="text-align:left;width: 100em; ">2017 Release - North American Breeding Bird Survey Dataset (1966-2016)</td>
+<td style="text-align:right;">2017</td>
+<td style="text-align:left;">observations</td>
+<td style="text-align:right;">1966</td>
+<td style="text-align:right;">2016</td>
+<td style="text-align:left;">sciencebase.gov/catalog/item/5cf7d4d5e4b07f02a7046479</td>
+<td style="text-align:left;">5cf7d4d5e4b07f02a7046479</td>
 </tr>
 <tr>
-<td style="text-align:left;width: 100em; ">
-2001-2016 Releases (legacy format) - North American Breeding Bird Survey Dataset
-</td>
-<td style="text-align:right;">
-2016
-</td>
-<td style="text-align:left;">
-observations
-</td>
-<td style="text-align:right;">
-1966
-</td>
-<td style="text-align:right;">
-2015
-</td>
-<td style="text-align:left;">
-sciencebase.gov/catalog/item/5d00efafe4b0573a18f5e03a
-</td>
-<td style="text-align:left;">
-5d00efafe4b0573a18f5e03a
-</td>
+<td style="text-align:left;width: 100em; ">2001-2016 Releases (legacy format) - North American Breeding Bird Survey Dataset</td>
+<td style="text-align:right;">2016</td>
+<td style="text-align:left;">observations</td>
+<td style="text-align:right;">1966</td>
+<td style="text-align:right;">2015</td>
+<td style="text-align:left;">sciencebase.gov/catalog/item/5d00efafe4b0573a18f5e03a</td>
+<td style="text-align:left;">5d00efafe4b0573a18f5e03a</td>
 </tr>
 <tr>
-<td style="text-align:left;width: 100em; ">
-The North American Breeding Bird Survey, Analysis Results 1966 - 2018
-</td>
-<td style="text-align:right;">
-2020
-</td>
-<td style="text-align:left;">
-usgs_results
-</td>
-<td style="text-align:right;">
-1966
-</td>
-<td style="text-align:right;">
-2018
-</td>
-<td style="text-align:left;">
-sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4
-</td>
-<td style="text-align:left;">
-5ea1e02c82cefae35a16ebc4
-</td>
+<td style="text-align:left;width: 100em; ">The North American Breeding Bird Survey, Analysis Results 1966 - 2018</td>
+<td style="text-align:right;">2020</td>
+<td style="text-align:left;">usgs_results</td>
+<td style="text-align:right;">1966</td>
+<td style="text-align:right;">2018</td>
+<td style="text-align:left;">sciencebase.gov/catalog/item/5ea1e02c82cefae35a16ebc4</td>
+<td style="text-align:left;">5ea1e02c82cefae35a16ebc4</td>
 </tr>
 <tr>
-<td style="text-align:left;width: 100em; ">
-The North American Breeding Bird Survey, Analysis Results 1966 - 2017
-</td>
-<td style="text-align:right;">
-2018
-</td>
-<td style="text-align:left;">
-usgs_results
-</td>
-<td style="text-align:right;">
-1966
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-sciencebase.gov/catalog/item/5eab196d82cefae35a2254e0
-</td>
-<td style="text-align:left;">
-5eab196d82cefae35a2254e0
-</td>
+<td style="text-align:left;width: 100em; ">The North American Breeding Bird Survey, Analysis Results 1966 - 2017</td>
+<td style="text-align:right;">2018</td>
+<td style="text-align:left;">usgs_results</td>
+<td style="text-align:right;">1966</td>
+<td style="text-align:right;">2017</td>
+<td style="text-align:left;">sciencebase.gov/catalog/item/5eab196d82cefae35a2254e0</td>
+<td style="text-align:left;">5eab196d82cefae35a2254e0</td>
 </tr>
 </tbody>
 </table>
@@ -356,10 +236,8 @@ sciencebase.gov/catalog/item/5eab196d82cefae35a2254e0
 <p><strong>For general use of the R package bbsAssistant</strong> and/or <strong>companion paper</strong>:<br>
 Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, <a href="https://doi.org/10.5066/P93W0EAW" class="external-link uri">https://doi.org/10.5066/P93W0EAW</a>. <em>or</em> Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768, <a href="https://doi.org/10.21105/joss.01768" class="external-link uri">https://doi.org/10.21105/joss.01768</a></p>
 </div>
-<div class="section level2">
-<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
-</h2>
-</div>
+<div class="section level2"><h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+</h2></div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
@@ -430,7 +308,7 @@ Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R pack
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
