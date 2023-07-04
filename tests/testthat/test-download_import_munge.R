@@ -28,6 +28,7 @@ test_that(
     testthat::expect_true(length(unique(munged.subset$StateNum)) == 1)
     testthat::expect_true(length(unique(munged.subset$AOU)) == 1)
     testthat::expect_true(unique(munged.subset$QualityCurrentID) == 1)
+    testthat::expect_true(unique(munged.subset$RPID) == 101)
 
 
     d1 = munge_bbs_data(bbs_list = dat, zero.fill = FALSE, species = "house sparrow")
