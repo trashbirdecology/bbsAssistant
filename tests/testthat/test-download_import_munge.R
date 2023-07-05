@@ -9,6 +9,11 @@ test_that(
     testthat::expect_true(tolower("50-stopdata.zip") %in% tolower(list.files(loc)))
 
     sb_id = sb_items$sb_item[sb_items$year_end == max(sb_items$year_end)]
+
+    loc <- "C:\\Users\\endicotts\\Documents\\gitprojects\\ROFBirds\\analysis\\data\\raw_data\\bbs_2022"
+
+    sp_list <- import_species_list(loc)
+
     dat = import_bbs_data(bbs_dir = loc, sb_id = sb_id)
 
     # testthat::expect_length(dat, 7)
