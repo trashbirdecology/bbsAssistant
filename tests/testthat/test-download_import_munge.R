@@ -10,14 +10,18 @@ test_that(
 
     sb_id = sb_items$sb_item[sb_items$year_end == max(sb_items$year_end)]
 
-    loc <- "C:\\Users\\endicotts\\Documents\\gitprojects\\ROFBirds\\analysis\\data\\raw_data\\bbs_2022"
+    # loc <- "C:\\Users\\endicotts\\Documents\\gitprojects\\ROFBirds\\analysis\\data\\raw_data\\bbs_2022"
 
     sp_list <- import_species_list(loc)
+
+    expect_s3_class(sp_list, "data.frame")
 
     dat = import_bbs_data(bbs_dir = loc, sb_id = sb_id)
 
     # testthat::expect_length(dat, 7)
-    testthat::expect_true(nrow(dat$observations) > 1)
+    testthat::expect_true(all(lapply(dat, function(x){
+      if(is(x, "data.frame")){nrow(x) > 1}else{TRUE}
+    }) %>% unlist()))
 
     munged.default = suppressWarnings(munge_bbs_data(bbs_list = dat)) ## suppress an internal warning about zero.filling data
     testthat::expect_true(nrow(munged.default) >= 3470000) # default SB ID as of 20220310 nrows == ~3.3M
@@ -45,3 +49,4 @@ test_that(
 
   }
 )
+

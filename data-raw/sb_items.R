@@ -65,3 +65,7 @@ sb_items <-   sb_items %>%
   )
 
 usethis::use_data(sb_items, overwrite = TRUE)
+
+# new version using parent ids to find most recent data on ScienceBase
+sb_items <- update_sb_items()
+usethis::use_data(sb_items, overwrite = TRUE)

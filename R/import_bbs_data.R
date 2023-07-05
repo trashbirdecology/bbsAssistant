@@ -33,7 +33,7 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
         fns.50stop[stringr::str_detect(tolower(fns.50stop), pattern = ".zip")] # to remove the dir that isnt a .zip
 
     fns.routes <- list.files(path = paste0(bbs_dir),
-                             pattern = "routes.zip",
+                             pattern = "outes.zip",
                              full.names = TRUE)
     fns.vehicle <- list.files(path = paste0(bbs_dir),
                               pattern = "ehicle",
