@@ -1,5 +1,5 @@
 # grab most recent version of data and save the species list as a lookup table
-df <- bbsAssistant::grab_bbs_data() ## need to update this to grab data if its already stored inside the local package
+df <- bbsAssistant::grab_bbs_data(sb_id = sb_id, bbs_dir = loc) ## need to update this to grab data if its already stored inside the local package
 bbs <- df[['species_list']]
 bbs$AOU <- as.integer(as.character(bbs$AOU))
 
@@ -22,9 +22,12 @@ aou <- read.csv(fn)[c("COMMONNAME", "SCINAME", "SPEC", "SPEC6")]
 names(aou) <- c("English_Common_Name", "Scientific_Name", "AOU4", "AOU6")
 
 # Merge them
-species_list <- dplyr::full_join(bbs, aou)
+species_list <- dplyr::full_join(bbs %>% select(-AOU4, -AOU6), aou)
 # stopifnot(!any(is.na(species_list$AOU)))
 
+# sometimes scientific names are different ... need to be reconciled Using more
+# recent IBP list will help but then won't work for older, probably need list
+# that matches the data release year...
 
 usethis::use_data(species_list, overwrite = TRUE)
 

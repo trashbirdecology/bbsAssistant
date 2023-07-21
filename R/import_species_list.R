@@ -28,8 +28,9 @@ import_species_list <- function(bbs_dir){
     species_list$AOU <- as.integer(as.character(species_list$AOU))
 
     ## Join this species list with the package data list
-    species_list <- dplyr::left_join(species_list, bbsAssistant::species_list,
-                                     by = dplyr::join_by(Seq, AOU, English_Common_Name,
+    species_list <- dplyr::left_join(species_list,
+                                     bbsAssistant::species_list %>% select(-Seq),
+                                     by = dplyr::join_by(AOU, English_Common_Name,
                                                   Spanish_Common_Name, ORDER, Family,
                                                   Genus, Species))
 
