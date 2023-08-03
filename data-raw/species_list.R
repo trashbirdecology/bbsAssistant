@@ -18,12 +18,25 @@ bbs$Scientific_Name <- paste(bbs$Genus,
 
 ## Pull in the official AOU codes
 fn=list.files( pattern="IBP-AOS", recursive = TRUE, full.names = TRUE) # from URL
-aou <- read.csv(fn)[c("COMMONNAME", "SCINAME", "SPEC", "SPEC6")]
+aou <- read.csv(fn[1])[c("COMMONNAME", "SCINAME", "SPEC", "SPEC6")]
 names(aou) <- c("English_Common_Name", "Scientific_Name", "AOU4", "AOU6")
 
 # Merge them
-species_list <- dplyr::full_join(bbs %>% select(-AOU4, -AOU6), aou)
+species_list <- dplyr::full_join(bbs %>% select(-AOU4, -AOU6), aou) #%>%
+#   # secondary join by just sci name causes issues for ones that have multiple forms with same sci name
+#   dplyr::full_join(aou %>% select(Scientific_Name, AOU4_2 = AOU4))%>%
+#   dplyr::mutate(AOU4 = dplyr::coalesce(AOU4, AOU4_2))
 # stopifnot(!any(is.na(species_list$AOU)))
+
+# also add napops based AOU
+napop_sp <- napops::list_species()
+
+species_list <- dplyr::full_join(
+  species_list,
+  napop_sp %>% select(-c(Removal, Distance, Family), AOU4_2 = Species),
+  by = c(English_Common_Name = "Common_Name", "Scientific_Name")
+) %>%
+  dplyr::mutate(AOU4 = dplyr::coalesce(AOU4, AOU4_2))
 
 # sometimes scientific names are different ... need to be reconciled Using more
 # recent IBP list will help but then won't work for older, probably need list
