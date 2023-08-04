@@ -89,6 +89,9 @@ munge_bbs_data <-
       CountryNum <- RPID <-
       iso_a2 <- ObsFirstYearOnRTENO <- ObsFirstYearOnBBS  <- NULL
 
+    # Change name that matches column to avoid confusion
+    QualityCurrentIDIn <- QualityCurrentID
+
     # SPATIOTEMPORAL SUBSETTING -----------------------------------------------
     ## SPATIAL SUBSETTING OBSERVATIONS ---------------------------------------------------
     # grab region codes
@@ -141,7 +144,7 @@ munge_bbs_data <-
     ## the last code in this chunk (.remove.rtenos) should allow only one filter on either
     ### weather or vehicle_data to take place, but needs to be tested.
     myweather <-
-      bbs_list$weather %>% dplyr::filter(QualityCurrentID %in% QualityCurrentID &
+      bbs_list$weather %>% dplyr::filter(QualityCurrentID %in% QualityCurrentIDIn &
                                            RPID %in% rpid)
     mycars <- bbs_list$vehicle_data <- bbs_list$vehicle_data %>% dplyr::filter(RPID %in% rpid)
 
