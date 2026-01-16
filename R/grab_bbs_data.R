@@ -29,10 +29,8 @@ if(is.null(sb_id)){
 data.in.dir <- download_bbs_data(sb_id=sb_id, bbs_dir=bbs_dir, overwrite = overwrite)
 
 ## IMPORT
-cat("Attempting to decompress and import files from", data.in.dir,"\n")
+cat("Importing files from", data.in.dir,"\n")
 bbs <- import_bbs_data(bbs_dir = data.in.dir, sb_id=sb_id)
-
-bbs$data.dir <- bbs_dir
 
 return(bbs)
 
