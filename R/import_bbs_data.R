@@ -30,16 +30,16 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
                    exdir = tempdir()
                )$Name)
     fns.50stop <-
-        fns.50stop[stringr::str_detect(tolower(fns.50stop), pattern = ".zip")] # to remove the dir that isnt a .zip
+        fns.50stop[stringr::str_detect(tolower(fns.50stop), pattern = "csv")]
 
     fns.routes <- list.files(path = paste0(bbs_dir),
-                             pattern = "routes.zip",
+                             pattern = "outes",
                              full.names = TRUE)
     fns.vehicle <- list.files(path = paste0(bbs_dir),
                               pattern = "ehicle",
                               full.names = TRUE)
     fns.weather <- list.files(path = paste0(bbs_dir),
-                              pattern = "eather.zip",
+                              pattern = "eather",
                               full.names = TRUE)
 
 
@@ -55,13 +55,11 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     )
 
     # Get observations and routes ---------------------------------------------
-    # observations <- sapply(fns, function(x) readr::read_csv(unzip(zipfile = x))) %>%
-    # can't figure out how to do this with apply so just looping... le sigh.
-
+    # would prefer this is an sapply instead of a for loop
     observations <- list()
+    cat("Getting observations")
     for (i in seq_along(fns.50stop)) {
       f <- fns.50stop[i]
-      # observations[[i]]  <- data.table::fread(f)
       observations[[i]]  <- readr::read_csv(f, col_types = col_types)
     }
     observations <- dplyr::bind_rows(observations)
@@ -70,14 +68,30 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     citation <- sbtools::item_get_fields(sb_id, "citation")
 
     # Get species list --------------------------------------------------
-    species_list <- import_species_list(bbs_dir)
+    species_list <- import_species_list(bbs_dir, sb_id = sb_id)
 
     # Get route metadata -------------------------------------------------------
-    routes <-   suppressWarnings(readr::read_csv(fns.routes, col_types = col_types))
-    weather <-   suppressWarnings(readr::read_csv(fns.weather, col_types = col_types))
-    vehicle_data <-  suppressWarnings(readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types)) # keep this as unzip
-    # routes <-   suppressWarnings(readr::read_csv(unzip(zipfile = fns.routes, exdir = tempdir), col_types = col_types))
-    # weather <-  suppressWarnings(readr::read_csv(unzip(zipfile = fns.weather, exdir = tempdir), col_types = col_types))
+    ### suppressing warnings here -- scary, yes, but the parsing 'error' isn't an error, it is just correctly removing trailing whitespace from doubles
+    ### can call `vroom::problems(df)` do double check
+
+    # vehicle data
+    suppressWarnings(vehicle_data <- if (stringr::str_detect(fns.vehicle, ".zip")) {
+      message(paste0('unzipping '), fns.vehicle)
+      readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types)} else{
+        readr::read_csv(fns.vehicle, col_types = col_types)
+      })
+    # weather
+    suppressWarnings( weather <- if (stringr::str_detect(fns.weather, ".zip")) {
+      message(paste0('unzipping '), fns.weather)
+      readr::read_csv(unzip(zipfile = fns.weather, exdir = tempdir), col_types = col_types)} else{
+        readr::read_csv(fns.weather, col_types = col_types)
+      })
+    # routes
+    suppressWarnings(routes <- if (stringr::str_detect(fns.routes, ".zip")) {
+      message(paste0('unzipping '), fns.routes)
+      readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types)} else{
+        readr::read_csv(fns.routes, col_types = col_types)
+      })
 
 
     observers <- weather %>%
@@ -98,8 +112,9 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
            "observers",
            "weather",
            "species_list",
-           "citation",
-           "vehicle_data"
+           "vehicle_data",
+           "bbs_dir",
+           "citation"
       )
     bbs <- lapply(
       list.elements,
@@ -109,6 +124,9 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
       }
     )
     names(bbs) <- list.elements
+
+    cat("Please cite this data release as: ", bbs$citation)
+
 
     # END FUNCTION ------------------------------------------------------------
     return(bbs)

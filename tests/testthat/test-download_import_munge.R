@@ -1,18 +1,27 @@
-# CANNOT RUN THESE TESTS ON CRAN B/C MEMORY LIMIT IS EXCEEDED
+# these tests need to be reduced and download bbs cannot be run in autoamted gh or cran checks due to data downloads and memory issues
+
+# # CANNOT RUN THESE TESTS ON CRAN B/C MEMORY LIMIT IS EXCEEDED (due to data downloads)
 # test_that(
-#   "download_bbs_data, import_bbs_data, and munge_bbs_data functioning seemingly correctly",
+#   "download_bbs_data, import_bbs_data, and munge_bbs_data",
 #   {
-#     sb_id = sb_items[which.max(sb_items$release_year),]$sb_item
+#     sb_id = sb_items[which.max(bbsAssistant::sb_items$release_year),]$sb_item
 #     tempdir <- tempdir()
-#     loc = download_bbs_data(sb_id, overwrite = TRUE, bbs_dir = tempdir)
+#     download_bbs_data(sb_id, overwrite = TRUE, bbs_dir = tempdir)
 #
-#     testthat::expect_true(tolower("50-stopdata.zip") %in% tolower(list.files(loc)))
+#     testthat::expect_true(tolower("50-stopdata.zip") %in% tolower(list.files(tempdir)))
 #
 #     sb_id = sb_items$sb_item[sb_items$year_end == max(sb_items$year_end)]
+#
+#     sp_list <- import_species_list(bbs_dir = tempdir, sb_id = sb_id)
+#
+#     expect_s3_class(sp_list, "data.frame")
+#
 #     dat = import_bbs_data(bbs_dir = loc, sb_id = sb_id)
 #
 #     # testthat::expect_length(dat, 7)
-#     testthat::expect_true(nrow(dat$observations) > 1)
+#     testthat::expect_true(all(lapply(dat, function(x){
+#       if(is(x, "data.frame")){nrow(x) > 1}else{TRUE}
+#     }) %>% unlist()))
 #
 #     munged.default = suppressWarnings(munge_bbs_data(bbs_list = dat)) ## suppress an internal warning about zero.filling data
 #     testthat::expect_true(nrow(munged.default) >= 3470000) # default SB ID as of 20220310 nrows == ~3.3M
@@ -27,6 +36,8 @@
 #     )
 #     testthat::expect_true(length(unique(munged.subset$StateNum)) == 1)
 #     testthat::expect_true(length(unique(munged.subset$AOU)) == 1)
+#     testthat::expect_true(unique(munged.subset$QualityCurrentID) == 1)
+#     testthat::expect_true(unique(munged.subset$RPID) == 101)
 #
 #
 #     d1 = munge_bbs_data(bbs_list = dat, zero.fill = FALSE, species = "house sparrow")
@@ -38,3 +49,4 @@
 #
 #   }
 # )
+#

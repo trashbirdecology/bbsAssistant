@@ -5,7 +5,7 @@
 \alias{sb_items}
 \title{ScienceBase Items Lookup Table}
 \format{
-An object of class \code{data.frame} with 7 rows and 9 columns.
+An object of class \code{data.frame} with 26 rows and 9 columns.
 }
 \usage{
 sb_items

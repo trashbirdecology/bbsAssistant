@@ -15,21 +15,30 @@ always_allow_html: true
 <img src=".github/figures/logo.png" align="right" height=140/>
 
 ## About
-This repository contains the development version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). 
+This repository contains the most recent version of __bbsAssistant__. Please submit [Issues here](https://github.com/TrashBirdEcology/bbsAssistant/issues). 
 
 This package contains functions for downloading, importing, and munging the official releases of the [North American Breeding Bird Survey](https://www.pwrc.usgs.gov/bbs/) (BBS) data (retrieved from  USGS ScienceBase repository) with the help of package [sbtools](https://cran.r-project.org/package=sbtools/). 
 
+Please cite this package using `citation("bbsAssistant")`. Thank you to those [who have contributed to this package](https://github.com/trashbirdecology/bbsAssistant/graphs/contributors) over time.
+
+## Citations
+__For the BBS dataset and analysis results__, call `citation("bbsAssistant")` or see library loading message.
+
+__For general use of the R package bbsAssistant__ and/or __companion paper__:  
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
+_or_ 
+Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768, https://doi.org/10.21105/joss.01768
+
 <!-- ## Potential Future Developments -->
 <!-- - [ ] Functions for creating presence/absence and count matrices for use in JAGS and beyond (see also: https://github.com/trashbirdecology/bbsebird/)  -->
-<!-- - [ ] Spatial visualization tools -->
+<!-- - [ ] Spatial visualization -->
 
 <!-- devtools::check(args = c("--no-examples", "--no-tests")) -->
 
-## Quick Start
+# Quick Start
 ```{r install, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
 remotes::install_github("trashbirdecology/bbsAssistant", 
-                         ref="main", # change to main for releases
-                         force=TRUE) # force=TRUE to get most recent dev version
+                         ref="main") # main branch for maintainer releases
 ```
 
 
@@ -41,47 +50,37 @@ library(bbsAssistant)
 
 ## Download, Unpack, and Import the Most Recent Dataset
 ```{r grab_bbs_data, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-bbs <- grab_bbs_data()
 # Optional: specify `sb_id` as the USGS ScienceBase identifier for a specific data release. If sb_id is not supplied, will default to the most recent data release.
+bbs <- grab_bbs_data()
 ```
-The object resulting from `bbsAssistant::import_bbs_data()` is a list comprising the following elements:
-```{r view, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-names(bbs)
+The object resulting from `bbsAssistant::import_bbs_data()` comprises elements:
+```{r view, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
+str(bbs,max.level = 1)
 ```
 
-## Filtering by State/Region
-Filter the dataset using your preferred method. A lookup table is provided as a package dataset for filtering by country or state using the BBS codes (see columns CountryNum, StateNum) or ISO alpha codes and names (see columns iso_3155_2, iso_a2, name_fr, name_es):
+# Filter the Data
+Filter the dataset using your preferred methods. The function `munge_bbs_data()` contains several subsetting arguments. 
+### by geopolitical boundaries 
+ A lookup table is provided as a package dataset for filtering by country or state/province (see data(region_codes))
 ```{r regioncodes, echo=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
-head(bbsAssistant::region_codes, 3)
+myregiondata <- munge_bbs_data(bbs_list = bbs, states =   "nunavut")# optionally, add a time filter: year.range = 1999:2025
 ```
-### Filter on species names
-View the species lists for your particular dataset by calling:
-```{r}
-head(bbs$species_list,3)
-```
+### by species
+Filter data by species using your preferred method.
 
-or view the most recent species list (may be the same as yours..):
-```{r, eval=FALSE}
-head(bbsAssistant::species_list,3)
-```
-
-Keep only _Passer domesticus_:
+Here is an example filtering to _Passer domesticus_ & _Haemorhous mexicanus_ using both genus+species and common name:
 ```{r filter-hosp}
 # grab the aou code for House Sparrow  using common name 
-hosp.aou.code <- bbs$species_list$AOU[bbs$species_list$English_Common_Name=="House Sparrow"]
-# or genus and species epithet
-# hosp.aou.code <-
-#   bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
-#                          bbs$species_list$Species == "domesticus"]
+hosp <- bbs$species_list$AOU[bbs$species_list$Genus == "Passer" &
+                         bbs$species_list$Species == "domesticus"]
+# get the latin name for House Finch using common name
 hofi          <- bbs$species_list$Scientific_Name[bbs$species_list$English_Common_Name=="House Finch"]
-# filter the observations along  BBS "AOU" code:
-## note spelling but not capitalization matters. 
-## can provide species arg as species' common or latin name(s) or as BBS "AOU" code(s)
-hosp.df <- munge_bbs_data(bbs_list=bbs, species = c(hosp.aou.code, hofi))
-                          # species = c("House SPARROW", "passer Domesticus", hosp.aou.code)) 
+## NOTE: spelling but not capitalization matters. 
+## You can provide `species` arg as common name, latin name, or AOU code
+hosphofi.df <- munge_bbs_data(bbs_list=bbs, species = c(hosp, hofi))
 ```
 
-## BBS Data Availability (including sb_id)
+# BBS Data Availability (including sb_id)
 There are currently two primary products released from the USGS that are derived from the annual BBS roadside surveys, the [observations data](https://www.sciencebase.gov/catalog/item/52b1dfa8e4b0d9b325230cd9) and the analysis results. The datasets (observations, results) are permanently and publicly available at [USGS ScienceBase](https://www.sciencebase.gov/). 
 
 The most recent annual releases of the observations and results datasets are stored as data objects in this package (see `data(bbs)`) will be downloaded as the default in this package, but the user has the option to specify historical dataset releases should they choose. Please see the function `get_bbs_data()`.
@@ -102,16 +101,9 @@ datasets %>% select(-legacy_format, -sb_parent) %>%
   row_spec(1, background = "yellow", bold = TRUE)
 ```
 
-## Citations
-__For the BBS dataset and analysis results__, call `citation("bbsAssistant")` or see library loading message.
+# Contributing
+We thank all contributors who help keep this package strong. Please submit a pull request for functional updates. While you're welcome to submit issues, as of 2026-January, trashbirdecology cannot commit to monitoring this package on a regular basis. If you'd like to join the repository as a maintainer, please email jessica.burnett@nasa.gov 
 
-__For general use of the R package bbsAssistant__ and/or __companion paper__:  
-Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey: U.S. Geological Survey software release, https://doi.org/10.5066/P93W0EAW.
-_or_ 
-Burnett, J.L., Wszola, L., and Palomo-Muñoz, G. (2019). bbsAssistant: An R package for downloading and handling data and information from the North American Breeding Bird Survey. Journal of Open Source Software, 4(44), 1768, https://doi.org/10.21105/joss.01768
-
-
-## Contributing
 ## Code of Conduct
 
 Please note that the bbsAssistant project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms. For questions, comments, or issues, feel free to email the maintainer [Jessica Burnett](mailto:jburnett@usgs.gov) or submit an [Issue](https://github.com/TrashBirdEcology/bbsAssistant/issues) (preferred).

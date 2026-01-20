@@ -4,10 +4,12 @@
 \alias{import_species_list}
 \title{Import Species Metadata}
 \usage{
-import_species_list(bbs_dir)
+import_species_list(bbs_dir, sb_id)
 }
 \arguments{
 \item{bbs_dir}{Directory for the ScienceBase (sb) item.}
+
+\item{sb_id}{ScienceBase Item identifier. Can be found in \code{sb_items}.}
 }
 \description{
 Imports the file specieslist.txt. Is subsequently appended to the BBS dataset in \code{import_bbs_data()}
