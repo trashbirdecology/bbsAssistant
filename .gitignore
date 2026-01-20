@@ -24,5 +24,26 @@ data/readme.rtf
 
 
 # local download of the BBS dataset
-data-in/
-
+R/data-in/
+/data-in/
+data-raw/species_list.R 14-33-16-884.R
+data-raw/data-in/64ad9c3dd34e70357a292cee/50-StopData.zip
+data-raw/data-in/691cfb53d4be021d1d89b482/Weather.csv
+data-raw/data-in/691cfb53d4be021d1d89b482/VehicleData.csv
+data-raw/data-in/691cfb53d4be021d1d89b482/States.zip
+data-raw/data-in/691cfb53d4be021d1d89b482/SpeciesList.csv
+data-raw/data-in/691cfb53d4be021d1d89b482/RunType.pdf
+data-raw/data-in/691cfb53d4be021d1d89b482/Routes.csv
+data-raw/data-in/691cfb53d4be021d1d89b482/North American Breeding Bird Survey Dataset (1966-2024).xml
+data-raw/data-in/691cfb53d4be021d1d89b482/MigrantNonBreeder.zip
+data-raw/data-in/691cfb53d4be021d1d89b482/Completeness_Report_NABBS_Dataset_1966-2024.pdf
+data-raw/data-in/691cfb53d4be021d1d89b482/50-StopData.zip
+data-raw/data-in/64ad9c3dd34e70357a292cee/weather.csv
+data-raw/data-in/64ad9c3dd34e70357a292cee/VehicleData.csv
+data-raw/data-in/64ad9c3dd34e70357a292cee/States.zip
+data-raw/data-in/64ad9c3dd34e70357a292cee/SpeciesList.txt
+data-raw/data-in/64ad9c3dd34e70357a292cee/RunType.pdf
+data-raw/data-in/64ad9c3dd34e70357a292cee/routes.csv
+data-raw/data-in/64ad9c3dd34e70357a292cee/North American Breeding Bird Survey Dataset (1966-2022).xml
+data-raw/data-in/64ad9c3dd34e70357a292cee/MigrantNonBreeder.zip
+data-raw/data-in/64ad9c3dd34e70357a292cee/Completeness_Report_NABBS_Dataset_1966-2022.pdf
