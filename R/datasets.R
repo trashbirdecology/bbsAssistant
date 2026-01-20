@@ -21,6 +21,7 @@
 #' A lookup table that is manually updated by the package maintainers.
 #'   The table can be used as a reference for identifying BBS data availability on USGS ScienceBase and is called internally when downloading datasets.
 #'
+#'
 #' \describe{
 #'   \item{sb_parent}{unique identifier associated with a ScienceBase parent item (often the project identifier).}
 #'   \item{sb_item}{ScienceBase unique identifier associated with each dataset release.}

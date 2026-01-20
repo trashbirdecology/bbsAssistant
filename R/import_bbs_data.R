@@ -31,7 +31,7 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
                )$Name)
     fns.50stop <-
         fns.50stop[stringr::str_detect(tolower(fns.50stop), pattern = "csv")]
-    
+
     fns.routes <- list.files(path = paste0(bbs_dir),
                              pattern = "outes",
                              full.names = TRUE)
@@ -60,7 +60,6 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     cat("Getting observations")
     for (i in seq_along(fns.50stop)) {
       f <- fns.50stop[i]
-      # observations[[i]]  <- data.table::fread(f)
       observations[[i]]  <- readr::read_csv(f, col_types = col_types)
     }
     observations <- dplyr::bind_rows(observations)
@@ -69,12 +68,12 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     citation <- sbtools::item_get_fields(sb_id, "citation")
 
     # Get species list --------------------------------------------------
-    species_list <- import_species_list(bbs_dir)
+    species_list <- import_species_list(bbs_dir, sb_id = sb_id)
 
     # Get route metadata -------------------------------------------------------
     ### suppressing warnings here -- scary, yes, but the parsing 'error' isn't an error, it is just correctly removing trailing whitespace from doubles
     ### can call `vroom::problems(df)` do double check
-    
+
     # vehicle data
     suppressWarnings(vehicle_data <- if (stringr::str_detect(fns.vehicle, ".zip")) {
       message(paste0('unzipping '), fns.vehicle)
@@ -93,8 +92,8 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
       readr::read_csv(unzip(zipfile = fns.vehicle, exdir = tempdir), col_types = col_types)} else{
         readr::read_csv(fns.routes, col_types = col_types)
       })
-    
-    
+
+
     observers <- weather %>%
       make.dates() %>%
       make.rteno() %>%
@@ -127,8 +126,8 @@ ObsN <- RTENO <- Date <- TotalSpp  <- NULL # bind variable to avoid CMD CHK WARN
     names(bbs) <- list.elements
 
     cat("Please cite this data release as: ", bbs$citation)
-    
-    
+
+
     # END FUNCTION ------------------------------------------------------------
     return(bbs)
 }

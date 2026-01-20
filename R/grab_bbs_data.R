@@ -12,7 +12,7 @@ grab_bbs_data <- function(sb_id=NULL, bbs_dir=NULL, overwrite=FALSE){
 if(is.null(sb_id)){
   sb_items <- bbsAssistant::sb_items
     sb_id=sb_items[which.max(sb_items$release_year),]$sb_item
-    message("Argument `sb_id` not specified.\ Using the ScienceBase identifier (sb_id) associated with the ",
+    cat("Argument `sb_id` not specified.\ Using the ScienceBase identifier (sb_id) associated with the ",
             sb_items$release_year[sb_items$sb_item==sb_id],
             " version of the BBS dataset:\n")
   }
@@ -29,7 +29,7 @@ if(is.null(sb_id)){
 data.in.dir <- download_bbs_data(sb_id=sb_id, bbs_dir=bbs_dir, overwrite = overwrite)
 
 ## IMPORT
-cat("Importing files from", data.in.dir,"\n")
+cat("Importing files to environment from", data.in.dir,"\n")
 bbs <- import_bbs_data(bbs_dir = data.in.dir, sb_id=sb_id)
 
 return(bbs)
